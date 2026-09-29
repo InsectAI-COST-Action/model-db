@@ -9,7 +9,7 @@ registry record, the fields the website renders, and the prose beneath it is
 the model card.
 
 **The build is the validator.** Hugo checks every card against
-[`data/schema.toml`](data/schema.toml) as it renders, and stops with a message
+[`data/schema.toml`](https://github.com/InsectAI-COST-Action/model-db/blob/main/data/schema.toml) as it renders, and stops with a message
 naming the file, the field and what it wanted. There is no separate check
 command to remember, and no way to publish a card that has not been checked.
 
@@ -41,7 +41,7 @@ hugo server --baseURL http://localhost:1313/
 
 ## Adding a model
 
-**Read [contributing](/contributing/) on the running site, or in short:**
+**Read [contributing](https://github.com/InsectAI-COST-Action/model-db/blob/main/content/contributing.md) on the running site, or in short:**
 
 ```bash
 cp -r template content/models/my-model
