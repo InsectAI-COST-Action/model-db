@@ -12,31 +12,18 @@
 
 # order is the order in which categories appear on the home page.
 order = [
-  "detection-homogeneous",
-  "detection-heterogeneous",
+  "detection",
   "classification",
-  "foundation",
+  "regression",
 ]
 
-[categories.detection-homogeneous]
-title = "Detection on homogeneous backgrounds"
-short = "Homogeneous"
+[categories.detection]
+title = "Insect detection"
+short = "Detection"
 description = """
-Detectors trained and evaluated on uniform backgrounds: light boxes, conveyor
-belts, plain walls, sticky traps, and laboratory surfaces, where the insect is
-the only thing in frame.
+Detectors trained and evaluated on both uniform backgrounds or cluttered field imagery.
 """
 open = true # open so that the section is not collapsed on the home page.
-
-[categories.detection-heterogeneous]
-title = "Detection on heterogeneous backgrounds"
-short = "Heterogeneous"
-description = """
-Detectors trained on cluttered field imagery: flowers, foliage, soil, and
-natural substrate, where the insect occupies a small fraction of a visually
-busy frame.
-"""
-open = true
 
 [categories.classification]
 title = "Insect classification"
@@ -44,16 +31,6 @@ short = "Classification"
 description = """
 Species- or taxon-level classifiers operating on cropped images of individual
 specimens.
-"""
-open = true
-
-[categories.foundation]
-title = "Foundation models"
-short = "Foundation"
-description = """
-General-purpose vision models usable zero-shot or through prompting, rather
-than trained for a single insect task. These accept textual or visual prompts
-and are not bound to a fixed class list.
 """
 open = true
 

@@ -56,6 +56,11 @@
         {{- errorf "%s: %q is %q, which is not one of: %s" $where $name $value (delimit $values ", ") -}}
       {{- end -}}
     {{- end -}}
+
+  {{- else if eq $kind "bool" -}}
+    {{- if ne (printf "%T" $value) "bool" -}}
+      {{- errorf "%s: %q must be true or false, with no quotes. %s" $where $name $help -}}
+    {{- end -}}
   {{- end -}}
 {{- end -}}
 
