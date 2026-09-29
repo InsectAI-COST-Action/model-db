@@ -148,8 +148,8 @@ hoverflies correctly as Diptera and rarely confused them with the Hymenoptera th
 @article{stark2023pollinator,
   title   = {{YOLO} object detection models can locate and classify broad groups of
              flower-visiting arthropods in images},
-  author  = {Stark, Thomas and {\c{S}}tefan, Valentin and Wurm, Michael and
-             Spanier, Robin and Taubenb{\"o}ck, Hannes and Knight, Tiffany M.},
+  author  = {Stark, Thomas and Ştefan, Valentin and Wurm, Michael and
+             Spanier, Robin and Taubenböck, Hannes and Knight, Tiffany M.},
   journal = {Scientific Reports},
   volume  = {13},
   pages   = {16364},
