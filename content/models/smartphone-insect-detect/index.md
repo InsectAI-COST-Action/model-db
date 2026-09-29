@@ -6,7 +6,7 @@ description        = "Lightweight YOLO pollinator detectors, NMS-optimized for a
 # ── Catalogue ───────────────────────────────────────────────────────
 category           = "detection"
 task               = ["Object Detection"]
-architecture       = "YOLOv5, YOLOv5, YOLOv7"
+architecture       = ["YOLOv5", "YOLOv5", "YOLOv7"]
 base_model         = "Stark et al. (2023) YOLO detectors, trained on citizen science images"
 year               = 2025
 license            = "GPL-3.0"
@@ -26,7 +26,7 @@ code_url           = "https://github.com/valentinitnelav/smartphone-insect-detec
 # ── Weights ─────────────────────────────────────────────────────────
 hosting_status     = "link_only"
 commercial_use     = "allowed"
-weight_format      = "PyTorch"
+weight_format      = ["PyTorch"]
 
 # ── The files this model ships. The FIRST one is the link the table shows. ──
 

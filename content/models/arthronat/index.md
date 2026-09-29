@@ -6,7 +6,7 @@ description        = "YOLO11 model trained on arthropods over natural background
 # ── Catalogue ───────────────────────────────────────────────────────
 category           = "detection"
 task               = ["Object Detection"]
-architecture       = "YOLO11"
+architecture       = ["YOLO11"]
 base_model         = "https://huggingface.co/Ultralytics/YOLO11"
 year               = 2026
 license            = "AGPLv3"

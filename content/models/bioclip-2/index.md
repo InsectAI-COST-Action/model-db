@@ -7,7 +7,7 @@ foundation         = true
 # ── Catalogue ───────────────────────────────────────────────────────
 category           = "classification"
 task               = ["Classification", "Embedding"]
-architecture       = "ViT-L/14 (CLIP)"
+architecture       = ["ViT-L/14 (CLIP)"]
 base_model         = "laion/CLIP-ViT-L-14-laion2B-s32B-b82K"
 year               = 2025
 license            = "MIT"

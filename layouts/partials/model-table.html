@@ -20,7 +20,7 @@
     <tbody>
     {{- range $rows }}
       {{- $p := .Params -}}
-      {{- $haystack := printf "%s %s %s %s %s %s" .Title (.Description | default "") $p.architecture ($p.taxonomic_coverage | default "") (delimit ($p.task | default slice) " ") ($p.developer | default "") -}}
+      {{- $haystack := printf "%s %s %s %s %s %s" .Title (.Description | default "") (delimit ($p.architecture | default slice) " ") ($p.taxonomic_coverage | default "") (delimit ($p.task | default slice) " ") ($p.developer | default "") -}}
       <tr data-id="{{ path.Base .File.Dir }}"
           data-task="{{ delimit ($p.task | default slice) ";" }}"
           data-year="{{ $p.year }}"
@@ -39,7 +39,7 @@
             <span class="muted">—</span>
           {{- end -}}
         </td>
-        <td>{{ $p.architecture }}</td>
+        <td>{{ delimit $p.architecture ", " }}</td>
         <td>{{ if $p.input_modality }}{{ delimit $p.input_modality ", " }}{{ else }}image{{ end }}</td>
         <td>
           {{- $scope := $p.vocabulary_scope | default "closed" -}}

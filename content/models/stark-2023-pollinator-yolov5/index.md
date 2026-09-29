@@ -6,7 +6,7 @@ description        = "YOLOv5 and YOLOv7 models trained on flower pollinators."
 # ── Catalogue ───────────────────────────────────────────────────────
 category           = "detection"
 task               = ["Object Detection"]
-architecture       = "YOLOv5/v7"
+architecture       = ["YOLOv5", "YOLOv7"]
 year               = 2023
 license            = "CC-BY-4.0"
 status             = "published"
