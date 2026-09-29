@@ -56,3 +56,12 @@ than trained for a single insect task. These accept textual or visual prompts
 and are not bound to a fixed class list.
 """
 open = true
+
+[categories.regression]
+title = "Regression models"
+short = "Regression"
+description = """
+Models that give a single continuous variable as the output (e.g. estimating 
+biomass from an image).
+"""
+open = true
