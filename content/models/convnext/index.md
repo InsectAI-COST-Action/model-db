@@ -33,7 +33,7 @@ category           = "classification"                  # must already exist in d
 task               = ["Classification", "Embedding"]         # Object Detection | Instance Segmentation |
                                                  # Semantic Segmentation | Classification |
                                                  # Tracking | Embedding | Counting
-architecture       = "ConvNeXt-Base"                   # YOLOv8, ViT, Swin Transformer…
+architecture       = ["ConvNeXt-Base"]                   # YOLOv8, ViT, Swin Transformer…
 base_model          = "ConvNeXt-Base, pretrained on ImageNet-22k"                          # If this is a fine-tuned model, name the
                                                  # base model it was fine-tuned from.
 year               = 2022                        # year of publication or release
