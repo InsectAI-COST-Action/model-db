@@ -15,7 +15,7 @@ date               = 2026-09-21
 # Optional - delete a line to take the default shown.
 vocabulary_scope   = "closed"
 produces           = ["bbox", "mask"]
-input_size         = "any"
+image_input_size         = "any"
 developer          = "Asger Svenning et al."
 paper_url          = "https://github.com/darsa-group/flat-bug"
 

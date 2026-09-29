@@ -45,7 +45,7 @@
           {{- $scope := $p.vocabulary_scope | default "closed" -}}
           <span class="scope scope-{{ $scope }}">{{ $scope }}</span>
         </td>
-        <td>{{ $p.input_size | default "any" }}</td>
+        <td>{{ $p.image_input_size | default "any" }}</td>
         <td>{{ $p.year }}</td>
         <td><span class="lic">{{ $p.license }}</span></td>
       </tr>

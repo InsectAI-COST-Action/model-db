@@ -100,6 +100,12 @@ values      = ["closed", "open", "taxonomic"]
 help        = "closed = a fixed class list. open/taxonomic = it handles concepts it was not trained on, which is what the site shows as 'zero-shot'. Default: closed."
 
 [[field]]
+name        = "geographic_scope"
+type        = "string"
+required    = false
+help        = "A description of the geographic area the model is designed for, e.g. 'France', 'Global'."
+
+[[field]]
 name        = "produces"
 type        = "list"
 required    = true

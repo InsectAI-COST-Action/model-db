@@ -33,6 +33,8 @@ task               = ["Object Detection"]         # Object Detection | Instance 
                                                  # Semantic Segmentation | Classification |
                                                  # Tracking | Embedding | Counting
 architecture       = "REPLACE"                   # YOLOv8, ViT, Swin Transformer…
+base_model          = ""                          # If this is a fine-tuned model, name the
+                                                 # base model it was fine-tuned from.
 year               = 2025                        # year of publication or release
 license            = "MIT"                       # SPDX identifier where one exists
 status             = "draft"                     # draft | published | deprecated.
@@ -47,8 +49,9 @@ vocabulary_scope   = "closed"                    # closed | open | taxonomic.
                                                  # "zero-shot" - it means the model
                                                  # handles concepts it was not
                                                  # trained on.
+geographic_scope   = ""                          # e.g. "France", "Global"
 produces           = ["bbox"]                    # bbox | mask | label | count | track | embedding
-input_size         = "640x640"                   # or "any" for native resolution
+image_input_size         = "640x640"                   # or "any" for native resolution
 input_modality     = []                          # text | image | box | point | mask.
                                                  # List every input the model
                                                  # accepts, image included. Leave
