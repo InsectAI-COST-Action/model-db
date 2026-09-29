@@ -61,16 +61,22 @@ required    = true
 help        = "e.g. YOLOv8, ViT, Swin Transformer."
 
 [[field]]
+name        = "base_model"
+type        = "string"
+required    = false
+help        = "The model this one is based on, e.g., timm/efficientnet_b0.ra_in1k"
+
+[[field]]
 name        = "year"
 type        = "int"
 required    = true
-help        = "Year of publication or release. A bare number, no quotes."
+help        = "Year of publication or release. 4-digit number, no quotes."
 
 [[field]]
 name        = "license"
 type        = "string"
 required    = true
-help        = "SPDX identifier where one exists, e.g. MIT, CC-BY-4.0."
+help        = "SPDX identifier where one exists, e.g. MIT, CC-BY-4.0. See them at https://spdx.org/licenses/."
 
 [[field]]
 name        = "status"
@@ -83,7 +89,7 @@ help        = "Only 'published' appears on the site. New cards default to draft.
 name        = "date"
 type        = "date"
 required    = false
-help        = "When the entry was added to the zoo. Bare ISO date, e.g. 2026-09-21."
+help        = "When the entry was added to the zoo. ISO date, e.g. 2026-09-21."
 
 [[field]]
 name        = "vocabulary_scope"
@@ -100,7 +106,7 @@ values      = ["bbox", "mask", "label", "count", "track", "embedding"]
 help        = "What comes out. Shown as the Outputs line in the sidebar."
 
 [[field]]
-name        = "input_size"
+name        = "image_input_size"
 type        = "string"
 required    = false
 values      = []
