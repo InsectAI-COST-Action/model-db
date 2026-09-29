@@ -4,9 +4,9 @@ title              = "InsectMorphoAI"
 description        = "Measures insect body length from images with an oriented-box detector, and estimates body volume and biomass of bristle flies from head, thorax and abdomen masks."
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "detection-homogeneous"
+category           = "detection"
 task               = ["Object Detection", "Instance Segmentation"]
-architecture       = "YOLOv8-obb, YOLOv8-seg"
+architecture       = ["YOLOv8-obb, YOLOv8-seg"]
 base_model         = "Ultralytics yolov8m-obb (DOTA-pretrained); yolov8m-seg (COCO-pretrained)"
 year               = 2026
 license            = "MIT"
@@ -24,7 +24,7 @@ code_url           = "https://gitlab.kit.edu/kit/iai/ber/insectmorphoAI"
 # ── Weights ─────────────────────────────────────────────────────────
 hosting_status     = "link_only"
 commercial_use     = "allowed"
-weight_format      = "PyTorch"
+weight_format      = ["PyTorch"]
 
 # ── The files this model ships. The FIRST one is the link the table shows. ──
 
