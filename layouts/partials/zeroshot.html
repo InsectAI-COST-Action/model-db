@@ -1,6 +1,1 @@
-{{- /*
-  Derived, never stored: `closed` means a fixed class list, so anything else
-  means the model handles concepts it was not trained on.
-  Called as:  {{ if partial "zeroshot.html" . }}   (. = a model page)
-*/ -}}
-{{- return ne (.Params.vocabulary_scope | default "closed") "closed" -}}
+{{- return (.Params.foundation | default false) -}}
