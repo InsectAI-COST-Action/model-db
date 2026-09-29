@@ -29,6 +29,7 @@ filename   = "platform_insect-detect-tiled_v2-0-0.tar.xz"
 sha256     = "4e50fe20324f19a9f9b722e8b949b35b3b4db60cff6cf9dacb6f11a8eec46362"
 released   = 2026-04-01
 note       = "Luxonis NN Archive format for deployment on Luxonis OAK devices."
++++
 
 **Intended use.** Generic insect detection model for deployment on Luxonis OAK devices,
 e.g. OAK-1 used in the [Insect Detect](https://github.com/maxsitt/insect-detect) camera trap. Works only with uniform, homogeneous backgrounds, e.g. a colored platform.
