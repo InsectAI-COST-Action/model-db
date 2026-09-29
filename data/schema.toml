@@ -197,3 +197,11 @@ Weights are never committed to this repository.
   provider = "huggingface"
   url      = "https://huggingface.co/owner/model"
 """
+
+# Weights format 
+[[field]]
+name        = "weight_format"
+type        = "string"
+required    = false
+values      = ["PyTorch", "TensorFlow", "Safetensors", "ONNX"]
+help        = "Format of the model weights."       
