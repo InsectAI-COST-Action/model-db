@@ -19,8 +19,8 @@ order = [
 ]
 
 [categories.detection]
-title = "Detection on homogeneous backgrounds"
-short = "Homogeneous"
+title = "Insect detection"
+short = "Detection"
 description = """
 Detectors trained and evaluated on both uniform backgrounds or cluttered field imagery.
 """
