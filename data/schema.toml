@@ -51,6 +51,7 @@ values      = [
   "Tracking",
   "Embedding",
   "Counting",
+  "Regression",
 ]
 help        = "What the model does. A list of one or more tasks."
 
@@ -96,7 +97,7 @@ help        = "closed = a fixed class list. open/taxonomic = it handles concepts
 name        = "produces"
 type        = "list"
 required    = true
-values      = ["bbox", "mask", "label", "count", "track", "embedding"]
+values      = ["bbox", "mask", "label", "count", "track", "embedding", "continuous"]
 help        = "What comes out. Shown as the Outputs line in the sidebar."
 
 [[field]]
