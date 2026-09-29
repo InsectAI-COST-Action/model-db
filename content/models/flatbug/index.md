@@ -4,9 +4,9 @@ title              = "flatbug"
 description        = "Detects and segments terrestrial arthropods of any size on flat, uniform backgrounds, tiling large images at native resolution."
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "detection-homogeneous"
+category           = "detection"
 task               = ["Object Detection", "Instance Segmentation"]
-architecture       = "YOLOv8-seg, YOLO26-seg"
+architecture       = ["YOLOv8-seg","YOLO26-seg"]
 base_model         = "Ultralytics yolov8{n,s,m,l}-seg; yolo26m-seg for M v2"
 year               = 2026
 license            = "MIT"
@@ -26,7 +26,7 @@ code_url           = "https://github.com/darsa-group/flat-bug"
 # ── Weights ─────────────────────────────────────────────────────────
 hosting_status     = "link_only"
 commercial_use     = "allowed"
-weight_format      = "PyTorch"
+weight_format      = ["PyTorch"]
 
 # ── The files this model ships. The FIRST one is the link the table shows. ──
 

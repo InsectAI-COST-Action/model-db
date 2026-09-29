@@ -2,11 +2,12 @@
 # ── Identity ────────────────────────────────────────────────────────
 title              = "BioCLIP"
 description        = "CLIP model trained across the tree of life, for zero-shot species classification from a list of taxon names."
+foundation         = true
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "foundation"
+category           = "classification"
 task               = ["Classification", "Embedding"]
-architecture       = "ViT-B/16 (CLIP)"
+architecture       = ["ViT-B/16 (CLIP)"]
 base_model         = "openai/clip-vit-base-patch16"
 year               = 2023
 license            = "MIT"
@@ -14,7 +15,7 @@ status             = "published"
 date               = 2026-09-29
 
 # Optional - delete a line to take the default shown.
-vocabulary_scope   = "taxonomic"
+vocabulary_scope   = "open"
 geographic_scope   = "Global"
 produces           = ["label", "embedding"]
 image_input_size   = "224x224"
@@ -28,7 +29,7 @@ code_url           = "https://github.com/Imageomics/BioCLIP"
 # ── Weights ─────────────────────────────────────────────────────────
 hosting_status     = "link_only"
 commercial_use     = "allowed"
-weight_format      = "PyTorch"
+weight_format      = ["PyTorch"]
 
 # ── The model's own card elsewhere, if it has one ───────────────────
 hf_repo            = "imageomics/bioclip"
