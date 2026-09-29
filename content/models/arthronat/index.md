@@ -18,7 +18,7 @@ vocabulary_scope   = "open"
 geographic_scope   = "France"
 produces           = ["bbox"]
 image_input_size   = "640x640"
-input_modality     = "image"
+input_modality     = ["image"]
 developer          = "Remy et al."
 paper_url          = "https://www.biorxiv.org/content/10.64898/2026.05.06.723207v1.full"
 

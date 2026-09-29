@@ -16,6 +16,7 @@ order = [
   "detection-heterogeneous",
   "classification",
   "foundation",
+  "regression",
 ]
 
 [categories.detection-homogeneous]
