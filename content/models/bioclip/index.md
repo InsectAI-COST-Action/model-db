@@ -28,7 +28,7 @@ code_url           = "https://github.com/Imageomics/BioCLIP"
 # ── Weights ─────────────────────────────────────────────────────────
 hosting_status     = "link_only"
 commercial_use     = "allowed"
-weight_format      = "PyTorch"
+weight_format      = ["PyTorch"]
 
 # ── The model's own card elsewhere, if it has one ───────────────────
 hf_repo            = "imageomics/bioclip"
