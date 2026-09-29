@@ -9,7 +9,7 @@ task               = ["Object Detection"]
 architecture       = ["YOLOv5m"]
 base_model         = "ultralytics/yolov5 (yolov5m.pt)"
 year               = 2025
-license            = "AGPLv3 (weights); CC-BY-4.0 (code)"
+license            = "AGPLv3 (weights)"
 status             = "published"
 date               = 2026-09-21
 vocabulary_scope   = "closed"
@@ -23,21 +23,21 @@ paper_url          = "https://doi.org/10.1111/2041-210X.70165"
 code_url           = "https://github.com/aranchalana/POLLINATOR"
 
 # ── Weights ─────────────────────────────────────────────────────────
-# CC-BY-4.0 is stated for the Zenodo software archive, not explicitly for
-# the externally hosted checkpoint. See License and rights below.
+# Hugging Face declares AGPLv3 for the weights; Zenodo declares CC-BY-4.0
+# for the software archive. See License and rights below.
 hosting_status     = "link_only"
 commercial_use     = "unknown"
 weight_format      = ["PyTorch"]
 
 [[assets]]
-key          = "hf-repo"
+key          = "weights"
 provider     = "huggingface"
 repo_id      = "pauenric/POLLINATOR_Serra_Marin_et_al_2025"
 filename     = "pollinator_serra_marin_2025_best.pt"
 revision     = "900afc5bdecdd5d34b723934dcb84d6bdceb8709"
 revision_kind = "commit"
 gated        = false
-url          = "https://huggingface.co/pauenric/POLLINATOR_Serra_Marin_et_al_2025"
+url          = "https://huggingface.co/pauenric/POLLINATOR_Serra_Marin_et_al_2025/resolve/900afc5bdecdd5d34b723934dcb84d6bdceb8709/pollinator_serra_marin_2025_best.pt"
 +++
 
 **Intended use.** Find flower-visiting insects in field images and video frames
@@ -55,7 +55,8 @@ documents 16,389 images, orientation correction, stretching to 1024 × 1024 pixe
 and augmentation with flips and rotations. This describes the repository's
 export; its exact correspondence to the downloaded checkpoint is unverified.
 
-Static inspection of the downloaded `best.pt` on 2026-09-29 confirms
+Static inspection on 2026-09-29 of the checkpoint now published as
+`pollinator_serra_marin_2025_best.pt` confirms
 `weights = yolov5m.pt`, one class (`0: pollinator`), and architecture depth/width
 multipliers of 0.67/0.75. Its training options record `imgsz = 1024`,
 `epochs = 150`, and SGD. These are configured values, not proof that all 150
@@ -87,7 +88,7 @@ averages for these combined-data experiments:
 | ACS + external data | 12,682 / 4,373 / 4,380 | 0.93 | 0.93 | 0.95 | 0.93 |
 
 Neither the repository nor the inspected checkpoint establishes which table
-row or fold corresponds to `best.pt`; these are study results, not verified
+row or fold corresponds to `pollinator_serra_marin_2025_best.pt`; these are study results, not verified
 checkpoint-specific scores. No inference or benchmark was run during inspection.
 
 ## Limitations
@@ -98,10 +99,21 @@ review. A detection alone does not establish a pollination interaction.
 
 ## How to obtain the weights
 
-Download `best.pt` from the Google Drive folder in the sidebar, as linked by the
-authors' [weights pointer](https://github.com/aranchalana/POLLINATOR/blob/ecbafff8fd03efaa299f8d07eb121b9ccd05c6dd/runs/train/merged_ALL/weights/read.txt).
-The pointer is pinned here to a Git commit; the Drive file is not. The inspected
-file contains 42,336,660 bytes and has SHA-256
+The weights can be obtained from either location:
+
+- **Google Drive:** download the checkpoint from the authors'
+  [weights folder](https://drive.google.com/drive/folders/1X3buOu6bhYmx0hesPwmcU_FB693SCfHn),
+  linked in the original repository's
+  [download instructions](https://github.com/aranchalana/POLLINATOR/blob/ecbafff8fd03efaa299f8d07eb121b9ccd05c6dd/runs/train/merged_ALL/weights/read.txt)
+  as `best.pt`. This link is not version-pinned.
+- **Hugging Face:** download
+  [`pollinator_serra_marin_2025_best.pt`](https://huggingface.co/pauenric/POLLINATOR_Serra_Marin_et_al_2025/resolve/900afc5bdecdd5d34b723934dcb84d6bdceb8709/pollinator_serra_marin_2025_best.pt).
+  This download is pinned to
+  [commit `900afc5b`](https://huggingface.co/pauenric/POLLINATOR_Serra_Marin_et_al_2025/commit/900afc5bdecdd5d34b723934dcb84d6bdceb8709)
+  and requires no authentication.
+
+The renamed file matches the previously inspected checkpoint: it contains
+42,336,660 bytes and has SHA-256
 `9b62c544b5dc31122d93db8ea9363aa4012a1b7636e57de740fa6ae6a2cc600e`.
 Use these values to check whether a later download matches this checkpoint. The
 [Zenodo v1.0 release](https://zenodo.org/records/17130918) archives the code and
@@ -110,10 +122,10 @@ download pointers, not the checkpoint itself.
 ## License and rights
 
 Zenodo declares **CC-BY-4.0** for the software archive, credited to Arancha Lana.
-The dataset configuration also declares CC BY 4.0. Neither source explicitly
-states the license of the separately hosted `best.pt`; its commercial-use
-status is therefore recorded as **unknown**. The local `LICENSE` documents
-this distinction.
+The dataset configuration also declares CC BY 4.0. The
+[Hugging Face model card](https://huggingface.co/pauenric/POLLINATOR_Serra_Marin_et_al_2025/blob/900afc5bdecdd5d34b723934dcb84d6bdceb8709/README.md)
+declares **AGPLv3** (`agpl-3.0`) for the model repository containing
+`pollinator_serra_marin_2025_best.pt`.
 
 ## Citation
 
