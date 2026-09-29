@@ -5,7 +5,7 @@ description        = "YOLOv5 model and several ResNet50 classifiers trained to i
 
 # ── Catalogue ───────────────────────────────────────────────────────
 category           = "detection"
-task               = ["Object Detection"]
+task               = ["Object Detection","Classification"]
 architecture       = ["YOLOv5","ResNet50"]
 base_model         = ""
 year               = 2025
