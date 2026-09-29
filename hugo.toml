@@ -4,7 +4,7 @@
 #
 #  Every model is an ordinary page under content/models/, so Hugo's defaults are all this site needs.
 
-baseURL         = "https://insectai-cost-action.github.io/insect-model-zoo/"
+baseURL         = "https://insectai-cost-action.github.io/model-db/"
 locale          = "en-us"
 title           = "InsectAI Model Zoo"
 enableRobotsTXT = true
@@ -21,7 +21,7 @@ ignoreFiles = [
 
 [params]
   description = "A registry of insect detection, classification, and foundation models."
-  repoURL     = "https://github.com/InsectAI-COST-Action/insect-model-zoo"
+  repoURL     = "https://github.com/InsectAI-COST-Action/model-db"
   license     = "CC-BY-4.0"
   licenseURL  = "https://creativecommons.org/licenses/by/4.0/"
 
