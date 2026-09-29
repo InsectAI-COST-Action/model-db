@@ -4,9 +4,9 @@ title              = "CLIBD"
 description        = "CLIP-style model that aligns insect images, DNA barcodes and taxonomic labels in one embedding space, for classifying seen and unseen species by retrieval."
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "foundation"
+category           = "classification"
 task               = ["Classification", "Embedding"]
-architecture       = "ViT-B/16 + BarcodeBERT + BERT-Small (CLIP-style)"
+architecture       = ["ViT-B/16", "BarcodeBERT", "BERT-Small"]
 base_model         = "timm/vit_base_patch16_224; BarcodeBERT (5-mer); prajjwal1/bert-small"
 year               = 2025
 license            = "MIT"
@@ -27,7 +27,7 @@ code_url           = "https://github.com/bioscan-ml/clibd"
 # ── Weights ─────────────────────────────────────────────────────────
 hosting_status     = "link_only"
 commercial_use     = "allowed"
-weight_format      = "PyTorch"
+weight_format      = ["PyTorch"]
 
 # ── The model's own card elsewhere, if it has one ───────────────────
 hf_repo            = "bioscan-ml/clibd"
