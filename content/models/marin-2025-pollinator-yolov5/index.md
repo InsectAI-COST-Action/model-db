@@ -4,9 +4,9 @@ title              = "Marin et al. (2025)"
 description        = "YOLOv5 model trained on flower pollinators."
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "detection-heterogeneous"
+category           = "detection"
 task               = ["Object Detection"]
-architecture       = "YOLOv5"
+architecture       = ["YOLOv5"]
 year               = 2025
 license            = "CC-BY-4.0"
 status             = "published"

@@ -31,6 +31,12 @@ type        = "string"
 required    = true
 help        = "One sentence, plain language, saying what the model does."
 
+[[field]]
+name       = "foundation"
+type       = "bool"
+required   = false
+help       = "True if this is a foundation model, which is a general-purpose model trained on a large dataset and typically usable zero-shot or through prompting. Default: false."
+
 # Catalogue
 
 [[field]]
@@ -38,6 +44,14 @@ name        = "category"
 type        = "string"
 required    = true
 help        = "A slug from data/categories.toml. It must already exist there."
+
+# Weights format 
+[[field]]
+name        = "weight_format"
+type        = "list"
+required    = false
+values      = ["PyTorch", "TensorFlow", "Safetensors", "ONNX"]
+help        = "Format of the model weights."
 
 [[field]]
 name        = "task"
@@ -57,7 +71,7 @@ help        = "What the model does. A list of one or more tasks."
 
 [[field]]
 name        = "architecture"
-type        = "string"
+type        = "list"
 required    = true
 help        = "e.g. YOLOv8, ViT, Swin Transformer."
 
@@ -96,8 +110,8 @@ help        = "When the entry was added to the zoo. ISO date, e.g. 2026-09-21."
 name        = "vocabulary_scope"
 type        = "string"
 required    = false
-values      = ["closed", "open", "taxonomic"]
-help        = "closed = a fixed class list. open/taxonomic = it handles concepts it was not trained on, which is what the site shows as 'zero-shot'. Default: closed."
+values      = ["closed", "open"]
+help        = "closed = a fixed class list. open = it handles concepts it was not trained on. Default: closed."
 
 [[field]]
 name        = "geographic_scope"
@@ -203,12 +217,4 @@ Weights are never committed to this repository.
   key      = "weights"
   provider = "huggingface"
   url      = "https://huggingface.co/owner/model"
-"""
-
-# Weights format 
-[[field]]
-name        = "weight_format"
-type        = "string"
-required    = false
-values      = ["PyTorch", "TensorFlow", "Safetensors", "ONNX"]
-help        = "Format of the model weights."       
+"""    
