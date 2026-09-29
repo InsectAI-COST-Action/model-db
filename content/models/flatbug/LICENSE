@@ -1,6 +1,6 @@
 SPDX-License-Identifier: MIT
 
-FlatBug is distributed under the MIT license.
+flatbug is distributed under the MIT license.
 
 The full license text is published by the upstream project:
   https://github.com/darsa-group/flat-bug
@@ -8,7 +8,7 @@ The full license text is published by the upstream project:
 Canonical license text:
   https://opensource.org/license/mit
 
-Copyright (c) the FlatBug authors, Darsa Group, Aarhus University.
+Copyright (c) 2025 Asger Svenning, Quentin Geissmann et al.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
