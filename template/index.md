@@ -25,10 +25,11 @@
 
 title              = "REPLACE WITH THE MODEL NAME"
 description        = "One sentence, in plain language, saying what the model does."
+foundation         = false
 
 # ── Catalogue ─────────────────────────────────────────────────────────────────
 
-category           = "detection-heterogeneous"   # must already exist in data/categories.toml
+category           = "detection"                  # must already exist in data/categories.toml
 task               = ["Object Detection"]         # Object Detection | Instance Segmentation |
                                                  # Semantic Segmentation | Classification |
                                                  # Tracking | Embedding | Counting

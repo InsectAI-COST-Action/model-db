@@ -4,7 +4,7 @@ title              = "flatbug"
 description        = "Detects and segments terrestrial arthropods of any size on flat, uniform backgrounds, tiling large images at native resolution."
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "detection-homogeneous"
+category           = "detection"
 task               = ["Object Detection", "Instance Segmentation"]
 architecture       = "YOLOv8-seg, YOLO26-seg"
 base_model         = "Ultralytics yolov8{n,s,m,l}-seg; yolo26m-seg for M v2"
