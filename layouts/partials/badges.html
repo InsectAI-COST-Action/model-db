@@ -15,7 +15,6 @@
   {{- end }}
   <li class="badge badge-scope scope-{{ $scope }}">
     {{- if eq $scope "open" -}}open vocabulary
-    {{- else if eq $scope "taxonomic" -}}taxonomic vocabulary
     {{- else -}}closed vocabulary{{- end -}}
   </li>
   {{- with $p.input_modality }}

@@ -4,7 +4,7 @@ title              = "Stark et al. (2023)"
 description        = "YOLOv5 and YOLOv7 models trained on flower pollinators."
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "detection-heterogeneous"
+category           = "detection"
 task               = ["Object Detection"]
 architecture       = "YOLOv5/v7"
 year               = 2023

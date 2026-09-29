@@ -31,6 +31,12 @@ type        = "string"
 required    = true
 help        = "One sentence, plain language, saying what the model does."
 
+[[field]]
+name       = "foundation"
+type       = "bool"
+required   = false
+help       = "True if this is a foundation model, which is a general-purpose model trained on a large dataset and typically usable zero-shot or through prompting. Default: false."
+
 # Catalogue
 
 [[field]]
@@ -104,7 +110,7 @@ help        = "When the entry was added to the zoo. ISO date, e.g. 2026-09-21."
 name        = "vocabulary_scope"
 type        = "string"
 required    = false
-values      = ["closed", "open", "taxonomic"]
+values      = ["closed", "open"]
 help        = "closed = a fixed class list. open/taxonomic = it handles concepts it was not trained on, which is what the site shows as 'zero-shot'. Default: closed."
 
 [[field]]
