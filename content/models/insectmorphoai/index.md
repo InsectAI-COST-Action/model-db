@@ -6,7 +6,7 @@ description        = "Measures insect body length from images with an oriented-b
 # ── Catalogue ───────────────────────────────────────────────────────
 category           = "detection-homogeneous"
 task               = ["Object Detection", "Instance Segmentation"]
-architecture       = "YOLOv8-obb, YOLOv8-seg"
+architecture       = ["YOLOv8-obb, YOLOv8-seg"]
 base_model         = "Ultralytics yolov8m-obb (DOTA-pretrained); yolov8m-seg (COCO-pretrained)"
 year               = 2026
 license            = "MIT"
