@@ -130,7 +130,7 @@ help        = "What comes out. Shown as the Outputs line in the sidebar."
 name        = "output_format"
 type        = "list"
 required    = false
-values      = ["coco", "other"]
+values      = ["coco", "flatbug", "other"]
 help        = "Model output format standard."
 
 [[field]]
