@@ -4,7 +4,7 @@ title              = "InsectMorphoAI"
 description        = "Measures insect body length from images with an oriented-box detector, and estimates body volume and biomass of bristle flies from head, thorax and abdomen masks."
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "detection-homogeneous"
+category           = "detection"
 task               = ["Object Detection", "Instance Segmentation"]
 architecture       = ["YOLOv8-obb, YOLOv8-seg"]
 base_model         = "Ultralytics yolov8m-obb (DOTA-pretrained); yolov8m-seg (COCO-pretrained)"
