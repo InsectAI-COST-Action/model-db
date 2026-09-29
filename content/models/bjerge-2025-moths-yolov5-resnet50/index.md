@@ -4,9 +4,9 @@ title              = "Bjerge et al. (2025)"
 description        = "YOLOv5 model and several ResNet50 classifiers trained to identify moths to species and other broad groups of night-active insects."
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "detection-heterogeneous"
+category           = "detection"
 task               = ["Object Detection"]
-architecture       = "YOLOv5/ResNet50"
+architecture       = ["YOLOv5","ResNet50"]
 base_model         = ""
 year               = 2025
 license            = "CC-BY-4.0"
@@ -16,7 +16,7 @@ date               = 2026-09-29
 # Optional - delete a line to take the default shown.
 vocabulary_scope   = "closed"
 produces           = ["bbox","label"]
-input_size   = "1280x1280"
+image_input_size   = "1280x1280"
 developer          = "Bjerge et al."
 paper_url          = "https://zslpublications.onlinelibrary.wiley.com/doi/full/10.1002/rse2.70007"
 
@@ -36,7 +36,7 @@ note         = "Weights are one of several files in the record; see the record's
 
 [[assets]]
 key          = "insectMoths-bestF1-1280m6"
-provider     = "google drive"
+provider     = "google-drive"
 filename     = "insectMoths-bestF1-1280m6.pt"
 url          = "https://drive.google.com/file/d/12aQpXF7T1YD3PSltI3J5gp4gZ4JQ689A/view?usp=drive_link"
 note         = "The weights are referenced in the GitHub repo."
