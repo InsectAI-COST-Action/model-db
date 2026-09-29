@@ -7,21 +7,25 @@ description        = "YOLO11 model trained on arthropods over natural background
 category           = "detection-heterogeneous"
 task               = ["Object Detection"]
 architecture       = "YOLO11"
+base_model         = "https://huggingface.co/Ultralytics/YOLO11"
 year               = 2026
-license            = "MIT"
+license            = "AGPLv3"
 status             = "published"
-date               = 2026-09-21
+date               = 2026-05-08
 
 # Optional - delete a line to take the default shown.
-vocabulary_scope   = "closed"
+vocabulary_scope   = "open"
+geographic_scope   = "France"
 produces           = ["bbox"]
-image_input_size         = "640x640"
-developer          = "Edgar Emy et al."
+image_input_size   = "640x640"
+input_modality     = "image"
+developer          = "Remy et al."
 paper_url          = "https://www.biorxiv.org/content/10.64898/2026.05.06.723207v1.full"
 
 # ── Weights ─────────────────────────────────────────────────────────
 hosting_status     = "link_only"
-commercial_use     = "allowed"
+commercial_use     = "prohibited"
+weight_format      = ["PyTorch", "ONNX"]
 
 # ── The model's own card elsewhere, if it has one ───────────────────
 hf_repo            = "edgaremy/arthropod-detector"
@@ -33,7 +37,7 @@ hf_revision        = "54edf7364582e9efda68c04edfd672cfe109fb4a"
 key          = "hf-repo"
 provider     = "huggingface"
 repo_id      = "edgaremy/arthropod-detector"
-revision     = "54edf7364582e9efda68c04edfd672cfe109fb4a"
+revision     = "8b8dfa2b5904395566232c2308b928f113ee8645"
 revision_kind = "commit"
 gated        = false
 url          = "https://huggingface.co/edgaremy/arthropod-detector"
