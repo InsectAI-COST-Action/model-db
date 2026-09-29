@@ -80,5 +80,5 @@ them. They exist so two entries can be read side by side.
 
 The build error is the help. It names the file, the field and the fix. If it
 does not make sense, the field list with explanations is in
-[`data/schema.toml`](https://github.com/InsectAI-COST-Action/insect-model-zoo/blob/main/data/schema.toml).
+[`data/schema.toml`](https://github.com/InsectAI-COST-Action/model-db/blob/main/data/schema.toml).
 Open it, find the field that is raising the error, and read what it says.
