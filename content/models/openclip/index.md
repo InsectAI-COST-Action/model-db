@@ -38,7 +38,7 @@ base_model          = ""                          # If this is a fine-tuned mode
                                                  # base model it was fine-tuned from.
 year               = 2023                        # year of publication or release
 license            = "MIT"                       # SPDX identifier where one exists
-status             = "draft"                     # draft | published | deprecated.
+status             = "published"                     # draft | published | deprecated.
                                                  # Draft is the safe default: only
                                                  # `published` appears on the site.
 
