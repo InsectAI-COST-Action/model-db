@@ -28,11 +28,11 @@ description        = "Model weights and Python code to detect, classify, and tra
 
 # ── Catalogue ─────────────────────────────────────────────────────────────────
 
-category           = "detection-heterogeneous"   # must already exist in data/categories.toml
+category           = "detection"   # must already exist in data/categories.toml
 task               = ["Object Detection"]         # Object Detection | Instance Segmentation |
                                                  # Semantic Segmentation | Classification |
                                                  # Tracking | Embedding | Counting
-architecture       = "YOLOv11"                   # YOLOv8, ViT, Swin Transformer…
+architecture       = ["YOLOv11"]                   # YOLOv8, ViT, Swin Transformer…
 year               = 2026                        # year of publication or release
 license            = "GPL-3.0-or-later"                       # SPDX identifier where one exists
 status             = "draft"                     # draft | published | deprecated.
@@ -48,7 +48,7 @@ vocabulary_scope   = "closed"                    # closed | open | taxonomic.
                                                  # handles concepts it was not
                                                  # trained on.
 produces           = ["bbox"]                    # bbox | mask | label | count | track | embedding
-input_size         = "1920x1080"                 # or "any" for native resolution
+image_input_size   = "1920x1080"                 # or "any" for native resolution
 input_modality     = []                          # text | image | box | point | mask.
                                                  # List every input the model
                                                  # accepts, image included. Leave
