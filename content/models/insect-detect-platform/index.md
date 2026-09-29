@@ -6,7 +6,7 @@ description        = "Detects arthropods on homogeneous backgrounds, trained on 
 # ── Catalogue ───────────────────────────────────────────────────────
 category           = "detection"
 task               = ["Object Detection"]
-architecture       = "YOLOv6"
+architecture       = ["YOLOv6"]
 base_model         = "YOLOv6 pretrained on COCO"
 year               = 2026
 license            = "GPL-3.0-or-later"
