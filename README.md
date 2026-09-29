@@ -1,10 +1,8 @@
-# Insect AI Model Zoo
+# Insect AI Model Database
 
-A registry of models for insect detection and classification.
-Weights stay with their authors, this catalogue points at them and never
-redistributes them.
+A registry of models for insect detection, classification and trait quantification. Models must be vision-based, must have a scope spanning multiple insect genera, and must have open or at least lightly gated weights.
 
-## One representation, one tool
+## Model metadata is stored as an .md file
 
 A model is **one file**: `content/models/<id>/index.md`. Its front matter is the
 registry record, the fields the website renders, and the prose beneath it is
