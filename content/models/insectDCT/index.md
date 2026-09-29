@@ -35,7 +35,7 @@ task               = ["Object Detection"]         # Object Detection | Instance 
 architecture       = ["YOLOv11"]                   # YOLOv8, ViT, Swin Transformer…
 year               = 2026                        # year of publication or release
 license            = "GPL-3.0-or-later"                       # SPDX identifier where one exists
-status             = "draft"                     # draft | published | deprecated.
+status             = "published"                     # draft | published | deprecated.
                                                  # Draft is the safe default: only
                                                  # `published` appears on the site.
 
