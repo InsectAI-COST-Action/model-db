@@ -1,0 +1,48 @@
+{
+    "types" : {
+        "info" : {
+            "year": "T[int]", 
+            "version": "T[str]", 
+            "description": "T[str]", 
+            "contributor": "T[str]",
+            "url": "T[str]", 
+            "date_created": "T[datetime]"
+        },
+        "image" : {
+            "id": "T[int]", 
+            "width": "T[int]", 
+            "height": "T[int]", 
+            "file_name": "T[str]", 
+            "license": "T[int]", 
+            "flickr_url": "T[str]", 
+            "coco_url": "T[str]", 
+            "date_captured": "T[datetime]"
+        },
+        "license" : {
+            "id": "T[int]", 
+            "name": "T[str]", 
+            "url": "T[str]"
+        },
+        "annotation" : {
+            "id": "T[int]",
+            "image_id": "T[int]",
+            "category_id": "T[int]",
+            "segmentation": "? : T[RLE] | [T[polygon]]",
+            "area": "? : T[float]",
+            "bbox": "? : [T[box]]",
+            "iscrowd": "? : 0 | 1"
+        },
+        "box" : ["T[int]", "T[int]", "T[int]", "T[int]"],
+        "category" : {
+            "id": "T[int]", 
+            "name": "T[str]", 
+            "supercategory": "? : T[str]"
+        }
+    },
+    "structure" : {
+        "info": "T[info]", 
+        "images": ["T[image]"], 
+        "annotations": ["T[annotation]"], 
+        "licenses": "[T[license]]"
+    }
+}
