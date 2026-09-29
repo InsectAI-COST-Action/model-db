@@ -9,7 +9,7 @@ task               = ["Object Detection"]
 architecture       = ["YOLOv5m"]
 base_model         = "ultralytics/yolov5 (yolov5m.pt)"
 year               = 2025
-license            = "Not specified (weights); CC-BY-4.0 (code)"
+license            = "AGPLv3 (weights); CC-BY-4.0 (code)"
 status             = "published"
 date               = 2026-09-21
 vocabulary_scope   = "closed"
@@ -30,13 +30,14 @@ commercial_use     = "unknown"
 weight_format      = ["PyTorch"]
 
 [[assets]]
-key      = "weights"
-provider = "google-drive"
-filename = "best.pt"
-size_bytes = 42336660
-sha256   = "9b62c544b5dc31122d93db8ea9363aa4012a1b7636e57de740fa6ae6a2cc600e"
-url      = "https://drive.google.com/drive/folders/1X3buOu6bhYmx0hesPwmcU_FB693SCfHn"
-note     = "Authors' weights folder; size and SHA-256 identify the local checkpoint inspected on 2026-09-29. The Drive link is mutable."
+key          = "hf-repo"
+provider     = "huggingface"
+repo_id      = "pauenric/POLLINATOR_Serra_Marin_et_al_2025"
+filename     = "pollinator_serra_marin_2025_best.pt"
+revision     = "900afc5bdecdd5d34b723934dcb84d6bdceb8709"
+revision_kind = "commit"
+gated        = false
+url          = "https://huggingface.co/pauenric/POLLINATOR_Serra_Marin_et_al_2025"
 +++
 
 **Intended use.** Find flower-visiting insects in field images and video frames
