@@ -1,28 +1,59 @@
-SPDX-License-Identifier: CC-BY-4.0
+SPDX-License-Identifier: AGPL-3.0-only
 
-The weights in this entry are distributed under the Creative Commons
-Attribution 4.0 International license.
+The weights in this entry are distributed under the GNU Affero General Public
+License, version 3.
 
 Canonical license text:
-  https://creativecommons.org/licenses/by/4.0/legalcode
+  https://www.gnu.org/licenses/agpl-3.0.txt
 
 Upstream source:
   https://github.com/stark-t/PAI/tree/main/detectors/trained_weights
 
 
+NOTE
+─────────────────────────────
+
+The upstream repository (stark-t/PAI) has no LICENSE file. The license here
+was set by Valentin Ştefan, second author of the source publication, when
+curating this entry in 2026. It follows the AGPL-3.0 license of the
+Ultralytics YOLO code the weights were trained with:
+  https://github.com/ultralytics/ultralytics/blob/main/LICENSE
+
+If a LICENSE file is later added to stark-t/PAI, that file is authoritative.
+
+
 WHAT ATTRIBUTION REQUIRES HERE
 ──────────────────────────────
 
-CC BY 4.0 permits commercial use, redistribution, and modification, provided
-you give appropriate credit. For a model in a research catalogue, that means
-citing the source publication:
+AGPL-3.0 permits use, modification, redistribution and commercial use, under
+strong copyleft conditions:
 
-  Stark, T. et al. (2023). Scientific Reports 13.
+  - If you distribute the weights or a model derived from them, license the
+    work under AGPL-3.0 and provide its corresponding source.
+  - If you let users interact with the model over a network, for example in a
+    web service or an API, you must offer those users the corresponding source
+    as well.
+  - Keep this license notice and the attribution below.
+
+
+The code needed to run the weights has its own licenses: ultralytics/yolov5
+is AGPL-3.0 and WongKinYiu/yolov7 is GPL-3.0. Both are compatible with
+AGPL-3.0.
+
+
+ATTRIBUTION:
+
+  Stark, T., Ştefan, V., Wurm, M., Spanier, R., Taubenböck, H. & Knight, T. M.
+  (2023). YOLO object detection models can locate and classify broad groups
+  of flower-visiting arthropods in images. Scientific Reports 13, 16364.
   doi:10.1038/s41598-023-43482-3
 
-The full legal code at the URL above is the operative text. This file records
-the SPDX identifier and the citation the license obliges you to give; it is
-not a substitute for the license itself.
+The article itself is published under CC BY 4.0. That license covers the
+text of the article, not the weights.
+
+The full legal code at the URL above (https://www.gnu.org/licenses/agpl-3.0.txt) 
+is the operative text. This file records the SPDX identifier and the citation 
+the license obliges you to give; it is not a substitute for the license itself.
 
 If you redistribute these weights or a model derived from them, carry this
 attribution with them.
