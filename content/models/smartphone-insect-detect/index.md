@@ -10,7 +10,10 @@ architecture       = ["YOLOv5", "YOLOv5", "YOLOv7"]
 base_model         = "Stark et al. (2023) YOLO detectors, trained on citizen science images"
 year               = 2025
 license            = "GPL-3.0"
-status             = "published"
+status             = "deprecated"                # hidden: see the note below the front matter
+build              = { render = "never", list = "never", publishResources = false }
+                                                 # Hugo option: no page is generated for this
+                                                 # entry and it is left out of every listing.
 date               = 2025-03-29
 
 # Optional - delete a line to take the default shown.
@@ -72,6 +75,13 @@ record_id    = "15096610"
 url          = "https://doi.org/10.5281/zenodo.15096610"
 note         = "The OOD test set: smartphone time-lapse images of flower-visiting arthropods (23,899 cropped images, 24,656 annotated boxes). CC-BY-NC-SA-4.0."
 +++
+
+> **Not a separate model; this entry is hidden from the site.** Ștefan et al. (2025) is an
+> out-of-distribution evaluation of the same three YOLO detectors (same `.pt` files) that are
+> listed under [Stark et al. (2023)](../stark-2023-pollinator-yolov5/). No model was trained in
+> that study; it tested those weights on smartphone time-lapse images and re-tuned their NMS
+> inference settings. The model card for these weights is `stark-2023-pollinator-yolov5`. The
+> text below is kept as a record of the study's results.
 
 > Lightweight YOLO pollinator detectors, NMS-optimized for and evaluated on smartphone time-lapse images of flower-visiting arthropods.
 
