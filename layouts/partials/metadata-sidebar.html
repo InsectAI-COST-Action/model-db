@@ -12,7 +12,7 @@
     {{- end }}
     <dt>Tasks</dt><dd class="no-cap">{{ delimit $p.task ", " }}</dd>
     <dt>Architecture</dt><dd>{{ $p.architecture }}</dd>
-    <dt>Input size</dt><dd>{{ $p.input_size | default "any" }}</dd>
+    <dt>Input size</dt><dd>{{ $p.image_input_size | default "any" }}</dd>
     <dt>Outputs</dt><dd class="no-cap">{{ delimit $produces ", " }}</dd>
     {{- with $p.input_modality }}
     <dt>Input</dt><dd>{{ delimit . ", " }}</dd>

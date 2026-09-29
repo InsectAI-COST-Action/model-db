@@ -15,7 +15,7 @@ date               = 2026-09-21
 # Optional - delete a line to take the default shown.
 vocabulary_scope   = "closed"
 produces           = ["bbox"]
-input_size         = "640x640"
+image_input_size         = "640x640"
 developer          = "Edgar Emy et al."
 paper_url          = "https://www.biorxiv.org/content/10.64898/2026.05.06.723207v1.full"
 
