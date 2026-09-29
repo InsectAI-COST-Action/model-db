@@ -24,7 +24,7 @@ code_url           = "https://gitlab.kit.edu/kit/iai/ber/insectmorphoAI"
 # ── Weights ─────────────────────────────────────────────────────────
 hosting_status     = "link_only"
 commercial_use     = "allowed"
-weight_format      = "PyTorch"
+weight_format      = ["PyTorch"]
 
 # ── The files this model ships. The FIRST one is the link the table shows. ──
 
