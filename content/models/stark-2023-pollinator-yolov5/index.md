@@ -161,8 +161,8 @@ hoverflies correctly as Diptera and rarely confused them with the Hymenoptera th
 
 ## How to obtain the weights
 
-The three `.pt` files are in `detectors/trained_weights` of
-[stark-t/PAI](https://github.com/stark-t/PAI) and download without authentication. 
+The three `.pt` files are in the
+[trained_weights](https://github.com/stark-t/PAI/tree/main/detectors/trained_weights) 
+of the stark-t/PAI repository and download without authentication. 
 
-See also the [detectors README](https://github.com/stark-t/PAI/tree/main/detectors#readme):
-```
+See also the [detectors README](https://github.com/stark-t/PAI/tree/main/detectors#readme).
