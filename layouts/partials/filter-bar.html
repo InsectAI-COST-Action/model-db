@@ -1,0 +1,61 @@
+{{- $rows := . -}}
+
+{{- /* Built at build time, so the facet list is correct with JavaScript disabled
+       and a task added to any card gets its own checkbox with no edit here. */ -}}
+{{- $tasks := slice -}}
+{{- $years := slice -}}
+{{- $licenses := slice -}}
+{{- $zeroShot := 0 -}}
+{{- range $rows -}}
+  {{- /* One checkbox per member, not one per whole task list. */ -}}
+  {{- range .Params.task -}}
+    {{- if not (in $tasks .) }}{{ $tasks = $tasks | append . }}{{ end -}}
+  {{- end -}}
+  {{- with .Params.year }}{{ if not (in $years .) }}{{ $years = $years | append . }}{{ end }}{{ end -}}
+  {{- with .Params.license }}{{ if not (in $licenses .) }}{{ $licenses = $licenses | append . }}{{ end }}{{ end -}}
+  {{- if partial "zeroshot.html" . }}{{ $zeroShot = add $zeroShot 1 }}{{ end -}}
+{{- end -}}
+
+{{- /* Facets whose row attribute is a `;`-separated list. Declared here rather
+       than restated in the JavaScript. */ -}}
+<form class="filter-bar" id="filter-bar" role="search" aria-label="Filter models"
+      data-list-facets="task">
+  <div class="filter-search">
+    <label for="filter-q">Search</label>
+    <input type="search" id="filter-q" name="q" placeholder="pollinator, YOLO, tree of life…"
+           autocomplete="off">
+  </div>
+
+  <fieldset class="filter-group">
+    <legend>Task</legend>
+    {{- range sort $tasks }}
+    <label class="chip"><input type="checkbox" data-facet="task" value="{{ . }}"> {{ . }}</label>
+    {{- end }}
+  </fieldset>
+
+  <fieldset class="filter-group">
+    <legend>Year</legend>
+    {{- range sort $years }}
+    <label class="chip"><input type="checkbox" data-facet="year" value="{{ . }}"> {{ . }}</label>
+    {{- end }}
+  </fieldset>
+
+  <fieldset class="filter-group">
+    <legend>License</legend>
+    {{- range sort $licenses }}
+    <label class="chip"><input type="checkbox" data-facet="license" value="{{ . }}"> {{ . }}</label>
+    {{- end }}
+  </fieldset>
+
+  {{- if $zeroShot }}
+  <fieldset class="filter-group">
+    <legend>Capability</legend>
+    <label class="chip">
+      <input type="checkbox" data-facet="zeroshot" value="true">
+      zero-shot <span class="chip-count">{{ $zeroShot }}</span>
+    </label>
+  </fieldset>
+  {{- end }}
+
+  <button type="reset" class="filter-reset" id="filter-reset">Clear filters</button>
+</form>

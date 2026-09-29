@@ -1,0 +1,8 @@
+{{- /*
+  The artefact a reader downloads: the first block of the card's `[[assets]]`.
+  The table's link, the "weight hosts" count and the sidebar's Host row all ask
+  this one question, so changing which artefact counts as primary is a change
+  here rather than three that can disagree.
+  Called as:  {{ $asset := partial "primary-asset.html" . }}   (. = a model page)
+*/ -}}
+{{- return index (.Params.assets | default slice) 0 -}}

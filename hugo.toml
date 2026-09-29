@@ -1,0 +1,35 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+#  Insect AI Model Zoo - Hugo configuration
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+#  Every model is an ordinary page under content/models/, so Hugo's defaults are all this site needs.
+
+baseURL         = "https://insectai-cost-action.github.io/insect-model-zoo/"
+locale          = "en-us"
+title           = "InsectAI Model Zoo"
+enableRobotsTXT = true
+
+# The category taxonomy is defined by us and lives in data/categories.toml.
+disableKinds = ["taxonomy", "term", "rss", "sitemap"]
+
+# Keeps a weight blob that a contributor dropped into a model folder during local
+# work out of the built site. The same list is in .gitignore, which is what stops
+# it being committed.
+ignoreFiles = [
+  '\.(onnx|pt|pth|safetensors|tflite|torchscript|ckpt|bin|h5|pb|zip|tar|gz)$',
+]
+
+[params]
+  description = "A registry of insect detection, classification, and foundation models."
+  repoURL     = "https://github.com/InsectAI-COST-Action/insect-model-zoo"
+  license     = "CC-BY-4.0"
+  licenseURL  = "https://creativecommons.org/licenses/by/4.0/"
+
+[markup]
+  [markup.goldmark.renderer]
+    # Cards are Markdown written by contributors and reviewed in a pull request.
+    # They use tables, and occasionally a raw <kbd> or <abbr>.
+    unsafe = true
+  [markup.highlight]
+    style = "github"
+    noClasses = false

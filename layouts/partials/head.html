@@ -1,0 +1,13 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+<meta name="description" content="{{ .Params.description | default site.Params.description }}">
+
+{{- $css := resources.Get "css/zoo.css" | minify | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{- $js := resources.Get "js/zoo-filter.js" | minify | fingerprint -}}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+
+<link rel="icon" href="{{ "icon.svg" | relURL }}" type="image/svg+xml">
+</head>

@@ -1,0 +1,12 @@
+<footer class="site-footer">
+  <p>
+    {{ site.Title }} is a registry of insect detection, classification and
+    foundation models.
+  </p>
+  {{ with site.Params.licenseURL }}
+  <p class="muted">
+    Catalogue text licensed <a href="{{ . }}" rel="noopener">{{ site.Params.license }}</a>.
+    Each model's weights keep their own license, see the individual model card.
+  </p>
+  {{ end }}
+</footer>

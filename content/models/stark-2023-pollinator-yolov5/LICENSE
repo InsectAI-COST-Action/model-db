@@ -1,0 +1,28 @@
+SPDX-License-Identifier: CC-BY-4.0
+
+The weights in this entry are distributed under the Creative Commons
+Attribution 4.0 International license.
+
+Canonical license text:
+  https://creativecommons.org/licenses/by/4.0/legalcode
+
+Upstream source:
+  https://github.com/stark-t/PAI/tree/main/detectors/trained_weights
+
+
+WHAT ATTRIBUTION REQUIRES HERE
+──────────────────────────────
+
+CC BY 4.0 permits commercial use, redistribution, and modification, provided
+you give appropriate credit. For a model in a research catalogue, that means
+citing the source publication:
+
+  Stark, T. et al. (2023). Scientific Reports 13.
+  doi:10.1038/s41598-023-43482-3
+
+The full legal code at the URL above is the operative text. This file records
+the SPDX identifier and the citation the license obliges you to give; it is
+not a substitute for the license itself.
+
+If you redistribute these weights or a model derived from them, carry this
+attribution with them.

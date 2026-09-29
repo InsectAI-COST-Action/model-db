@@ -1,0 +1,140 @@
+{{- /*
+  Checks one model card against data/schema.toml. errorf fails the whole build,
+  so a bad card cannot reach the site and the person who typed it finds out from
+  the build they were already running.
+
+  Called once per model page:  {{ partial "validate.html" . }}
+*/ -}}
+
+{{- $params := .Params -}}
+{{- $where := .File.Path -}}
+{{- $fields := hugo.Data.schema.field -}}
+
+{{- range $fields -}}
+  {{- $name := .name -}}
+  {{- $kind := .type -}}
+  {{- $values := .values -}}
+  {{- $help := .help -}}
+  {{- $value := index $params $name -}}
+
+  {{- if eq $value nil -}}
+    {{- if .required -}}
+      {{- errorf "%s: required field %q is missing. %s" $where $name $help -}}
+    {{- end -}}
+
+  {{- else if eq $kind "list" -}}
+    {{- if not (reflect.IsSlice $value) -}}
+      {{- errorf "%s: %q must be a list, e.g. %s = [\"...\"]" $where $name $name -}}
+    {{- else if and .required (eq (len $value) 0) -}}
+      {{- errorf "%s: %q is required but empty. %s" $where $name $help -}}
+    {{- else if $values -}}
+      {{- range $value -}}
+        {{- if not (in $values .) -}}
+          {{- errorf "%s: %q contains %q, which is not one of: %s" $where $name . (delimit $values ", ") -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+
+  {{- else if eq $kind "int" -}}
+    {{- /* TOML integers arrive as int64, not int. */ -}}
+    {{- $actual := printf "%T" $value -}}
+    {{- if not (or (eq $actual "int") (eq $actual "int64")) -}}
+      {{- errorf "%s: %q must be a whole number with no quotes, e.g. %s = 2025" $where $name $name -}}
+    {{- end -}}
+
+  {{- else if eq $kind "date" -}}
+    {{- $actual := printf "%T" $value -}}
+    {{- if and (ne $actual "time.Time") (ne $actual "string") -}}
+      {{- errorf "%s: %q must be a date, e.g. %s = 2026-09-21" $where $name $name -}}
+    {{- end -}}
+
+  {{- else if eq $kind "string" -}}
+    {{- if ne (printf "%T" $value) "string" -}}
+      {{- errorf "%s: %q must be text in quotes. %s" $where $name $help -}}
+    {{- else if $values -}}
+      {{- if not (in $values $value) -}}
+        {{- errorf "%s: %q is %q, which is not one of: %s" $where $name $value (delimit $values ", ") -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* The list of real categories lives in data/categories.toml; copying it into
+       the schema would give the two somewhere to disagree. */ -}}
+{{- $categories := hugo.Data.categories.categories -}}
+{{- with index $params "category" -}}
+  {{- if not (index $categories .) -}}
+    {{- $slugs := slice -}}
+    {{- range $slug, $ignored := $categories -}}{{- $slugs = $slugs | append $slug -}}{{- end -}}
+    {{- errorf "%s: category %q is not in data/categories.toml. Known: %s" $where . (delimit (sort $slugs) ", ") -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* A Hugging Face repository is a git repository, so a link to a branch can
+       change under a catalogue entry that stays put. Only a commit hash cannot. */ -}}
+{{- with index $params "hf_repo" -}}
+  {{- $rev := index $params "hf_revision" -}}
+  {{- if not $rev -}}
+    {{- errorf "%s: hf_repo is set but hf_revision is empty. Open https://huggingface.co/%s/revisions and copy the commit hash." $where . -}}
+  {{- else if not (findRE `^[0-9a-f]{40}$` $rev) -}}
+    {{- errorf "%s: hf_revision %q is not a 40-character commit hash. A branch or tag name can move; only a commit cannot." $where $rev -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* The template ships with REPLACE in it. An error once the card is
+       published, a warning before that, so work in progress still builds. */ -}}
+{{- $published := eq (index $params "status") "published" -}}
+{{- range $key, $value := $params -}}
+  {{- $texts := slice -}}
+  {{- if reflect.IsSlice $value -}}{{- $texts = $value -}}{{- else -}}{{- $texts = slice $value -}}{{- end -}}
+  {{- range $texts -}}
+    {{- if and (eq (printf "%T" .) "string") (findRE `REPLACE|PLACEHOLDER|\bTODO\b|\bFIXME\b` .) -}}
+      {{- if $published -}}
+        {{- errorf "%s: %s still says %q while status is \"published\". Fill it in, or set status = \"draft\"." $where $key . -}}
+      {{- else -}}
+        {{- warnf "%s: %s still says %q." $where $key . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* The schema says "assets is a list" but cannot describe what is inside each
+       block, so the provider vocabulary is declared on the field and checked
+       here. A block missing its url renders as nothing at all, which is worse
+       than a build error. */ -}}
+{{- $providers := slice -}}
+{{- range $fields -}}
+  {{- if eq .name "assets" -}}{{- $providers = .providers -}}{{- end -}}
+{{- end -}}
+{{- range $index, $asset := (index $params "assets" | default slice) -}}
+  {{- $n := add $index 1 -}}
+  {{- if not (index $asset "key") -}}
+    {{- errorf "%s: assets block %d has no 'key'. It is the label the sidebar shows, e.g. key = \"weights\"." $where $n -}}
+  {{- end -}}
+  {{- $provider := index $asset "provider" -}}
+  {{- if not $provider -}}
+    {{- errorf "%s: assets block %d has no 'provider'. One of: %s" $where $n (delimit $providers ", ") -}}
+  {{- else if not (in $providers $provider) -}}
+    {{- errorf "%s: assets block %d has provider %q, which is not one of: %s" $where $n $provider (delimit $providers ", ") -}}
+  {{- end -}}
+  {{- if not (index $asset "url") -}}
+    {{- errorf "%s: assets block %d has no 'url'" $where $n -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Hugo injects these front-matter keys with defaults of its own, so they
+       must not be reported as unknown. A warning rather than an error, because a
+       card written against a newer schema must still build on an older checkout,
+       but a typo like `architechture = ...` is otherwise silent. */ -}}
+{{- $hugoKeys := slice
+      "aliases" "build" "cascade" "draft" "expirydate" "headless" "images"
+      "iscjklanguage" "keywords" "layout" "lastmod" "linktitle" "markup"
+      "menus" "outputs" "params" "publishdate" "resources" "sitemap" "slug"
+      "summary" "translationkey" "type" "url" "weight" -}}
+{{- $known := slice -}}
+{{- range $fields -}}{{- $known = $known | append .name -}}{{- end -}}
+{{- range $key, $ignored := $params -}}
+  {{- if and (not (in $known $key)) (not (in $hugoKeys $key)) -}}
+    {{- warnf "%s: unknown field %q is never read by the site. Known fields: %s" $where $key (delimit (sort $known) ", ") -}}
+  {{- end -}}
+{{- end -}}

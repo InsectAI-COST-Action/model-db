@@ -1,0 +1,107 @@
+{{- $page := .page -}}
+{{- $p := $page.Params -}}
+{{- $category := .category -}}
+{{- $produces := $p.produces | default slice -}}
+{{- $assets := $p.assets | default slice -}}
+
+<div class="meta-block">
+  <h2 class="meta-title">At a glance</h2>
+  <dl class="meta-list">
+    {{- with $category }}
+    <dt>Category</dt><dd>{{ .title }}</dd>
+    {{- end }}
+    <dt>Tasks</dt><dd class="no-cap">{{ delimit $p.task ", " }}</dd>
+    <dt>Architecture</dt><dd>{{ $p.architecture }}</dd>
+    <dt>Input size</dt><dd>{{ $p.input_size | default "any" }}</dd>
+    <dt>Outputs</dt><dd class="no-cap">{{ delimit $produces ", " }}</dd>
+    {{- with $p.input_modality }}
+    <dt>Input</dt><dd>{{ delimit . ", " }}</dd>
+    {{- end }}
+    <dt>Year</dt><dd>{{ $p.year }}</dd>
+    {{- with $p.date }}
+    <dt>Added</dt><dd>{{ (time.AsTime .).Format "2006-01-02" }}</dd>
+    {{- end }}
+  </dl>
+</div>
+
+<!-- {{- if or $p.pretraining_data $p.code_url }}
+<div class="meta-block">
+  <h2 class="meta-title">Foundation model</h2>
+  <dl class="meta-list">
+    <dt>Zero-shot</dt><dd>{{ if partial "zeroshot.html" $page }}yes{{ else }}no{{ end }}</dd>
+    {{- with $p.pretraining_data }}
+    <dt>Pre-training data</dt><dd>{{ . }}</dd>
+    {{- end }}
+    {{- with $p.code_url }}
+    <dt>Code</dt><dd><a href="{{ . }}" rel="noopener">link</a></dd>
+    {{- end }}
+  </dl>
+</div>
+{{- end }} -->
+
+<div class="meta-block">
+  <h2 class="meta-title">License and rights</h2>
+  <dl class="meta-list">
+    <dt>License</dt><dd class="no-cap">{{ $p.license }}</dd>
+    <dt>Host</dt><dd class="no-cap">{{ with partial "primary-asset.html" $page }}{{ .provider }}{{ end }}</dd>
+    <dt>Hosting</dt><dd>{{ replace ($p.hosting_status | default "link_only") "_" " " }}</dd>
+    <dt>Commercial use</dt><dd>{{ replace ($p.commercial_use | default "unknown") "_" " " }}</dd>
+  </dl>
+</div>
+
+
+{{- with $p.hf_repo }}
+<div class="meta-block">
+  <h2 class="meta-title">Model card</h2>
+  <dl class="meta-list">
+    <dt>Hugging Face</dt>
+    <dd><a href="https://huggingface.co/{{ . }}" rel="noopener">latest</a></dd>
+    {{- with $p.hf_revision }}
+    <dt>As curated</dt>
+    <dd>
+      <a href="https://huggingface.co/{{ $p.hf_repo }}/blob/{{ . }}/README.md" rel="noopener">pinned
+        {{- /* substr, not a number: a 40-char hex hash must stay a string. */}} {{ substr . 0 8 }}</a>
+    </dd>
+    {{- end }}
+  </dl>
+</div>
+{{- end }}
+
+{{- with $assets }}
+<div class="meta-block">
+  <h2 class="meta-title">
+    {{ len . }} artefact{{ if ne (len .) 1 }}s{{ end }}
+  </h2>
+  <ul class="assets">
+    {{- range . }}
+      {{- if .url }}
+      <li>
+        <a href="{{ .url }}" rel="nofollow noopener">{{ .variant | default .key }}</a>
+        {{- with .filename }}<span class="asset-file">{{ . }}</span>{{ end }}
+        {{- if .size_bytes }}
+          {{- /* Decimal MB, not MiB, to match the sizes quoted in the cards. */}}
+          <span class="asset-meta">{{ printf "%.1f MB" (div (float .size_bytes) 1000000) }}</span>
+        {{- end }}
+        {{- with .released }}<span class="asset-meta">{{ . }}</span>{{ end }}
+        {{- if .sha256 }}<span class="asset-meta">sha256 {{ substr .sha256 0 12 }}…</span>{{ end }}
+        {{- if eq .provider "huggingface" }}
+          {{- with .revision }}<span class="asset-meta">pinned {{ substr . 0 8 }}</span>{{ end }}
+        {{- end }}
+      </li>
+      {{- end }}
+    {{- end }}
+  </ul>
+</div>
+{{- end }}
+
+{{- with $p.developer }}
+<div class="meta-block">
+  <h2 class="meta-title">Provenance</h2>
+  <dl class="meta-list">
+    <dt>Developer</dt><dd class="no-cap">{{ . }}</dd>
+    {{- with $p.paper_url }}
+    <dt>Paper</dt><dd><a href="{{ . }}" rel="noopener">link</a></dd>
+    {{- end }}
+  </dl>
+</div>
+{{- end }}

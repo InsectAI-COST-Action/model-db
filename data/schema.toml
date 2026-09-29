@@ -1,0 +1,193 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+#  The schema for a model card's front matter.
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+#  This file is the validator: layouts/partials/validate.html loops over it as it
+#  renders each model page and calls Hugo's `errorf` on a broken rule, so a card
+#  with a missing required field or an out-of-vocabulary value fails the build.
+#  There is no separate check command to remember.
+#
+#  Two main rules:
+#
+#    1. A field exists only if the website shows it. Anything a reader never
+#       sees belongs in the card's prose.
+#    2. Optional means the site still works without it. A missing optional field
+#       either falls back to the default named in its help, or renders nothing.
+#
+#  To add a field: add it here, use it in a template, and document it in
+#  template/index.md.
+
+# Identity 
+
+[[field]]
+name        = "title"
+type        = "string"
+required    = true
+help        = "The name readers will see. Also the page heading and the sort key."
+
+[[field]]
+name        = "description"
+type        = "string"
+required    = true
+help        = "One sentence, plain language, saying what the model does."
+
+# Catalogue
+
+[[field]]
+name        = "category"
+type        = "string"
+required    = true
+help        = "A slug from data/categories.toml. It must already exist there."
+
+[[field]]
+name        = "task"
+type        = "list"
+required    = true
+values      = [
+  "Object Detection",
+  "Instance Segmentation",
+  "Semantic Segmentation",
+  "Classification",
+  "Tracking",
+  "Embedding",
+  "Counting",
+]
+help        = "What the model does. A list of one or more tasks."
+
+[[field]]
+name        = "architecture"
+type        = "string"
+required    = true
+help        = "e.g. YOLOv8, ViT, Swin Transformer."
+
+[[field]]
+name        = "year"
+type        = "int"
+required    = true
+help        = "Year of publication or release. A bare number, no quotes."
+
+[[field]]
+name        = "license"
+type        = "string"
+required    = true
+help        = "SPDX identifier where one exists, e.g. MIT, CC-BY-4.0."
+
+[[field]]
+name        = "status"
+type        = "string"
+required    = true
+values      = ["draft", "published", "deprecated"]
+help        = "Only 'published' appears on the site. New cards default to draft."
+
+[[field]]
+name        = "date"
+type        = "date"
+required    = false
+help        = "When the entry was added to the zoo. Bare ISO date, e.g. 2026-09-21."
+
+[[field]]
+name        = "vocabulary_scope"
+type        = "string"
+required    = false
+values      = ["closed", "open", "taxonomic"]
+help        = "closed = a fixed class list. open/taxonomic = it handles concepts it was not trained on, which is what the site shows as 'zero-shot'. Default: closed."
+
+[[field]]
+name        = "produces"
+type        = "list"
+required    = true
+values      = ["bbox", "mask", "label", "count", "track", "embedding"]
+help        = "What comes out. Shown as the Outputs line in the sidebar."
+
+[[field]]
+name        = "input_size"
+type        = "string"
+required    = false
+values      = []
+help        = "e.g. 640x640, or 'any' for a model that takes native resolution. Default: any."
+
+[[field]]
+name        = "input_modality"
+type        = "list"
+required    = false
+values      = ["text", "image", "box", "point", "mask"]
+help        = "Every input the model accepts, image included. A model that takes an image and a text prompt lists both, e.g. SAM 3. Default: image."
+
+[[field]]
+name        = "taxonomic_coverage"
+type        = "string"
+required    = false
+help        = "e.g. 'TreeOfLife (450k taxa)'. Leave out when not stated."
+
+[[field]]
+name        = "developer"
+type        = "string"
+required    = false
+help        = "Who made it. e.g. 'Dohn, Joe et al.'."
+
+[[field]]
+name        = "paper_url"
+type        = "string"
+required    = false
+help        = "Link to the paper, DOI, or project page."
+
+[[field]]
+name        = "pretraining_data"
+type        = "string"
+required    = false
+help        = "What a foundation model was pre-trained on, e.g. 'TreeOfLife-10M'. Shown in the sidebar; covered in the prose for other models."
+
+[[field]]
+name        = "code_url"
+type        = "string"
+required    = false
+help        = "Where the code lives. Only worth a field for models whose code is the thing people go looking for."
+
+# Weights
+
+[[field]]
+name        = "hosting_status"
+type        = "string"
+required    = false
+values      = ["hosted", "hosted_restricted", "link_only", "pending_rights"]
+help        = "This repo does not mirror weights, so this is almost always link_only, which is the default."
+
+[[field]]
+name        = "commercial_use"
+type        = "string"
+required    = false
+values      = ["allowed", "prohibited", "permission_required", "unknown"]
+help        = "What the license permits. Default: unknown."
+
+# The model's own card on Hugging Face, if it has one. The site links to it, and to the pinned revision you curated.
+
+[[field]]
+name        = "hf_repo"
+type        = "string"
+required    = false
+help        = "Hugging Face repo id, e.g. 'edgaremy/arthropod-detector'. Renders a link to the model's own card."
+
+[[field]]
+name        = "hf_revision"
+type        = "string"
+required    = false
+help        = "The commit hash of that repo, as curated. The site links to BOTH this pinned revision and the latest. If hf_repo is set, this is required - an unpinned link can change under the catalogue without the catalogue changing."
+
+# Weights
+
+# Where to download the model. One [[assets]] block per file.
+[[field]]
+name        = "assets"
+type        = "list"
+required    = true
+providers   = ["zenodo", "huggingface", "github", "erda", "package", "url", "google-drive", "dropbox"]
+help        = """
+Where to download the model. One [[assets]] block per file; the FIRST is the one
+the table links to. Each block needs a key (the label), a provider and a url.
+Weights are never committed to this repository.
+
+  [[assets]]
+  key      = "weights"
+  provider = "huggingface"
+  url      = "https://huggingface.co/owner/model"
+"""

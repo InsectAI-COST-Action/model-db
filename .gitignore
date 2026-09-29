@@ -1,0 +1,38 @@
+# Hugo
+public/
+resources/_gen/
+.hugo_build.lock
+hugo_stats.json
+
+# Downloaded tooling
+bin/hugo
+bin/hugo_extended_*
+
+# Model weights NEVER committed
+# Weights live on Zenodo / ERDA / HuggingFace etc... and are referenced by URL from 
+# the [[assets]] blocks of each model card.
+#
+# hugo.toml carries the same list in `ignoreFiles`; keep the two in step, or a
+# weight will be gitignored but still published into the built site.
+*.onnx
+*.pt
+*.pth
+*.safetensors
+*.tflite
+*.torchscript
+*.ckpt
+*.bin
+*.h5
+*.pb
+content/models/**/*.zip
+content/models/**/*.tar.gz
+
+# Editors / OS
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Claude and other LLMs
+CLAUDE.md

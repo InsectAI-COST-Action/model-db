@@ -1,0 +1,25 @@
+name: zoo
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.166.0"
+          extended: true
+
+      # The build IS the check: layouts/partials/validate.html reads
+      # data/schema.toml and calls errorf on a malformed card, so a bad pull
+      # request fails here rather than on the deployed site. Warnings stay
+      # warnings, so a card that is still a draft does not block anyone.
+      - name: Build the site
+        run: hugo --gc --minify

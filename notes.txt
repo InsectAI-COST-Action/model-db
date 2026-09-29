@@ -1,0 +1,37 @@
+Framework: Hugo (https://gohugo.io/, htmx/html and Go)
+
+It derives what to do from the folder naming conventions, it reads a hugo.toml and in that root folder it starts searching for those.
+
+content/ : contains the pages of the website (index, about, contributing etc...)
+
+data/ : global data loaded once, toml schemas in our case, to validate cards and define how the homepage is structured
+
+layouts/ : HTML templates for the website
+
+assets/ static/ and public/ (build of the site)
+
+Then, for what regards the rendering of the model card, inside models we have some "partial" calls to "validate.html" that validates it using the schema.toml, and then it renders ".Content" that is the markdown for each model card.
+
+Things to discuss:
+- different tables for detection on homogeneous/heterogeneous backrounds(?), with foundation models in another separate table, https://github.com/InsectAI-COST-Action/awesome-insectai already has this kind of separation
+
+
+- is this model folder mechanism sounds good? alternatives could be one csv that might cause merge conflicts. Here, unless different people edit the same model card in different PRs (most likely to not happen), we should not have any merge conflict
+
+
+- columns to show in the initial table from the index.html
+
+
+- info about the model to be required and info about the model to be optional
+
+
+- structure of the model card
+
+
+- should we validate also the structure of the model card(?)
+
+
+- validation is made in Hugo, we could shift it to the GH actions but it would imply to know errors only after pushing to the repo
+
+
+- ID for each order family species... (https://www.gbif.org/taxon/H6)

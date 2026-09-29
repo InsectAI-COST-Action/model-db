@@ -1,0 +1,13 @@
+<header class="site-header">
+  <a class="brand" href="{{ site.Home.RelPermalink }}">
+    <img class="brand-mark" src="{{ "icon.svg" | relURL }}" alt="" aria-hidden="true"
+         width="28" height="28">
+    <span class="brand-name">{{ site.Title }}</span>
+  </a>
+  <nav class="site-nav" aria-label="Main">
+    <a href="{{ site.Home.RelPermalink }}">Models</a>
+    <a href="{{ "contributing/" | relURL }}">Add a model</a>
+    <a href="{{ "about/" | relURL }}">About</a>
+    {{ with site.Params.repoURL }}<a href="{{ . }}" rel="noopener">GitHub</a>{{ end }}
+  </nav>
+</header>

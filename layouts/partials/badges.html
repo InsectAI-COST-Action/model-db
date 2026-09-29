@@ -1,0 +1,24 @@
+{{- $p := .Params -}}
+{{- $scope := $p.vocabulary_scope | default "closed" -}}
+{{- $zeroShot := partial "zeroshot.html" . -}}
+<ul class="badges">
+  {{- /* `task` is a list, so each operation gets its own chip: SAM 3 detects,
+         segments and tracks. */ -}}
+  {{- range $p.task }}
+  <li class="badge badge-task">{{ . }}</li>
+  {{- end }}
+  <li class="badge badge-arch">{{ $p.architecture }}</li>
+  {{- if $zeroShot }}
+  {{- /* The badge, like the filter and the table column, is derived from
+         vocabulary_scope rather than stored. */ -}}
+  <li class="badge badge-zeroshot">zero-shot</li>
+  {{- end }}
+  <li class="badge badge-scope scope-{{ $scope }}">
+    {{- if eq $scope "open" -}}open vocabulary
+    {{- else if eq $scope "taxonomic" -}}taxonomic vocabulary
+    {{- else -}}closed vocabulary{{- end -}}
+  </li>
+  {{- with $p.input_modality }}
+  <li class="badge badge-input">input: {{ delimit . ", " }}</li>
+  {{- end }}
+</ul>

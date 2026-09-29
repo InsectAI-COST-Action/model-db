@@ -1,0 +1,55 @@
+{{- $rows := . -}}
+
+{{- /* tabindex and role: a scrollable region is otherwise unreachable by keyboard. */ -}}
+<div class="table-scroll" tabindex="0" role="region"
+     aria-label="Model table - scroll horizontally for more columns">
+  <table class="models">
+    <caption class="sr-only">Insect AI models in this category</caption>
+    <thead>
+      <tr>
+        <th scope="col">Model</th>
+        <th scope="col">Task</th>
+        <th scope="col">Architecture</th>
+        <th scope="col">Input</th>
+        <th scope="col">Vocabulary</th>
+        <th scope="col">Input size</th>
+        <th scope="col">Year</th>
+        <th scope="col">License</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{- range $rows }}
+      {{- $p := .Params -}}
+      {{- $haystack := printf "%s %s %s %s %s %s" .Title (.Description | default "") $p.architecture ($p.taxonomic_coverage | default "") (delimit ($p.task | default slice) " ") ($p.developer | default "") -}}
+      <tr data-id="{{ path.Base .File.Dir }}"
+          data-task="{{ delimit ($p.task | default slice) ";" }}"
+          data-year="{{ $p.year }}"
+          data-license="{{ $p.license }}"
+          data-category="{{ $p.category }}"
+          data-zeroshot="{{ if partial "zeroshot.html" . }}true{{ else }}false{{ end }}"
+          data-search="{{ lower $haystack }}">
+        <th scope="row">
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </th>
+        <td>
+          {{- range $i, $task := $p.task -}}
+            {{- if $i }}<span class="sep">,</span> {{ end -}}
+            <span class="task">{{ $task }}</span>
+          {{- else -}}
+            <span class="muted">—</span>
+          {{- end -}}
+        </td>
+        <td>{{ $p.architecture }}</td>
+        <td>{{ if $p.input_modality }}{{ delimit $p.input_modality ", " }}{{ else }}image{{ end }}</td>
+        <td>
+          {{- $scope := $p.vocabulary_scope | default "closed" -}}
+          <span class="scope scope-{{ $scope }}">{{ $scope }}</span>
+        </td>
+        <td>{{ $p.input_size | default "any" }}</td>
+        <td>{{ $p.year }}</td>
+        <td><span class="lic">{{ $p.license }}</span></td>
+      </tr>
+    {{- end }}
+    </tbody>
+  </table>
+</div>
