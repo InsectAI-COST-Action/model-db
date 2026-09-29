@@ -6,8 +6,7 @@ description        = "YOLOv5 and YOLOv7 detectors that locate flower-visiting ar
 # ── Catalogue ───────────────────────────────────────────────────────
 category           = "detection"
 task               = ["Object Detection"]
-architecture       = "YOLOv5/v7"
-base_model         = "YOLOv5n, YOLOv5s and YOLOv7-tiny"
+architecture       = ["YOLOv5", "YOLOv7"]
 year               = 2023
 license            = "AGPL-3.0-only"
 status             = "published"
