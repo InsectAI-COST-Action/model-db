@@ -43,6 +43,6 @@
         "info": "T[info]", 
         "images": ["T[image]"], 
         "annotations": ["T[annotation]"], 
-        "licenses": "[T[license]]"
+        "licenses": ["T[license]"]
     }
 }

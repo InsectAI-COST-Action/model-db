@@ -64,6 +64,15 @@
   {{- end -}}
 {{- end -}}
 
+{{- /* Validate output formats length is equal to architecture. Each architecture has to specify an output format, even if they are identical. */ -}}
+{{- $outputFormats := index $params "output_format" -}}
+{{- $architectures := index $params "architecture" -}}
+{{- if and (reflect.IsSlice $outputFormats) (reflect.IsSlice $architectures) -}}
+  {{- if and (gt (len $outputFormats) 0) (ne (len $architectures) (len $outputFormats)) -}}
+    {{- errorf "%s: output_format must have one entry per architecture; got %d output formats for %d architectures." $where (len $outputFormats) (len $architectures) -}}
+  {{- end -}}
+{{- end -}}
+
 {{- /* The list of real categories lives in data/categories.toml; copying it into
        the schema would give the two somewhere to disagree. */ -}}
 {{- $categories := hugo.Data.categories.categories -}}

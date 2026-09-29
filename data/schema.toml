@@ -127,6 +127,13 @@ values      = ["bbox", "mask", "label", "count", "track", "embedding", "continuo
 help        = "What comes out. Shown as the Outputs line in the sidebar."
 
 [[field]]
+name        = "output_format"
+type        = "list"
+required    = false
+values      = ["coco", "other"]
+help        = "Model output format standard."
+
+[[field]]
 name        = "image_input_size"
 type        = "string"
 required    = false

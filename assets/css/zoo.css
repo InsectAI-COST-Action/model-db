@@ -370,3 +370,8 @@ table.models .sep { color: var(--text-mute); }
   .table-scroll { max-height: none; overflow: visible; }
   a[href^="http"]::after { content: " (" attr(href) ")"; font-size: .8em; color: var(--text-mute); }
 }
+
+
+.center {
+  text-align: center;
+}

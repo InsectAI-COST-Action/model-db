@@ -1,14 +1,14 @@
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Any, Dict, List, Literal, Optional, Tuple, Union
+from typing import Any, Literal, Optional
 
 # Bounding box represented as [x, y, width, height]
-Box = Tuple[float, float, float, float]
+Box = tuple[float, float, float, float]
 
 # COCO segmentation: RLE (dict with counts/size) or Polygon (list of coordinate lists)
-RLE = Dict[str, Any]
-Polygon = List[float]
-Segmentation = Union[RLE, List[Polygon]]
+RLE = dict[str, Any]
+Polygon = list[float]
+Segmentation = RLE | list[Polygon]
 
 
 @dataclass
@@ -44,7 +44,7 @@ class License:
 class Category:
     id: int
     name: str
-    supercategory: Optional[str] = None
+    supercategory: str | None = None
 
 
 @dataclass
@@ -52,7 +52,7 @@ class Annotation:
     id: int
     image_id: int
     category_id: int
-    segmentation: Optional[Segmentation] = None
+    segmentation: Segmentation | None = None
     area: Optional[float] = None
     bbox: Optional[Box] = None
     iscrowd: Optional[Literal[0, 1]] = None
@@ -61,7 +61,7 @@ class Annotation:
 @dataclass
 class COCODataset:
     info: Info
-    images: List[Image] = field(default_factory=list)
-    annotations: List[Annotation] = field(default_factory=list)
-    licenses: List[License] = field(default_factory=list)
-    categories: List[Category] = field(default_factory=list)
+    images: list[Image] = field(default_factory=list)
+    annotations: list[Annotation] = field(default_factory=list)
+    licenses: list[License] = field(default_factory=list)
+    categories: list[Category] = field(default_factory=list)
