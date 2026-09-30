@@ -4,7 +4,7 @@ title              = "BEEomass"
 description        = "EfficientNetV2 modified to produced 'biomass factor' as output."
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "regression"
+category           = "trait-quantification"
 task               = ["Regression"]
 architecture       = ["EfficientNetV2"]
 year               = 2026
