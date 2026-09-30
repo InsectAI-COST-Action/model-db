@@ -36,6 +36,7 @@ architecture       = ["OpenAI CLIP ViT-B/16"]
 year               = 2025
 license            = "MIT"
 status             = "published" 
+training_data      = ["10.57967/hf/1972", "10.57967/hf/6801"]
 
 # Optional. Delete any line you do not have an answer for - the default is in
 # the comment.
