@@ -36,3 +36,6 @@ Thumbs.db
 
 # Claude and other LLMs
 CLAUDE.md
+
+# Python validation tools
+__pycache__/

@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass
 
+
 @dataclass
 class FlatbugResult:
     boxes: list[list[float]]
@@ -15,4 +16,4 @@ class FlatbugResult:
     image_height: int
     mask_width: int
     mask_height: int
-    identifier: None | str = None
+    identifier: None | str | list[str] = None

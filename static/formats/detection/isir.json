@@ -1,52 +1,69 @@
 {
-    "types" : {
-        "instance" : {
-            "id" : "T[int] | T[string]",
-            "bbox" : "T[bbox]",
-            "confidence" : "? : T[float]",
-            "angle"      : "? : T[float]"
+    "types": {
+        "instance": {
+            "id": "T[integer] | T[string]",
+            "bbox": "T[bbox]",
+            "confidence": "? : T[float]",
+            "angle": "? : T[float]",
+            "category_id": "? : T[integer] | T[string]",
+            "polygons": "? : [T[polygon]]",
+            "area": "? : T[float]",
+            "extra_information": "? : T[object]"
         },
-        "bbox" : ["T[float]", "T[float]", "T[float]", "T[float]"],
-        "image" : {
-            "width" : "T[int]",
-            "height": "T[int]",
-            "id"    : "T[int] | T[string]",
-            "format": "? : T[string(E[image_formats])]"
+        "bbox": "T[float_quad]",
+        "image": {
+            "width": "T[integer]",
+            "height": "T[integer]",
+            "id": "T[integer] | T[string]",
+            "format": "? : T[string]",
+            "file_name": "? : T[string]"
         },
-        "model" : {
-            "name"  : "? : T[string]",
-            "uuid" : "? : T[UUIDv4]"
+        "model": {
+            "name": "? : T[string]",
+            "uuid": "? : T[UUIDv4]"
         },
-        "prediction" : {
-            "timestamp" : "? : T[ISO]",
-            "config"    : "? : T[obj]"
-        },
-        "context" : {
-            "timestamp" : "? : T[ISO]",
-            "longitude" : "? : T[float]",
-            "latitude"  : "? : T[float]",
-            "crs"       : "? : T[int] | T[string]",
-            "tag_list"  : "? : [T[string]]",
+        "context": {
+            "timestamp": "? : T[ISO]",
+            "longitude": "? : T[float]",
+            "latitude": "? : T[float]",
+            "crs": "? : T[integer] | T[string]",
+            "tag_list": "? : [T[string]]",
             "group_name": "? : T[string]",
-            "group_id"  : "? : T[int]"
-        }
-
+            "group_id": "? : T[integer]"
+        },
+        "inference": {
+            "timestamp": "? : T[ISO]",
+            "config": "? : T[object]"
+        },
+        "polygon": [
+            "T[float_pair]"
+        ]
     },
-    "structure" : {
-        "instances" : ["T[instance]"],
-        "image"     : "T[image]",
-        "model"     : "? : T[model]",
-        "inference" : "? : T[inference]",
-        "context"   : "? : T[context]",
-        "ir_name"   : "T[string]",
-        "ir_id"     : "T[int]",
-        "extra_information" : "? : T[obj]"
+    "enums": {},
+    "structure": {
+        "instances": [
+            "T[instance]"
+        ],
+        "image": "T[image]",
+        "model": "? : T[model]",
+        "inference": "? : T[inference]",
+        "context": "? : T[context]",
+        "ir_name": "T[string](\"ISIR\")",
+        "ir_id": "T[integer](1)",
+        "extra_information": "? : T[object]"
     },
-    "notes" : {
-        "bbox" : "We use xywh: center coordinates and width/height - not normalized. Coordinate system has origin (0,0) at bottom-left, and top-right is (width, height).",
+    "notes": {
+        "bbox": "We use xywh: center coordinates and width/height - not normalized. Coordinate system has origin (0,0) at bottom-left, and top-right is (width, height).",
         "angle": "Angle in radians.",
-        "uuid" : "We use UUIDv4, see: https://datatracker.ietf.org/doc/html/rfc9562.html#section-5.4",
-        "ISO"  : "We use ISO 8601 (YYYY-MM-DDTHH:mm:ss.sssZ), see: https://www.iso.org/iso-8601-date-and-time-format.html",
-        "crs"  : "We suggest using EPSG codes, either specified as an integer or 'EPSG:XXXX'. Proj string can also be used."
+        "uuid": "We use UUIDv4, see: https://datatracker.ietf.org/doc/html/rfc9562.html#section-5.4",
+        "ISO": "We use ISO 8601 (YYYY-MM-DDTHH:mm:ss.sssZ), see: https://www.iso.org/iso-8601-date-and-time-format.html",
+        "crs": "We suggest using EPSG codes, either specified as an integer or 'EPSG:XXXX'. Proj string can also be used.",
+        "numbers": "Image dimensions, numeric IDs, ir_id and group_id are integers; numeric CRS values are integer EPSG codes.",
+        "image_formats": "No image-format allowlist has been supplied. image.format remains an unrestricted string until the options for E[image_formats] are defined.",
+        "polygons": "Optional polygon rings as lists of [x,y] pairs, in the same original-image, bottom-left coordinate system as boxes. Holes and raster RLE are not implicitly converted to polygons.",
+        "category_id": "Producer category ID; interpretation requires the source vocabulary. IDs are not automatically remapped between vocabularies.",
+        "area": "Optional source-reported area, in pixel-square units. It is not automatically recomputed from a box or contour.",
+        "extra_information": "Per-record and per-instance namespaced adapter fields preserve native details without making them universal IR concepts.",
+        "compatibility": "ir_name=\"ISIR\" and ir_id=1 identify this data IR contract, not an individual prediction. Unknown versions must be handled explicitly."
     }
 }

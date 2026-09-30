@@ -1,60 +1,66 @@
 {
-    "id": "ultralytics-segment-txt",
-    "serialization": "text/plain",
     "types": {
-        "row": "class, alternating x,y polygon coordinates, optional confidence, optional track_id"
+        "row": [
+            "T[number]"
+        ]
     },
+    "enums": {},
     "structure": [
         "T[row]"
     ],
-    "columns": [
-        "class",
-        "x1",
-        "y1",
-        "...",
-        "xn",
-        "yn",
-        "confidence (only with save_conf)",
-        "track_id (only for tracking results)"
-    ],
-    "coordinates": "Results.masks.xyn: polygon coordinates normalized to original-image width/height.",
     "notes": {
         "encoding": "Space-separated numeric values formatted with %g; one instance per line, trailing newline. This JSON file describes the text layout; the producer does not emit JSON.",
         "classes": "Zero-based model class index. Class meanings require the producing model class-name mapping, which is not embedded.",
-        "confidence": "Last column is present only when save_conf is enabled; disabled by default.",
+        "confidence": "Confidence is included only with save_conf; a tracking ID, when present, follows it.",
         "files": "Appends to the output text file. No write when no detections exist; an existing file is not cleared.",
         "metadata": "No image dimensions, image path or class names in each row. Keep source-image association externally.",
         "tracking": "Tracking appends an integer track_id after the optional confidence. A sixth detection column can therefore be confidence OR track_id; the producer options must be known.",
         "order": "Preserves Results.boxes order, except that segmentation rows with fewer than three contour points are skipped.",
-        "masks": "Writes contour coordinates instead of box coordinates when masks are present; no binary mask or box is included. Contours with fewer than three points are omitted."
-    },
-    "example": "0 0.1 0.2 0.5 0.2 0.3 0.6 0.9\n",
-    "example_options": {
-        "save_conf": true
-    },
-    "models": [
-        "YOLO11-seg",
-        "YOLO26-seg"
-    ],
-    "producer": "Results.save_txt(path, save_conf=False)",
-    "sources": [
-        {
-            "url": "https://github.com/ultralytics/ultralytics/blob/8a55f07e379d0d0f66cc23d09e35f54588fd1435/ultralytics/engine/results.py",
-            "revision": "8a55f07e379d0d0f66cc23d09e35f54588fd1435"
+        "masks": "Writes contour coordinates instead of box coordinates when masks are present; no binary mask or box is included. Contours with fewer than three points are omitted.",
+        "id": "ultralytics-segment-txt",
+        "serialization": "text/plain",
+        "columns": [
+            "class",
+            "x1",
+            "y1",
+            "...",
+            "xn",
+            "yn",
+            "confidence (only with save_conf)",
+            "track_id (only for tracking results)"
+        ],
+        "coordinates": "Results.masks.xyn: polygon coordinates normalized to original-image width/height.",
+        "example": "0 0.1 0.2 0.5 0.2 0.3 0.6 0.9\n",
+        "example_options": {
+            "save_conf": true
         },
-        {
-            "url": "https://github.com/ultralytics/ultralytics/blob/8a55f07e379d0d0f66cc23d09e35f54588fd1435/ultralytics/utils/__init__.py",
-            "revision": "8a55f07e379d0d0f66cc23d09e35f54588fd1435"
-        },
-        {
-            "url": "https://github.com/ultralytics/ultralytics/blob/8a55f07e379d0d0f66cc23d09e35f54588fd1435/ultralytics/models/yolo/segment/predict.py",
-            "revision": "8a55f07e379d0d0f66cc23d09e35f54588fd1435"
-        }
-    ],
-    "emitted": [
-        "polygon",
-        "class",
-        "confidence (optional)",
-        "track_id (tracking only)"
-    ]
+        "models": [
+            "YOLO11-seg",
+            "YOLO26-seg"
+        ],
+        "producer": "Results.save_txt(path, save_conf=False)",
+        "sources": [
+            {
+                "url": "https://github.com/ultralytics/ultralytics/blob/8a55f07e379d0d0f66cc23d09e35f54588fd1435/ultralytics/engine/results.py",
+                "revision": "8a55f07e379d0d0f66cc23d09e35f54588fd1435"
+            },
+            {
+                "url": "https://github.com/ultralytics/ultralytics/blob/8a55f07e379d0d0f66cc23d09e35f54588fd1435/ultralytics/utils/__init__.py",
+                "revision": "8a55f07e379d0d0f66cc23d09e35f54588fd1435"
+            },
+            {
+                "url": "https://github.com/ultralytics/ultralytics/blob/8a55f07e379d0d0f66cc23d09e35f54588fd1435/ultralytics/models/yolo/segment/predict.py",
+                "revision": "8a55f07e379d0d0f66cc23d09e35f54588fd1435"
+            }
+        ],
+        "emitted": [
+            "polygon",
+            "class",
+            "confidence (optional)",
+            "track_id (tracking only)"
+        ],
+        "row_layout": "Variable-length numeric row. The first value is the integer class index, followed by flattened x,y pairs and the optional suffix columns specified in columns. Those positional constraints are described here rather than encoded as invented data fields.",
+        "numeric_types": "The first token is an integer class index; polygon coordinates and optional confidence are floats. A tracking ID, where supported, is an integer. The mixed variable-length row uses number.",
+        "numeric_encoding": "Float tokens use %g formatting, which can omit the decimal point for whole-valued coordinates or confidence. Types describe the decoded column meaning, not the presence of a decimal point."
+    }
 }

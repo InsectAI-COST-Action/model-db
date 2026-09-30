@@ -1,0 +1,6 @@
+{
+    "float_pair": ["T[float]", "T[float]"],
+    "float_quad": ["T[float]", "T[float]", "T[float]", "T[float]"],
+    "float_vector": ["T[float]"],
+    "float_matrix": ["T[float_vector]"]
+}
