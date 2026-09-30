@@ -211,8 +211,7 @@ restored = flatbug.from_ir(ir, scale=1.0, confidence=0.5)
 Fallbacks fill only missing values. These numbers must be a deliberate caller
 choice, not a claim about the source inference. Missing contours/areas require
 an explicit derivation before export. Multipart polygons and opaque COCO RLE
-cannot be implicitly collapsed into one Flatbug contour. Nonzero box angles
-are rejected by both adapters.
+cannot be implicitly collapsed into one Flatbug contour. Nonzero box angles are exported as axis-aligned envelopes by both adapters.
 
 ## COCO
 
@@ -371,3 +370,24 @@ completed image with no detections.
 
 Both additions are tested with source-contract fixtures, not new inference runs.
 See the [native/alternative coverage review](../../../../content/formats/coverage.md).
+
+## Mothbot native JSON and direct OBB Results
+
+Use `model="mothbot"` (or `source="mothbot-detection-json"`) for the author
+JSON writer's detection-stage output. For direct Ultralytics OBB prediction,
+use `source="ultralytics-obb-results"` instead. Both support one image or a
+collection; optional image contexts supply explicit IDs. Collection contexts
+may be ordered or keyed by exact source path.
+
+Both importers preserve an oriented ISIR `bbox` and `angle` plus its polygon.
+Angles are radians counterclockwise in ISIR's bottom-left coordinates. Native
+angle fields and labels/classes remain namespaced metadata. No classification
+is required. COCO writes the rotated box's axis-aligned envelope and the original
+polygon as segmentation; returning from COCO retains polygon geometry but does
+not automatically reconstruct the original rotated box parameters.
+
+An ISIR box with an angle but no polygon can also export to COCO: its corners
+are computed from the oriented box. Native polygon areas are not invented.
+Existing supplied contours remain authoritative for segmentation.
+
+See [the real-checkpoint evidence](../../../probe/reports/2026-09-30-mothbot-conversion/README.md).

@@ -830,5 +830,49 @@
     "language": "json",
     "representation": "projection",
     "summary": "Directory illustration, not author JSON. Palette colors identify body parts, not individual insects. Instance extraction requires an additional algorithm."
+  },
+  "ultralytics-obb-results": {
+    "value": {
+      "orig_shape": [
+        100,
+        200
+      ],
+      "path": "frame.jpg",
+      "names": {
+        "0": "object"
+      },
+      "obb": {
+        "xyxyxyxy": [
+          [
+            [
+              30,
+              10
+            ],
+            [
+              60,
+              40
+            ],
+            [
+              40,
+              60
+            ],
+            [
+              10,
+              30
+            ]
+          ]
+        ],
+        "conf": [
+          0.8
+        ],
+        "cls": [
+          0
+        ]
+      }
+    },
+    "display": "{\n  \"orig_shape\": [\n    100,\n    200\n  ],\n  \"path\": \"frame.jpg\",\n  \"names\": {\n    \"0\": \"object\"\n  },\n  \"obb\": {\n    \"xyxyxyxy\": [\n      [\n        [\n          30,\n          10\n        ],\n        [\n          60,\n          40\n        ],\n        [\n          40,\n          60\n        ],\n        [\n          10,\n          30\n        ]\n      ]\n    ],\n    \"conf\": [\n      0.8\n    ],\n    \"cls\": [\n      0\n    ]\n  }\n}\n",
+    "language": "json",
+    "representation": "projection",
+    "summary": "Readable property projection of one oriented-detection Results object. Corners preserve rotation; the conversion exports their axis-aligned envelope and polygon."
   }
 }

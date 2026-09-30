@@ -88,7 +88,7 @@ class RegistryTests(unittest.TestCase):
         self.card('gap', [])
         r = Registry.open(self.root)
         self.assertEqual(r.resolve(model='gap')['status'], 'unsupported')
-        self.assertEqual(r.resolve(source='mothbot-detection-json')['status'], 'unsupported')
+        self.assertEqual(r.resolve(source='insect-detect-csv')['status'], 'unsupported')
         self.assertEqual(r.fingerprint, Registry.open(self.root).fingerprint)
         p = r.resolve(source='flatbug'); p['steps'].clear()
         self.assertTrue(r.resolve(source='flatbug')['steps'])

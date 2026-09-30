@@ -1,0 +1,47 @@
+{
+    "types": {
+        "quad": [
+            "T[float_pair]",
+            "T[float_pair]",
+            "T[float_pair]",
+            "T[float_pair]"
+        ]
+    },
+    "enums": {},
+    "structure": {
+        "orig_shape": [
+            "T[integer]",
+            "T[integer]"
+        ],
+        "path": "T[string]",
+        "names": "T[object]",
+        "obb": {
+            "xyxyxyxy": [
+                "T[quad]"
+            ],
+            "conf": [
+                "T[float]"
+            ],
+            "cls": [
+                "T[integer]"
+            ],
+            "data": "? : T[array]"
+        }
+    },
+    "notes": {
+        "serialization": "Python Ultralytics Results object; this schema describes the decoded property projection, not an author JSON exporter.",
+        "producer": "ultralytics.engine.results.Results.obb (Ultralytics 8.4.90)",
+        "coordinates": "obb.xyxyxyxy contains four ordered original-image pixel corners, top-left origin; orig_shape is [height,width].",
+        "scope": "Postprocessed oriented detection Results, not horizontal boxes, segmentation masks, or raw network tensors. obb.data retains producer xywhr and optional track IDs as native metadata.",
+        "conversion": "ISIR preserves the oriented center/width/height box with angle in radians, counterclockwise in bottom-left coordinates, plus the four-corner polygon. Native angles and labels/classes remain metadata. COCO exports an axis-aligned envelope bbox and polygon segmentation. No area is inferred.",
+        "adapters": {
+            "import_one": "iai_model_zoo.formats.adapters.mothbot:obb_import_one",
+            "import_collection": "iai_model_zoo.formats.adapters.mothbot:obb_import_collection"
+        },
+        "sources": [
+            {
+                "url": "https://github.com/ultralytics/ultralytics/blob/v8.4.90/ultralytics/engine/results.py"
+            }
+        ]
+    }
+}

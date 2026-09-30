@@ -125,7 +125,7 @@ class InteroperabilityTests(unittest.TestCase):
         with self.assertRaisesRegex(ConversionError,'polygons'):
             self.converter.convert('0 .5 .5 .2 .2 .8',source='yolov5-detect-txt',target='flatbug',context=ctx,import_options={'save_conf':True})
         with self.assertRaisesRegex(ConversionError,'No importer'):
-            self.converter.convert({},model='mothbot',target='coco')
+            self.converter.convert({},model='insect-detect-platform',target='coco')
 
     def test_invalid_context_has_consistent_error(self):
         for ctx in ({}, ConversionContext(image='not an ImageContext')):

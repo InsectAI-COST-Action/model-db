@@ -12,6 +12,7 @@ from ._common import (
     extras,
     flip_polygon,
     ir_to_xywh,
+    box_polygon,
     record,
     schema,
     xywh_to_ir,
@@ -210,7 +211,7 @@ def from_ir(batch, *, image_ids=None, annotation_ids=None, fallback_category="ob
                 id=identifier,
                 image_id=image_id,
                 category_id=category,
-                bbox=ir_to_xywh(instance["bbox"], info["height"]),
+                bbox=ir_to_xywh(instance["bbox"], info["height"], instance.get("angle", 0)),
             )
             if "area" in instance:
                 annotation["area"] = instance["area"]
@@ -231,6 +232,9 @@ def from_ir(batch, *, image_ids=None, annotation_ids=None, fallback_category="ob
                     raise FormatError(
                         "retained COCO RLE dimensions no longer match the IR image"
                     )
+            elif "angle" in instance:
+                polygon = box_polygon(instance["bbox"], instance["angle"])
+                annotation["segmentation"] = [[c for point in flip_polygon(polygon, info["height"]) for c in point]]
             if "confidence" in instance:
                 for key in native.get("score_keys") or ["score"]:
                     annotation[key] = instance["confidence"]

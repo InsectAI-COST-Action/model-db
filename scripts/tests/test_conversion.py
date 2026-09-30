@@ -71,7 +71,7 @@ class ConversionTests(unittest.TestCase):
         with self.assertRaisesRegex(ConversionError, 'save_conf'):
             self.converter.convert('', source='yolov5-detect-txt', context=ctx)
         with self.assertRaisesRegex(ConversionError, 'No importer'):
-            self.converter.convert({}, source='mothbot-detection-json')
+            self.converter.convert({}, source='insect-detect-csv')
 
     def test_metadata_precedence_and_collection_shape(self):
         ctx = ConversionContext(image=ImageContext(1, 100, 80, metadata=Metadata(model={'name': 'per-image'})),

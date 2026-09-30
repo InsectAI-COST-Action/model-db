@@ -97,7 +97,7 @@ def from_ir(value, *, scale=None, confidence=None, image_path=None):
             raise FormatError(
                 f"instance {instance['id']!r}: Flatbug requires exactly one contour; multipart/RLE conversion is not implicit"
             )
-        x, y, w, h = ir_to_xywh(instance["bbox"], height)
+        x, y, w, h = ir_to_xywh(instance["bbox"], height, instance.get("angle", 0))
         polygon = flip_polygon(polygons[0], height)
         result["boxes"].append([x, y, x + w, y + h])
         result["contours"].append([[p[0] for p in polygon], [p[1] for p in polygon]])

@@ -102,3 +102,8 @@ of relying on the model card. Supply model provenance through `Metadata`; using
 both `model` and `source` requires the source to be declared on that card.
 See the [coverage review](../../content/formats/coverage.md) for native support,
 alternative routes, and their separate evidence levels.
+
+Mothbot supports both routes: `model="mothbot"` for native detection JSON, or
+`source="ultralytics-obb-results"` for direct OBB Results. Use `context.image`
+to assign an integer image ID for COCO. The converter preserves oriented ISIR
+boxes and polygons and writes COCO envelopes plus polygon segmentation.
