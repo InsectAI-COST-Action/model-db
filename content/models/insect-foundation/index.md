@@ -23,9 +23,9 @@
 
 # ── Identity ──────────────────────────────────────────────────────────────────
 
-title       = "OpenCLIP (ViT-B/16, LAION-2B)"
-description = "A general-purpose image–text model for zero-shot classification and image feature extraction, included as a representative OpenCLIP checkpoint."
-foundation  = true
+title              = "Insect-Foundation (vision backbone)"
+description = "An arthropod-specific foundation model that learns visual features for downstream tasks."
+foundation         = true
 
 # ── Catalogue ─────────────────────────────────────────────────────────────────
 
@@ -33,33 +33,33 @@ category           = "classification"                  # must already exist in d
 task               = ["Classification", "Embedding"]         # Object Detection | Instance Segmentation |
                                                  # Semantic Segmentation | Classification |
                                                  # Tracking | Embedding | Counting
-architecture       = ["CLIP with ViT-B/16 image encoder"]                   # YOLOv8, ViT, Swin Transformer…
+architecture       = ["ViT-B/16"]                 # YOLOv8, ViT, Swin Transformer… One
+                                                 # entry per architecture.
 base_model          = ""                          # If this is a fine-tuned model, name the
                                                  # base model it was fine-tuned from.
-year               = 2023                        # year of publication or release
-license            = "MIT"                       # SPDX identifier where one exists
+year               = 2024                        # year of publication or release
+license            = "Not found"                       # SPDX identifier where one exists
 status             = "published"                     # draft | published | deprecated.
                                                  # Draft is the safe default: only
                                                  # `published` appears on the site.
 
 # Optional. Delete any line you do not have an answer for - the default is in
 # the comment.
-date               = 2026-09-29                  # when this entry was added to the zoo
-vocabulary_scope   = "open"                    # closed | open | taxonomic.
-                                                 # Anything but `closed` is shown as
-                                                 # "zero-shot" - it means the model
-                                                 # handles concepts it was not
-                                                 # trained on.
+date               = 2026-09-30                  # when this entry was added to the zoo
+vocabulary_scope   = "closed"                    # closed | open.
 geographic_scope   = ""                          # e.g. "France", "Global"
-produces           = ["label", "embedding"]                    # bbox | mask | label | count | track | embedding
+# Optional: one verified output profile per architecture; see static/formats/README.md.
+# output_format    = ["ultralytics-detect-json"]
+produces           = ["embedding", "label"]                    # bbox | mask | label | count | track | embedding
 image_input_size         = "224x224"                   # or "any" for native resolution
-input_modality     = ["image", "text"]                          # text | image | box | point | mask.
+input_modality     = ["image"]                          # text | image | box | point | mask.
                                                  # List every input the model
                                                  # accepts, image included. Leave
                                                  # empty for a model that only
                                                  # takes an image.
-developer          = "LAION / OpenCLIP contributors"                   # who made it, not who curated it
-paper_url          = "https://github.com/mlfoundations/open_clip"                          # paper, DOI or project page
+developer          = "University of Arkansas and University at Albany"                   # who made it, not who curated it
+paper_url          = "https://openaccess.thecvf.com/content/CVPR2024/html/Nguyen_Insect-Foundation_A_Foundation_Model_and_Large-scale_1M_Dataset_for_Visual_CVPR_2024_paper.html"
+
 
 # ── Weights ───────────────────────────────────────────────────────────────────
 #
@@ -71,11 +71,9 @@ paper_url          = "https://github.com/mlfoundations/open_clip"               
 # authors host them anyway.
 
 [[assets]]
-key        = "weights"
-provider   = "huggingface"
-url        = "https://huggingface.co/laion/CLIP-ViT-B-16-laion2B-s34B-b88K/tree/7288da5a0d6f0b51c4a2b27c624837a9236d0112"
-filename   = "open_clip_model.safetensors"
-note       = "OpenCLIP ViT-B/16 trained on the LAION-2B English subset."
+key      = "weights"              # the label shown in the sidebar
+provider = "github"          # zenodo | huggingface | github | erda | package | url
+url        = "https://github.com/uark-cviu/InsectFoundationModel/releases/download/v1/vit_base_patch16_pretrained.pth"
 # Optional, and worth adding when you know them:
 # filename   = "model.pt"
 # size_bytes = 6275129
@@ -96,8 +94,8 @@ note       = "OpenCLIP ViT-B/16 trained on the LAION-2B English subset."
 # The site then shows both links: the pinned revision as curated, and the
 # author's current version.
 
-hf_repo     = "laion/CLIP-ViT-B-16-laion2B-s34B-b88K"
-hf_revision = "7288da5a0d6f0b51c4a2b27c624837a9236d0112"
+hf_repo     = ""
+hf_revision = ""
 +++
 
 <!--
@@ -108,55 +106,55 @@ hf_revision = "7288da5a0d6f0b51c4a2b27c624837a9236d0112"
   that do not apply, and add whatever does.
 -->
 
-**Intended use.** Included as a representative general-purpose OpenCLIP image–text model. For insect classification, it can compare images with candidate insect names or descriptions without task-specific training, or provide image embeddings for a classifier trained on labeled insect examples. Its accuracy on the intended taxa and image types requires evaluation.
+**Intended use.** One or two sentences on what this model is for, and the
+situation it was built for. A reader who is scanning five entries should be able
+to tell from this paragraph whether this one is theirs.
 
 ## Architecture and training
 
-This OpenCLIP checkpoint pairs a ViT-B/16 image encoder with a Transformer text encoder. The image encoder divides images into 16 × 16-pixel patches, and both encoders produce 512-dimensional embeddings in a shared image–text space. The model was trained on the approximately two-billion-pair English subset of LAION-5B using contrastive image–text learning.
+The visual backbone is ViT-B/16 and produces 768-dimensional hidden representations.
+
+Training uses Insect-1M, which contains 1,017,036 images covering 34,212
+species. Despite its name, the dataset includes other arthropods as well as insects.
 
 ## Inputs and outputs
 
-Accepts RGB images and text, which can be encoded separately. Images are resized and centre-cropped to 224 × 224 pixels using the checkpoint’s OpenCLIP preprocessing transforms. Text is tokenized with the matching tokenizer.
-
-The model produces 512-dimensional image and text embeddings. For zero-shot classification, image embeddings are compared with text embeddings of candidate labels or descriptions, and the highest-scoring candidate is selected. 
+Model accepts RGB images. Its default evaluation
+pipeline resizes the shorter side to 224 pixels using bicubic interpolation,
+then centre-crops to 224 × 224 pixels. Pixel values are scaled to [0, 1] and normalized using channel means
+(0.485, 0.456, 0.406) and standard deviations (0.229, 0.224, 0.225).
 
 ## Performance
 
-The checkpoint’s model card reports 70.2% zero-shot top-1 accuracy on ImageNet-1K, evaluated using the LAION CLIP Benchmark suite.
-
-This measures general image classification using text prompts, not insect identification. Insect-specific performance is not reported in the checkpoint’s model card.
+The paper reports 75.8% top-1 and 92.1% top-5 accuracy on IP102.
 
 ## Limitations
 
-Zero-shot classification depends on the candidate labels and prompt wording. Training on general web image–text pairs does not establish reliable recognition of fine-grained insect taxa.  
+IP102 results do not establish performance on every insect taxon, geographic
+region, life stage, or imaging setup. 
+
+The pretrained visual backbone is not a complete species-identification
+service. Classification requires a additional suitable trained head. 
+
+The release does not clearly document which reported pretraining variant
+the downloadable checkpoint represents. 
+
+
 ## How to obtain the weights
 
-The weights are publicly available on [Hugging Face](https://huggingface.co/laion/CLIP-ViT-B-16-laion2B-s34B-b88K/tree/7288da5a0d6f0b51c4a2b27c624837a9236d0112).
+[`vit_base_patch16_pretrained.pth`](https://github.com/uark-cviu/InsectFoundationModel/releases/download/v1/vit_base_patch16_pretrained.pth)
+from the authors' GitHub release. 
 
 ## Citation
 
-@software{ilharco2021openclip,
-  title     = {OpenCLIP},
-  author    = {Ilharco, Gabriel and Wortsman, Mitchell and Wightman, Ross and
-               Gordon, Cade and Carlini, Nicholas and Taori, Rohan and
-               Dave, Achal and Shankar, Vaishaal and Namkoong, Hongseok and
-               Miller, John and Hajishirzi, Hannaneh and Farhadi, Ali and
-               Schmidt, Ludwig},
-  year      = {2021},
-  publisher = {Zenodo},
-  doi       = {10.5281/zenodo.5143773},
-  url       = {https://doi.org/10.5281/zenodo.5143773}
-}
-
-@inproceedings{schuhmann2022laion5b,
-  title     = {{LAION-5B}: An Open Large-Scale Dataset for Training Next Generation Image-Text Models},
-  author    = {Schuhmann, Christoph and Beaumont, Romain and Vencu, Richard and
-               Gordon, Cade W and Wightman, Ross and Cherti, Mehdi and
-               Coombes, Theo and Katta, Aarush and Mullis, Clayton and
-               Wortsman, Mitchell and Schramowski, Patrick and
-               Kundurthy, Srivatsa R and Crowson, Katherine and
-               Schmidt, Ludwig and Kaczmarczyk, Robert and Jitsev, Jenia},
-  booktitle = {Thirty-sixth Conference on Neural Information Processing Systems Datasets and Benchmarks Track},
-  year      = {2022},
-  url       = {https://openreview.net/forum?id=M3Y74vmsMcY}
+@InProceedings{Nguyen_2024_CVPR,
+  author    = {Nguyen, Hoang-Quan and Truong, Thanh-Dat and
+               Nguyen, Xuan Bac and Dowling, Ashley and
+               Li, Xin and Luu, Khoa},
+  title     = {Insect-Foundation: A Foundation Model and Large-scale 1M Dataset for Visual Insect Understanding},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  month     = {June},
+  year      = {2024},
+  pages     = {21945--21955},
+  url       = {https://openaccess.thecvf.com/content/CVPR2024/html/Nguyen_Insect-Foundation_A_Foundation_Model_and_Large-scale_1M_Dataset_for_Visual_CVPR_2024_paper.html}
 }
