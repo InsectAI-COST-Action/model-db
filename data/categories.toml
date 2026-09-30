@@ -36,9 +36,9 @@ They typically take as input cropped images of individual specimens.
 """
 open = true
 
-[categories.regression]
-title = "Regression models"
-short = "Regression"
+[categories.trait-quantification]
+title = "Trait quantification models"
+short = "Trait quantification"
 description = """
 Models that give a single continuous variable as the output, for example counting 
 insects in an image, or estimating biomass of a specimen. 
@@ -54,4 +54,4 @@ with a prediction head for downstream tasks such as classification or regression
 These models are not directly applicable to a specific insect task, but are 
 good starting points for building your own models. 
 """
-open = false # closed so that the section is collapsed on the home page.
+open = true # closed so that the section is collapsed on the home page.
