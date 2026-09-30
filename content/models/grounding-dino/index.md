@@ -29,8 +29,8 @@ foundation         = true
 
 # ── Catalogue ─────────────────────────────────────────────────────────────────
 
-category           = "detection" 
-task               = ["Object Detection", "Classification", "Embedding"] 
+purpose            = ["Insect detection", "Model embeddings"]
+task               = ["Object Detection", "Classification", "Embedding"]
 architecture       = ["Swin Transformer"] 
 # base_model         = "DINO"                    # If this is a fine-tuned model, name the
                                               # base model it was fine-tuned from.
