@@ -14,7 +14,7 @@
 order = [
   "detection",
   "classification",
-  "regression",
+  "trait-quantification",
   "embeddings"
 ]
 
