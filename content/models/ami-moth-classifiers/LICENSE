@@ -1,0 +1,41 @@
+SPDX-License-Identifier: AGPL-3.0-only
+
+The weights in this entry are distributed under the GNU Affero General Public
+License, version 3.
+
+Canonical license text:
+  https://www.gnu.org/licenses/agpl-3.0.txt
+
+Upstream source:
+  https://github.com/RolnickLab/ami-data-companion/tree/55d0787570f8c9d92c450f4fb65a58dd25cf6634
+
+
+NOTE
+─────────────────────────────
+
+No separate license is stated for the weights, which are hosted on an object
+store and referenced from ami-data-companion. The license here was set when
+curating this entry in 2026, following the AGPL-3.0 license of the AMI code
+that defines, trains and serves them:
+  https://github.com/RolnickLab/ami-data-companion/blob/55d0787570f8c9d92c450f4fb65a58dd25cf6634/LICENSE
+  https://github.com/RolnickLab/ami-ml/blob/0c2e9816ce7094c026557cba6eaa31d5366abc9d/LICENSE
+
+If the authors publish a license for the weights, that license is
+authoritative.
+
+
+WHAT ATTRIBUTION REQUIRES HERE
+──────────────────────────────
+
+AGPL-3.0 permits use, modification, redistribution and commercial use, under
+strong copyleft conditions:
+
+  - If you distribute the weights or a model derived from them, license the
+    work under AGPL-3.0 and provide its corresponding source.
+  - If you let users interact with the model over a network, for example in a
+    web service or an API, you must offer those users the corresponding source
+    as well.
+  - Keep this license notice and cite the source listed under Citation in the
+    card.
+
+The full license text at the URL above is the operative text.
