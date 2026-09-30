@@ -29,10 +29,8 @@ foundation         = false
 
 # ── Catalogue ─────────────────────────────────────────────────────────────────
 
-category           = "detection"                  # must already exist in data/categories.toml
-task               = ["Classification"]         # Object Detection | Instance Segmentation |
-                                                 # Semantic Segmentation | Classification |
-                                                 # Tracking | Embedding | Counting
+purpose            = ["Insect detection"]
+task               = ["Classification"]
 architecture       = ["MobileNetv2"]                 # YOLOv8, ViT, Swin Transformer… One
                                                  # entry per architecture.
 base_model          = ""                          # If this is a fine-tuned model, name the
