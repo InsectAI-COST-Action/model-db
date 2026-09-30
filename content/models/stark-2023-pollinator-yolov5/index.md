@@ -4,8 +4,8 @@ title              = "Stark et al. (2023)"
 description        = "YOLOv5 and YOLOv7 detectors that locate flower-visiting arthropods in images and sort them into eight groups (spiders, beetles, flies, true bugs, bees and wasps, ants, butterflies and moths, grasshoppers)."
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "detection"
-task               = ["Object Detection"]
+purpose            = ["Insect detection", "Insect classification"]
+task               = ["Object Detection", "Classification"]
 architecture       = ["YOLOv5", "YOLOv7"]
 year               = 2023
 license            = "AGPL-3.0-only"
