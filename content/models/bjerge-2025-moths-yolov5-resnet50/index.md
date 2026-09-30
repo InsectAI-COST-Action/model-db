@@ -4,8 +4,8 @@ title              = "Bjerge et al. (2025)"
 description        = "YOLOv5 model and several ResNet50 classifiers trained to identify moths to species and other broad groups of night-active insects."
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "detection"
-task               = ["Object Detection","Classification"]
+purpose            = ["Insect detection", "Insect classification"]
+task               = ["Object Detection", "Classification"]
 architecture       = ["YOLOv5","ResNet50"]
 base_model         = ""
 year               = 2025
