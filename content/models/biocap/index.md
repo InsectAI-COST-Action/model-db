@@ -105,9 +105,9 @@ hf_revision        = "4e544d1d08781b6afee77bd7c1a85d04bd567d1b"
   that do not apply, and add whatever does.
 -->
 
-**Intended use.** One or two sentences on what this model is for, and the
-situation it was built for. A reader who is scanning five entries should be able
-to tell from this paragraph whether this one is theirs.
+**Intended use.** BioCAP supports zero-shot species classification,
+biological image-text retrieval, and image feature extraction. Its scope includes animals,
+plants, fungi, insects, etc.
 
 ## Architecture and training
 
