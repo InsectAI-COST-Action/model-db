@@ -53,6 +53,10 @@
             "confidence (optional)"
         ],
         "interoperability": "Same text layout as yolov7-detect-txt; cannot reconstruct segmentation masks from these rows.",
-        "numeric_encoding": "Float tokens use %g formatting, which can omit the decimal point for whole-valued coordinates or confidence. Types describe the decoded column meaning, not the presence of a decimal point."
+        "numeric_encoding": "Float tokens use %g formatting, which can omit the decimal point for whole-valued coordinates or confidence. Types describe the decoded column meaning, not the presence of a decimal point.",
+        "adapters": {
+            "import_one": "iai_model_zoo.formats.adapters.yolo_txt:import_one",
+            "import_collection": "iai_model_zoo.formats.adapters.yolo_txt:import_collection"
+        }
     }
 }

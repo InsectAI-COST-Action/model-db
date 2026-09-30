@@ -73,6 +73,9 @@
                 "url": "https://github.com/kimbjerge/MCC24-trap/blob/a817f57915b250d3b4b3f06117d0bade4050d61f/orderAndSpeciesClassifier.py",
                 "revision": "a817f57915b250d3b4b3f06117d0bade4050d61f"
             }
-        ]
+        ],
+        "adapters": {
+            "import_collection": "iai_model_zoo.formats.adapters.mcc24:import_collection"
+        }
     }
 }

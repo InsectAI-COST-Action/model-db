@@ -67,6 +67,11 @@
                 "revision": "7514bee8ace5c9cb859f3566ed3088a7824b692c"
             }
         ],
-        "initial_values": "The detection writer initializes image and shape descriptions, identifier_bot and identifier_human to empty strings. These are initialization defaults, not restrictions on string contents; the schema permits populated values. This does not establish coverage of every later pipeline field or variant."
+        "initial_values": "The detection writer initializes image and shape descriptions, identifier_bot and identifier_human to empty strings. These are initialization defaults, not restrictions on string contents; the schema permits populated values. This does not establish coverage of every later pipeline field or variant.",
+        "adapters": {
+            "import_one": "iai_model_zoo.formats.adapters.mothbot:import_one",
+            "import_collection": "iai_model_zoo.formats.adapters.mothbot:import_collection"
+        },
+        "conversion": "ISIR preserves the oriented center/width/height box with angle in radians, counterclockwise in bottom-left coordinates, plus the four-corner polygon. Native angles and labels/classes remain metadata. COCO exports an axis-aligned envelope bbox and polygon segmentation. No area is inferred."
     }
 }

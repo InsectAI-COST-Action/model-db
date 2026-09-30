@@ -35,6 +35,9 @@
                 "url": "https://huggingface.co/IDEA-Research/grounding-dino-base/blob/12bdfa3120f3e7ec7b434d90674b3396eccf88eb/README.md",
                 "revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb"
             }
-        ]
+        ],
+        "adapters": {
+            "import_collection": "iai_model_zoo.formats.adapters.grounding_dino:import_collection"
+        }
     }
 }

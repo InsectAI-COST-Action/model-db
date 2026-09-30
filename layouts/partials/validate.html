@@ -196,3 +196,12 @@
     {{- warnf "%s: unknown field %q is never read by the site. Known fields: %s" $where $key (delimit (sort $known) ", ") -}}
   {{- end -}}
 {{- end -}}
+
+{{- /* Format descriptors are the catalogue; no second list to maintain. */ -}}
+{{- range $outputFormats -}}
+  {{- if ne . "other" -}}
+    {{- if or (ne . (path.Base .)) (not (fileExists (printf "static/formats/detection/%s.json" .))) -}}
+      {{- errorf "%s: unknown output_format %q; add its descriptor under static/formats/detection." $where . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

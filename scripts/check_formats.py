@@ -14,10 +14,13 @@ DEFAULT_ROOT = ROOT / "static" / "formats"
 
 def validate(document):
     Schema.from_dict(document)
+    from iai_model_zoo.registry import validate_bindings
+    validate_bindings(document)
 
 
 def check_file(path):
-    Schema.load(path)
+    import json
+    validate(json.loads(path.read_text()))
 
 
 def main():

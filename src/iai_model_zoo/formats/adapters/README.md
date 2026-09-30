@@ -211,8 +211,7 @@ restored = flatbug.from_ir(ir, scale=1.0, confidence=0.5)
 Fallbacks fill only missing values. These numbers must be a deliberate caller
 choice, not a claim about the source inference. Missing contours/areas require
 an explicit derivation before export. Multipart polygons and opaque COCO RLE
-cannot be implicitly collapsed into one Flatbug contour. Nonzero box angles
-are rejected by both adapters.
+cannot be implicitly collapsed into one Flatbug contour. Nonzero box angles are exported as axis-aligned envelopes by both adapters.
 
 ## COCO
 
@@ -270,6 +269,19 @@ Optional `annotation_ids` maps `(IR image ID, IR instance ID)` pairs to globally
 unique COCO integer IDs. This is necessary if several imported images reuse
 instance IDs. Category IDs are not renumbered or assigned guessed class names;
 edit the IR category IDs explicitly when changing vocabularies.
+
+### Class-agnostic COCO export
+
+Missing `category_id` values default to a generic `object` category on export.
+An existing category named `object` is reused; otherwise an unused positive ID
+is chosen. The category is added only when needed. This is serialization metadata,
+not a classification prediction or a change to the ISIR input.
+
+`coco.from_ir(batch, fallback_category={"id": 9, "name": "object"})` customizes
+the category; `fallback_category=None` disables the default. The same option is
+available through `Converter.convert(..., export_options={...})`. Existing IDs
+and scores remain untouched; unknown existing IDs still fail validation.
+Conflicting explicit category definitions are rejected.
 
 ## Populating metadata
 
@@ -338,3 +350,44 @@ columns and native metadata retention. A controlled compatibility check with
 pinned Ultralytics 8.4.90 exercises actual Results objects and JSON export for
 tracked, untracked and empty inputs in both coordinate modes; this is not a new
 checkpoint inference run.
+
+## Grounding DINO and MCC24 imports
+
+The pinned HF grounded postprocessor returns a list of image results. Use
+`source="grounding-dino-hf-results"`, `cardinality="collection"`, ordered
+`ConversionContext(images=[...])`, and `import_options={"normalized": False}`
+for pixel coordinates (or `True` for normalized coordinates). Boxes, scores and
+phrases must have equal lengths. Phrases are retained as metadata; COCO export
+uses the generic object category. Custom Grounding DINO postprocessors require
+separate matching contracts.
+
+Use `source="mcc24-csv"`, `cardinality="collection"` and an image manifest keyed
+by exact CSV `fileName` values for MCC24. Detection percentage confidence is
+converted to 0–1. Detector/classifier IDs and order/species scores stay in native
+metadata. Malformed CSV, invalid boxes and duplicate detection keys are rejected.
+`include_empty=True` is available only when the caller knows missing rows mean a
+completed image with no detections.
+
+Both additions are tested with source-contract fixtures, not new inference runs.
+See the [native/alternative coverage review](../../../../content/formats/coverage.md).
+
+## Mothbot native JSON and direct OBB Results
+
+Use `model="mothbot"` (or `source="mothbot-detection-json"`) for the author
+JSON writer's detection-stage output. For direct Ultralytics OBB prediction,
+use `source="ultralytics-obb-results"` instead. Both support one image or a
+collection; optional image contexts supply explicit IDs. Collection contexts
+may be ordered or keyed by exact source path.
+
+Both importers preserve an oriented ISIR `bbox` and `angle` plus its polygon.
+Angles are radians counterclockwise in ISIR's bottom-left coordinates. Native
+angle fields and labels/classes remain namespaced metadata. No classification
+is required. COCO writes the rotated box's axis-aligned envelope and the original
+polygon as segmentation; returning from COCO retains polygon geometry but does
+not automatically reconstruct the original rotated box parameters.
+
+An ISIR box with an angle but no polygon can also export to COCO: its corners
+are computed from the oriented box. Native polygon areas are not invented.
+Existing supplied contours remain authoritative for segmentation.
+
+See [the real-checkpoint evidence](../../../probe/reports/2026-09-30-mothbot-conversion/README.md).

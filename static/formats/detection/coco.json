@@ -85,6 +85,10 @@
                 "url": "https://github.com/cocodataset/cocoapi/blob/master/PythonAPI/pycocotools/mask.py"
             }
         ],
-        "metadata": "Dataset info/licenses and image license/URL/date metadata may be absent. The retained Flatbug 1.2.0 COCO probe contains an empty year and date_captured=0; these placeholders are preserved, not invented timestamps."
+        "metadata": "Dataset info/licenses and image license/URL/date metadata may be absent. The retained Flatbug 1.2.0 COCO probe contains an empty year and date_captured=0; these placeholders are preserved, not invented timestamps.",
+        "adapters": {
+            "import_collection": "iai_model_zoo.formats.adapters.coco:import_collection",
+            "export_collection": "iai_model_zoo.formats.adapters.coco:export_collection"
+        }
     }
 }

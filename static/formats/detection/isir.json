@@ -54,7 +54,7 @@
     },
     "notes": {
         "bbox": "We use xywh: center coordinates and width/height - not normalized. Coordinate system has origin (0,0) at bottom-left, and top-right is (width, height).",
-        "angle": "Angle in radians.",
+        "angle": "Rotation in radians, counterclockwise from the positive x-axis in the bottom-left coordinate system. bbox width follows the rotated x-axis and height its perpendicular; the center is unchanged. Omitted angle means zero. Equivalent width/height swaps with a quarter-turn describe the same box.",
         "uuid": "We use UUIDv4, see: https://datatracker.ietf.org/doc/html/rfc9562.html#section-5.4",
         "ISO": "We use ISO 8601 (YYYY-MM-DDTHH:mm:ss.sssZ), see: https://www.iso.org/iso-8601-date-and-time-format.html",
         "crs": "We suggest using EPSG codes, either specified as an integer or 'EPSG:XXXX'. Proj string can also be used.",

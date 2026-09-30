@@ -1,0 +1,26 @@
+{
+  "weights_sha256": "aa7e881e532d49be305d275766cd73fda0d75a8853d7bf822fc2c8a1e873e44a",
+  "image_sha256": "0646bc669e2f9c0d2f86d502bf0caec50732b63c9ad8819c389f86a0c1750627",
+  "ultralytics": "8.4.90",
+  "torch": "2.5.1+cpu",
+  "settings": {
+    "device": "cpu",
+    "imgsz": 1600,
+    "max_det": 10000,
+    "conf": 0.25,
+    "iou": 0.7
+  },
+  "results": [
+    {
+      "image": "specimen",
+      "detections": 15,
+      "seconds": 1.7834387000038987
+    },
+    {
+      "image": "blank",
+      "detections": 0,
+      "seconds": 0.7790054860088276
+    }
+  ],
+  "scope": "Direct OBB inference and conversion; excludes author writer, thumbnails, classification and UI; not an accuracy benchmark."
+}

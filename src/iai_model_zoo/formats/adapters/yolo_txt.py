@@ -62,3 +62,16 @@ def to_ir_many(inputs, *, images, profile, save_conf, tracking=False,
         data, image=ctx, profile=profile, save_conf=save_conf,
         tracking=tracking, save_format=save_format,
     ), include_empty=include_empty)
+
+
+# Uniform conversion interface; direct APIs above remain supported.
+
+def import_one(data, *, context, options, source):
+    from ..conversion import ConversionBatch, invoke
+    result = invoke(to_ir, data, options, image=context.image, profile=source)
+    return ConversionBatch([result])
+
+def import_collection(data, *, context, options, source):
+    from ..conversion import ConversionBatch, invoke
+    result = invoke(to_ir_many, data, options, images=context.images, profile=source)
+    return ConversionBatch(result)

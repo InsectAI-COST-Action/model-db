@@ -1,0 +1,16 @@
+{
+  "orig_shape": [
+    640,
+    640
+  ],
+  "path": "image0.jpg",
+  "names": {
+    "0": "creature"
+  },
+  "obb": {
+    "xyxyxyxy": [],
+    "conf": [],
+    "cls": [],
+    "data": []
+  }
+}

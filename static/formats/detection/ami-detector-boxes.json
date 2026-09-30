@@ -29,6 +29,10 @@
                 "url": "https://github.com/RolnickLab/ami-data-companion/blob/55d0787570f8c9d92c450f4fb65a58dd25cf6634/trapdata/ml/models/base.py",
                 "revision": "55d0787570f8c9d92c450f4fb65a58dd25cf6634"
             }
-        ]
+        ],
+        "adapters": {
+            "import_one": "iai_model_zoo.formats.adapters.ami:import_one",
+            "import_collection": "iai_model_zoo.formats.adapters.ami:import_collection"
+        }
     }
 }

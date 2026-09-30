@@ -117,3 +117,19 @@ The isolated [probe project](src/probe/README.md) runs author prediction workflo
 with pinned weights and source files in separate uv environments. See the
 [probe results](src/probe/reports/2026-09-30/README.md) for observed formats and
 unresolved cases.
+
+
+## Convert predictions to COCO
+
+Use the [conversion API and abstract predictor example](examples/conversion/README.md)
+to convert existing predictions in one call. Your application handles model
+loading and inference; the converter selects adapters from the database.
+
+Run the saved-output example without downloading a model:
+
+```bash
+uv run --locked --project src/probe python examples/conversion/pipeline.py
+```
+
+For discovery and diagnostics, [Registry](src/iai_model_zoo/registry/README.md)
+inspects available conversion paths without executing them.

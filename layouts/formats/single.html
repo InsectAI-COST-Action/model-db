@@ -1,0 +1,45 @@
+{{ define "main" }}
+<article class="page">
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+  {{ with .Params.format_slug }}
+    {{ $slug := . }}
+    {{ $example := index hugo.Data.format_examples $slug }}
+    {{ $schema := transform.Unmarshal (readFile (printf "static/formats/detection/%s.json" $slug)) }}
+    <p><a href="{{ "formats/" | relURL }}">All format examples</a> · <a href="{{ printf "formats/detection/%s.json" $slug | relURL }}">Machine-readable schema</a> · <a href="{{ "formats/single-image/" | relURL }}">Convert outputs to COCO</a></p>
+    <p>{{ $example.summary }}</p>
+    <h2>Example</h2>
+    <p>{{ $example.provenance | default "Illustrative values, not predictions from a model. Unless stated otherwise, the image is 200 pixels wide and 100 pixels high." }}</p>
+    {{ if eq $example.representation "projection" }}<p><strong>Readable projection:</strong> arrays and objects below illustrate the contents. The author returns Python objects/tensors or files, rather than this JSON document.</p>{{ end }}
+    {{ highlight $example.display $example.language "" }}
+    <h2>Convert to a standard format</h2>
+    {{ $bindings := $schema.notes.adapters | default dict }}
+    {{ if or (isset $bindings "import_one") (isset $bindings "import_collection") (eq $slug "isir") }}
+    <p>Use <code>Converter.convert</code> with <code>source="{{ $slug }}"</code> and <code>target="coco"</code>. Your application supplies the predictions and any required image context or producer settings. The adapter validates whether the output contains the information the target needs.</p>
+    {{ if and (isset $bindings "import_collection") (not (isset $bindings "import_one")) }}<p>This importer accepts multiple images: set <code>cardinality="collection"</code>.</p>{{ end }}
+    {{ else }}
+    <p>This format is documented, but a conversion adapter is not yet registered.</p>
+    {{ end }}
+    <p><a href="{{ "formats/single-image/" | relURL }}">General conversion example and required context</a></p>
+    {{ with $example.conversion_command }}
+    <details>
+    <summary>Inspect the intermediate representation for this example</summary>
+    <p>This developer example prints ISIR, the internal representation used between adapters. Run from the repository checkout; no model download is needed.</p>
+    {{ highlight . "bash" "" }}
+    </details>
+    {{ end }}
+    <h2>How to interpret it</h2>
+    {{ range slice "scope" "coordinates" "bbox" "boxes" "box_columns" "columns" "contours" "confidence" "classes" "tracking" "empty" "metadata" "identity" "timestamp" "measurements" "mask" "masks" "representation" }}
+      {{ $key := . }}
+      {{ with index $schema.notes $key }}
+        <p><strong>{{ humanize $key }}:</strong> {{ if reflect.IsSlice . }}{{ delimit . ", " }}{{ else }}{{ . }}{{ end }}</p>
+      {{ end }}
+    {{ end }}
+    {{ with $schema.notes.evidence }}<h2>Evidence</h2><p>{{ . }}</p>{{ end }}
+    {{ with $schema.notes.sources }}
+    <h2>Source definitions</h2>
+    <ul>{{ range . }}<li><a href="{{ .url }}">Author source{{ with .revision }} ({{ substr . 0 7 }}){{ end }}</a></li>{{ end }}</ul>
+    {{ end }}
+  {{ end }}
+</article>
+{{ end }}
