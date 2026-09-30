@@ -14,15 +14,15 @@ stops and says which field and what to write instead.
 cp -r template content/models/my-model
 ```
 
-Name the folder in kebab-case (lowercase with hyphens). 
+Name the folder in kebab-case (lowercase with hyphens).
 A model with a name of its own uses it, for example
 `flatbug`, `arthronat`. A model known only as "the one from that paper" uses
 `<firstauthor>-<year>-<descriptor>`, such as `marin-2025-pollinator-yolov5`.
 
 ## 2. Edit `content/models/my-model/index.md`
 
-That one file is the whole entry to be compiled. The fields at the top are 
-what the catalogue table, the filters and the sidebar are built from. The 
+That one file is the whole entry to be compiled. The fields at the top are
+what the catalogue table, the filters and the sidebar are built from. The
 prose below them is the model card proper.
 
 Every field has a comment beside it explaining what it wants. Some additional
@@ -32,12 +32,12 @@ guidelines:
   half-finished entry is invisible until it is set to `published`.
 - **`category` must already exist** in `data/categories.toml`. If your model
   needs a category the zoo does not have, add it there first, then build.
-- **`task` lists operations only.** A model may do several (e.g., both 
+- **`task` lists operations only.** A model may do several (e.g., both
   detection and segmentation)so write `task = ["Object Detection", "Instance Segmentation"]`.
 - **`produces` must agree with `task`.** Declaring a `mask` output without a
   segmentation task is wrong.
 
-Weights are never committed here. Point `url` at Zenodo, ERDA, Hugging Face or any other 
+Weights are never committed here. Point `url` at Zenodo, ERDA, Hugging Face or any other
 downloadable location.
 
 ## 3. Look at it
@@ -70,6 +70,30 @@ current version, so a reader who wants the latest can still get it.
 
 You still write a local card. Keep it short if the upstream one is good, but
 say what a *reader of this zoo* needs, particularly limitations and license.
+
+## Recording the training data
+
+List every dataset the released weights were trained or
+fine-tuned on, one entry per dataset, as a DOI where one exists:
+
+```toml
+training_data = ["10.5281/zenodo.14761446"]
+```
+
+- **Cite what the authors cite.** Take the DOI from the paper's data
+  statement, the authors' README or the dataset record.
+- **Images that cannot be redistributed.** Some datasets, often scraped from
+  GBIF or iNaturalist, are published only as an image list and scripts to
+  rebuild them. Link the folder that holds the list, pinned to a commit rather
+  than a branch, for the same reason as `hf_revision`. If the images came from
+  a GBIF download, its DOI goes first.
+- **No citation.** Write exactly `"unpublished"` when the authors used data
+  they have not released, or `"unknown"` when the sources do not say what the
+  data was. Either may sit next to DOIs when only part of the data is
+  published, e.g. `["10.5281/zenodo.14761446", "unpublished"]`.
+- **`pretraining_data`** is optional and takes the same rules: what the base
+  weights were pre-trained on before this model's own training, such as
+  ImageNet for a fine-tuned classifier or COCO for a fine-tuned YOLO.
 
 ## Writing the card
 

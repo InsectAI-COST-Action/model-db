@@ -38,6 +38,7 @@ output_format      = ["grounding-dino-hf-results"]
 year               = 2023 
 license            = "Apache-2.0" 
 status             = "published" 
+training_data      = ["Objects365", "GoldG", "COCO", "OpenImages", "ODinW-35", "RefCOCO", "unpublished"]
 
 # Optional. Delete any line you do not have an answer for - the default is in
 # the comment.

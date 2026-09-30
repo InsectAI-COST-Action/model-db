@@ -11,6 +11,7 @@ base_model         = "Ultralytics yolov8{n,s,m,l}-seg; yolo26m-seg for M v2"
 year               = 2026
 license            = "MIT"
 status             = "published"
+training_data      = ["10.5281/zenodo.14761446"]
 date               = 2026-09-21
 
 # Optional - delete a line to take the default shown.

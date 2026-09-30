@@ -280,6 +280,11 @@ table.models tbody th a:hover { text-decoration: underline; }
 .meta-list dt:first-child { margin-top: 0; }
 .meta-list dd { margin: .05rem 0 0; text-transform: capitalize; }
 .meta-list dd.no-cap { text-transform: none; }
+/* Dataset entries, one per line. A long URL breaks anywhere rather than
+   pushing out of the box. */
+.dataset-list { list-style: none; padding: 0; margin: 0; }
+.dataset-list li { overflow-wrap: anywhere; }
+.dataset-list li + li { margin-top: .15rem; }
 
 .btn {
   display: inline-block; margin-top: .7rem;

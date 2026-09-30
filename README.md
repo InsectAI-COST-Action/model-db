@@ -103,7 +103,7 @@ biologist to know what NMS is in order to say nothing to anyone. They are gone;
 whatever is genuinely useful about them belongs in the card's prose, where it
 can be written as a sentence.
 
-What is left is roughly twenty fields. Eight are required. Everything else has a
+What is left is roughly thirty fields. Eleven are required. Everything else has a
 default, so a contributor who does not know the answer can delete the line.
 
 ## Prediction output formats

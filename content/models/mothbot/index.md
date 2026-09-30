@@ -12,6 +12,7 @@ base_model         = ""
 year               = 2026
 license            = "AGPL-3.0-only"
 status             = "published"
+training_data      = ["unpublished"]
 date               = 2026-09-30
 
 # Optional - delete a line to take the default shown.
