@@ -1,0 +1,22 @@
+Creating new Ultralytics Settings v0.0.6 file ✅ 
+View Ultralytics Settings with 'yolo settings' or at '/home/asger/model-db/src/probe/runs/20260930T095348-3ceb4d14/pollinator/config/settings.json'
+Update Settings with 'yolo settings key=value', i.e. 'yolo settings runs_dir=path/to/dir'. For help see https://docs.ultralytics.com/quickstart/#ultralytics-settings.
+YOLOv5 🚀 2026-9-30 Python-3.11.15 torch-2.5.1+cpu CPU
+
+Fusing layers... 
+Model summary: 212 layers, 20852934 parameters, 0 gradients, 47.9 GFLOPs
+Adding AutoShape... 
+/home/asger/model-db/src/probe/runs/20260930T095348-3ceb4d14/pollinator/source/yolov5-17c500461d7b14a24133d91bc6437af62914074c/models/common.py:869: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+/home/asger/model-db/src/probe/runs/20260930T095348-3ceb4d14/pollinator/source/yolov5-17c500461d7b14a24133d91bc6437af62914074c/models/common.py:869: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+Model loaded from /home/asger/model-db/src/probe/.cache/9b62c544b5dc31122d93db8ea9363aa4012a1b7636e57de740fa6ae6a2cc600e/pollinator.pt
+Video: fixture.avi
+FPS: 2.0
+Processing every 1 frames (0.5 seconds)
+Saving detected objects to: /home/asger/model-db/src/probe/runs/20260930T095348-3ceb4d14/pollinator/artifacts/predictions/fixture_20260930_095417/with_object
+Saving frames without objects to: /home/asger/model-db/src/probe/runs/20260930T095348-3ceb4d14/pollinator/artifacts/predictions/fixture_20260930_095417/without_object
+Processed 2 frames out of 2 total frames
+Detected objects in 0 frames
+Images with objects saved to: /home/asger/model-db/src/probe/runs/20260930T095348-3ceb4d14/pollinator/artifacts/predictions/fixture_20260930_095417/with_object
+Images without objects saved to: /home/asger/model-db/src/probe/runs/20260930T095348-3ceb4d14/pollinator/artifacts/predictions/fixture_20260930_095417/without_object

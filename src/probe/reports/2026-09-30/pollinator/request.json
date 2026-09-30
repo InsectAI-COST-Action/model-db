@@ -1,0 +1,26 @@
+{
+  "id": "pollinator",
+  "model": "marin-2025-pollinator-yolov5",
+  "variant": "YOLOv5m",
+  "environment": "legacy",
+  "adapter": "pollinator",
+  "entrypoint": "YOLOv5_POLLINATOR_detect_and_save_with_and_without_object.py",
+  "scope": "Full author video script on a two-frame generated video; torch.hub dependency redirected to pinned local source without changing inference.",
+  "author_sources": [
+    "https://github.com/aranchalana/POLLINATOR/blob/ecbafff8fd03efaa299f8d07eb121b9ccd05c6dd/YOLOv5_POLLINATOR_detect_and_save_with_and_without_object.py"
+  ],
+  "resources": {
+    "weights": "pollinator",
+    "source": "yolov5-source",
+    "author_script": "pollinator-script",
+    "image": "bumblebee-image"
+  },
+  "coverage_note": "Current fixtures exercised without_object only; with_object annotations are supported by source inspection, not observed in this run.",
+  "paths": {
+    "weights": "/home/asger/model-db/src/probe/.cache/9b62c544b5dc31122d93db8ea9363aa4012a1b7636e57de740fa6ae6a2cc600e/pollinator.pt",
+    "source": "/home/asger/model-db/src/probe/runs/20260930T095348-3ceb4d14/pollinator/source/yolov5-17c500461d7b14a24133d91bc6437af62914074c",
+    "author_script": "/home/asger/model-db/src/probe/.cache/9f7e430df01a6a5ad07b9aaec18f81190ea5ee0c1c055c31d3fc7fee09db6a9e/author_predict.py",
+    "image": "/home/asger/model-db/src/probe/.cache/77d805dbfdbe50168bc19f404906df7a7eb3214dc7b8fefe0a8d14632e773e14/image.jpg"
+  },
+  "output": "/home/asger/model-db/src/probe/runs/20260930T095348-3ceb4d14/pollinator/artifacts"
+}

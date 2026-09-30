@@ -1,0 +1,21 @@
+{
+  "id": "flatbug-M_v2",
+  "model": "flatbug",
+  "variant": "M_v2",
+  "environment": "flatbug",
+  "adapter": "flatbug",
+  "entrypoint": "fb_predict",
+  "scope": "Released flat-bug 1.2.0 CLI defaults, explicit checkpoint and CPU; one representative for each architecture.",
+  "author_sources": [
+    "https://pypi.org/project/flat-bug/1.2.0/"
+  ],
+  "resources": {
+    "weights": "flatbug-M_v2",
+    "image": "flatbug-image"
+  },
+  "paths": {
+    "weights": "/home/asger/model-db/src/probe/.cache/d3239bf0c367938f90dd21e92c4fb8bb47e28288678c5130c33f708714c8e50d/flat_bug_M_v2.pt",
+    "image": "/home/asger/model-db/src/probe/.cache/0646bc669e2f9c0d2f86d502bf0caec50732b63c9ad8819c389f86a0c1750627/image.jpg"
+  },
+  "output": "/home/asger/model-db/src/probe/runs/20260930T093543-93472e72/flatbug-M_v2/artifacts"
+}

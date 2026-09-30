@@ -1,0 +1,255 @@
+{
+  "schema_version": 1,
+  "probe": "flatbug-M_v2",
+  "model": "flatbug",
+  "variant": "M_v2",
+  "capability": "output_format",
+  "author_sources": [
+    "https://pypi.org/project/flat-bug/1.2.0/"
+  ],
+  "status": "observed",
+  "scope": "Released flat-bug 1.2.0 CLI defaults, explicit checkpoint and CPU; one representative for each architecture.",
+  "started_at": "2026-09-30T07:36:58Z",
+  "resources": {
+    "weights": {
+      "url": "https://anon.erda.au.dk/share_redirect/Bb0CR1FHG6/models/flat_bug_M_v2.pt",
+      "sha256": "d3239bf0c367938f90dd21e92c4fb8bb47e28288678c5130c33f708714c8e50d"
+    },
+    "image": {
+      "url": "https://raw.githubusercontent.com/darsa-group/flat-bug/8d40cf4e1742221253c9f524ece2411ee4d15a1e/src/flat_bug/tests/assets/ALUS_Non-miteArachnids_Unknown_2020_11_03_4545.jpg",
+      "sha256": "0646bc669e2f9c0d2f86d502bf0caec50732b63c9ad8819c389f86a0c1750627"
+    }
+  },
+  "environment_lock_sha256": "436c750e5fa6979b397ab2304f581b4da7a042a3bd7bc8f02b34f58bceb37742",
+  "command": [
+    "uv",
+    "run",
+    "--locked",
+    "--project",
+    "/home/asger/model-db/src/probe/environments/flatbug",
+    "python",
+    "/home/asger/model-db/src/probe/probe/worker.py",
+    "/home/asger/model-db/src/probe/runs/20260930T093543-93472e72/flatbug-M_v2/request.json"
+  ],
+  "exit_code": 0,
+  "observation": {
+    "inference": "real checkpoint, CPU",
+    "packages": {
+      "pyaml": "26.7.0",
+      "pyparsing": "3.3.3",
+      "cycler": "0.12.1",
+      "pillow": "12.3.0",
+      "contourpy": "1.3.3",
+      "six": "1.17.0",
+      "fonttools": "4.66.1",
+      "joblib": "1.6.0",
+      "urllib3": "2.8.0",
+      "mpmath": "1.3.0",
+      "certifi": "2026.7.22",
+      "filelock": "4.0.7",
+      "torch": "2.11.0+cpu",
+      "typing_extensions": "4.16.0",
+      "threadpoolctl": "3.7.0",
+      "ultralytics-thop": "2.2.1",
+      "MarkupSafe": "3.0.3",
+      "python-dateutil": "2.9.0.post0",
+      "nvidia-ml-py": "13.615.71",
+      "flat-bug": "1.2.0",
+      "narwhals": "2.26.0",
+      "charset-normalizer": "3.5.2",
+      "scikit-optimize": "0.10.2",
+      "shapely": "2.1.2",
+      "PyYAML": "6.0.3",
+      "psutil": "7.2.2",
+      "polars": "1.44.2",
+      "fsspec": "2026.9.0",
+      "opencv-python": "4.10.0.84",
+      "sympy": "1.14.0",
+      "scipy": "1.17.1",
+      "Jinja2": "3.1.6",
+      "kiwisolver": "1.5.1",
+      "numpy": "1.26.4",
+      "tqdm": "4.70.1",
+      "packaging": "26.3",
+      "polars-runtime-32": "1.44.2",
+      "cloudpickle": "3.1.2",
+      "scikit-learn": "1.9.1",
+      "requests": "2.34.2",
+      "torchvision": "0.26.0+cpu",
+      "setuptools": "81.0.0",
+      "idna": "3.20",
+      "networkx": "3.6.1",
+      "matplotlib": "3.11.2",
+      "ultralytics": "8.4.90"
+    },
+    "entrypoint": "fb_predict",
+    "settings": {},
+    "author_command": [
+      "fb_predict",
+      "-i",
+      "/home/asger/model-db/src/probe/runs/20260930T093543-93472e72/flatbug-M_v2/artifacts/inputs",
+      "-o",
+      "/home/asger/model-db/src/probe/runs/20260930T093543-93472e72/flatbug-M_v2/artifacts/predictions",
+      "-w",
+      "/home/asger/model-db/src/probe/.cache/d3239bf0c367938f90dd21e92c4fb8bb47e28288678c5130c33f708714c8e50d/flat_bug_M_v2.pt",
+      "-g",
+      "cpu"
+    ],
+    "representation": "flatbug",
+    "files": [
+      {
+        "file": "predictions/blank/metadata_blank_UUID_f53eef5a-b409-405a-aa60-db826f0d4ae5.json",
+        "keys": [
+          "areas",
+          "boxes",
+          "classes",
+          "confs",
+          "contours",
+          "identifier",
+          "image_height",
+          "image_path",
+          "image_width",
+          "mask_height",
+          "mask_width",
+          "scales"
+        ],
+        "instances": 0,
+        "contour_shape": null
+      },
+      {
+        "file": "predictions/coco_instances.json",
+        "keys": [
+          "annotations",
+          "categories",
+          "images",
+          "info",
+          "licenses"
+        ],
+        "instances": null,
+        "contour_shape": null
+      },
+      {
+        "file": "predictions/specimen/metadata_specimen_UUID_f53eef5a-b409-405a-aa60-db826f0d4ae5.json",
+        "keys": [
+          "areas",
+          "boxes",
+          "classes",
+          "confs",
+          "contours",
+          "identifier",
+          "image_height",
+          "image_path",
+          "image_width",
+          "mask_height",
+          "mask_width",
+          "scales"
+        ],
+        "instances": 11,
+        "contour_shape": [
+          2,
+          108
+        ]
+      }
+    ],
+    "note": "Default author CLI emits per-image JSON plus compiled COCO and visual/crop artifacts."
+  },
+  "artifacts": [
+    {
+      "path": "artifacts/inputs/blank.png",
+      "sha256": "f3e746bb7e1e1b98acc711541b505fda3ec33a16f6f3264a673bf0cb5647f44a",
+      "bytes": 3039
+    },
+    {
+      "path": "artifacts/inputs/specimen.jpg",
+      "sha256": "0646bc669e2f9c0d2f86d502bf0caec50732b63c9ad8819c389f86a0c1750627",
+      "bytes": 441177
+    },
+    {
+      "path": "artifacts/observed.json",
+      "sha256": "0de5584f30c979bf141cf9c31ccda637703d742050042ad41abfec463a111b19",
+      "bytes": 3070
+    },
+    {
+      "path": "artifacts/predictions/blank/metadata_blank_UUID_f53eef5a-b409-405a-aa60-db826f0d4ae5.json",
+      "sha256": "3108d3acca522f6e507679ab675694987a8f14f22c954dcbd18e2387eec9a288",
+      "bytes": 338
+    },
+    {
+      "path": "artifacts/predictions/blank/overview_blank_UUID_f53eef5a-b409-405a-aa60-db826f0d4ae5.jpg",
+      "sha256": "e41bb6197ab75d9aa7e503aed1c8e1e9f3a647848ed479fb3f6a58912158494f",
+      "bytes": 7027
+    },
+    {
+      "path": "artifacts/predictions/coco_instances.json",
+      "sha256": "ddaa1cf83e5bb959ac0375e47d958f72a5a41aa8bb4048f47a8e1a0f641a391c",
+      "bytes": 28097
+    },
+    {
+      "path": "artifacts/predictions/specimen/crops/crop_specimen_CROPNUMBER_0_UUID_f53eef5a-b409-405a-aa60-db826f0d4ae5.png",
+      "sha256": "ddc25095dd1ce98bc2af93993956719cf39d54d49eebaf83835d8f6ddcb0d530",
+      "bytes": 99331
+    },
+    {
+      "path": "artifacts/predictions/specimen/crops/crop_specimen_CROPNUMBER_10_UUID_f53eef5a-b409-405a-aa60-db826f0d4ae5.png",
+      "sha256": "84f039f016662f416f726dba88df7204de10af5e384cc4417f8bb97de9770fa5",
+      "bytes": 30759
+    },
+    {
+      "path": "artifacts/predictions/specimen/crops/crop_specimen_CROPNUMBER_1_UUID_f53eef5a-b409-405a-aa60-db826f0d4ae5.png",
+      "sha256": "9fd77299cb3570bc4ff60aef49939cef9f1101e371aabbb2cb6c536c6d60784f",
+      "bytes": 519038
+    },
+    {
+      "path": "artifacts/predictions/specimen/crops/crop_specimen_CROPNUMBER_2_UUID_f53eef5a-b409-405a-aa60-db826f0d4ae5.png",
+      "sha256": "c32c87d15c2ae3968a5e811559c2ea71666dc8ab47cf8a420bcb8c32fe2e486c",
+      "bytes": 88648
+    },
+    {
+      "path": "artifacts/predictions/specimen/crops/crop_specimen_CROPNUMBER_3_UUID_f53eef5a-b409-405a-aa60-db826f0d4ae5.png",
+      "sha256": "d327718454a99f95432a42158173e61907df696fd5c9a7dbcbd2da5f96dc0ae7",
+      "bytes": 135287
+    },
+    {
+      "path": "artifacts/predictions/specimen/crops/crop_specimen_CROPNUMBER_4_UUID_f53eef5a-b409-405a-aa60-db826f0d4ae5.png",
+      "sha256": "048cb8309e5429b5bfe26f2dd67e3b1d2ec5907ecd37523b7daa9c6123db1b24",
+      "bytes": 189083
+    },
+    {
+      "path": "artifacts/predictions/specimen/crops/crop_specimen_CROPNUMBER_5_UUID_f53eef5a-b409-405a-aa60-db826f0d4ae5.png",
+      "sha256": "d8fed92376a2c76f4255eab9c0f548603b7bc43b7284e6a223652112f910ac95",
+      "bytes": 432096
+    },
+    {
+      "path": "artifacts/predictions/specimen/crops/crop_specimen_CROPNUMBER_6_UUID_f53eef5a-b409-405a-aa60-db826f0d4ae5.png",
+      "sha256": "3f484f60d9bfdc144b003fe86ea4ad7cb2d7f8c24ea284132d021baa5356be1d",
+      "bytes": 8353
+    },
+    {
+      "path": "artifacts/predictions/specimen/crops/crop_specimen_CROPNUMBER_7_UUID_f53eef5a-b409-405a-aa60-db826f0d4ae5.png",
+      "sha256": "68e6d3f60932a1a6cead43c132aa801c6f35c6928c2fd183622f61ab67a356a4",
+      "bytes": 6817
+    },
+    {
+      "path": "artifacts/predictions/specimen/crops/crop_specimen_CROPNUMBER_8_UUID_f53eef5a-b409-405a-aa60-db826f0d4ae5.png",
+      "sha256": "8c9a3c2dc6ecb14c8824d89e6f3d68135be6dc2d217cb01f79cf84f51680c890",
+      "bytes": 125502
+    },
+    {
+      "path": "artifacts/predictions/specimen/crops/crop_specimen_CROPNUMBER_9_UUID_f53eef5a-b409-405a-aa60-db826f0d4ae5.png",
+      "sha256": "04342d13f0a227213ee00d697e514a4030051cbd181a01f68635a22fd2485e16",
+      "bytes": 134513
+    },
+    {
+      "path": "artifacts/predictions/specimen/metadata_specimen_UUID_f53eef5a-b409-405a-aa60-db826f0d4ae5.json",
+      "sha256": "bd48ce038d5ce92d54e53226cadcad5c8484618787138b12eb1d905e42ac98e0",
+      "bytes": 82166
+    },
+    {
+      "path": "artifacts/predictions/specimen/overview_specimen_UUID_f53eef5a-b409-405a-aa60-db826f0d4ae5.jpg",
+      "sha256": "463da8da9ab4b0684aab844a830985ddd53f9cea7799a332e0c0887b29b4150f",
+      "bytes": 657051
+    }
+  ],
+  "finished_at": "2026-09-30T07:38:01Z",
+  "run_directory": "runs/20260930T093543-93472e72/flatbug-M_v2"
+}

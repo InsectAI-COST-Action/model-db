@@ -15,6 +15,7 @@
         <th scope="col">Input size</th>
         <th scope="col">Year</th>
         <th scope="col">License</th>
+        <th scope="col">Output Format</th>
       </tr>
     </thead>
     <tbody>
@@ -48,6 +49,20 @@
         <td>{{ $p.image_input_size | default "any" }}</td>
         <td>{{ $p.year }}</td>
         <td><span class="lic">{{ $p.license }}</span></td>
+        <td>
+          {{- if $p.output_format }}
+          {{- $formats := $p.output_format }}
+          {{- $uniqueFormats := uniq $formats }}
+          {{- if eq (len $uniqueFormats) 1 }}
+            {{- $formats = $uniqueFormats }}
+          {{- end }}
+          {{- range $formats }}
+          <span class="lic"><a href="{{ printf "formats/%s/%s.json" $p.category . | relURL }}">{{ . }}</a></span>
+          {{- end }}
+          {{- else -}}
+            <div class="center muted">—</div>
+          {{- end -}}
+        </td>
       </tr>
     {{- end }}
     </tbody>

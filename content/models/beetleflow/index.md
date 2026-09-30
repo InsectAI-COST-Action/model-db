@@ -18,6 +18,7 @@ date               = 2026-09-29
 vocabulary_scope   = "closed"
 geographic_scope   = "USA (NEON sites)"
 produces           = ["mask"]
+output_format      = ["beetleflow-color-mask", "beetleflow-color-mask"]
 image_input_size   = "512x512"
 input_modality     = ["image"]
 taxonomic_coverage = "Carabidae (NEON pitfall-trap ground beetles)"
@@ -157,3 +158,10 @@ Open on Hugging Face, no gate. Links above are pinned to commit `521d768`. Each 
 
 The authors also ask that the
 [sentinel-beetles dataset](https://doi.org/10.57967/hf/8716) be cited.
+
+## Output format probe
+
+The author batch_inference.py script was run with the 5-class checkpoint and an author test image. It saved an RGB palette mask and an additive overlay at the original 301 × 154 resolution. The 9-class checkpoint was not tested. The script increments output filenames per folder, so multiple same-extension images in a folder overwrite each other.
+
+Probe date: 2026-09-30. Reproducible setup and evidence are in
+[src/probe](https://github.com/InsectAI-COST-Action/model-db/tree/main/src/probe).

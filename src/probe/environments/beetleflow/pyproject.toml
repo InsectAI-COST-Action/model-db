@@ -1,0 +1,24 @@
+[project]
+name = "model-db-probe-beetleflow"
+version = "0.1.0"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+  "transformers==4.46.3",
+  "numpy==1.26.4",
+  "opencv-python==4.10.0.84",
+  "torch==2.5.1",
+  "torchvision==0.20.1",
+  "scipy==1.15.2",
+]
+
+[tool.uv]
+package = false
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+torchvision = { index = "pytorch-cpu" }

@@ -105,3 +105,15 @@ can be written as a sentence.
 
 What is left is roughly twenty fields. Eight are required. Everything else has a
 default, so a contributor who does not know the answer can delete the line.
+
+## Prediction output formats
+
+See [the output format catalog](static/formats/README.md) for source-pinned YOLO
+detection and segmentation representations and their interoperability limits.
+
+## Testing author prediction outputs
+
+The isolated [probe project](src/probe/README.md) runs author prediction workflows
+with pinned weights and source files in separate uv environments. See the
+[probe results](src/probe/reports/2026-09-30/README.md) for observed formats and
+unresolved cases.

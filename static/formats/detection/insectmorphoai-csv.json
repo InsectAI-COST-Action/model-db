@@ -1,0 +1,103 @@
+{
+    "id": "insectmorphoai-csv",
+    "serialization": "text/csv with header",
+    "producer": "utils/ultimate_headless.py",
+    "sources": [
+        {
+            "url": "https://gitlab.kit.edu/kit/iai/ber/insectmorphoAI/-/blob/b95bd0543f37e43548bb358522e1354953f4ab28/utils/ultimate_headless.py",
+            "revision": "b95bd0543f37e43548bb358522e1354953f4ab28"
+        }
+    ],
+    "types": {},
+    "structure": {
+        "detailed_analysis_results_final.csv": {
+            "header": [
+                "x_head",
+                "y_head",
+                "x_thorax",
+                "y_thorax",
+                "x_abdomen",
+                "y_abdomen",
+                "total_volume",
+                "volume_head",
+                "volume_thorax",
+                "volume_abdomen",
+                "total_length",
+                "length_head",
+                "length_thorax",
+                "length_abdomen",
+                "wet_mass_from_volume_seg",
+                "wet_mass_from_length_seg",
+                "dry_mass_from_volume_seg",
+                "dry_mass_from_length_seg",
+                "file_name",
+                "image_path",
+                "camera_name",
+                "lens_name",
+                "conversion_factor_mm_per_px",
+                "note"
+            ],
+            "example_row": [
+                "2616.708100676819",
+                "1475.0185631697686",
+                "1995.786213956366",
+                "1295.8696128986285",
+                "1151.480909974351",
+                "1578.6672412419748",
+                "1.105",
+                "0.197",
+                "0.465",
+                "0.443",
+                "7.51",
+                "1.309",
+                "2.549",
+                "3.445",
+                "0.00111",
+                "0.018745",
+                "0.000222",
+                "0.003716",
+                "CAS001_CAS0000020_stacked_01_H.png",
+                "CAS001_CAS0000020_stacked_01_H.png",
+                "ArducamCamera",
+                "MV65051B",
+                "0.00315455",
+                ""
+            ]
+        },
+        "rapid_scan_results_final.csv": {
+            "header": [
+                "file_name",
+                "width_px",
+                "height_px",
+                "width_mm",
+                "height_mm",
+                "camera_name",
+                "lens_name",
+                "conversion_factor_mm_per_px",
+                "wet_mass_from_length_obb",
+                "dry_mass_from_length_obb",
+                "image_path"
+            ],
+            "example_row": [
+                "CAS001_CAS0000020_stacked_01_H.png",
+                "1011.9797593624828",
+                "2257.582671337076",
+                "3.1923407498969203",
+                "7.121657415866373",
+                "ArducamCamera",
+                "MV65051B",
+                "0.00315455",
+                "0.015056",
+                "0.003095",
+                "CAS001_CAS0000020_stacked_01_H.png"
+            ]
+        }
+    },
+    "notes": {
+        "scope": "Default headless both analysis modes with default camera/lens and biomass configuration. Output is derived measurements, not YOLO box or mask serialization.",
+        "units": "Rapid Scan exposes explicit pixel and mm columns. Detailed Analysis emits centroids and calibrated length/volume measurements. Their physical meaning depends on the selected lens conversion factor.",
+        "configuration": "Mass estimates use data/config/biomass.yaml at the pinned revision; do not substitute equations from the paper.",
+        "missing": "Optional analysis settings and failures may change available values. Empty CSV cells occur, including the note field. Final CSVs concatenate timestamped batch files.",
+        "paths": "image_path records the input path. Example rows below abbreviate that path for portability."
+    }
+}

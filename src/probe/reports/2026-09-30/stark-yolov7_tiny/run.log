@@ -1,0 +1,17 @@
+YOLOR 🚀 afb0fef torch 2.5.1+cpu CPU
+
+/home/asger/model-db/src/probe/runs/20260930T095348-3ceb4d14/stark-yolov7_tiny/source/yolov7-a207844b1ce82d204ab36d87d496728d3d2348e7/models/experimental.py:252: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ckpt = torch.load(w, map_location=map_location)  # load
+/home/asger/model-db/src/probe/environments/legacy/.venv/lib/python3.11/site-packages/torch/functional.py:534: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3595.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+Model Summary: 200 layers, 6025525 parameters, 0 gradients, 13.1 GFLOPS
+Namespace(weights=['/home/asger/model-db/src/probe/.cache/9478b5de6fce2ae12b2bcf231093798e814325ae1119755a70d9c2baf7cc843a/yolov7_tiny.pt'], source='/home/asger/model-db/src/probe/runs/20260930T095348-3ceb4d14/stark-yolov7_tiny/artifacts/inputs', img_size=640, conf_thres=0.1, iou_thres=0.3, device='cpu', view_img=False, save_txt=True, save_conf=True, nosave=True, classes=None, agnostic_nms=False, augment=False, update=False, project='/home/asger/model-db/src/probe/runs/20260930T095348-3ceb4d14/stark-yolov7_tiny/artifacts/predictions', name='result', exist_ok=False, no_trace=False)
+Fusing layers... 
+ Convert model to Traced-model... 
+ traced_script_module saved! 
+ model is traced! 
+
+Done. (366.7ms) Inference, (0.8ms) NMS
+Done. (182.5ms) Inference, (0.2ms) NMS
+2 Araneaes, 1 Diptera, 9 Hemipteras, 1 Hymenoptera_Formicidae, Done. (349.9ms) Inference, (3.5ms) NMS
+Done. (1.007s)

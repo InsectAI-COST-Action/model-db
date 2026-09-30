@@ -1,0 +1,33 @@
+{
+  "id": "stark-yolov5_s",
+  "model": "stark-2023-pollinator-yolov5",
+  "variant": "yolov5_s",
+  "environment": "legacy",
+  "adapter": "legacy-txt",
+  "entrypoint": "detect.py --save-txt --save-conf --nosave",
+  "format": "yolov5-detect-txt",
+  "scope": "Author-documented detector CLI with real study checkpoint; excludes downstream evaluation conversions.",
+  "author_sources": [
+    "https://github.com/stark-t/PAI/blob/d277ee402d605aa96795ad2751f3a7b3b4cdd6c7/detectors/README.md"
+  ],
+  "settings": {
+    "confidence": 0.3,
+    "iou": 0.6,
+    "device": "cpu",
+    "img_size": 640,
+    "note": "Author-recommended Stark settings; smartphone accepts these as CLI parameters."
+  },
+  "resources": {
+    "weights": "yolov5_s",
+    "source": "yolov5-source",
+    "image": "bumblebee-image",
+    "image_extra": "flatbug-image"
+  },
+  "paths": {
+    "weights": "/home/asger/model-db/src/probe/.cache/9da90c43e48e4a33d9a439f5ea7d1e38ed8375414353d9ffee7fd2a61bf2997a/yolov5_s.pt",
+    "source": "/home/asger/model-db/src/probe/runs/20260930T094203-63c73e61/stark-yolov5_s/source/yolov5-17c500461d7b14a24133d91bc6437af62914074c",
+    "image": "/home/asger/model-db/src/probe/.cache/77d805dbfdbe50168bc19f404906df7a7eb3214dc7b8fefe0a8d14632e773e14/image.jpg",
+    "image_extra": "/home/asger/model-db/src/probe/.cache/0646bc669e2f9c0d2f86d502bf0caec50732b63c9ad8819c389f86a0c1750627/image.jpg"
+  },
+  "output": "/home/asger/model-db/src/probe/runs/20260930T094203-63c73e61/stark-yolov5_s/artifacts"
+}

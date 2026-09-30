@@ -1,0 +1,27 @@
+Using CPython 3.11.15
+Creating virtual environment at: /home/asger/model-db/src/probe/environments/beetleflow/.venv
+Downloading hf-xet (4.3MiB)
+Downloading tokenizers (2.9MiB)
+Downloading transformers (9.6MiB)
+ Downloaded tokenizers
+ Downloaded hf-xet
+ Downloaded transformers
+Installed 28 packages in 258ms
+--- Running Batch Inference ---
+Namespace(model='/home/asger/model-db/src/probe/runs/20260930T094756-b7acece8/beetleflow/artifacts/model', input_dir='/home/asger/model-db/src/probe/runs/20260930T094756-b7acece8/beetleflow/artifacts/batch', output_dir='/home/asger/model-db/src/probe/runs/20260930T094756-b7acece8/beetleflow/artifacts/predictions', device='cpu')
+
+Model loaded successfully and running on cpu.
+Found 1 'single_beetles' folders to process.
+
+Processing Folders:   0%|          | 0/1 [00:00<?, ?it/s]
+
+Images in fixture:   0%|          | 0/1 [00:00<?, ?it/s][Alibpng warning: iCCP: known incorrect sRGB profile
+
+
+Images in fixture: 100%|██████████| 1/1 [00:19<00:00, 19.27s/it][A
+
+                                                                [A
+Processing Folders: 100%|██████████| 1/1 [00:19<00:00, 19.27s/it]
+Processing Folders: 100%|██████████| 1/1 [00:19<00:00, 19.27s/it]
+
+--- Batch inference finished. ---

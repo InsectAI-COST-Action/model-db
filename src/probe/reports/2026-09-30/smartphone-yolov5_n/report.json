@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "probe": "smartphone-yolov5_n",
+  "model": "smartphone-insect-detect",
+  "variant": "yolov5_n",
+  "capability": "output_format",
+  "author_sources": [
+    "https://github.com/valentinitnelav/smartphone-insect-detect/blob/7d1ab1e249ca8f9a84466c037a9e7fd4670c8873/code/detect.sh"
+  ],
+  "status": "observed",
+  "scope": "Author-documented detector CLI with real study checkpoint; excludes downstream evaluation conversions.",
+  "started_at": "2026-09-30T07:37:49Z",
+  "resources": {
+    "weights": {
+      "url": "https://raw.githubusercontent.com/stark-t/PAI/d277ee402d605aa96795ad2751f3a7b3b4cdd6c7/detectors/trained_weights/yolov5_n_best.pt",
+      "sha256": "4752ab81e3cdac5d50e9cee6a7df27751872c4790c07d9ff09c74856ff5d0d8f"
+    },
+    "source": {
+      "url": "https://codeload.github.com/ultralytics/yolov5/zip/17c500461d7b14a24133d91bc6437af62914074c",
+      "sha256": "e9c6d045620c67b0d28fec5a167cb8c8a6cb2c9cb8606960e9675f7154ef189f"
+    },
+    "image": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/BumblebeeSedum.jpg",
+      "sha256": "77d805dbfdbe50168bc19f404906df7a7eb3214dc7b8fefe0a8d14632e773e14"
+    }
+  },
+  "environment_lock_sha256": "b6252748b8c0626f940803ab494b2f0dfe719059d70fb54d9763adee8402800e",
+  "command": [
+    "uv",
+    "run",
+    "--locked",
+    "--project",
+    "/home/asger/model-db/src/probe/environments/legacy",
+    "python",
+    "/home/asger/model-db/src/probe/probe/worker.py",
+    "/home/asger/model-db/src/probe/runs/20260930T093731-6b1843c4/smartphone-yolov5_n/request.json"
+  ],
+  "exit_code": 0,
+  "observation": {
+    "inference": "real checkpoint, CPU",
+    "packages": {
+      "packaging": "24.2",
+      "pyparsing": "3.3.3",
+      "pillow": "11.1.0",
+      "cycler": "0.12.1",
+      "contourpy": "1.3.3",
+      "six": "1.17.0",
+      "ultralytics": "8.3.0",
+      "fonttools": "4.66.1",
+      "tqdm": "4.67.1",
+      "urllib3": "2.8.0",
+      "mpmath": "1.3.0",
+      "requests": "2.32.3",
+      "seaborn": "0.13.2",
+      "PyYAML": "6.0.2",
+      "certifi": "2026.7.22",
+      "filelock": "4.0.7",
+      "typing_extensions": "4.16.0",
+      "sympy": "1.13.1",
+      "setuptools": "75.8.2",
+      "ultralytics-thop": "2.2.1",
+      "gitdb": "4.0.12",
+      "py-cpuinfo": "9.0.0",
+      "smmap": "5.0.3",
+      "MarkupSafe": "3.0.3",
+      "tzdata": "2026.4",
+      "python-dateutil": "2.9.0.post0",
+      "pandas": "2.2.3",
+      "GitPython": "3.1.44",
+      "psutil": "7.0.0",
+      "charset-normalizer": "3.5.2",
+      "fsspec": "2026.9.0",
+      "thop": "0.1.1-2209072238",
+      "opencv-python": "4.10.0.84",
+      "Jinja2": "3.1.6",
+      "scipy": "1.15.2",
+      "kiwisolver": "1.5.1",
+      "numpy": "1.26.4",
+      "torch": "2.5.1+cpu",
+      "pytz": "2026.4",
+      "torchvision": "0.20.1+cpu",
+      "idna": "3.20",
+      "networkx": "3.6.1",
+      "matplotlib": "3.9.4"
+    },
+    "entrypoint": "detect.py --save-txt --save-conf --nosave",
+    "settings": {
+      "confidence": 0.2,
+      "iou": 0.5,
+      "device": "cpu",
+      "img_size": 640,
+      "note": "Author-recommended Stark settings; smartphone accepts these as CLI parameters."
+    },
+    "author_command": [
+      "/home/asger/model-db/src/probe/runs/20260930T093731-6b1843c4/smartphone-yolov5_n/source/yolov5-17c500461d7b14a24133d91bc6437af62914074c/detect.py",
+      "--weights",
+      "/home/asger/model-db/src/probe/.cache/4752ab81e3cdac5d50e9cee6a7df27751872c4790c07d9ff09c74856ff5d0d8f/yolov5_n.pt",
+      "--source",
+      "/home/asger/model-db/src/probe/runs/20260930T093731-6b1843c4/smartphone-yolov5_n/artifacts/inputs",
+      "--img-size",
+      "640",
+      "--device",
+      "cpu",
+      "--conf-thres",
+      "0.2",
+      "--iou-thres",
+      "0.5",
+      "--save-txt",
+      "--save-conf",
+      "--nosave",
+      "--project",
+      "/home/asger/model-db/src/probe/runs/20260930T093731-6b1843c4/smartphone-yolov5_n/artifacts/predictions",
+      "--name",
+      "result",
+      "--max-det",
+      "300"
+    ],
+    "representation": "yolov5-detect-txt",
+    "files": [
+      {
+        "file": "predictions/result/labels/specimen.txt",
+        "rows": 1,
+        "sample": [
+          [
+            6.0,
+            0.951204,
+            0.492157,
+            0.0888403,
+            0.156078,
+            0.285145
+          ]
+        ]
+      }
+    ],
+    "columns": [
+      "class",
+      "center_x",
+      "center_y",
+      "width",
+      "height",
+      "confidence"
+    ]
+  },
+  "artifacts": [
+    {
+      "path": "artifacts/inputs/blank.png",
+      "sha256": "f3e746bb7e1e1b98acc711541b505fda3ec33a16f6f3264a673bf0cb5647f44a",
+      "bytes": 3039
+    },
+    {
+      "path": "artifacts/inputs/specimen.jpg",
+      "sha256": "77d805dbfdbe50168bc19f404906df7a7eb3214dc7b8fefe0a8d14632e773e14",
+      "bytes": 1109187
+    },
+    {
+      "path": "artifacts/observed.json",
+      "sha256": "53dc7060db8ec593985b4dba592f0cd6445a482dfb9ba4c648856e4294913109",
+      "bytes": 2674
+    },
+    {
+      "path": "artifacts/predictions/result/labels/specimen.txt",
+      "sha256": "ecd57ae2156409c8c87d7f128c9f2f31e4cbd60384eb728790f1f0d947310d43",
+      "bytes": 48
+    }
+  ],
+  "finished_at": "2026-09-30T07:37:55Z",
+  "run_directory": "runs/20260930T093731-6b1843c4/smartphone-yolov5_n"
+}

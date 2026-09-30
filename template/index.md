@@ -48,6 +48,8 @@ status             = "draft"                     # draft | published | deprecate
 date               = 2026-09-22                  # when this entry was added to the zoo
 vocabulary_scope   = "closed"                    # closed | open.
 geographic_scope   = ""                          # e.g. "France", "Global"
+# Optional: one verified output profile per architecture; see static/formats/README.md.
+# output_format    = ["ultralytics-detect-json"]
 produces           = ["bbox"]                    # bbox | mask | label | count | track | embedding
 image_input_size         = "640x640"                   # or "any" for native resolution
 input_modality     = []                          # text | image | box | point | mask.

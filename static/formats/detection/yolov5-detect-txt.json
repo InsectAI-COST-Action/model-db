@@ -1,0 +1,67 @@
+{
+    "id": "yolov5-detect-txt",
+    "serialization": "text/plain",
+    "types": {
+        "row": [
+            "T[int]",
+            "T[float]",
+            "T[float]",
+            "T[float]",
+            "T[float]",
+            "? : T[float]"
+        ]
+    },
+    "structure": [
+        "T[row]"
+    ],
+    "columns": [
+        "class",
+        "x_center",
+        "y_center",
+        "width",
+        "height",
+        "confidence (only with save_conf)"
+    ],
+    "coordinates": "Box center and size, divided by original image width/height respectively.",
+    "notes": {
+        "encoding": "Space-separated numeric values formatted with %g; one instance per line, trailing newline. This JSON file describes the text layout; the producer does not emit JSON.",
+        "classes": "Zero-based model class index. Class meanings require the producing model class-name mapping, which is not embedded.",
+        "confidence": "Last column is present only when save_conf is enabled; disabled by default.",
+        "files": "Appends to the output text file. No write when no detections exist; an existing file is not cleared.",
+        "metadata": "No image dimensions, image path or class names in each row. Keep source-image association externally.",
+        "rounding": "Original-image corner coordinates are rounded before conversion to the normalized text representation.",
+        "order": "Detection rows are traversed in reverse order."
+    },
+    "example": "0 0.5 0.5 0.25 0.5 0.9\n",
+    "example_options": {
+        "save_conf": true
+    },
+    "models": [
+        "yolov5"
+    ],
+    "producer": "detect.py --save-txt",
+    "sources": [
+        {
+            "url": "https://github.com/ultralytics/yolov5/blob/402e17ddf820996f51a191cbb798376e1144f069/detect.py",
+            "revision": "402e17ddf820996f51a191cbb798376e1144f069"
+        }
+    ],
+    "emitted": [
+        "bbox",
+        "class",
+        "confidence (optional)"
+    ],
+    "variants": {
+        "save_format=1": {
+            "columns": [
+                "class",
+                "x1",
+                "y1",
+                "x2",
+                "y2",
+                "confidence (only with save_conf)"
+            ],
+            "coordinates": "Opposite box corners divided by original image width/height. Despite the CLI help calling this Pascal-VOC, the implementation normalizes the coordinates."
+        }
+    }
+}

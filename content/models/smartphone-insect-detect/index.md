@@ -20,6 +20,7 @@ date               = 2025-03-29
 vocabulary_scope   = "closed"
 geographic_scope   = "Germany (evaluation: Leipzig and Halle; training images: global citizen science)"
 produces           = ["bbox", "label"]
+output_format      = ["yolov5-detect-txt", "yolov5-detect-txt", "yolov7-detect-txt"]
 image_input_size   = "640x640"
 taxonomic_coverage = "8 arthropod groups: Araneae, Coleoptera, Diptera, Hemiptera, Hymenoptera, Hymenoptera (Formicidae), Lepidoptera, Orthoptera"
 developer          = "Ștefan et al."
@@ -218,3 +219,10 @@ To reproduce the study's optimized setup, run YOLOv5's `detect.py` with `--img-s
 --conf-thres 0.202 --iou-thres 0.3` (the study rounded from the grid-search optimum 0.201918). The
 evaluation pipeline in the repository takes it from there: COCO conversion, `pycocotools` scoring and
 the analysis scripts.
+
+## Output format probe
+
+The detector stage documented in code/detect.sh was probed with all three study checkpoints, saving six-column YOLO text including confidence. The repository separately converts these files to COCO for evaluation; that downstream conversion was not run.
+
+Probe date: 2026-09-30. Reproducible setup and evidence are in
+[src/probe](https://github.com/InsectAI-COST-Action/model-db/tree/main/src/probe).

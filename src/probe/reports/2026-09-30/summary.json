@@ -1,0 +1,221 @@
+[
+  {
+    "probe": "stark-yolov5_n",
+    "model": "stark-2023-pollinator-yolov5",
+    "status": "observed",
+    "representation": "yolov5-detect-txt",
+    "scope": "Author-documented detector CLI with real study checkpoint; excludes downstream evaluation conversions.",
+    "report": "reports/2026-09-30/stark-yolov5_n/report.json",
+    "reason": null,
+    "coverage_note": null,
+    "samples": [
+      "reports/2026-09-30/stark-yolov5_n/samples/predictions/result/labels/specimen.txt"
+    ],
+    "historical_pairing_unconfirmed": false
+  },
+  {
+    "probe": "stark-yolov5_s",
+    "model": "stark-2023-pollinator-yolov5",
+    "status": "observed",
+    "representation": "yolov5-detect-txt",
+    "scope": "Author-documented detector CLI with real study checkpoint; excludes downstream evaluation conversions.",
+    "report": "reports/2026-09-30/stark-yolov5_s/report.json",
+    "reason": null,
+    "coverage_note": null,
+    "samples": [
+      "reports/2026-09-30/stark-yolov5_s/samples/predictions/result/labels/specimen_extra.txt"
+    ],
+    "historical_pairing_unconfirmed": false
+  },
+  {
+    "probe": "stark-yolov7_tiny",
+    "model": "stark-2023-pollinator-yolov5",
+    "status": "observed",
+    "representation": "yolov7-detect-txt",
+    "scope": "Author-documented detector CLI with real study checkpoint; excludes downstream evaluation conversions.",
+    "report": "reports/2026-09-30/stark-yolov7_tiny/report.json",
+    "reason": null,
+    "coverage_note": null,
+    "samples": [
+      "reports/2026-09-30/stark-yolov7_tiny/samples/predictions/result/labels/specimen_extra.txt"
+    ],
+    "historical_pairing_unconfirmed": false
+  },
+  {
+    "probe": "smartphone-yolov5_n",
+    "model": "smartphone-insect-detect",
+    "status": "observed",
+    "representation": "yolov5-detect-txt",
+    "scope": "Author-documented detector CLI with real study checkpoint; excludes downstream evaluation conversions.",
+    "report": "reports/2026-09-30/smartphone-yolov5_n/report.json",
+    "reason": null,
+    "coverage_note": null,
+    "samples": [
+      "reports/2026-09-30/smartphone-yolov5_n/samples/predictions/result/labels/specimen.txt"
+    ],
+    "historical_pairing_unconfirmed": false
+  },
+  {
+    "probe": "smartphone-yolov5_s",
+    "model": "smartphone-insect-detect",
+    "status": "observed",
+    "representation": "yolov5-detect-txt",
+    "scope": "Author-documented detector CLI with real study checkpoint; excludes downstream evaluation conversions.",
+    "report": "reports/2026-09-30/smartphone-yolov5_s/report.json",
+    "reason": null,
+    "coverage_note": null,
+    "samples": [
+      "reports/2026-09-30/smartphone-yolov5_s/samples/predictions/result/labels/specimen_extra.txt"
+    ],
+    "historical_pairing_unconfirmed": false
+  },
+  {
+    "probe": "smartphone-yolov7_tiny",
+    "model": "smartphone-insect-detect",
+    "status": "observed",
+    "representation": "yolov7-detect-txt",
+    "scope": "Author-documented detector CLI with real study checkpoint; excludes downstream evaluation conversions.",
+    "report": "reports/2026-09-30/smartphone-yolov7_tiny/report.json",
+    "reason": null,
+    "coverage_note": null,
+    "samples": [
+      "reports/2026-09-30/smartphone-yolov7_tiny/samples/predictions/result/labels/specimen_extra.txt"
+    ],
+    "historical_pairing_unconfirmed": false
+  },
+  {
+    "probe": "arthronat",
+    "model": "arthronat",
+    "status": "observed",
+    "representation": "ultralytics-detect-results",
+    "scope": "Author-documented Ultralytics Python interface, one representative published variant.",
+    "report": "reports/2026-09-30/arthronat/report.json",
+    "reason": null,
+    "coverage_note": null,
+    "samples": [],
+    "historical_pairing_unconfirmed": false
+  },
+  {
+    "probe": "pollinator",
+    "model": "marin-2025-pollinator-yolov5",
+    "status": "observed",
+    "representation": "pollinator-frame-folders",
+    "scope": "Full author video script on a two-frame generated video; torch.hub dependency redirected to pinned local source without changing inference.",
+    "report": "reports/2026-09-30/pollinator/report.json",
+    "reason": null,
+    "coverage_note": "Current fixtures exercised without_object only; with_object annotations are supported by source inspection, not observed in this run.",
+    "samples": [],
+    "historical_pairing_unconfirmed": false
+  },
+  {
+    "probe": "flatbug-N",
+    "model": "flatbug",
+    "status": "observed",
+    "representation": "flatbug",
+    "scope": "Released flat-bug 1.2.0 CLI defaults, explicit checkpoint and CPU; one representative for each architecture.",
+    "report": "reports/2026-09-30/flatbug-N/report.json",
+    "reason": null,
+    "coverage_note": null,
+    "samples": [
+      "reports/2026-09-30/flatbug-N/samples/predictions/coco_instances.json",
+      "reports/2026-09-30/flatbug-N/samples/predictions/blank/metadata_blank_UUID_2b4af4ef-54dc-459f-8f84-df57b8fc8241.json",
+      "reports/2026-09-30/flatbug-N/samples/predictions/specimen/metadata_specimen_UUID_2b4af4ef-54dc-459f-8f84-df57b8fc8241.json"
+    ],
+    "historical_pairing_unconfirmed": false
+  },
+  {
+    "probe": "flatbug-M_v2",
+    "model": "flatbug",
+    "status": "observed",
+    "representation": "flatbug",
+    "scope": "Released flat-bug 1.2.0 CLI defaults, explicit checkpoint and CPU; one representative for each architecture.",
+    "report": "reports/2026-09-30/flatbug-M_v2/report.json",
+    "reason": null,
+    "coverage_note": null,
+    "samples": [
+      "reports/2026-09-30/flatbug-M_v2/samples/predictions/coco_instances.json",
+      "reports/2026-09-30/flatbug-M_v2/samples/predictions/blank/metadata_blank_UUID_f53eef5a-b409-405a-aa60-db826f0d4ae5.json",
+      "reports/2026-09-30/flatbug-M_v2/samples/predictions/specimen/metadata_specimen_UUID_f53eef5a-b409-405a-aa60-db826f0d4ae5.json"
+    ],
+    "historical_pairing_unconfirmed": false
+  },
+  {
+    "probe": "bjerge",
+    "model": "bjerge-2023-pollinator-yolov5",
+    "status": "observed",
+    "representation": "insectsflowers-csv",
+    "scope": "User-supplied author CSV exporter with the registry Zenodo checkpoint; repository describes a later study, so historical pairing is not established.",
+    "report": "reports/2026-09-30/bjerge/report.json",
+    "reason": null,
+    "coverage_note": null,
+    "samples": [],
+    "historical_pairing_unconfirmed": true
+  },
+  {
+    "probe": "insectdct",
+    "model": "insectDCT",
+    "status": "observed",
+    "representation": "insectdct-csv",
+    "scope": "Full author detector/classifier pipeline on all 35 supplied consecutive sample frames, CPU, movie saving disabled.",
+    "report": "reports/2026-09-30/insectdct/report.json",
+    "reason": null,
+    "coverage_note": null,
+    "samples": [
+      "reports/2026-09-30/insectdct/samples/predictions/sequence-HI.csv",
+      "reports/2026-09-30/insectdct/samples/predictions/pipeDetectAndClassifyInsectsTaxon.txt",
+      "reports/2026-09-30/insectdct/samples/predictions/sequence-CL.csv"
+    ],
+    "historical_pairing_unconfirmed": false
+  },
+  {
+    "probe": "beetleflow",
+    "model": "beetleflow",
+    "status": "observed",
+    "representation": "beetleflow-color-mask",
+    "scope": "Author batch segmentation CLI, 5-class checkpoint and author test image; original resolution outputs.",
+    "report": "reports/2026-09-30/beetleflow/report.json",
+    "reason": null,
+    "coverage_note": null,
+    "samples": [],
+    "historical_pairing_unconfirmed": false
+  },
+  {
+    "probe": "insectmorphoai",
+    "model": "insectmorphoai",
+    "status": "observed",
+    "representation": "insectmorphoai-csv",
+    "scope": "Author headless CLI, both analyses, supplied test specimens and default lens calibration; no accuracy claim.",
+    "report": "reports/2026-09-30/insectmorphoai/report.json",
+    "reason": null,
+    "coverage_note": null,
+    "samples": [
+      "reports/2026-09-30/insectmorphoai/samples/predictions/Detailed_Analysis/detailed_analysis_results_final.csv",
+      "reports/2026-09-30/insectmorphoai/samples/predictions/Rapid_Scan/rapid_scan_results_final.csv"
+    ],
+    "historical_pairing_unconfirmed": false
+  },
+  {
+    "probe": "moths",
+    "model": "bjerge-2025-moths-yolov5-resnet50",
+    "status": "failed",
+    "representation": null,
+    "scope": "Author detector and order/species classifier CLI. Author source downloads species classifier on first use.",
+    "report": "reports/2026-09-30/moths/report.json",
+    "reason": "Worker failed; see run.log. No format assignment is justified.",
+    "coverage_note": null,
+    "samples": [],
+    "historical_pairing_unconfirmed": false
+  },
+  {
+    "probe": "insect-detect-platform",
+    "model": "insect-detect-platform",
+    "status": "blocked",
+    "representation": null,
+    "scope": "Author DepthAI camera-trap deployment",
+    "report": "reports/2026-09-30/insect-detect-platform/report.json",
+    "reason": "Requires a Luxonis OAK device and camera input. Host USB enumeration found only Linux root hubs; no OAK device is attached. No substitute framework output is advertised.",
+    "coverage_note": null,
+    "samples": [],
+    "historical_pairing_unconfirmed": false
+  }
+]

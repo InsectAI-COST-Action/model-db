@@ -1,0 +1,434 @@
+{
+  "yolov5-source": {
+    "url": "https://codeload.github.com/ultralytics/yolov5/zip/17c500461d7b14a24133d91bc6437af62914074c",
+    "filename": "source.zip",
+    "archive": true,
+    "sha256": "e9c6d045620c67b0d28fec5a167cb8c8a6cb2c9cb8606960e9675f7154ef189f",
+    "bytes": 1100939
+  },
+  "yolov7-source": {
+    "url": "https://codeload.github.com/WongKinYiu/yolov7/zip/a207844b1ce82d204ab36d87d496728d3d2348e7",
+    "filename": "source.zip",
+    "archive": true,
+    "sha256": "0cd33a78bdecab65dbf2686b5db8f6c2d70439c78ff91773907e1899ca00e38e",
+    "bytes": 41479852
+  },
+  "field-image": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_31.jpg",
+    "filename": "image.jpg",
+    "archive": false,
+    "sha256": "2aa6ac5d73dc4a574fe7a6c125e81265e41eff78285a608bc90c833c96f9a032",
+    "bytes": 451986
+  },
+  "flatbug-image": {
+    "url": "https://raw.githubusercontent.com/darsa-group/flat-bug/8d40cf4e1742221253c9f524ece2411ee4d15a1e/src/flat_bug/tests/assets/ALUS_Non-miteArachnids_Unknown_2020_11_03_4545.jpg",
+    "filename": "image.jpg",
+    "archive": false,
+    "sha256": "0646bc669e2f9c0d2f86d502bf0caec50732b63c9ad8819c389f86a0c1750627",
+    "bytes": 441177
+  },
+  "yolov5_n": {
+    "url": "https://raw.githubusercontent.com/stark-t/PAI/d277ee402d605aa96795ad2751f3a7b3b4cdd6c7/detectors/trained_weights/yolov5_n_best.pt",
+    "filename": "yolov5_n.pt",
+    "archive": false,
+    "sha256": "4752ab81e3cdac5d50e9cee6a7df27751872c4790c07d9ff09c74856ff5d0d8f",
+    "bytes": 3844469
+  },
+  "yolov5_s": {
+    "url": "https://raw.githubusercontent.com/stark-t/PAI/d277ee402d605aa96795ad2751f3a7b3b4cdd6c7/detectors/trained_weights/yolov5_s_best.pt",
+    "filename": "yolov5_s.pt",
+    "archive": false,
+    "sha256": "9da90c43e48e4a33d9a439f5ea7d1e38ed8375414353d9ffee7fd2a61bf2997a",
+    "bytes": 14397237
+  },
+  "yolov7_tiny": {
+    "url": "https://raw.githubusercontent.com/stark-t/PAI/d277ee402d605aa96795ad2751f3a7b3b4cdd6c7/detectors/trained_weights/yolov7_tiny_best.pt",
+    "filename": "yolov7_tiny.pt",
+    "archive": false,
+    "sha256": "9478b5de6fce2ae12b2bcf231093798e814325ae1119755a70d9c2baf7cc843a",
+    "bytes": 12290003
+  },
+  "arthronat": {
+    "url": "https://huggingface.co/edgaremy/arthropod-detector/resolve/54edf7364582e9efda68c04edfd672cfe109fb4a/yolo11n_ArthroNat_mosaic33.pt",
+    "filename": "arthronat.pt",
+    "archive": false,
+    "sha256": "00c1dcb611dd70b7493f953c92323baf16d3059f7314fa126a40c89f2fae761c",
+    "bytes": 5443610
+  },
+  "pollinator": {
+    "url": "https://huggingface.co/pauenric/POLLINATOR_Serra_Marin_et_al_2025/resolve/900afc5bdecdd5d34b723934dcb84d6bdceb8709/pollinator_serra_marin_2025_best.pt",
+    "filename": "pollinator.pt",
+    "archive": false,
+    "sha256": "9b62c544b5dc31122d93db8ea9363aa4012a1b7636e57de740fa6ae6a2cc600e",
+    "bytes": 42336660
+  },
+  "pollinator-script": {
+    "url": "https://raw.githubusercontent.com/aranchalana/POLLINATOR/ecbafff8fd03efaa299f8d07eb121b9ccd05c6dd/YOLOv5_POLLINATOR_detect_and_save_with_and_without_object.py",
+    "filename": "author_predict.py",
+    "archive": false,
+    "sha256": "9f7e430df01a6a5ad07b9aaec18f81190ea5ee0c1c055c31d3fc7fee09db6a9e",
+    "bytes": 6549
+  },
+  "flatbug-N": {
+    "url": "https://anon.erda.au.dk/share_redirect/Bb0CR1FHG6/models/flat_bug_N.pt",
+    "filename": "flat_bug_N.pt",
+    "archive": false,
+    "sha256": "e54eb199fb8397f70dc36aca4727b92836fb7f56b11f8544be60f54c13d273c0",
+    "bytes": 6275129
+  },
+  "flatbug-M_v2": {
+    "url": "https://anon.erda.au.dk/share_redirect/Bb0CR1FHG6/models/flat_bug_M_v2.pt",
+    "filename": "flat_bug_M_v2.pt",
+    "archive": false,
+    "sha256": "d3239bf0c367938f90dd21e92c4fb8bb47e28288678c5130c33f708714c8e50d",
+    "bytes": 54585258
+  },
+  "bumblebee-image": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/BumblebeeSedum.jpg",
+    "filename": "image.jpg",
+    "sha256": "77d805dbfdbe50168bc19f404906df7a7eb3214dc7b8fefe0a8d14632e773e14",
+    "bytes": 1109187
+  },
+  "bjerge-source": {
+    "url": "https://codeload.github.com/kimbjerge/insectsFlowers/zip/eacd588d8069e6882c287f9039abf7064b210a20",
+    "filename": "source.zip",
+    "archive": true,
+    "sha256": "78c7e0da9bb7cbb5f0e5c5f7d431317f8d3bb137ef66e54fc44d0fdbfd9a3432",
+    "bytes": 133182881
+  },
+  "bjerge-weights": {
+    "url": "https://zenodo.org/records/7395752/files/YOLOv5models.zip?download=1",
+    "filename": "weights.zip",
+    "archive": false,
+    "sha256": "9bdf209c1c1f6c9eb0e41c8eca09e1c7a4f38118224e85292c9da0af9197edd6",
+    "bytes": 513207168
+  },
+  "insectdct-classifier": {
+    "url": "https://drive.usercontent.google.com/download?id=1V8uWDIjT1DHo3CyxRjOk6vZYkeBjKX_0&export=download&confirm=t",
+    "filename": "classifier.zip",
+    "archive": false,
+    "sha256": "25fa68a8ac425d10d37979fc7289f8a85427e6f1d02d265f390440e76ef146a9",
+    "bytes": 507041263
+  },
+  "insectdct-weights": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/runs/detect/insects8Motion11s/weights/best.pt",
+    "filename": "insects8Motion11s.pt",
+    "archive": false,
+    "sha256": "aa52f247edf60a96ae757d46cf14b64d9c15dbbcaa122dfbaed90ee27eb0d278",
+    "bytes": 19393050
+  },
+  "insectdct-pipeDetectAndClassifyInsectsTaxon.py": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/pipeDetectAndClassifyInsectsTaxon.py",
+    "filename": "pipeDetectAndClassifyInsectsTaxon.py",
+    "archive": false,
+    "sha256": "03ff0480df6c5e3851ed915623c4e23c1043235d292d31d23e027535b4f9d6fe",
+    "bytes": 31681
+  },
+  "insectdct-common/hierarchical_classifier.py": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/common/hierarchical_classifier.py",
+    "filename": "hierarchical_classifier.py",
+    "archive": false,
+    "sha256": "8b493d158443290c7440869768afac287706bdcdb190e35146db77c5ff5eb786",
+    "bytes": 17835
+  },
+  "insectdct-common/motionEnhancement.py": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/common/motionEnhancement.py",
+    "filename": "motionEnhancement.py",
+    "archive": false,
+    "sha256": "232e4823ec62b1c789370217709e342e7aa8ce9249286bb44e6928b7fa53ea8f",
+    "bytes": 4923
+  },
+  "insectdct-common/resnet50tf.py": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/common/resnet50tf.py",
+    "filename": "resnet50tf.py",
+    "archive": false,
+    "sha256": "53c0214446d439c4b6f26e217aa59793133324b2823424115d145550f7d77a92",
+    "bytes": 4181
+  },
+  "insectdct-common/convNext.py": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/common/convNext.py",
+    "filename": "convNext.py",
+    "archive": false,
+    "sha256": "a74ea8c0e0ebf63ddcb0adb649cb296d2ca0af3eee2108cea42c6eb0adb1d624",
+    "bytes": 3394
+  },
+  "insectdct-common/efficientNet.py": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/common/efficientNet.py",
+    "filename": "efficientNet.py",
+    "archive": false,
+    "sha256": "e76dd9100bfaf583fe5dab84f8a960f58890a1b349c258dc7818c13603f131b5",
+    "bytes": 3466
+  },
+  "beetleflow-script": {
+    "url": "https://raw.githubusercontent.com/Imageomics/BeetleFlow/ab0bf99555832647ff57d0e5a51e671f6b8e40cf/pipeline/3_segmentation/batch_inference.py",
+    "filename": "batch_inference.py",
+    "archive": false,
+    "max_bytes": 600000000,
+    "sha256": "530fa0b855292fabbaa8b670cf576a53765e57d09406e0459b08733dee01570b",
+    "bytes": 5245
+  },
+  "beetleflow-image": {
+    "url": "https://raw.githubusercontent.com/Imageomics/BeetleFlow/ab0bf99555832647ff57d0e5a51e671f6b8e40cf/data/5-class/test_images/0008.png",
+    "filename": "0008.png",
+    "archive": false,
+    "max_bytes": 600000000,
+    "sha256": "ff56bc8cd5806e55ed2dbe70dadc935faa80e610846bfb24fc6c3969324f32f3",
+    "bytes": 77930
+  },
+  "beetleflow-config.json": {
+    "url": "https://huggingface.co/imageomics/BeetleFlow/resolve/521d768f2cbb89066b98396ac79b4fd5590d7bae/5-class/config.json",
+    "filename": "config.json",
+    "archive": false,
+    "max_bytes": 900000000,
+    "sha256": "f905adfc2adc51a1b77e1bf9d3e662f70677ba97d42efc51df0133aa24f8920d",
+    "bytes": 75507
+  },
+  "beetleflow-model.safetensors": {
+    "url": "https://huggingface.co/imageomics/BeetleFlow/resolve/521d768f2cbb89066b98396ac79b4fd5590d7bae/5-class/model.safetensors",
+    "filename": "model.safetensors",
+    "archive": false,
+    "max_bytes": 900000000,
+    "sha256": "2867e36bd9882ab82d36b707e0228dc003df5a1f64928b43f6a66ca42407aef1",
+    "bytes": 865903448
+  },
+  "morpho-source": {
+    "url": "https://gitlab.kit.edu/api/v4/projects/kit%2Fiai%2Fber%2FinsectmorphoAI/repository/archive.zip?sha=b95bd0543f37e43548bb358522e1354953f4ab28",
+    "filename": "source.zip",
+    "archive": true,
+    "max_bytes": 600000000,
+    "sha256": "bfc317f6bc5323c0605a6cb08c780c07da76f429124f59e3a461663134591dfe",
+    "bytes": 153389879
+  },
+  "moths-source": {
+    "url": "https://codeload.github.com/kimbjerge/MCC24-trap/zip/a817f57915b250d3b4b3f06117d0bade4050d61f",
+    "filename": "source.zip",
+    "archive": true,
+    "max_bytes": 600000000,
+    "sha256": "8c29b85c778ef613a711264776fa52dc529f018374ee0427c40d5d7429deb55d",
+    "bytes": 298953259
+  },
+  "moths-weights": {
+    "url": "https://drive.usercontent.google.com/download?id=12aQpXF7T1YD3PSltI3J5gp4gZ4JQ689A&export=download&confirm=t",
+    "filename": "weights.zip",
+    "archive": false,
+    "max_bytes": 600000000,
+    "sha256": "05662169edd668128f432ca995d8acb4593b1773d25453177904e0d4fd2c3a15",
+    "bytes": 354502328
+  },
+  "sequence-pi2_2025_02_21_11_57_31.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_31.jpg",
+    "sha256": "2aa6ac5d73dc4a574fe7a6c125e81265e41eff78285a608bc90c833c96f9a032",
+    "filename": "pi2_2025_02_21_11_57_31.jpg",
+    "bytes": 451986
+  },
+  "sequence-pi2_2025_02_21_11_57_32.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_32.jpg",
+    "sha256": "494b70d8547c3bda8a9181735ac9f3fbf184b687e9288d796e0d611406a4f384",
+    "filename": "pi2_2025_02_21_11_57_32.jpg",
+    "bytes": 453159
+  },
+  "sequence-pi2_2025_02_21_11_57_34.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_34.jpg",
+    "sha256": "ef264c9e3d804b398b78d8c1332b9963a2265b191d07aa4dd29161dd8d381a09",
+    "filename": "pi2_2025_02_21_11_57_34.jpg",
+    "bytes": 453774
+  },
+  "sequence-pi2_2025_02_21_11_57_36.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_36.jpg",
+    "sha256": "66cde77a10a1a5bde3057e95a4c1fe32229b2c211db015431aaa4b6e373cf02d",
+    "filename": "pi2_2025_02_21_11_57_36.jpg",
+    "bytes": 454997
+  },
+  "sequence-pi2_2025_02_21_11_57_38.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_38.jpg",
+    "sha256": "4206aebc6446402481641b4acf41b3bc18d67507aef1095c3f493b0526ca4b5a",
+    "filename": "pi2_2025_02_21_11_57_38.jpg",
+    "bytes": 455731
+  },
+  "sequence-pi2_2025_02_21_11_57_40.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_40.jpg",
+    "sha256": "965c3287d2b3854fce6ff741c0e2b0a5984e0b29dab7f4e27e0b1ff67ca85dc3",
+    "filename": "pi2_2025_02_21_11_57_40.jpg",
+    "bytes": 456761
+  },
+  "sequence-pi2_2025_02_21_11_57_42.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_42.jpg",
+    "sha256": "0c4ee7a2b9194d32fb0bbf00686cf4ab0b1e2875ebe372f9017248721198ca16",
+    "filename": "pi2_2025_02_21_11_57_42.jpg",
+    "bytes": 457530
+  },
+  "sequence-pi2_2025_02_21_11_57_44.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_44.jpg",
+    "sha256": "cc973120a5642b343baed92e3c423f5554afe529da72f45a630c89f4f778f219",
+    "filename": "pi2_2025_02_21_11_57_44.jpg",
+    "bytes": 458429
+  },
+  "sequence-pi2_2025_02_21_11_57_46.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_46.jpg",
+    "sha256": "5e60d514c986a29e7d7ca1388ed9dada2b8484893b9e2e9ba183fd07fce1a147",
+    "filename": "pi2_2025_02_21_11_57_46.jpg",
+    "bytes": 459185
+  },
+  "sequence-pi2_2025_02_21_11_57_47.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_47.jpg",
+    "sha256": "b44da9e7800f141f47c5316ca8024bc366918eee349a1439a0db02cd1e126a27",
+    "filename": "pi2_2025_02_21_11_57_47.jpg",
+    "bytes": 460073
+  },
+  "sequence-pi2_2025_02_21_11_57_49.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_49.jpg",
+    "sha256": "39f5711f960797a1005f9e4171de5e10fb10518669f78dbd8654018ba9c02279",
+    "filename": "pi2_2025_02_21_11_57_49.jpg",
+    "bytes": 461197
+  },
+  "sequence-pi2_2025_02_21_11_57_51.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_51.jpg",
+    "sha256": "a106114f389384ef99fd684da8740234749db85b94d5ed4d5109920d2b0e7329",
+    "filename": "pi2_2025_02_21_11_57_51.jpg",
+    "bytes": 462536
+  },
+  "sequence-pi2_2025_02_21_11_57_53.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_53.jpg",
+    "sha256": "a55db3152ab9c045b9ed7d28557bfbac71c5991e5dfd7a4308eb7feaadfcf64e",
+    "filename": "pi2_2025_02_21_11_57_53.jpg",
+    "bytes": 462973
+  },
+  "sequence-pi2_2025_02_21_11_57_55.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_55.jpg",
+    "sha256": "12e684d53d64f8de1a6af194ef80d00865e2074fe47924d7d15b9dda9a9d1f8a",
+    "filename": "pi2_2025_02_21_11_57_55.jpg",
+    "bytes": 463629
+  },
+  "sequence-pi2_2025_02_21_11_57_57.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_57.jpg",
+    "sha256": "7208def58ae5b6d85d42ccbd23f0ddd5c65d9b54b001efda7d7ea665090390b4",
+    "filename": "pi2_2025_02_21_11_57_57.jpg",
+    "bytes": 464374
+  },
+  "sequence-pi2_2025_02_21_11_57_58.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_58.jpg",
+    "sha256": "855ce45400cdc49a343d58e87519cbc14995571a9c00b3064bd522d19f5f00dc",
+    "filename": "pi2_2025_02_21_11_57_58.jpg",
+    "bytes": 465776
+  },
+  "sequence-pi2_2025_02_21_11_58_00.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_00.jpg",
+    "sha256": "08462dfebf4784b612a50cc479a9c3be6491b4172663f431d3dce60b83bb0363",
+    "filename": "pi2_2025_02_21_11_58_00.jpg",
+    "bytes": 466232
+  },
+  "sequence-pi2_2025_02_21_11_58_03.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_03.jpg",
+    "sha256": "3746c0beb361c61f01d9fe97de93c11af8dae5f8ebd25ca8a331d832798f805c",
+    "filename": "pi2_2025_02_21_11_58_03.jpg",
+    "bytes": 467546
+  },
+  "sequence-pi2_2025_02_21_11_58_05.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_05.jpg",
+    "sha256": "8511f00d29d85721365d561907b643f07af289e919a8ed234319a5b417cd71be",
+    "filename": "pi2_2025_02_21_11_58_05.jpg",
+    "bytes": 468289
+  },
+  "sequence-pi2_2025_02_21_11_58_07.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_07.jpg",
+    "sha256": "aa923909a42aee07101b5b06f13141a00a58f5cf25708253ec84c0d4afb9e789",
+    "filename": "pi2_2025_02_21_11_58_07.jpg",
+    "bytes": 468928
+  },
+  "sequence-pi2_2025_02_21_11_58_09.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_09.jpg",
+    "sha256": "6d9c0456bf89cdf6865d4d4cff56c29a78ce83b9da2aa3863038f8ee6b233d2b",
+    "filename": "pi2_2025_02_21_11_58_09.jpg",
+    "bytes": 469680
+  },
+  "sequence-pi2_2025_02_21_11_58_10.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_10.jpg",
+    "sha256": "398d3135e759972458184e3686fc796bdab3909b9f17ebbc50e1332338b3553a",
+    "filename": "pi2_2025_02_21_11_58_10.jpg",
+    "bytes": 471090
+  },
+  "sequence-pi2_2025_02_21_11_58_12.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_12.jpg",
+    "sha256": "4c6de6a6deac930fce4f815314fd15419d40a698d11bbe9603c24327db472921",
+    "filename": "pi2_2025_02_21_11_58_12.jpg",
+    "bytes": 471666
+  },
+  "sequence-pi2_2025_02_21_11_58_14.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_14.jpg",
+    "sha256": "0fd16614e714f511f92979ed9e29b015cd91a90e670cda03195bfbfc314bd5e7",
+    "filename": "pi2_2025_02_21_11_58_14.jpg",
+    "bytes": 472507
+  },
+  "sequence-pi2_2025_02_21_11_58_16.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_16.jpg",
+    "sha256": "b575e0d619098a4190aaf94d1c464cca80ad639f279530da7612055aad05bc54",
+    "filename": "pi2_2025_02_21_11_58_16.jpg",
+    "bytes": 473511
+  },
+  "sequence-pi2_2025_02_21_11_58_18.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_18.jpg",
+    "sha256": "4a7aff024edf420184f1cd3ed9ebc6e3d6bc29027602c1d5a03afb414f796af6",
+    "filename": "pi2_2025_02_21_11_58_18.jpg",
+    "bytes": 473991
+  },
+  "sequence-pi2_2025_02_21_11_58_20.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_20.jpg",
+    "sha256": "c331be9b00bd5967df602eb301548f05ccc002decdc007efb32d854e5f3fdcf3",
+    "filename": "pi2_2025_02_21_11_58_20.jpg",
+    "bytes": 473940
+  },
+  "sequence-pi2_2025_02_21_11_58_21.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_21.jpg",
+    "sha256": "e108d31c73ac23bf878993a51827ea091e61e803257a2eb6a99ea443e8572f9c",
+    "filename": "pi2_2025_02_21_11_58_21.jpg",
+    "bytes": 474621
+  },
+  "sequence-pi2_2025_02_21_11_58_23.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_23.jpg",
+    "sha256": "cd761e0a384ec61b9d6553e41c2d1753ae6de7df716c45baace586c44684fac0",
+    "filename": "pi2_2025_02_21_11_58_23.jpg",
+    "bytes": 474767
+  },
+  "sequence-pi2_2025_02_21_11_58_25.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_25.jpg",
+    "sha256": "ebb82fbc271b032a9b1de4af82cbecab47f8342561567293d4a3ae7298368493",
+    "filename": "pi2_2025_02_21_11_58_25.jpg",
+    "bytes": 475319
+  },
+  "sequence-pi2_2025_02_21_11_58_27.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_27.jpg",
+    "sha256": "31f3b81a8e456ee69c14471ee924885539706198148390685cddc119b8783110",
+    "filename": "pi2_2025_02_21_11_58_27.jpg",
+    "bytes": 475505
+  },
+  "sequence-pi2_2025_02_21_11_58_29.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_29.jpg",
+    "sha256": "e681716b67a7fc86eda6031bdda51804c8b98c62cce649afe4ed9475d75c85ef",
+    "filename": "pi2_2025_02_21_11_58_29.jpg",
+    "bytes": 475944
+  },
+  "sequence-pi2_2025_02_21_11_58_31.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_31.jpg",
+    "sha256": "b9e31d1f3a48d6da3efd9cd07416321b696c4196ad8c1b2443f7c5a627c364c8",
+    "filename": "pi2_2025_02_21_11_58_31.jpg",
+    "bytes": 477199
+  },
+  "sequence-pi2_2025_02_21_11_58_33.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_33.jpg",
+    "sha256": "7e328c0974e259ecefe616b90254cebb1be2f86a9a3a86e60423bd5a3f14636e",
+    "filename": "pi2_2025_02_21_11_58_33.jpg",
+    "bytes": 477358
+  },
+  "sequence-pi2_2025_02_21_11_58_34.jpg": {
+    "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_34.jpg",
+    "sha256": "ce9448bbaddc132383b6d5efe3c1354d7680dd82a20a709066feef6e09235391",
+    "filename": "pi2_2025_02_21_11_58_34.jpg",
+    "bytes": 477271
+  },
+  "insectdct-backbone": {
+    "url": "https://download.pytorch.org/models/convnext_base-6075fbad.pth",
+    "filename": "convnext_base-6075fbad.pth",
+    "sha256": "6075fbad31c688f9ed013922a59daf0fc2f4dc12e6e43bc01fa840c7bd1ca2cd",
+    "bytes": 354486097
+  }
+}

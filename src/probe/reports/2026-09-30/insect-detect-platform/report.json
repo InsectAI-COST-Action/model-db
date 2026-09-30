@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "probe": "insect-detect-platform",
+  "model": "insect-detect-platform",
+  "variant": null,
+  "capability": "output_format",
+  "author_sources": [
+    "https://github.com/maxsitt/insect-detect/tree/v2.0.0"
+  ],
+  "status": "blocked",
+  "scope": "Author DepthAI camera-trap deployment",
+  "started_at": "2026-09-30T07:49:48Z",
+  "reason": "Requires a Luxonis OAK device and camera input. Host USB enumeration found only Linux root hubs; no OAK device is attached. No substitute framework output is advertised.",
+  "finished_at": "2026-09-30T07:49:48Z",
+  "run_directory": "runs/20260930T094756-b7acece8/insect-detect-platform"
+}
