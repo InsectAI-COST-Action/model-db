@@ -44,11 +44,9 @@ name        = "purpose"
 type        = "list"
 required    = true
 values      = [
-  "Insect detection - simple background",
-  "Insect detection - complex background",
+  "Insect detection",
   "Insect classification",
-  "Functional group classification",
-  "Behaviour classification",
+  "Behaviour quantification",
   "Trait quantification",
   "Model embeddings",
 ]
@@ -67,16 +65,15 @@ name        = "task"
 type        = "list"
 required    = true
 values      = [
-  "Localisation",
-  "Binary Classification",
-  "Multiclass Classification",
+  "Object Detection",
   "Instance Segmentation",
   "Semantic Segmentation",
+  "Classification",
+  "Binary Classification",
   "Tracking",
+  "Embedding",
   "Counting",
   "Regression",
-  "Zero-shot Detection",
-  "Zero-shot Classification",
 ]
 help        = "What the model does, in ML/CV terminology. A list of one or more tasks."
 
