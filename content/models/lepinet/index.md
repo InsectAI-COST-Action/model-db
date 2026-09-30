@@ -18,7 +18,7 @@ date               = 2026-09-29
 vocabulary_scope   = "closed"
 geographic_scope   = "Global (mostly North America and Europe)"
 produces           = ["label", "embedding"]
-image_input_size   = "224x224"
+image_input_size   = "224x224 (ViT), 320x320 (ConvNeXt), 256x256 (EfficientNet)"
 taxonomic_coverage = "Lepidoptera: 12,041 species, 4,333 genera, 102 families"
 developer          = "Guillaume Mougeot (Aarhus University)"
 code_url           = "https://github.com/GuillaumeMougeot/lepinet"
@@ -47,7 +47,7 @@ size_bytes   = 1285434218
 sha256       = "977d1efbf0015c8ac44e6dd8c31640a7a42ec55f187d401c320b93a0b796bd7c"
 url          = "https://huggingface.co/gmougeot/lepinet-bioclip2-vitl14/resolve/c239c14910fac8b07be1ace73334db778629b602/model.onnx"
 released     = 2026-09-29
-note         = "Most accurate and best calibrated. 321 M parameters, 224x224 input, fp32. Taxonomy, names, thresholds, predict.py and a GPU fp16 file (model_fp16.onnx) are in the same repo."
+note         = "Recommended: as accurate as the ConvNeXt, best calibrated, fewest wrong species calls on species it does not know. 321 M parameters, 224x224 input, fp32. Taxonomy, names, thresholds, predict.py and a GPU fp16 file (model_fp16.onnx) are in the same repo."
 
 [[assets]]
 key          = "bioclip2-vitl14-int8"
@@ -114,17 +114,18 @@ Three sizes of the same recipe, each in its own Hugging Face repo:
 - **EfficientNetV2-S** (37 M parameters). ImageNet-initialised, with a cosine classifier trained
   under an ArcFace margin.
 
-Both are trained on 6.3 M GBIF occurrence images of Lepidoptera (species with at least 50 images,
-capped at about 2,000 per species). Both are then made robust to automated light-trap imagery by
-**self-training**: about 2 % of training is unlabelled trap crops with pseudo-labels. There is a
-single species classifier; genus and family probabilities are sums of their species' probabilities,
-so the three ranks never contradict each other. Framework: PyTorch/fastai, exported to ONNX.
+All three are trained on 6.3 M GBIF occurrence images of Lepidoptera (species with at least 50
+images, capped at about 2,000 per species). All three are then made robust to automated light-trap
+imagery by **self-training**: about 2 % of training is unlabelled trap crops with pseudo-labels. In
+every published file, genus and family probabilities are sums of their species' probabilities, so
+the three ranks never contradict each other. Framework: PyTorch/fastai, exported to ONNX.
 
 ## Inputs and outputs
 
-One RGB image, resized on its shorter side to 224 (ViT) or 256 (EfficientNet) and centre-cropped.
+One RGB image, resized on its shorter side to 224 (ViT), 320 (ConvNeXt) or 256 (EfficientNet) and
+centre-cropped.
 Pixel values go in as [0, 1]; normalisation is inside the ONNX graph. Outputs are species, genus and
-family probabilities, species logits, and an L2-normalised embedding (1024-d or 1280-d). Labels are
+family probabilities, species logits, and an L2-normalised embedding (1024-d, 1536-d or 1280-d respectively). Labels are
 GBIF taxon keys, with scientific names in `names.json`. The repo's `predict.py` needs only
 `onnxruntime`, `numpy` and `Pillow`.
 
