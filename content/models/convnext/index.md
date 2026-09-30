@@ -60,10 +60,10 @@ provider = "huggingface"
 url      = "https://huggingface.co/timm/convnext_base.fb_in22k_ft_in1k/tree/67758fcbcf9f007ec7630bf8636b74a8f24e52a0"
 note     = "ConvNeXt-Base pretrained on ImageNet-22K and fine-tuned on ImageNet-1K."
 # Optional, and worth adding when you know them:
-# filename   = "model.pt"
-# size_bytes = 6275129
-# sha256     = "..."
-# released   = 2024-10-23
+filename   = "pytorch_model.bin"
+size_bytes = 371195904
+sha256     = "67758fcbcf9f007ec7630bf8636b74a8f24e52a0"
+released   = 2022-12-13
 # note       = "Which checkpoint this is, and anything a downloader should know."
 
 # ── The model's own card, if it has one elsewhere ─────────────────────────────
@@ -82,14 +82,6 @@ note     = "ConvNeXt-Base pretrained on ImageNet-22K and fine-tuned on ImageNet-
 hf_repo     = "timm/convnext_base.fb_in22k_ft_in1k"
 hf_revision = "67758fcbcf9f007ec7630bf8636b74a8f24e52a0"
 +++
-
-<!--
-  Do not repeat the model name as a heading - the page renders it already.
-
-  The sections below are a convention, not a rule: nothing checks for them.
-  They exist so two entries in the zoo can be read side by side. Delete any
-  that do not apply, and add whatever does.
--->
 
 **Intended use.** ConvNeXt-Base is included as a representative modern supervised convolutional neural network (CNN). For insect classification, it can be used as a feature extractor with a classifier trained on insect labels, or fine-tuned on an insect dataset.
 
@@ -117,6 +109,7 @@ Publicly available on [Hugging Face](https://huggingface.co/timm/convnext_base.f
 
 ## Citation
 
+``` bibtex
 @inproceedings{liu2022convnet,
   title     = {A ConvNet for the 2020s},
   author    = {Liu, Zhuang and Mao, Hanzi and Wu, Chao-Yuan and
@@ -134,3 +127,4 @@ Publicly available on [Hugging Face](https://huggingface.co/timm/convnext_base.f
   doi       = {10.5281/zenodo.4414861},
   url       = {https://github.com/huggingface/pytorch-image-models}
 }
+```
