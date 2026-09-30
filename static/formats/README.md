@@ -395,3 +395,12 @@ limits. The new profiles are:
 These profiles preserve emitted units, score meanings, field names and quirks.
 An `output_format` link documents an interface; the descriptor's `notes.evidence`
 and card prose identify whether it was observed or only source-inspected.
+
+
+## Human-readable examples
+
+The site’s **Formats** navigation and model-table format links lead to
+[example pages](../../content/formats/_index.md), with raw schemas linked alongside.
+[Runnable examples](../../examples/formats/README.md) demonstrate conversion to
+single-image ISIR and a minimal Ultralytics prediction route. Alternate author
+pipeline routes are described separately, with their evidence and limitations.

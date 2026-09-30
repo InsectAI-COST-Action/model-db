@@ -57,7 +57,12 @@
             {{- $formats = $uniqueFormats }}
           {{- end }}
           {{- range $formats }}
-          <span class="lic"><a href="{{ printf "formats/%s/%s.json" $p.category . | relURL }}">{{ . }}</a></span>
+          {{- $format := . }}
+          {{- $guide := site.GetPage (printf "/formats/%s/%s" $p.category $format) }}
+          {{- /* A model's category can differ from its format's catalogue location. */ -}}
+          {{- if not $guide }}{{ $guide = site.GetPage (printf "/formats/detection/%s" $format) }}{{ end }}
+          {{- $raw := printf "formats/%s/%s.json" $p.category $format }}
+          <span class="lic">{{ if $guide }}<a href="{{ $guide.RelPermalink }}">{{ $format }}</a>{{ else if os.FileExists (printf "static/%s" $raw) }}<a href="{{ $raw | relURL }}">{{ $format }}</a>{{ else }}{{ $format }}{{ end }}</span>
           {{- end }}
           {{- else -}}
             <div class="center muted">—</div>
