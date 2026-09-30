@@ -11,7 +11,7 @@ from ..schema import FormatError, Schema
 @lru_cache(maxsize=None)
 def schema(name):
     root = Path(__file__).resolve().parents[4]
-    return Schema.load(root / "static" / "formats" / "detection" / f"{name}.json")
+    return Schema.load(root / "static" / "formats" / f"{name}.json")
 
 
 @dataclass(frozen=True)
