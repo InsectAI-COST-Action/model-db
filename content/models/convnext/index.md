@@ -29,37 +29,21 @@ foundation         = false
 
 # ── Catalogue ─────────────────────────────────────────────────────────────────
 
-category           = "classification"                  # must already exist in data/categories.toml
-task               = ["Classification", "Embedding"]         # Object Detection | Instance Segmentation |
-                                                 # Semantic Segmentation | Classification |
-                                                 # Tracking | Embedding | Counting
-architecture       = ["ConvNeXt-Base"]                   # YOLOv8, ViT, Swin Transformer…
-base_model          = "ConvNeXt-Base, pretrained on ImageNet-22k"                          # If this is a fine-tuned model, name the
-                                                 # base model it was fine-tuned from.
-year               = 2022                        # year of publication or release
-license            = "Apache-2.0"                       # SPDX identifier where one exists
-status             = "published"                     # draft | published | deprecated.
-                                                 # Draft is the safe default: only
-                                                 # `published` appears on the site.
-
-# Optional. Delete any line you do not have an answer for - the default is in
-# the comment.
-date               = 2026-09-29                  # when this entry was added to the zoo
-vocabulary_scope   = "closed"                    # closed | open | taxonomic.
-                                                 # Anything but `closed` is shown as
-                                                 # "zero-shot" - it means the model
-                                                 # handles concepts it was not
-                                                 # trained on.
-geographic_scope   = ""                          # e.g. "France", "Global"
-produces           = ["label", "embedding"]                    # bbox | mask | label | count | track | embedding
-image_input_size         = "224x224"                   # or "any" for native resolution
-input_modality     = ["image"]                          # text | image | box | point | mask.
-                                                 # List every input the model
-                                                 # accepts, image included. Leave
-                                                 # empty for a model that only
-                                                 # takes an image.
-developer          = "Facebook (META), UC Berkeley"                   # who made it, not who curated it
-paper_url          = "https://arxiv.org/abs/2201.03545"                          # paper, DOI or project page
+category           = "embeddings" 
+task               = ["Classification", "Embedding"]
+architecture       = ["ConvNeXt-Base"] 
+base_model          = "ConvNeXt-Base, pretrained on ImageNet-22k" 
+year               = 2022 
+license            = "Apache-2.0" 
+status             = "published" 
+date               = 2026-09-29 
+vocabulary_scope   = "closed" 
+# geographic_scope   = "" 
+produces           = ["label", "embedding"] 
+image_input_size         = "224x224" 
+input_modality     = ["image"] 
+developer          = "Facebook (META), UC Berkeley" 
+paper_url          = "https://arxiv.org/abs/2201.03545" 
 
 # ── Weights ───────────────────────────────────────────────────────────────────
 #
@@ -71,10 +55,9 @@ paper_url          = "https://arxiv.org/abs/2201.03545"                         
 # authors host them anyway.
 
 [[assets]]
-key      = "weights"              # the label shown in the sidebar
-provider = "huggingface"          # zenodo | huggingface | github | erda | package | url
+key      = "weights" 
+provider = "huggingface" 
 url      = "https://huggingface.co/timm/convnext_base.fb_in22k_ft_in1k/tree/67758fcbcf9f007ec7630bf8636b74a8f24e52a0"
-
 note     = "ConvNeXt-Base pretrained on ImageNet-22K and fine-tuned on ImageNet-1K."
 # Optional, and worth adding when you know them:
 # filename   = "model.pt"
