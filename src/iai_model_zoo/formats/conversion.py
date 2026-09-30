@@ -1,4 +1,5 @@
 """Conversion of existing predictions; no model loading or inference."""
+from collections.abc import Mapping
 from copy import deepcopy
 from dataclasses import dataclass, field
 from importlib import import_module
@@ -15,7 +16,8 @@ class ConversionError(FormatError):
 class ConversionContext:
     """Explicit caller facts. None means preserve native data, not invent it.
 
-    image is an ImageContext; images maps source keys to ImageContext objects.
+    image is an ImageContext; images maps source keys to ImageContext objects; Results inputs also accept
+    an ordered list/tuple of contexts matching the predictions.
     metadata is Metadata, applied after import; per-image metadata takes precedence.
     categories overrides dataset categories; dataset_metadata merges other fields.
     ID mappings are passed to exporters, never generated implicitly.
@@ -70,7 +72,7 @@ class Converter:
         from .adapters._common import checked_ir
         if model is None and source is None:
             raise ConversionError('Specify model or source')
-        context = context or ConversionContext()
+        context = ConversionContext() if context is None else context
         if not isinstance(context, ConversionContext):
             raise ConversionError('context must be ConversionContext')
         for options in (import_options, export_options):
@@ -78,6 +80,36 @@ class Converter:
                 raise ConversionError('Adapter options must be dictionaries')
         if context.image is not None and context.images is not None:
             raise ConversionError('Supply image or images, not both')
+        from .adapters import ImageContext, Metadata
+        if context.image is not None and not isinstance(context.image, ImageContext):
+            raise ConversionError('context.image must be ImageContext')
+        if context.metadata is not None and not isinstance(context.metadata, Metadata):
+            raise ConversionError('context.metadata must be Metadata')
+        if not isinstance(context.dataset_metadata, dict):
+            raise ConversionError('context.dataset_metadata must be a dictionary')
+        image_contexts = []
+        if context.images is not None:
+            if isinstance(context.images, Mapping):
+                image_contexts = list(context.images.values())
+            elif isinstance(context.images, (list, tuple)):
+                image_contexts = list(context.images)
+            else:
+                raise ConversionError('context.images must be a mapping or ordered list/tuple')
+        if context.image is not None:
+            image_contexts = [context.image]
+        by_id = {}
+        for image in image_contexts:
+            if not isinstance(image, ImageContext):
+                raise ConversionError('Each image context must be ImageContext')
+            if image.metadata is not None and not isinstance(image.metadata, Metadata):
+                raise ConversionError('ImageContext.metadata must be Metadata')
+            try:
+                identity = image.image()['id']
+            except FormatError as error:
+                raise ConversionError(f'Invalid image context: {error}') from error
+            if identity in by_id:
+                raise ConversionError(f'Duplicate image context ID: {identity!r}')
+            by_id[identity] = image
         plan = self.registry.resolve(model=model, source=source, target=target, cardinality=cardinality)
         if plan['status'] != 'ready':
             raise ConversionError('; '.join(plan['reasons']))
@@ -109,12 +141,8 @@ class Converter:
             record = checked_ir(record)
             # Explicit shared metadata overrides native values; explicit per-image
             # metadata (already applied by the importer) overrides shared values.
-            per_image = None
-            if context.image is not None:
-                per_image = context.image.metadata
-            elif context.images is not None:
-                matches = [c for c in context.images.values() if c.id == record['image']['id']]
-                per_image = matches[0].metadata if matches else None
+            image_context = by_id.get(record['image']['id'])
+            per_image = image_context.metadata if image_context else None
             if context.metadata is not None:
                 record = context.metadata.apply(record)
             if per_image is not None:

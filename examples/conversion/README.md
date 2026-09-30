@@ -38,7 +38,10 @@ output = converter.convert(
 
 Single-image input is the default. Set `cardinality='collection'` for multi-image
 inputs; provide `images={source_key: ImageContext(...)}` when the importer needs a
-manifest. ISIR returns one dict for one image or a list for a collection. COCO
+manifest. Ultralytics Results also accepts an ordered list of image contexts
+matching the result order; a mapping instead matches exact result paths,
+independently of mapping order. Repeated paths, such as video frames, need an
+ordered list with distinct image IDs. ISIR returns one dict for one image or a list for a collection. COCO
 returns a dataset dict. Exporting a collection to Flatbug returns a list of
 per-image documents. Collection shape is explicit even for one or zero images.
 
@@ -53,6 +56,30 @@ metadata sections after import; per-image `ImageContext.metadata` takes
 precedence. Absent metadata preserves native information. `dataset_metadata`
 merges into retained dataset metadata and explicit `categories` overrides its
 category list. Model selection alone does not inject model metadata.
+
+Class-agnostic detectors such as AMI export to COCO directly:
+
+```python
+output = converter.convert(
+    boxes,
+    model="ami-insect-detector",
+    target="coco",
+    context=ConversionContext(
+        image=ImageContext(1, width, height, file_name),
+    ),
+)
+```
+
+Detections without `category_id` receive a generic `object` category automatically.
+This is a COCO serialization convention, not a classification prediction. The
+exporter reuses an existing `object` category or chooses an unused category ID,
+and only adds the category when needed. Existing category IDs remain unchanged
+and must still have vocabulary entries. Scores are not invented.
+
+Customize this with `export_options={"fallback_category": {"id": 9, "name": "object"}}`,
+or disable it with `export_options={"fallback_category": None}`. Conflicting
+explicit category definitions are rejected. ISIR itself permits detections without
+classification; the fallback is applied only on COCO export.
 
 COCO IDs must be unique integers across the dataset. Preserve valid native IDs,
 or supply `image_ids={original_id: integer}` and

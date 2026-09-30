@@ -36,8 +36,14 @@ to identify the one your inference code produces.
 
 The same call supports other registered export targets, including `flatbug`.
 Conversion cannot invent missing information: for example, Flatbug export needs
-contours and areas, and COCO annotations need category IDs matching the vocabulary.
+contours and areas. Existing class IDs need a matching category vocabulary for COCO.
 An unsupported format needs an adapter before it can be converted.
+
+Class-agnostic detections (for example, AMI boxes) automatically receive a generic
+`object` category during COCO export. No classification is required. Existing
+categories remain unchanged. Customize the category with
+`export_options={"fallback_category": {"id": 9, "name": "object"}}`, or disable
+the fallback with `export_options={"fallback_category": None}`.
 
 ## Multiple images and producer settings
 

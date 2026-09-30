@@ -271,6 +271,19 @@ unique COCO integer IDs. This is necessary if several imported images reuse
 instance IDs. Category IDs are not renumbered or assigned guessed class names;
 edit the IR category IDs explicitly when changing vocabularies.
 
+### Class-agnostic COCO export
+
+Missing `category_id` values default to a generic `object` category on export.
+An existing category named `object` is reused; otherwise an unused positive ID
+is chosen. The category is added only when needed. This is serialization metadata,
+not a classification prediction or a change to the ISIR input.
+
+`coco.from_ir(batch, fallback_category={"id": 9, "name": "object"})` customizes
+the category; `fallback_category=None` disables the default. The same option is
+available through `Converter.convert(..., export_options={...})`. Existing IDs
+and scores remain untouched; unknown existing IDs still fail validation.
+Conflicting explicit category definitions are rejected.
+
 ## Populating metadata
 
 `Metadata(model=..., inference=..., context=...)` makes the source of extra

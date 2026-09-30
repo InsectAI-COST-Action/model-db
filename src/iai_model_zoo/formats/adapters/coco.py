@@ -116,12 +116,15 @@ def to_ir(data, *, metadata=None):
     )
 
 
-def from_ir(batch, *, image_ids=None, annotation_ids=None):
+def from_ir(batch, *, image_ids=None, annotation_ids=None, fallback_category="object"):
     """Export a Batch. Optional ID mappings avoid guessing new COCO IDs.
 
     image_ids maps IR image IDs to integers; annotation_ids maps
     (IR image ID, IR instance ID) pairs to globally unique integer IDs.
     Batch.metadata supplies categories and any dataset info/licenses.
+    Missing categories default to a generic object category, added only if used.
+    Supply an explicit category object to customize it, or None to require IDs.
+    Existing IDs are never replaced or repaired by the fallback.
     """
     # Validate and normalize even caller-constructed batch metadata once.
     result = schema("coco").cast(
@@ -133,6 +136,21 @@ def from_ir(batch, *, image_ids=None, annotation_ids=None):
         }
     )
     categories = _index(result.get("categories", []), "categories")
+    declared_categories = set(categories)
+    fallback_id = None
+    automatic = isinstance(fallback_category, str) and fallback_category == "object"
+    if fallback_category is not None and not automatic:
+        fallback = schema("coco").cast(dict(
+            images=[], annotations=[], categories=[deepcopy(fallback_category)]
+        ))["categories"][0]
+        fallback_id = fallback["id"]
+        existing = categories.get(fallback_id)
+        if existing is not None:
+            if any(existing.get(key) != value for key, value in fallback.items()):
+                raise FormatError(f"fallback_category conflicts with existing category {fallback_id!r}")
+        else:
+            result["categories"].append(fallback)
+            categories[fallback_id] = fallback
     images, annotations = [], []
     for value in batch.images:
         value = checked_ir(value)
@@ -165,12 +183,26 @@ def from_ir(batch, *, image_ids=None, annotation_ids=None):
                 identifier,
                 "coco.annotation.id (supply annotation_ids for nonnumeric IDs)",
             )
+            missing_category = "category_id" not in instance
+            if missing_category and automatic and fallback_id is None:
+                fallback_id = next((key for key, cat in categories.items()
+                                    if cat["name"] == "object"), None)
+                if fallback_id is None:
+                    fallback_id = 1
+                    while fallback_id in categories:
+                        fallback_id += 1
+                    fallback = {"id": fallback_id, "name": "object"}
+                    result["categories"].append(fallback)
+                    categories[fallback_id] = fallback
             category = cast(
                 Primitive("integer"),
-                instance.get("category_id"),
+                instance.get("category_id", fallback_id),
                 "instance.category_id",
             )
-            if category not in categories:
+            # Automatic serialization categories must not repair unknown existing
+            # class IDs. Explicit fallback definitions remain caller vocabulary.
+            allowed = declared_categories if automatic and not missing_category else categories
+            if category not in allowed:
                 raise FormatError(
                     f"category_id {category!r} is missing from Batch.metadata.categories"
                 )

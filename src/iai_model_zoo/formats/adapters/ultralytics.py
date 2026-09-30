@@ -145,7 +145,18 @@ def import_one(data, *, context, options, source):
 
 def import_collection(data, *, context, options, source):
     from ..conversion import ConversionBatch, invoke
-    result = invoke(to_ir_many, data, options, images=context.images)
+    images = context.images
+    if isinstance(images, Mapping):
+        # Match exact source paths, never dictionary iteration order.
+        data = list(data)
+        contexts = []
+        for result in data:
+            path = result.get('path') if isinstance(result, Mapping) else getattr(result, 'path', None)
+            if path not in images:
+                raise FormatError(f'ultralytics: image path {path!r} missing from manifest')
+            contexts.append(images[path])
+        images = contexts
+    result = invoke(to_ir_many, data, options, images=images)
     return ConversionBatch(result)
 
 def json_import_one(data, *, context, options, source):
