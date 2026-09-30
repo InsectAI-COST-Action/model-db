@@ -40,10 +40,19 @@ help       = "True if this is a foundation model, which is a general-purpose mod
 # Catalogue
 
 [[field]]
-name        = "category"
-type        = "string"
+name        = "purpose"
+type        = "list"
 required    = true
-help        = "A slug from data/categories.toml. It must already exist there."
+values      = [
+  "Insect detection - simple background",
+  "Insect detection - complex background",
+  "Insect classification",
+  "Functional group classification",
+  "Behaviour classification",
+  "Trait quantification",
+  "Model embeddings",
+]
+help        = "The ecological purpose(s) the model is used for. A list of one or more purposes."
 
 # Weights format 
 [[field]]
@@ -58,16 +67,18 @@ name        = "task"
 type        = "list"
 required    = true
 values      = [
-  "Object Detection",
+  "Localisation",
+  "Binary Classification",
+  "Multiclass Classification",
   "Instance Segmentation",
   "Semantic Segmentation",
-  "Classification",
   "Tracking",
-  "Embedding",
   "Counting",
   "Regression",
+  "Zero-shot Detection",
+  "Zero-shot Classification",
 ]
-help        = "What the model does. A list of one or more tasks."
+help        = "What the model does, in ML/CV terminology. A list of one or more tasks."
 
 [[field]]
 name        = "architecture"
