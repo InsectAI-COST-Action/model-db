@@ -2,7 +2,6 @@
 {{- $p := $page.Params -}}
 {{- $category := .category -}}
 {{- $produces := $p.produces | default slice -}}
-{{- $assets := $p.assets | default slice -}}
 
 <div class="meta-block">
   <h2 class="meta-title">At a glance</h2>
@@ -26,37 +25,6 @@
     {{- end }}
   </dl>
 </div>
-
-{{- with $assets }}
-<div class="meta-block">
-  <h2 class="meta-title">
-    {{ len . }} artefact{{ if ne (len .) 1 }}s{{ end }}
-  </h2>
-  {{- with $p.weight_format }}
-  <p class="asset-format">Format: {{ delimit . ", " }}</p>
-  {{- end }}
-  <ul class="assets">
-    {{- range . }}
-      {{- if .url }}
-      <li>
-        <a href="{{ .url }}" rel="nofollow noopener">{{ .variant | default .key }}</a>
-        {{- with .filename }}<span class="asset-file">{{ . }}</span>{{ end }}
-        {{- if .size_bytes }}
-          {{- /* Decimal MB, not MiB, to match the sizes quoted in the cards. */}}
-          <span class="asset-meta">{{ printf "%.1f MB" (div (float .size_bytes) 1000000) }}</span>
-        {{- end }}
-        {{- with .released }}<span class="asset-meta">{{ . }}</span>{{ end }}
-        {{- if .sha256 }}<span class="asset-meta">sha256 {{ substr .sha256 0 12 }}…</span>{{ end }}
-        {{- if eq .provider "huggingface" }}
-          {{- with .revision }}<span class="asset-meta">pinned {{ substr . 0 8 }}</span>{{ end }}
-        {{- end }}
-      </li>
-      {{- end }}
-    {{- end }}
-  </ul>
-</div>
-{{- end }}
-
 
 <div class="meta-block">
   <h2 class="meta-title">License and rights</h2>

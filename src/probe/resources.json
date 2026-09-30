@@ -430,5 +430,35 @@
     "filename": "convnext_base-6075fbad.pth",
     "sha256": "6075fbad31c688f9ed013922a59daf0fc2f4dc12e6e43bc01fa840c7bd1ca2cd",
     "bytes": 354486097
+  },
+  "biomoth-notebook": {
+    "url": "https://raw.githubusercontent.com/Suhavi/Lepidoptera_Hubbard_Brook/1d631ce7af4c0fa8eae5d60d8f2ec352fa2644f3/notebooks/runInference.ipynb",
+    "filename": "runInference.ipynb",
+    "sha256": "1d2056ad87d538141de9a11974258034ffb8a0bd65ca057735920b245c8fdba3",
+    "bytes": 1851812
+  },
+  "biomoth-weights": {
+    "url": "https://raw.githubusercontent.com/Suhavi/Lepidoptera_Hubbard_Brook/1d631ce7af4c0fa8eae5d60d8f2ec352fa2644f3/models/best.torchscript",
+    "filename": "best.torchscript",
+    "sha256": "a1cb34d3ec32076a0b160673addaf534697acc92b8a0f87ce5c59681f9c0eae7",
+    "bytes": 38226894
+  },
+  "mothbot-detect": {
+    "url": "https://raw.githubusercontent.com/Digital-Naturalism-Laboratories/Mothbot_Process/7514bee8ace5c9cb859f3566ed3088a7824b692c/pipeline/detect.py",
+    "filename": "detect.py",
+    "sha256": "4361f59b953b23ec1fce8e823b6d5e2b93860e88f30d33fbc4e0696556a9a88e",
+    "bytes": 47078
+  },
+  "mothbot-common": {
+    "url": "https://raw.githubusercontent.com/Digital-Naturalism-Laboratories/Mothbot_Process/7514bee8ace5c9cb859f3566ed3088a7824b692c/core/common.py",
+    "filename": "common.py",
+    "sha256": "fecc019bebbd22ba46cdb3d347bc35cdf6784f4b215d6908bb1c27f087358721",
+    "bytes": 19079
+  },
+  "mothbot-weights": {
+    "url": "https://raw.githubusercontent.com/Digital-Naturalism-Laboratories/Mothbot_Process/7514bee8ace5c9cb859f3566ed3088a7824b692c/trained_models/MBD-1-1.pt",
+    "filename": "MBD-1-1.pt",
+    "sha256": "aa7e881e532d49be305d275766cd73fda0d75a8853d7bf822fc2c8a1e873e44a",
+    "bytes": 21692897
   }
 }

@@ -4,7 +4,6 @@
        and a task added to any card gets its own checkbox with no edit here. */ -}}
 {{- $tasks := slice -}}
 {{- $years := slice -}}
-{{- $licenses := slice -}}
 {{- $zeroShot := 0 -}}
 {{- range $rows -}}
   {{- /* One checkbox per member, not one per whole task list. */ -}}
@@ -12,7 +11,6 @@
     {{- if not (in $tasks .) }}{{ $tasks = $tasks | append . }}{{ end -}}
   {{- end -}}
   {{- with .Params.year }}{{ if not (in $years .) }}{{ $years = $years | append . }}{{ end }}{{ end -}}
-  {{- with .Params.license }}{{ if not (in $licenses .) }}{{ $licenses = $licenses | append . }}{{ end }}{{ end -}}
   {{- if partial "zeroshot.html" . }}{{ $zeroShot = add $zeroShot 1 }}{{ end -}}
 {{- end -}}
 
@@ -37,13 +35,6 @@
     <legend>Year</legend>
     {{- range sort $years }}
     <label class="chip"><input type="checkbox" data-facet="year" value="{{ . }}"> {{ . }}</label>
-    {{- end }}
-  </fieldset>
-
-  <fieldset class="filter-group">
-    <legend>License</legend>
-    {{- range sort $licenses }}
-    <label class="chip"><input type="checkbox" data-facet="license" value="{{ . }}"> {{ . }}</label>
     {{- end }}
   </fieldset>
 

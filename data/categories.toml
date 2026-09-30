@@ -14,14 +14,16 @@
 order = [
   "detection",
   "classification",
-  "regression",
+  "trait-quantification",
+  "embeddings"
 ]
 
 [categories.detection]
 title = "Insect detection"
 short = "Detection"
 description = """
-Detectors trained and evaluated on both uniform backgrounds or cluttered field imagery.
+Models trained to detect insects in images or video. They can be trained and 
+evaluated on either uniform backgrounds or visually cluttered field imagery. 
 """
 open = true # open so that the section is not collapsed on the home page.
 
@@ -29,16 +31,27 @@ open = true # open so that the section is not collapsed on the home page.
 title = "Insect classification"
 short = "Classification"
 description = """
-Species- or taxon-level classifiers operating on cropped images of individual
-specimens.
+Models that predict species-level ( or other taxonomic rank) labels for insects. 
+They typically take as input cropped images of individual specimens.
 """
 open = true
 
-[categories.regression]
-title = "Regression models"
-short = "Regression"
+[categories.trait-quantification]
+title = "Trait quantification models"
+short = "Trait quantification"
 description = """
-Models that give a single continuous variable as the output (e.g. estimating 
-biomass from an image).
+Models that give a single continuous variable as the output, for example counting 
+insects in an image, or estimating biomass of a specimen. 
 """
 open = true
+
+[categories.embeddings]
+title = "Embeddings models"
+short = "Embeddings"
+description = """
+Models to be used as feature extractors, producing embeddings that can be paired 
+with a prediction head for downstream tasks such as classification or regression. 
+These models are not directly applicable to a specific insect task, but are 
+good starting points for building your own models. 
+"""
+open = true # closed so that the section is collapsed on the home page.

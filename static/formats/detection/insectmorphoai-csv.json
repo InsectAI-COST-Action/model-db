@@ -1,103 +1,154 @@
 {
-    "id": "insectmorphoai-csv",
-    "serialization": "text/csv with header",
-    "producer": "utils/ultimate_headless.py",
-    "sources": [
-        {
-            "url": "https://gitlab.kit.edu/kit/iai/ber/insectmorphoAI/-/blob/b95bd0543f37e43548bb358522e1354953f4ab28/utils/ultimate_headless.py",
-            "revision": "b95bd0543f37e43548bb358522e1354953f4ab28"
-        }
-    ],
-    "types": {},
-    "structure": {
-        "detailed_analysis_results_final.csv": {
-            "header": [
-                "x_head",
-                "y_head",
-                "x_thorax",
-                "y_thorax",
-                "x_abdomen",
-                "y_abdomen",
-                "total_volume",
-                "volume_head",
-                "volume_thorax",
-                "volume_abdomen",
-                "total_length",
-                "length_head",
-                "length_thorax",
-                "length_abdomen",
-                "wet_mass_from_volume_seg",
-                "wet_mass_from_length_seg",
-                "dry_mass_from_volume_seg",
-                "dry_mass_from_length_seg",
-                "file_name",
-                "image_path",
-                "camera_name",
-                "lens_name",
-                "conversion_factor_mm_per_px",
-                "note"
-            ],
-            "example_row": [
-                "2616.708100676819",
-                "1475.0185631697686",
-                "1995.786213956366",
-                "1295.8696128986285",
-                "1151.480909974351",
-                "1578.6672412419748",
-                "1.105",
-                "0.197",
-                "0.465",
-                "0.443",
-                "7.51",
-                "1.309",
-                "2.549",
-                "3.445",
-                "0.00111",
-                "0.018745",
-                "0.000222",
-                "0.003716",
-                "CAS001_CAS0000020_stacked_01_H.png",
-                "CAS001_CAS0000020_stacked_01_H.png",
-                "ArducamCamera",
-                "MV65051B",
-                "0.00315455",
-                ""
-            ]
+    "types": {
+        "detailed_row": {
+            "x_head": "T[float] | T[string](\"\")",
+            "y_head": "T[float] | T[string](\"\")",
+            "x_thorax": "T[float] | T[string](\"\")",
+            "y_thorax": "T[float] | T[string](\"\")",
+            "x_abdomen": "T[float] | T[string](\"\")",
+            "y_abdomen": "T[float] | T[string](\"\")",
+            "total_volume": "T[float] | T[string](\"\")",
+            "volume_head": "T[float] | T[string](\"\")",
+            "volume_thorax": "T[float] | T[string](\"\")",
+            "volume_abdomen": "T[float] | T[string](\"\")",
+            "total_length": "T[float] | T[string](\"\")",
+            "length_head": "T[float] | T[string](\"\")",
+            "length_thorax": "T[float] | T[string](\"\")",
+            "length_abdomen": "T[float] | T[string](\"\")",
+            "wet_mass_from_volume_seg": "T[float] | T[string](\"\")",
+            "wet_mass_from_length_seg": "T[float] | T[string](\"\")",
+            "dry_mass_from_volume_seg": "T[float] | T[string](\"\")",
+            "dry_mass_from_length_seg": "T[float] | T[string](\"\")",
+            "file_name": "T[string]",
+            "image_path": "T[string]",
+            "camera_name": "T[string]",
+            "lens_name": "T[string]",
+            "conversion_factor_mm_per_px": "T[float] | T[string](\"\")",
+            "note": "T[string]"
         },
-        "rapid_scan_results_final.csv": {
-            "header": [
-                "file_name",
-                "width_px",
-                "height_px",
-                "width_mm",
-                "height_mm",
-                "camera_name",
-                "lens_name",
-                "conversion_factor_mm_per_px",
-                "wet_mass_from_length_obb",
-                "dry_mass_from_length_obb",
-                "image_path"
-            ],
-            "example_row": [
-                "CAS001_CAS0000020_stacked_01_H.png",
-                "1011.9797593624828",
-                "2257.582671337076",
-                "3.1923407498969203",
-                "7.121657415866373",
-                "ArducamCamera",
-                "MV65051B",
-                "0.00315455",
-                "0.015056",
-                "0.003095",
-                "CAS001_CAS0000020_stacked_01_H.png"
-            ]
-        }
+        "detailed_table": [
+            "T[detailed_row]"
+        ],
+        "rapid_row": {
+            "file_name": "T[string]",
+            "width_px": "T[float] | T[string](\"\")",
+            "height_px": "T[float] | T[string](\"\")",
+            "width_mm": "T[float] | T[string](\"\")",
+            "height_mm": "T[float] | T[string](\"\")",
+            "camera_name": "T[string]",
+            "lens_name": "T[string]",
+            "conversion_factor_mm_per_px": "T[float] | T[string](\"\")",
+            "wet_mass_from_length_obb": "T[float] | T[string](\"\")",
+            "dry_mass_from_length_obb": "T[float] | T[string](\"\")",
+            "image_path": "T[string]"
+        },
+        "rapid_table": [
+            "T[rapid_row]"
+        ]
     },
+    "enums": {},
+    "structure": "T[detailed_table] | T[rapid_table]",
     "notes": {
         "scope": "Default headless both analysis modes with default camera/lens and biomass configuration. Output is derived measurements, not YOLO box or mask serialization.",
         "units": "Rapid Scan exposes explicit pixel and mm columns. Detailed Analysis emits centroids and calibrated length/volume measurements. Their physical meaning depends on the selected lens conversion factor.",
         "configuration": "Mass estimates use data/config/biomass.yaml at the pinned revision; do not substitute equations from the paper.",
         "missing": "Optional analysis settings and failures may change available values. Empty CSV cells occur, including the note field. Final CSVs concatenate timestamped batch files.",
-        "paths": "image_path records the input path. Example rows below abbreviate that path for portability."
+        "paths": "image_path records the input path. Example rows below abbreviate that path for portability.",
+        "id": "insectmorphoai-csv",
+        "serialization": "text/csv with header",
+        "producer": "utils/ultimate_headless.py",
+        "sources": [
+            {
+                "url": "https://gitlab.kit.edu/kit/iai/ber/insectmorphoAI/-/blob/b95bd0543f37e43548bb358522e1354953f4ab28/utils/ultimate_headless.py",
+                "revision": "b95bd0543f37e43548bb358522e1354953f4ab28"
+            }
+        ],
+        "tables": {
+            "detailed_analysis_results_final.csv": {
+                "header": [
+                    "x_head",
+                    "y_head",
+                    "x_thorax",
+                    "y_thorax",
+                    "x_abdomen",
+                    "y_abdomen",
+                    "total_volume",
+                    "volume_head",
+                    "volume_thorax",
+                    "volume_abdomen",
+                    "total_length",
+                    "length_head",
+                    "length_thorax",
+                    "length_abdomen",
+                    "wet_mass_from_volume_seg",
+                    "wet_mass_from_length_seg",
+                    "dry_mass_from_volume_seg",
+                    "dry_mass_from_length_seg",
+                    "file_name",
+                    "image_path",
+                    "camera_name",
+                    "lens_name",
+                    "conversion_factor_mm_per_px",
+                    "note"
+                ],
+                "example_row": [
+                    "2616.708100676819",
+                    "1475.0185631697686",
+                    "1995.786213956366",
+                    "1295.8696128986285",
+                    "1151.480909974351",
+                    "1578.6672412419748",
+                    "1.105",
+                    "0.197",
+                    "0.465",
+                    "0.443",
+                    "7.51",
+                    "1.309",
+                    "2.549",
+                    "3.445",
+                    "0.00111",
+                    "0.018745",
+                    "0.000222",
+                    "0.003716",
+                    "CAS001_CAS0000020_stacked_01_H.png",
+                    "CAS001_CAS0000020_stacked_01_H.png",
+                    "ArducamCamera",
+                    "MV65051B",
+                    "0.00315455",
+                    ""
+                ],
+                "type": "detailed_table"
+            },
+            "rapid_scan_results_final.csv": {
+                "header": [
+                    "file_name",
+                    "width_px",
+                    "height_px",
+                    "width_mm",
+                    "height_mm",
+                    "camera_name",
+                    "lens_name",
+                    "conversion_factor_mm_per_px",
+                    "wet_mass_from_length_obb",
+                    "dry_mass_from_length_obb",
+                    "image_path"
+                ],
+                "example_row": [
+                    "CAS001_CAS0000020_stacked_01_H.png",
+                    "1011.9797593624828",
+                    "2257.582671337076",
+                    "3.1923407498969203",
+                    "7.121657415866373",
+                    "ArducamCamera",
+                    "MV65051B",
+                    "0.00315455",
+                    "0.015056",
+                    "0.003095",
+                    "CAS001_CAS0000020_stacked_01_H.png"
+                ],
+                "type": "rapid_table"
+            }
+        },
+        "representation": "Each structure variant describes one CSV table after reading the header as field names and decoding numeric cells. The producer writes CSV, not JSON objects. notes.tables gives each filename, exact column order and an observed example row; variable filename stems are described in scope. Empty cells remain empty strings, not absent fields."
     }
 }

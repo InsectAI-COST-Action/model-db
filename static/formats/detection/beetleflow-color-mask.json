@@ -1,57 +1,68 @@
 {
-    "id": "beetleflow-color-mask",
-    "serialization": "Raster images (extension inherited from input)",
-    "producer": "BeetleFlow pipeline/3_segmentation/batch_inference.py, 5-class checkpoint",
-    "sources": [
-        {
-            "url": "https://github.com/Imageomics/BeetleFlow/blob/ab0bf99555832647ff57d0e5a51e671f6b8e40cf/pipeline/3_segmentation/batch_inference.py",
-            "revision": "ab0bf99555832647ff57d0e5a51e671f6b8e40cf"
-        }
-    ],
     "types": {
-        "image": "uint8[original_height, original_width, 3]"
-    },
-    "structure": {
-        "predicted_masks/<folder-index>.<input-extension>": "T[image]",
-        "predicted_mask_images/<folder-index>.<input-extension>": "T[image]"
-    },
-    "palette_rgb": {
-        "background": [
-            0,
-            0,
-            0
+        "image": [
+            [
+                "T[pixel]"
+            ]
         ],
-        "head": [
-            200,
-            0,
-            0
-        ],
-        "pronotum": [
-            0,
-            200,
-            0
-        ],
-        "elytra": [
-            0,
-            0,
-            200
-        ],
-        "legs": [
-            200,
-            200,
-            0
-        ],
-        "antennae": [
-            200,
-            0,
-            200
+        "pixel": [
+            "T[integer]",
+            "T[integer]",
+            "T[integer]"
         ]
+    },
+    "enums": {},
+    "structure": {
+        "predicted_masks": "T[object]",
+        "predicted_mask_images": "T[object]"
     },
     "notes": {
         "mask": "Saved mask is palette-colored RGB, not the internal integer class map. OpenCV reads it in BGR order.",
         "overlay": "Overlay is saturated uint8 addition of the original image and 0.8 times the colored mask.",
         "lossy": "JPEG inputs cause JPEG outputs; compression prevents exact palette matching. PNG was observed in the probe.",
         "overwrite": "The source increments its counter once per single_beetles folder, not once per image. Multiple inputs with the same extension in one folder overwrite each other.",
-        "scope": "Tested 5-class checkpoint. The hard-coded six-color palette is not a validated 9-class export."
+        "scope": "Tested 5-class checkpoint. The hard-coded six-color palette is not a validated 9-class export.",
+        "id": "beetleflow-color-mask",
+        "serialization": "Raster images (extension inherited from input)",
+        "producer": "BeetleFlow pipeline/3_segmentation/batch_inference.py, 5-class checkpoint",
+        "sources": [
+            {
+                "url": "https://github.com/Imageomics/BeetleFlow/blob/ab0bf99555832647ff57d0e5a51e671f6b8e40cf/pipeline/3_segmentation/batch_inference.py",
+                "revision": "ab0bf99555832647ff57d0e5a51e671f6b8e40cf"
+            }
+        ],
+        "palette_rgb": {
+            "background": [
+                0,
+                0,
+                0
+            ],
+            "head": [
+                200,
+                0,
+                0
+            ],
+            "pronotum": [
+                0,
+                200,
+                0
+            ],
+            "elytra": [
+                0,
+                0,
+                200
+            ],
+            "legs": [
+                200,
+                200,
+                0
+            ],
+            "antennae": [
+                200,
+                0,
+                200
+            ]
+        },
+        "representation": "Structure describes two output directories. Each maps <folder-index>.<input-extension> filenames to raster files. Decoded RGB pixels have type T[image]: original_height rows, original_width pixels per row, three integer channels (0 through 255). These are files, not a JSON object."
     }
 }

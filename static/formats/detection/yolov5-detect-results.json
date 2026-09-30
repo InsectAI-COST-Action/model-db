@@ -1,32 +1,64 @@
 {
-    "id": "yolov5-detect-results",
-    "models": [
-        "yolov5"
-    ],
-    "serialization": "Python object / tensors",
-    "producer": "AutoShape.forward -> Detections",
-    "sources": [
-        {
-            "url": "https://github.com/ultralytics/yolov5/blob/402e17ddf820996f51a191cbb798376e1144f069/models/common.py",
-            "revision": "402e17ddf820996f51a191cbb798376e1144f069"
-        }
-    ],
-    "types": {},
+    "types": {
+        "row": [
+            "T[float]",
+            "T[float]",
+            "T[float]",
+            "T[float]",
+            "T[float]",
+            "T[integer]"
+        ]
+    },
+    "enums": {},
     "structure": {
-        "pred": "list[Tensor[Ni,6]]",
-        "xyxy": "list[Tensor[Ni,6]]",
-        "xywh": "list[Tensor[Ni,6]]",
-        "xyxyn": "list[Tensor[Ni,6]]",
-        "xywhn": "list[Tensor[Ni,6]]",
-        "files": [
-            "T[str]"
+        "pred": [
+            [
+                "T[row]"
+            ]
         ],
-        "names": "class index to name mapping"
+        "xyxy": [
+            [
+                "T[row]"
+            ]
+        ],
+        "xywh": [
+            [
+                "T[row]"
+            ]
+        ],
+        "xyxyn": [
+            [
+                "T[row]"
+            ]
+        ],
+        "xywhn": [
+            [
+                "T[row]"
+            ]
+        ],
+        "files": [
+            "T[string]"
+        ],
+        "names": "T[object] | [T[string]]"
     },
     "notes": {
         "scope": "Relevant fields of Detections; one tensor per image, not a JSON object. This is the AutoShape wrapper output, not the raw network forward output.",
         "columns": "All rows end in confidence, class. pred and xyxy begin x1,y1,x2,y2 in original pixels. xywh begins center_x,center_y,width,height in pixels. The n-suffixed views divide x/width by image width and y/height by image height.",
         "ids": "Class IDs occupy floating tensor entries; use names for their meaning.",
-        "empty": "An image without detections has a zero-row tensor, not a missing batch entry."
+        "empty": "An image without detections has a zero-row tensor, not a missing batch entry.",
+        "id": "yolov5-detect-results",
+        "models": [
+            "yolov5"
+        ],
+        "serialization": "Python object / tensors",
+        "producer": "AutoShape.forward -> Detections",
+        "sources": [
+            {
+                "url": "https://github.com/ultralytics/yolov5/blob/402e17ddf820996f51a191cbb798376e1144f069/models/common.py",
+                "revision": "402e17ddf820996f51a191cbb798376e1144f069"
+            }
+        ],
+        "representation": "Nested arrays describe the batch list and per-image tensor rows. They do not indicate JSON serialization. names is a class-index dictionary or an index-ordered list of class names, depending on the loaded model.",
+        "numeric_storage": "Box tensors store floating-point entries, including class and tracking IDs. Those ID columns are declared integer because that is their expected safe cast target. Storage precision depends on the producer/runtime; consumers must preserve ID values during conversion."
     }
 }

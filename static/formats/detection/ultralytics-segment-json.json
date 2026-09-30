@@ -1,25 +1,4 @@
 {
-    "id": "ultralytics-segment-json",
-    "models": [
-        "YOLO11-seg",
-        "YOLO26-seg"
-    ],
-    "serialization": "application/json",
-    "producer": "Results.to_json(normalize=False, decimals=5)",
-    "sources": [
-        {
-            "url": "https://github.com/ultralytics/ultralytics/blob/8a55f07e379d0d0f66cc23d09e35f54588fd1435/ultralytics/engine/results.py",
-            "revision": "8a55f07e379d0d0f66cc23d09e35f54588fd1435"
-        },
-        {
-            "url": "https://github.com/ultralytics/ultralytics/blob/8a55f07e379d0d0f66cc23d09e35f54588fd1435/ultralytics/utils/__init__.py",
-            "revision": "8a55f07e379d0d0f66cc23d09e35f54588fd1435"
-        },
-        {
-            "url": "https://github.com/ultralytics/ultralytics/blob/8a55f07e379d0d0f66cc23d09e35f54588fd1435/ultralytics/models/yolo/segment/predict.py",
-            "revision": "8a55f07e379d0d0f66cc23d09e35f54588fd1435"
-        }
-    ],
     "types": {
         "box": {
             "x1": "T[float]",
@@ -28,11 +7,11 @@
             "y2": "T[float]"
         },
         "instance": {
-            "name": "T[str]",
-            "class": "T[int]",
+            "name": "T[string]",
+            "class": "T[integer]",
             "confidence": "T[float]",
             "box": "T[box]",
-            "track_id": "? : T[int]",
+            "track_id": "? : T[integer]",
             "segments": "T[segments]"
         },
         "segments": {
@@ -44,33 +23,9 @@
             ]
         }
     },
+    "enums": {},
     "structure": [
         "T[instance]"
-    ],
-    "example": [
-        {
-            "name": "insect",
-            "class": 0,
-            "confidence": 0.9,
-            "box": {
-                "x1": 10.0,
-                "y1": 20.0,
-                "x2": 50.0,
-                "y2": 60.0
-            },
-            "segments": {
-                "x": [
-                    10.0,
-                    50.0,
-                    30.0
-                ],
-                "y": [
-                    20.0,
-                    20.0,
-                    60.0
-                ]
-            }
-        }
     ],
     "notes": {
         "scope": "One image per call; top-level array of instances. No image path, dimensions or class-name lookup table in the JSON.",
@@ -79,6 +34,52 @@
         "tracking": "track_id is omitted for ordinary predictions; present for tracking results.",
         "empty": "No detections produces an empty array.",
         "implementation": "DataExportMixin.to_json serializes a Polars DataFrame built from Results.summary. Definition covers horizontal detection and instance segmentation only.",
-        "segments": "Parallel x and y arrays, not an array of [x,y] pairs. Segments are included when masks exist; binary masks and holes are not encoded."
+        "segments": "Parallel x and y arrays, not an array of [x,y] pairs. Segments are included when masks exist; binary masks and holes are not encoded.",
+        "id": "ultralytics-segment-json",
+        "models": [
+            "YOLO11-seg",
+            "YOLO26-seg"
+        ],
+        "serialization": "application/json",
+        "producer": "Results.to_json(normalize=False, decimals=5)",
+        "sources": [
+            {
+                "url": "https://github.com/ultralytics/ultralytics/blob/8a55f07e379d0d0f66cc23d09e35f54588fd1435/ultralytics/engine/results.py",
+                "revision": "8a55f07e379d0d0f66cc23d09e35f54588fd1435"
+            },
+            {
+                "url": "https://github.com/ultralytics/ultralytics/blob/8a55f07e379d0d0f66cc23d09e35f54588fd1435/ultralytics/utils/__init__.py",
+                "revision": "8a55f07e379d0d0f66cc23d09e35f54588fd1435"
+            },
+            {
+                "url": "https://github.com/ultralytics/ultralytics/blob/8a55f07e379d0d0f66cc23d09e35f54588fd1435/ultralytics/models/yolo/segment/predict.py",
+                "revision": "8a55f07e379d0d0f66cc23d09e35f54588fd1435"
+            }
+        ],
+        "example": [
+            {
+                "name": "insect",
+                "class": 0,
+                "confidence": 0.9,
+                "box": {
+                    "x1": 10.0,
+                    "y1": 20.0,
+                    "x2": 50.0,
+                    "y2": 60.0
+                },
+                "segments": {
+                    "x": [
+                        10.0,
+                        50.0,
+                        30.0
+                    ],
+                    "y": [
+                        20.0,
+                        20.0,
+                        60.0
+                    ]
+                }
+            }
+        ]
     }
 }
