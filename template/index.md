@@ -29,17 +29,13 @@ foundation         = false
 
 # ── Catalogue ─────────────────────────────────────────────────────────────────
 
-purpose            = ["REPLACE"]                 # Insect detection - simple background |
-                                                 # Insect detection - complex background |
-                                                 # Insect classification | Functional group
-                                                 # classification | Behaviour classification |
-                                                 # Trait quantification | Model embeddings
-task               = ["REPLACE"]                 # Localisation | Binary Classification |
-                                                 # Multiclass Classification | Instance
-                                                 # Segmentation | Semantic Segmentation |
-                                                 # Tracking | Counting | Regression |
-                                                 # Zero-shot Detection | Zero-shot
-                                                 # Classification
+purpose            = ["REPLACE"]                 # Insect detection | Insect classification |
+                                                 # Behaviour quantification | Trait
+                                                 # quantification | Model embeddings
+task               = ["REPLACE"]                 # Object Detection | Instance Segmentation |
+                                                 # Semantic Segmentation | Classification |
+                                                 # Binary Classification | Tracking |
+                                                 # Embedding | Counting | Regression
 architecture       = ["REPLACE"]                 # YOLOv8, ViT, Swin Transformer… One
                                                  # entry per architecture.
 base_model          = ""                          # If this is a fine-tuned model, name the
