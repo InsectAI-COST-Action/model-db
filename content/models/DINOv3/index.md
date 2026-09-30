@@ -48,6 +48,7 @@ geographic_scope   = "Global"
 # Optional: one verified output profile per architecture; see static/formats/README.md.
 # output_format    = ["ultralytics-detect-json"]
 produces           = ["embedding"]                    # bbox | mask | label | count | track | embedding
+target_taxonomic_rank = ["NA"]
 image_input_size         = "any"                  # Supports variable resolution via RoPE (256×256 to 4096×4096)
 input_modality     = ["image"] 
 developer          = "Facebook (Meta AI), UC Berkeley" 

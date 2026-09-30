@@ -46,6 +46,7 @@ date               = 2026-09-29
 vocabulary_scope   = "open" 
 geographic_scope   = "Global" 
 produces           = ["bbox", "label", "embedding"] 
+target_taxonomic_rank = ["NA"]
 image_input_size   = "any" 
 input_modality     = ["text", "image"] 
 developer          = "IDEA research" 

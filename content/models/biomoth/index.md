@@ -20,6 +20,7 @@ date               = 2026-09-30
 vocabulary_scope   = "closed"
 geographic_scope   = "Hubbard Brook Experimental Forest, New Hampshire, USA"
 produces           = ["bbox", "count"]
+target_taxonomic_rank = ["NA"]
 image_input_size   = "640x640"
 taxonomic_coverage = "Lepidoptera (one class, 'Moth'; no genus or species identification)"
 developer          = "Lutz, David A.; Suhavi, Suhavi et al. (Colby-Sawyer College, Dartmouth College)"

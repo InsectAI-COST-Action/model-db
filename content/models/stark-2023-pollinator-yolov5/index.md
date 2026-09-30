@@ -17,6 +17,7 @@ date               = 2026-09-21
 vocabulary_scope   = "closed"
 geographic_scope   = "Europe"
 produces           = ["bbox", "label"]
+target_taxonomic_rank = ["order", "family"]
 output_format      = ["yolov5-detect-txt", "yolov7-detect-txt"]
 image_input_size   = "640x640"
 taxonomic_coverage = "8 groups: Araneae, Coleoptera, Diptera, Hemiptera, Hymenoptera, Formicidae, Lepidoptera, Orthoptera"

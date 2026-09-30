@@ -19,6 +19,7 @@ date               = 2026-09-29
 vocabulary_scope   = "open"
 geographic_scope   = "Global"
 produces           = ["label", "embedding"]
+target_taxonomic_rank = ["kingdom", "phylum", "class", "order", "family", "genus", "species"]
 image_input_size   = "224x224"
 input_modality     = ["image", "text"]
 taxonomic_coverage = "TreeOfLife-200M (952k taxa)"

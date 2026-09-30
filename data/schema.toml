@@ -153,6 +153,13 @@ required    = false
 help        = "e.g. 'TreeOfLife (450k taxa)'. Leave out when not stated."
 
 [[field]]
+name        = "target_taxonomic_rank"
+type        = "list"
+required    = false
+values      = ["kingdom", "phylum", "class", "order", "family", "genus", "species", "NA"]
+help        = "Taxonomic rank(s) the model's output labels are at, e.g. [\"family\", \"genus\", \"species\"]. Only for models that classify to a taxon. Use [\"NA\"], on its own, for detectors, embedding models, trait models and any model whose labels are not taxa."
+
+[[field]]
 name        = "developer"
 type        = "string"
 required    = false

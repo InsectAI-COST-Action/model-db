@@ -18,6 +18,7 @@ date               = 2026-09-29
 # Optional - delete a line to take the default shown.
 vocabulary_scope   = "closed"
 produces           = ["bbox"]
+target_taxonomic_rank = ["NA"]
 image_input_size   = "800x448"
 input_modality     = []
 developer          = "Maximilian Sittinger"

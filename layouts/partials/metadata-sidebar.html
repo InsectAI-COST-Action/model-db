@@ -19,6 +19,9 @@
     {{- end }}
     <dt>Input size</dt><dd>{{ $p.image_input_size | default "any" }}</dd>
     <dt>Outputs</dt><dd class="no-cap">{{ delimit $produces ", " }}</dd>
+    {{- with $p.target_taxonomic_rank }}{{ if not (in . "NA") }}
+    <dt>Taxonomic rank</dt><dd>{{ delimit . ", " }}</dd>
+    {{- end }}{{ end }}
     {{- with $p.input_modality }}
     <dt>Input</dt><dd>{{ delimit . ", " }}</dd>
     {{- end }}

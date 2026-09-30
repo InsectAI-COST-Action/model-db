@@ -19,6 +19,7 @@ date               = 2026-09-30
 vocabulary_scope   = "closed"
 geographic_scope   = "Global model plus regional models: NE North America, W Europe, Panama, Costa Rica, Anguilla, Kenya-Uganda"
 produces           = ["label"]
+target_taxonomic_rank = ["order", "species"]
 image_input_size   = "128x128 (Mila models), 300x300 (Turing models)"
 taxonomic_coverage = "Lepidoptera: 29,176 species (global); 79 to 5,952 per regional model. Order model: 16 arthropod orders"
 developer          = "Rolnick Lab (Mila / McGill), the AMI consortium, and the Alan Turing Institute (Turing models)"

@@ -20,6 +20,7 @@ date               = 2026-09-30
 vocabulary_scope   = "closed"
 geographic_scope   = "Global (trap images from North America, Europe and Central America)"
 produces           = ["bbox"]
+target_taxonomic_rank = ["NA"]
 image_input_size   = "any"
 taxonomic_coverage = "Class-agnostic: one class, 'object' (any arthropod on the trap screen)"
 developer          = "Rolnick Lab (Mila / McGill) and the AMI consortium"
