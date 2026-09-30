@@ -152,7 +152,7 @@ a:hover { text-decoration-thickness: 2px; }
   font: inherit; font-size: .84rem; padding: .35rem .8rem;
   border: 1px solid var(--border-str); border-radius: var(--radius);
   background: var(--surface); color: var(--text-dim); cursor: pointer;
-  align-self: flex-end;
+  align-self: flex-end; margin-left: auto;
 }
 .filter-reset:hover { color: var(--text); border-color: var(--text-dim); }
 
