@@ -41,6 +41,7 @@ date               = 2026-09-29
 vocabulary_scope   = "closed"
 # geographic_scope   = ""
 produces           = ["label", "embedding"]
+target_taxonomic_rank = ["NA"]
 image_input_size         = "224x224"
 input_modality     = ["image"]
 developer          = "Facebook (META), UC Berkeley"

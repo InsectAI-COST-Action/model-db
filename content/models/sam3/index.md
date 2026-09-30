@@ -19,6 +19,7 @@ date               = 2026-09-30
 vocabulary_scope   = "open"
 geographic_scope   = "Global"
 produces           = ["bbox", "mask", "track"]
+target_taxonomic_rank = ["NA"]
 image_input_size   = "1008x1008"
 input_modality     = ["text", "image", "box", "point", "mask"]
 developer          = "Meta Superintelligence Labs (Carion, Gustafson, Hu et al.)"

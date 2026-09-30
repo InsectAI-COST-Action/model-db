@@ -19,6 +19,7 @@ date               = 2026-09-29
 vocabulary_scope   = "closed"
 geographic_scope   = "USA (NEON sites)"
 produces           = ["mask"]
+target_taxonomic_rank = ["NA"]
 output_format      = ["beetleflow-color-mask", "beetleflow-color-mask"]
 image_input_size   = "512x512"
 input_modality     = ["image"]

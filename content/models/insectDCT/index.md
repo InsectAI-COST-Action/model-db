@@ -50,6 +50,7 @@ vocabulary_scope   = "closed"                    # closed | open | taxonomic.
                                                  # handles concepts it was not
                                                  # trained on.
 produces           = ["bbox"]                    # bbox | mask | label | count | track | embedding
+target_taxonomic_rank = ["NA"]
 image_input_size   = "1920x1080"                 # or "any" for native resolution
 input_modality     = []                          # text | image | box | point | mask.
                                                  # List every input the model
