@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import ast
+from datetime import datetime
 import importlib.metadata
 import json
 from pathlib import Path
@@ -408,6 +410,61 @@ def main():
             )
         observation.update(representation="mcc24-csv", files=files)
         if not any(f["rows"] > 0 for f in files):
+            observation["status"] = "inconclusive"
+    elif adapter == "biomoth":
+        import pandas as pd
+        from torchvision.ops import nms
+
+        notebook = json.loads(paths["author_script"].read_text())
+        code = "\n".join(
+            "".join(cell["source"]) for cell in notebook["cells"]
+            if cell["cell_type"] == "code"
+        )
+        # Execute original function bodies, excluding notebook-local paths and UI cells.
+        definitions = ast.Module(
+            body=[node for node in ast.parse(code).body if isinstance(node, ast.FunctionDef)],
+            type_ignores=[],
+        )
+        namespace = dict(np=np, pd=pd, torch=torch, nms=nms, cv2=cv2, os=os,
+                         IMG_SIZE=640, CONF_THRES=0.25, IOU_THRES=0.50,
+                         DEVICE="cpu", IMAGE_FOLDER=str(out), LOCATIONS=["inputs"],
+                         CSV=str(out / "predictions_2023.csv"),
+                         model=torch.jit.load(str(paths["weights"]), map_location="cpu").eval())
+        exec(compile(definitions, str(paths["author_script"]), "exec"), namespace)
+        namespace["batch_process"]()
+        with (out / "predictions_2023.csv").open() as handle:
+            reader = csv.DictReader(handle)
+            rows = list(reader)
+            header = reader.fieldnames
+        observation.update(representation="biomoth-csv", header=header, rows=len(rows),
+                           counts_by_image={p.name: sum(r["fileName"] == p.name for r in rows)
+                                            for p in sorted(images.iterdir())},
+                           settings=dict(img_size=640, confidence=0.25, iou=0.50),
+                           note="Original batch_process and helpers; fixed author year/calibration preserved. Fixtures are not an accuracy or physical calibration test.")
+        if not rows:
+            observation["status"] = "inconclusive"
+    elif adapter == "mothbot":
+        from ultralytics import YOLO
+
+        namespace = dict(np=np, cv2=cv2, os=os, json=json, datetime=datetime,
+                         GEN_THUMBNAILS=True)
+        for resource, name in [("common", "current_timestamp"), ("author_script", "_save_result")]:
+            tree = ast.parse(paths[resource].read_text())
+            definition = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == name)
+            exec(compile(ast.Module(body=[definition], type_ignores=[]),
+                         str(paths[resource]), "exec"), namespace)
+        model = YOLO(str(paths["weights"]))
+        records = []
+        for p in sorted(images.iterdir()):
+            result = model.predict(source=cv2.imread(str(p)), device="cpu", verbose=False,
+                                   imgsz=1600, max_det=10000)[0]
+            destination = out / (p.stem + "_botdetection.json")
+            shapes, _ = namespace["_save_result"](result, str(p), str(destination), "MBD-1-1")
+            records.append(dict(file=destination.name, instances=len(shapes)))
+        observation.update(representation="mothbot-detection-json", files=records,
+                           settings=dict(img_size=1600, max_det=10000, gen_thumbnails=True),
+                           note="Original author JSON writer on real OBB predictions. Thumbnail filenames are recorded but thumbnails and optional blur enrichment are not produced; GUI/classification/tracking excluded.")
+        if not any(r["instances"] for r in records):
             observation["status"] = "inconclusive"
     elif adapter == "flatbug":
         sys.argv = [

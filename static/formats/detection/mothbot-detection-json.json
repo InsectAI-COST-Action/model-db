@@ -1,0 +1,72 @@
+{
+    "types": {
+        "shape": {
+            "kie_linking": "T[array]",
+            "direction": "T[float]",
+            "label": "T[string]",
+            "score": "T[float]",
+            "group_id": "T[null]",
+            "description": "T[string]",
+            "difficult": "T[string]",
+            "shape_type": "T[string](\"rotation\")",
+            "flags": "T[object]",
+            "attributes": "T[object]",
+            "points": [
+                "T[float_pair]",
+                "T[float_pair]",
+                "T[float_pair]",
+                "T[float_pair]"
+            ],
+            "patch_path": "T[string]",
+            "confidence_detection": "T[float]",
+            "identifier_bot": "T[string]",
+            "identifier_human": "T[string]",
+            "timestamp_detection": "T[string]",
+            "detector_bot": "T[string]",
+            "blur_score": "? : T[float]",
+            "motion_streak": "? : T[float]",
+            "blur_method": "? : T[string]"
+        }
+    },
+    "enums": {},
+    "structure": {
+        "version": "T[string]",
+        "flags": "T[object]",
+        "imagePath": "T[string]",
+        "imageHeight": "T[integer]",
+        "imageWidth": "T[integer]",
+        "description": "T[string]",
+        "imageData": "T[null]",
+        "shapes": [
+            "T[shape]"
+        ]
+    },
+    "notes": {
+        "id": "mothbot-detection-json",
+        "evidence": "Real author checkpoint on CPU, populated specimen output and empty blank control. See src/probe/reports/2026-09-30-format-expansion/mothbot/report.json for exact invocation and scope. This is a format probe, not an accuracy evaluation. Runs the original _save_result after OBB inference; excludes thumbnail generation, blur enrichment and later pipeline stages.",
+        "producer": "Mothbot pipeline/detect.py _save_result",
+        "serialization": "One JSON file per image",
+        "scope": "Fresh detection-stage output for the PyTorch OBB path. Later identification/manual editing/tracking can change labels and add fields; this profile does not describe those later stages or the separate ONNX writer. The null-only group_id and imageData describe this writer, which does not populate grouping or embed image bytes. Supporting those features requires a separately evidenced extension. The rotation literal and four point positions define this OBB representation, rather than defaults for arbitrary annotation shapes.",
+        "coordinates": "points contains four [x,y] vertices in original-image pixels. direction is cv2.minAreaRect angle in degrees, not the YOLO internal rotation in radians.",
+        "confidence": "score and confidence_detection duplicate the OBB confidence in [0,1] when first written. The detector initializes label to creature and does not export model class IDs; label contents are not constrained to that initial value.",
+        "identity": "version and detector_bot contain the model name, not a schema version. imagePath is the supplied image path. patch_path is a precomputed filename when thumbnails are enabled, otherwise an empty string; thumbnail existence is a separate step.",
+        "timestamp": "timestamp_detection uses local YYYY-MM-DD__HH_MM_SS_(+HHMM), not the schema ISO type.",
+        "constants": "kie_linking is initially []; flags and attributes are initially {}. The detector initializes difficult to the string false, not a boolean; the schema allows other string contents. Empty detections yield shapes=[].",
+        "optional": "The asynchronous patch writer can add blur_score, motion_streak and blur_method; these are source-inspected optional enrichment, not required fields from _save_result.",
+        "sources": [
+            {
+                "url": "https://github.com/Digital-Naturalism-Laboratories/Mothbot_Process/blob/7514bee8ace5c9cb859f3566ed3088a7824b692c/pipeline/detect.py",
+                "revision": "7514bee8ace5c9cb859f3566ed3088a7824b692c"
+            },
+            {
+                "url": "https://github.com/Digital-Naturalism-Laboratories/Mothbot_Process/blob/7514bee8ace5c9cb859f3566ed3088a7824b692c/core/common.py",
+                "revision": "7514bee8ace5c9cb859f3566ed3088a7824b692c"
+            },
+            {
+                "url": "https://github.com/Digital-Naturalism-Laboratories/Mothbot_Process/blob/7514bee8ace5c9cb859f3566ed3088a7824b692c/core/blur.py",
+                "revision": "7514bee8ace5c9cb859f3566ed3088a7824b692c"
+            }
+        ],
+        "initial_values": "The detection writer initializes image and shape descriptions, identifier_bot and identifier_human to empty strings. These are initialization defaults, not restrictions on string contents; the schema permits populated values. This does not establish coverage of every later pipeline field or variant."
+    }
+}

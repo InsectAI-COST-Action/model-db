@@ -373,3 +373,23 @@ actual author entry points with real weights. Custom observed representations:
 
 See the [dated evidence](../../src/probe/reports/2026-09-30/README.md) for checkpoint
 scope, settings and cases that could not be completed.
+
+## Additional author-specific detection outputs
+
+The [coverage audit](../../src/probe/reports/2026-09-30-format-expansion/README.md)
+records the evidence level for every detection card, including version and stage
+limits. The new profiles are:
+
+| Profile | Author interface | Evidence |
+| --- | --- | --- |
+| [BioMoth CSV](detection/biomoth-csv.json) | Notebook batch measurements | Real checkpoint and original notebook functions |
+| [Mothbot JSON](detection/mothbot-detection-json.json) | Detection-stage oriented boxes | Real checkpoint and original JSON writer; later stages excluded |
+| [AMI boxes](detection/ami-detector-boxes.json) | Thresholded integer box list, no scores | Source inspection |
+| [Insect Detect CSV](detection/insect-detect-csv.json) | Camera-trap tracking metadata | Source inspection; hardware probe blocked |
+| [MCC24 CSV](detection/mcc24-csv.json) | Combined detector/order/species pipeline | Source inspection; full run failed on label-map download |
+| [Grounding DINO HF results](detection/grounding-dino-hf-results.json) | Transformers 4.40.2 grounded postprocessor | Source inspection; version-specific Python tensors/phrases |
+| [Ecto-Trigger TFLite score](detection/ecto-trigger-tflite-score.json) | Quantized image-level trigger | Source inspection; no instance boxes |
+
+These profiles preserve emitted units, score meanings, field names and quirks.
+An `output_format` link documents an interface; the descriptor's `notes.evidence`
+and card prose identify whether it was observed or only source-inspected.

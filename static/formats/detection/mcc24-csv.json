@@ -1,0 +1,78 @@
+{
+    "types": {
+        "row": {
+            "year": "T[string]",
+            "trap": "T[string]",
+            "date": "T[string]",
+            "time": "T[string]",
+            "detectConf": "T[integer]",
+            "detectId": "T[integer]",
+            "x1": "T[integer]",
+            "y1": "T[integer]",
+            "x2": "T[integer]",
+            "y2": "T[integer]",
+            "fileName": "T[string]",
+            "orderLabel": "T[string]",
+            "orderId": "T[integer]",
+            "orderConf": "T[float]",
+            "aboveTH": "T[string](E[boolean_text])",
+            "key": "T[integer]",
+            "speciesLabel": "T[string]",
+            "speciesId": "T[integer]",
+            "speciesConf": "T[float]"
+        }
+    },
+    "enums": {
+        "boolean_text": [
+            "True",
+            "False"
+        ]
+    },
+    "structure": [
+        "T[row]"
+    ],
+    "notes": {
+        "id": "mcc24-csv",
+        "evidence": "Source inspection at the pinned revisions; no full inference observation claimed.",
+        "serialization": "text/csv with header",
+        "representation": "One CSV table decoded using the header as field names. Numeric cells may be safely cast to the declared types; the author writes CSV, not JSON objects.",
+        "header": [
+            "year",
+            "trap",
+            "date",
+            "time",
+            "detectConf",
+            "detectId",
+            "x1",
+            "y1",
+            "x2",
+            "y2",
+            "fileName",
+            "orderLabel",
+            "orderId",
+            "orderConf",
+            "aboveTH",
+            "key",
+            "speciesLabel",
+            "speciesId",
+            "speciesConf"
+        ],
+        "producer": "MCC24-trap detectClassifySpecies.py with orderAndSpeciesClassifier.py",
+        "scope": "Combined detector/order/species CSV, result.csv. Excludes other scripts and the accompanying predictions.npy logit array. The retained full probe failed on the author label-map HTTP 403 before inference; this profile is source-inspected only.",
+        "coordinates": "x1,y1,x2,y2 are rounded pixel corners. Preserve the author bug: if y2 exceeds image height, the writer changes y1 to height rather than clipping y2; the resulting box need not be valid.",
+        "confidence": "detectConf is integer round(detector confidence*100). orderConf is the selected order logit transformed by a fitted normal CDF and multiplied by 100, rounded to two decimals. speciesConf is the species prediction probability multiplied by 100 and rounded to two decimals. These are different score meanings.",
+        "classes": "detectId is detector index+1. orderId is the zero-based order index; speciesId follows the author species label map. key is an increasing detection index associated with predictions.npy.",
+        "identity": "year and trap are source directory components, not validated calendar fields. date/time are filename slices [0:8]/[8:14], intended YYYYMMDD/HHMMSS. fileName includes the last three source directory components.",
+        "serialization_caveat": "The author concatenates strings with commas rather than quoting CSV cells. Commas/newlines in labels or paths can therefore corrupt row boundaries.",
+        "sources": [
+            {
+                "url": "https://github.com/kimbjerge/MCC24-trap/blob/a817f57915b250d3b4b3f06117d0bade4050d61f/detectClassifySpecies.py",
+                "revision": "a817f57915b250d3b4b3f06117d0bade4050d61f"
+            },
+            {
+                "url": "https://github.com/kimbjerge/MCC24-trap/blob/a817f57915b250d3b4b3f06117d0bade4050d61f/orderAndSpeciesClassifier.py",
+                "revision": "a817f57915b250d3b4b3f06117d0bade4050d61f"
+            }
+        ]
+    }
+}

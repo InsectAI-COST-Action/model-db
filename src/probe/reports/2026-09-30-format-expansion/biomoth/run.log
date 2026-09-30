@@ -1,0 +1,4 @@
+DEBUG type(out): <class 'torch.Tensor'>
+DEBUG out.shape: (1, 5, 8400) dtype: torch.float32
+DEBUG type(out): <class 'torch.Tensor'>
+DEBUG out.shape: (1, 5, 8400) dtype: torch.float32

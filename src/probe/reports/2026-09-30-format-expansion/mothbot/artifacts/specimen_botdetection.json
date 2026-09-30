@@ -1,0 +1,551 @@
+{
+  "version": "MBD-1-1",
+  "flags": {},
+  "imagePath": "/home/asger/model-db/src/probe/runs/20260930T143858-e31c920b/mothbot/artifacts/inputs/specimen.jpg",
+  "imageHeight": 1933,
+  "imageWidth": 1940,
+  "description": "",
+  "imageData": null,
+  "shapes": [
+    {
+      "kie_linking": [],
+      "direction": 55.58847427368164,
+      "label": "creature",
+      "score": 0.7062163352966309,
+      "group_id": null,
+      "description": "",
+      "difficult": "false",
+      "shape_type": "rotation",
+      "flags": {},
+      "attributes": {},
+      "points": [
+        [
+          1672.8193359375,
+          1388.3424072265625
+        ],
+        [
+          1626.525146484375,
+          1320.7606201171875
+        ],
+        [
+          1564.276611328125,
+          1363.4014892578125
+        ],
+        [
+          1610.57080078125,
+          1430.9832763671875
+        ]
+      ],
+      "patch_path": "specimen_0_MBD-1-1.jpg",
+      "confidence_detection": 0.7062163352966309,
+      "identifier_bot": "",
+      "identifier_human": "",
+      "timestamp_detection": "2026-09-30__14_39_13_(+0200)",
+      "detector_bot": "MBD-1-1"
+    },
+    {
+      "kie_linking": [],
+      "direction": 19.62029266357422,
+      "label": "creature",
+      "score": 0.660965621471405,
+      "group_id": null,
+      "description": "",
+      "difficult": "false",
+      "shape_type": "rotation",
+      "flags": {},
+      "attributes": {},
+      "points": [
+        [
+          1923.1663818359375,
+          1219.036376953125
+        ],
+        [
+          2033.6197509765625,
+          909.194580078125
+        ],
+        [
+          1783.6981201171875,
+          820.1016845703125
+        ],
+        [
+          1673.2447509765625,
+          1129.9434814453125
+        ]
+      ],
+      "patch_path": "specimen_1_MBD-1-1.jpg",
+      "confidence_detection": 0.660965621471405,
+      "identifier_bot": "",
+      "identifier_human": "",
+      "timestamp_detection": "2026-09-30__14_39_13_(+0200)",
+      "detector_bot": "MBD-1-1"
+    },
+    {
+      "kie_linking": [],
+      "direction": 36.04448699951172,
+      "label": "creature",
+      "score": 0.6364609599113464,
+      "group_id": null,
+      "description": "",
+      "difficult": "false",
+      "shape_type": "rotation",
+      "flags": {},
+      "attributes": {},
+      "points": [
+        [
+          419.1792907714844,
+          666.69677734375
+        ],
+        [
+          557.4547119140625,
+          476.6874694824219
+        ],
+        [
+          306.1429138183594,
+          293.8004455566406
+        ],
+        [
+          167.86752319335938,
+          483.8097839355469
+        ]
+      ],
+      "patch_path": "specimen_2_MBD-1-1.jpg",
+      "confidence_detection": 0.6364609599113464,
+      "identifier_bot": "",
+      "identifier_human": "",
+      "timestamp_detection": "2026-09-30__14_39_13_(+0200)",
+      "detector_bot": "MBD-1-1"
+    },
+    {
+      "kie_linking": [],
+      "direction": 64.02983856201172,
+      "label": "creature",
+      "score": 0.5486825704574585,
+      "group_id": null,
+      "description": "",
+      "difficult": "false",
+      "shape_type": "rotation",
+      "flags": {},
+      "attributes": {},
+      "points": [
+        [
+          839.9431762695312,
+          812.9904174804688
+        ],
+        [
+          765.7092895507812,
+          660.5869750976562
+        ],
+        [
+          547.9443969726562,
+          766.6576538085938
+        ],
+        [
+          622.1782836914062,
+          919.0610961914062
+        ]
+      ],
+      "patch_path": "specimen_3_MBD-1-1.jpg",
+      "confidence_detection": 0.5486825704574585,
+      "identifier_bot": "",
+      "identifier_human": "",
+      "timestamp_detection": "2026-09-30__14_39_13_(+0200)",
+      "detector_bot": "MBD-1-1"
+    },
+    {
+      "kie_linking": [],
+      "direction": 21.183753967285156,
+      "label": "creature",
+      "score": 0.546801745891571,
+      "group_id": null,
+      "description": "",
+      "difficult": "false",
+      "shape_type": "rotation",
+      "flags": {},
+      "attributes": {},
+      "points": [
+        [
+          1649.4024658203125,
+          587.7581787109375
+        ],
+        [
+          1669.3912353515625,
+          536.1806640625
+        ],
+        [
+          1593.2061767578125,
+          506.6552734375
+        ],
+        [
+          1573.2174072265625,
+          558.2327880859375
+        ]
+      ],
+      "patch_path": "specimen_4_MBD-1-1.jpg",
+      "confidence_detection": 0.546801745891571,
+      "identifier_bot": "",
+      "identifier_human": "",
+      "timestamp_detection": "2026-09-30__14_39_13_(+0200)",
+      "detector_bot": "MBD-1-1"
+    },
+    {
+      "kie_linking": [],
+      "direction": 19.325851440429688,
+      "label": "creature",
+      "score": 0.4932636320590973,
+      "group_id": null,
+      "description": "",
+      "difficult": "false",
+      "shape_type": "rotation",
+      "flags": {},
+      "attributes": {},
+      "points": [
+        [
+          1252.893798828125,
+          1117.459716796875
+        ],
+        [
+          1400.38134765625,
+          696.9097900390625
+        ],
+        [
+          1156.27978515625,
+          611.302978515625
+        ],
+        [
+          1008.792236328125,
+          1031.8529052734375
+        ]
+      ],
+      "patch_path": "specimen_5_MBD-1-1.jpg",
+      "confidence_detection": 0.4932636320590973,
+      "identifier_bot": "",
+      "identifier_human": "",
+      "timestamp_detection": "2026-09-30__14_39_13_(+0200)",
+      "detector_bot": "MBD-1-1"
+    },
+    {
+      "kie_linking": [],
+      "direction": 32.55247116088867,
+      "label": "creature",
+      "score": 0.4762844741344452,
+      "group_id": null,
+      "description": "",
+      "difficult": "false",
+      "shape_type": "rotation",
+      "flags": {},
+      "attributes": {},
+      "points": [
+        [
+          1625.3787841796875,
+          799.2805786132812
+        ],
+        [
+          1647.7139892578125,
+          764.2920532226562
+        ],
+        [
+          1611.6756591796875,
+          741.2866821289062
+        ],
+        [
+          1589.3404541015625,
+          776.2752075195312
+        ]
+      ],
+      "patch_path": "specimen_6_MBD-1-1.jpg",
+      "confidence_detection": 0.4762844741344452,
+      "identifier_bot": "",
+      "identifier_human": "",
+      "timestamp_detection": "2026-09-30__14_39_13_(+0200)",
+      "detector_bot": "MBD-1-1"
+    },
+    {
+      "kie_linking": [],
+      "direction": 38.79222869873047,
+      "label": "creature",
+      "score": 0.47352302074432373,
+      "group_id": null,
+      "description": "",
+      "difficult": "false",
+      "shape_type": "rotation",
+      "flags": {},
+      "attributes": {},
+      "points": [
+        [
+          742.6861572265625,
+          492.81024169921875
+        ],
+        [
+          903.2301025390625,
+          293.0782470703125
+        ],
+        [
+          644.071533203125,
+          84.76728820800781
+        ],
+        [
+          483.527587890625,
+          284.499267578125
+        ]
+      ],
+      "patch_path": "specimen_7_MBD-1-1.jpg",
+      "confidence_detection": 0.47352302074432373,
+      "identifier_bot": "",
+      "identifier_human": "",
+      "timestamp_detection": "2026-09-30__14_39_13_(+0200)",
+      "detector_bot": "MBD-1-1"
+    },
+    {
+      "kie_linking": [],
+      "direction": 18.636634826660156,
+      "label": "creature",
+      "score": 0.46381303668022156,
+      "group_id": null,
+      "description": "",
+      "difficult": "false",
+      "shape_type": "rotation",
+      "flags": {},
+      "attributes": {},
+      "points": [
+        [
+          693.9449462890625,
+          1775.94091796875
+        ],
+        [
+          809.5916748046875,
+          1433.029052734375
+        ],
+        [
+          487.3692321777344,
+          1324.35986328125
+        ],
+        [
+          371.7225036621094,
+          1667.271728515625
+        ]
+      ],
+      "patch_path": "specimen_8_MBD-1-1.jpg",
+      "confidence_detection": 0.46381303668022156,
+      "identifier_bot": "",
+      "identifier_human": "",
+      "timestamp_detection": "2026-09-30__14_39_13_(+0200)",
+      "detector_bot": "MBD-1-1"
+    },
+    {
+      "kie_linking": [],
+      "direction": 58.36813735961914,
+      "label": "creature",
+      "score": 0.40884020924568176,
+      "group_id": null,
+      "description": "",
+      "difficult": "false",
+      "shape_type": "rotation",
+      "flags": {},
+      "attributes": {},
+      "points": [
+        [
+          1422.529052734375,
+          491.7238464355469
+        ],
+        [
+          1407.848388671875,
+          467.8905944824219
+        ],
+        [
+          1373.805908203125,
+          488.8597717285156
+        ],
+        [
+          1388.486572265625,
+          512.6929931640625
+        ]
+      ],
+      "patch_path": "specimen_9_MBD-1-1.jpg",
+      "confidence_detection": 0.40884020924568176,
+      "identifier_bot": "",
+      "identifier_human": "",
+      "timestamp_detection": "2026-09-30__14_39_13_(+0200)",
+      "detector_bot": "MBD-1-1"
+    },
+    {
+      "kie_linking": [],
+      "direction": 68.13001251220703,
+      "label": "creature",
+      "score": 0.3709524869918823,
+      "group_id": null,
+      "description": "",
+      "difficult": "false",
+      "shape_type": "rotation",
+      "flags": {},
+      "attributes": {},
+      "points": [
+        [
+          461.5230407714844,
+          1606.8759765625
+        ],
+        [
+          445.6298522949219,
+          1567.280517578125
+        ],
+        [
+          413.0357971191406,
+          1580.36328125
+        ],
+        [
+          428.9289855957031,
+          1619.958740234375
+        ]
+      ],
+      "patch_path": "specimen_10_MBD-1-1.jpg",
+      "confidence_detection": 0.3709524869918823,
+      "identifier_bot": "",
+      "identifier_human": "",
+      "timestamp_detection": "2026-09-30__14_39_13_(+0200)",
+      "detector_bot": "MBD-1-1"
+    },
+    {
+      "kie_linking": [],
+      "direction": 82.66397094726562,
+      "label": "creature",
+      "score": 0.332753986120224,
+      "group_id": null,
+      "description": "",
+      "difficult": "false",
+      "shape_type": "rotation",
+      "flags": {},
+      "attributes": {},
+      "points": [
+        [
+          1335.0667724609375,
+          1723.5985107421875
+        ],
+        [
+          1278.0196533203125,
+          1280.4857177734375
+        ],
+        [
+          815.8673095703125,
+          1339.9842529296875
+        ],
+        [
+          872.91455078125,
+          1783.0970458984375
+        ]
+      ],
+      "patch_path": "specimen_11_MBD-1-1.jpg",
+      "confidence_detection": 0.332753986120224,
+      "identifier_bot": "",
+      "identifier_human": "",
+      "timestamp_detection": "2026-09-30__14_39_13_(+0200)",
+      "detector_bot": "MBD-1-1"
+    },
+    {
+      "kie_linking": [],
+      "direction": 87.91913604736328,
+      "label": "creature",
+      "score": 0.2986822724342346,
+      "group_id": null,
+      "description": "",
+      "difficult": "false",
+      "shape_type": "rotation",
+      "flags": {},
+      "attributes": {},
+      "points": [
+        [
+          639.6898193359375,
+          934.5301513671875
+        ],
+        [
+          637.1365966796875,
+          864.2589111328125
+        ],
+        [
+          599.6324462890625,
+          865.62158203125
+        ],
+        [
+          602.1856689453125,
+          935.892822265625
+        ]
+      ],
+      "patch_path": "specimen_12_MBD-1-1.jpg",
+      "confidence_detection": 0.2986822724342346,
+      "identifier_bot": "",
+      "identifier_human": "",
+      "timestamp_detection": "2026-09-30__14_39_13_(+0200)",
+      "detector_bot": "MBD-1-1"
+    },
+    {
+      "kie_linking": [],
+      "direction": 26.99808692932129,
+      "label": "creature",
+      "score": 0.2837374806404114,
+      "group_id": null,
+      "description": "",
+      "difficult": "false",
+      "shape_type": "rotation",
+      "flags": {},
+      "attributes": {},
+      "points": [
+        [
+          1160.3353271484375,
+          195.60958862304688
+        ],
+        [
+          1213.8128662109375,
+          90.64520263671875
+        ],
+        [
+          1096.9166259765625,
+          31.088504791259766
+        ],
+        [
+          1043.4390869140625,
+          136.05288696289062
+        ]
+      ],
+      "patch_path": "specimen_13_MBD-1-1.jpg",
+      "confidence_detection": 0.2837374806404114,
+      "identifier_bot": "",
+      "identifier_human": "",
+      "timestamp_detection": "2026-09-30__14_39_13_(+0200)",
+      "detector_bot": "MBD-1-1"
+    },
+    {
+      "kie_linking": [],
+      "direction": 38.376365661621094,
+      "label": "creature",
+      "score": 0.271291047334671,
+      "group_id": null,
+      "description": "",
+      "difficult": "false",
+      "shape_type": "rotation",
+      "flags": {},
+      "attributes": {},
+      "points": [
+        [
+          1201.535400390625,
+          480.3956298828125
+        ],
+        [
+          1230.73779296875,
+          443.5201416015625
+        ],
+        [
+          1198.32958984375,
+          417.85528564453125
+        ],
+        [
+          1169.127197265625,
+          454.73077392578125
+        ]
+      ],
+      "patch_path": "specimen_14_MBD-1-1.jpg",
+      "confidence_detection": 0.271291047334671,
+      "identifier_bot": "",
+      "identifier_human": "",
+      "timestamp_detection": "2026-09-30__14_39_13_(+0200)",
+      "detector_bot": "MBD-1-1"
+    }
+  ]
+}
