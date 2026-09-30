@@ -51,7 +51,12 @@
         <td><span class="lic">{{ $p.license }}</span></td>
         <td>
           {{- if $p.output_format }}
-          {{- range $p.output_format }}
+          {{- $formats := $p.output_format }}
+          {{- $uniqueFormats := uniq $formats }}
+          {{- if eq (len $uniqueFormats) 1 }}
+            {{- $formats = $uniqueFormats }}
+          {{- end }}
+          {{- range $formats }}
           <span class="lic"><a href="{{ printf "formats/%s/%s.json" $p.category . | relURL }}">{{ . }}</a></span>
           {{- end }}
           {{- else -}}

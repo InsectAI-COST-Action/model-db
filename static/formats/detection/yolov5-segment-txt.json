@@ -1,0 +1,48 @@
+{
+    "id": "yolov5-segment-txt",
+    "serialization": "text/plain",
+    "types": {
+        "row": "class followed by zero or more x,y pairs, followed by confidence only when save_conf=true"
+    },
+    "structure": [
+        "T[row]"
+    ],
+    "columns": [
+        "class",
+        "x1",
+        "y1",
+        "...",
+        "xn",
+        "yn",
+        "confidence (only with save_conf)"
+    ],
+    "coordinates": "Polygon coordinates normalized to the original image width/height.",
+    "notes": {
+        "encoding": "Space-separated numeric values formatted with %g; one instance per line, trailing newline. This JSON file describes the text layout; the producer does not emit JSON.",
+        "classes": "Zero-based model class index. Class meanings require the producing model class-name mapping, which is not embedded.",
+        "confidence": "Last column is present only when save_conf is enabled; disabled by default.",
+        "files": "Appends to the output text file. No write when no detections exist; an existing file is not cleared.",
+        "metadata": "No image dimensions, image path or class names in each row. Keep source-image association externally.",
+        "contour": "Uses the largest contour from each mask. Holes and other disconnected components are not preserved; there is no minimum vertex count check in the writer.",
+        "order": "Reversed detections and reversed contours are paired. Each flattened contour alternates x,y."
+    },
+    "example": "0 0.1 0.2 0.5 0.2 0.3 0.6 0.9\n",
+    "example_options": {
+        "save_conf": true
+    },
+    "models": [
+        "yolov5-seg"
+    ],
+    "producer": "segment/predict.py --save-txt",
+    "sources": [
+        {
+            "url": "https://github.com/ultralytics/yolov5/blob/402e17ddf820996f51a191cbb798376e1144f069/segment/predict.py",
+            "revision": "402e17ddf820996f51a191cbb798376e1144f069"
+        }
+    ],
+    "emitted": [
+        "polygon",
+        "class",
+        "confidence (optional)"
+    ]
+}
