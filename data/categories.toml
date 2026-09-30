@@ -15,6 +15,7 @@ order = [
   "detection",
   "classification",
   "regression",
+  "embeddings"
 ]
 
 [categories.detection]
@@ -42,3 +43,14 @@ Models that give a single continuous variable as the output (e.g. estimating
 biomass from an image).
 """
 open = true
+
+[categories.embeddings]
+title = "Embeddings models"
+short = "Embeddings"
+description = """
+Models to be used as feature extractors, producing embeddings that can be paired 
+with a prediction head for downstream tasks such as classification or regression. 
+These models are not directly applicable to a specific insect task, but are 
+good starting points for building your own models. 
+"""
+open = false # open so that the section is not collapsed on the home page.
