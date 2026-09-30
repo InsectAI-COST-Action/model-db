@@ -23,8 +23,8 @@
 
 # ── Identity ──────────────────────────────────────────────────────────────────
 
-title              = "REPLACE WITH THE MODEL NAME"
-description        = "One sentence, in plain language, saying what the model does."
+title              = "ultra-lightweight CNNs"
+description        = "Extremely small CNNs, intended for insect detection on microcontrollers"
 foundation         = false
 
 # ── Catalogue ─────────────────────────────────────────────────────────────────
