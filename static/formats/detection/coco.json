@@ -1,49 +1,90 @@
 {
-    "types" : {
-        "info" : {
-            "year": "T[int]", 
-            "version": "T[str]", 
-            "description": "T[str]", 
-            "contributor": "T[str]",
-            "url": "T[str]", 
-            "date_created": "T[datetime]"
+    "types": {
+        "info": {
+            "year": "? : T[integer] | T[string](\"\")",
+            "version": "? : T[string]",
+            "description": "? : T[string]",
+            "contributor": "? : T[string]",
+            "url": "? : T[string]",
+            "date_created": "? : T[string]"
         },
-        "image" : {
-            "id": "T[int]", 
-            "width": "T[int]", 
-            "height": "T[int]", 
-            "file_name": "T[str]", 
-            "license": "T[int]", 
-            "flickr_url": "T[str]", 
-            "coco_url": "T[str]", 
-            "date_captured": "T[datetime]"
+        "image": {
+            "id": "T[integer]",
+            "width": "T[integer]",
+            "height": "T[integer]",
+            "file_name": "T[string]",
+            "license": "? : T[integer]",
+            "flickr_url": "? : T[string]",
+            "coco_url": "? : T[string]",
+            "date_captured": "? : T[string] | T[integer](0)"
         },
-        "license" : {
-            "id": "T[int]", 
-            "name": "T[str]", 
-            "url": "T[str]"
+        "license": {
+            "id": "T[integer]",
+            "name": "T[string]",
+            "url": "T[string]"
         },
-        "annotation" : {
-            "id": "T[int]",
-            "image_id": "T[int]",
-            "category_id": "T[int]",
+        "annotation": {
+            "id": "T[integer]",
+            "image_id": "T[integer]",
+            "category_id": "T[integer]",
             "segmentation": "? : T[RLE] | [T[polygon]]",
-            "area": "? : T[float]",
-            "bbox": "? : [T[box]]",
-            "iscrowd": "? : 0 | 1"
+            "area": "? : T[number]",
+            "bbox": "? : T[box]",
+            "iscrowd": "? : T[integer](E[crowd])"
         },
-        "box" : ["T[int]", "T[int]", "T[int]", "T[int]"],
-        "category" : {
-            "id": "T[int]", 
-            "name": "T[str]", 
-            "supercategory": "? : T[str]"
+        "box": [
+            "T[number]",
+            "T[number]",
+            "T[number]",
+            "T[number]"
+        ],
+        "category": {
+            "id": "T[integer]",
+            "name": "T[string]",
+            "supercategory": "? : T[string]"
+        },
+        "polygon": [
+            "T[number]"
+        ],
+        "RLE": {
+            "size": [
+                "T[integer]",
+                "T[integer]"
+            ],
+            "counts": "T[string] | [T[integer]]"
         }
     },
-    "structure" : {
-        "info": "T[info]", 
-        "images": ["T[image]"], 
-        "annotations": ["T[annotation]"],
-        "licenses": ["T[license]"],
-        "categories": ["T[category]"]
+    "enums": {
+        "crowd": [
+            0,
+            1
+        ]
+    },
+    "structure": {
+        "info": "? : T[info]",
+        "images": [
+            "T[image]"
+        ],
+        "annotations": [
+            "T[annotation]"
+        ],
+        "licenses": "? : [T[license]]",
+        "categories": [
+            "T[category]"
+        ]
+    },
+    "notes": {
+        "serialization": "application/json",
+        "scope": "COCO dataset annotation structure; prediction-only COCO result lists are a different interface.",
+        "numbers": "IDs, years, image dimensions, RLE sizes and uncompressed counts are integers. Box coordinates and areas can be fractional.",
+        "bbox": "One [x, y, width, height] tuple per annotation, in pixels; x,y identify the top-left corner.",
+        "segmentation": "Polygon lists contain flattened alternating x,y coordinates. RLE size is [height, width]; counts is a compressed string or an array of uncompressed integer run lengths.",
+        "dates": "Date fields remain strings: COCO producers do not uniformly emit the strict UTC-millisecond ISO profile used by this registry.",
+        "sources": [
+            {
+                "url": "https://github.com/cocodataset/cocoapi/blob/master/PythonAPI/pycocotools/mask.py"
+            }
+        ],
+        "metadata": "Dataset info/licenses and image license/URL/date metadata may be absent. The retained Flatbug 1.2.0 COCO probe contains an empty year and date_captured=0; these placeholders are preserved, not invented timestamps."
     }
 }

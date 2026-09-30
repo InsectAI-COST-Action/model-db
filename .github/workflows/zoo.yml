@@ -26,6 +26,11 @@ jobs:
           hugo-version: "0.166.0"
           extended: true
 
+      - name: Validate format schemas
+        run: |
+          python3 scripts/check_formats.py
+          python3 -m unittest discover -s scripts/tests -v
+
       - name: Build the site
         run: hugo --gc --minify
 
