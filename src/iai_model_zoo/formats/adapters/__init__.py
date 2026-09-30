@@ -1,6 +1,8 @@
-"""Explicit, dependency-free adapters for decoded model-output dictionaries."""
+"""Explicit adapters for author outputs; model runtimes are not imported."""
 
-from . import coco, flatbug
+from . import ami, biomoth, coco, flatbug, ultralytics, yolo_txt
 from ._common import Metadata
+from ._inputs import ImageContext
 
-__all__ = ["Metadata", "coco", "flatbug"]
+__all__ = ["ImageContext", "Metadata", "ami", "biomoth", "coco", "flatbug",
+           "ultralytics", "yolo_txt"]

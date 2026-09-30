@@ -355,10 +355,12 @@ Updating the source revision requires rechecking the relevant serializer code.
 
 ## Conversion adapters
 
-[Flatbug and COCO adapters](../../src/iai_model_zoo/formats/adapters/README.md)
-convert decoded outputs to and from ISIR. Model identity, inference settings and
-capture context are supplied explicitly. The adapter tests include value-level
-round-trips of retained real probe outputs.
+[ISIR adapters](../../src/iai_model_zoo/formats/adapters/README.md) support
+Flatbug/COCO import and export, plus import-only YOLO detection TXT, Ultralytics
+detection Results/JSON, BioMoth CSV and AMI box lists. Each ISIR record describes
+one image; multi-image sources return collections of these records. Image context,
+model identity and inference settings are supplied explicitly when absent from
+the source. Tests include retained real probe outputs and metadata preservation.
 
 ## Tested author workflows
 
