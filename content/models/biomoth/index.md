@@ -6,7 +6,7 @@ foundation         = false
 
 # ── Catalogue ───────────────────────────────────────────────────────
 purpose            = ["Insect detection", "Trait quantification"]
-task               = ["Object Detection", "Counting", "Regression]
+task               = ["Object Detection", "Counting", "Regression"]
 architecture       = ["YOLO11s"]
 output_format      = ["biomoth-csv"]
 base_model         = ""
