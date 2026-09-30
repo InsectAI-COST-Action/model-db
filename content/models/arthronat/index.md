@@ -4,7 +4,7 @@ title              = "ArthroNat"
 description        = "YOLO11 model trained on arthropods over natural backgrounds."
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "detection"
+purpose            = ["Insect detection"]
 task               = ["Object Detection"]
 architecture       = ["YOLO11"]
 base_model         = "https://huggingface.co/Ultralytics/YOLO11"
