@@ -1,0 +1,57 @@
+{
+    "id": "beetleflow-color-mask",
+    "serialization": "Raster images (extension inherited from input)",
+    "producer": "BeetleFlow pipeline/3_segmentation/batch_inference.py, 5-class checkpoint",
+    "sources": [
+        {
+            "url": "https://github.com/Imageomics/BeetleFlow/blob/ab0bf99555832647ff57d0e5a51e671f6b8e40cf/pipeline/3_segmentation/batch_inference.py",
+            "revision": "ab0bf99555832647ff57d0e5a51e671f6b8e40cf"
+        }
+    ],
+    "types": {
+        "image": "uint8[original_height, original_width, 3]"
+    },
+    "structure": {
+        "predicted_masks/<folder-index>.<input-extension>": "T[image]",
+        "predicted_mask_images/<folder-index>.<input-extension>": "T[image]"
+    },
+    "palette_rgb": {
+        "background": [
+            0,
+            0,
+            0
+        ],
+        "head": [
+            200,
+            0,
+            0
+        ],
+        "pronotum": [
+            0,
+            200,
+            0
+        ],
+        "elytra": [
+            0,
+            0,
+            200
+        ],
+        "legs": [
+            200,
+            200,
+            0
+        ],
+        "antennae": [
+            200,
+            0,
+            200
+        ]
+    },
+    "notes": {
+        "mask": "Saved mask is palette-colored RGB, not the internal integer class map. OpenCV reads it in BGR order.",
+        "overlay": "Overlay is saturated uint8 addition of the original image and 0.8 times the colored mask.",
+        "lossy": "JPEG inputs cause JPEG outputs; compression prevents exact palette matching. PNG was observed in the probe.",
+        "overwrite": "The source increments its counter once per single_beetles folder, not once per image. Multiple inputs with the same extension in one folder overwrite each other.",
+        "scope": "Tested 5-class checkpoint. The hard-coded six-color palette is not a validated 9-class export."
+    }
+}

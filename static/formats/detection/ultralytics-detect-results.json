@@ -1,0 +1,39 @@
+{
+    "id": "ultralytics-detect-results",
+    "models": [
+        "YOLO11",
+        "YOLO26"
+    ],
+    "serialization": "Python object / tensors",
+    "producer": "YOLO.predict(...): one Results object per image",
+    "sources": [
+        {
+            "url": "https://github.com/ultralytics/ultralytics/blob/8a55f07e379d0d0f66cc23d09e35f54588fd1435/ultralytics/engine/results.py",
+            "revision": "8a55f07e379d0d0f66cc23d09e35f54588fd1435"
+        },
+        {
+            "url": "https://github.com/ultralytics/ultralytics/blob/8a55f07e379d0d0f66cc23d09e35f54588fd1435/ultralytics/utils/__init__.py",
+            "revision": "8a55f07e379d0d0f66cc23d09e35f54588fd1435"
+        },
+        {
+            "url": "https://github.com/ultralytics/ultralytics/blob/8a55f07e379d0d0f66cc23d09e35f54588fd1435/ultralytics/models/yolo/detect/predict.py",
+            "revision": "8a55f07e379d0d0f66cc23d09e35f54588fd1435"
+        }
+    ],
+    "types": {},
+    "structure": {
+        "boxes.data": "Tensor[N,6] (or Tensor[N,7] with tracking)",
+        "orig_shape": [
+            "T[int]",
+            "T[int]"
+        ],
+        "path": "T[str]",
+        "names": "dict[int, str]"
+    },
+    "notes": {
+        "scope": "Relevant public prediction fields of Results, not a JSON serialization or a complete inventory of object attributes. Batched prediction returns a list; stream=True returns a generator.",
+        "box_columns": "x1, y1, x2, y2, confidence, class; tracking inserts track_id between y2 and confidence. IDs are numeric entries in the tensor, not separate integer arrays.",
+        "coordinates": "boxes.data uses original-image pixel corners; orig_shape is (height, width). Class index meanings come from names.",
+        "empty": "boxes.data has zero rows for no detections."
+    }
+}

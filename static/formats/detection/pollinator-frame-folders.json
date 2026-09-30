@@ -1,0 +1,28 @@
+{
+    "id": "pollinator-frame-folders",
+    "serialization": "JPEG images in directories",
+    "producer": "POLLINATOR author video prediction script",
+    "sources": [
+        {
+            "url": "https://github.com/aranchalana/POLLINATOR/blob/ecbafff8fd03efaa299f8d07eb121b9ccd05c6dd/YOLOv5_POLLINATOR_detect_and_save_with_and_without_object.py",
+            "revision": "ecbafff8fd03efaa299f8d07eb121b9ccd05c6dd"
+        }
+    ],
+    "types": {},
+    "structure": {
+        "<video-stem>_<run-timestamp>": {
+            "with_object": [
+                "frame_<six-digit-frame>_time_<HH-MM-SS>.jpg"
+            ],
+            "without_object": [
+                "frame_<six-digit-frame>_time_<HH-MM-SS>.jpg"
+            ]
+        }
+    },
+    "notes": {
+        "boxes": "The internal YOLOv5 Detections object is not exported. Above-threshold boxes and class/confidence labels are drawn on frames before JPEG saving.",
+        "threshold": "The author script applies conf > conf_thres to results already filtered by the model. CLI conf_thres defaults to 0.5.",
+        "coverage": "Real checkpoint/video probe observed the without_object branch only. The with_object branch and naming are established by pinned source inspection.",
+        "interoperability": "No machine-readable bounding-box table or JSON is saved by this workflow."
+    }
+}

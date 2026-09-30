@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "probe": "moths",
+  "model": "bjerge-2025-moths-yolov5-resnet50",
+  "variant": "YOLOv5m6 plus author classifiers",
+  "capability": "output_format",
+  "author_sources": [
+    "https://github.com/kimbjerge/MCC24-trap/blob/a817f57915b250d3b4b3f06117d0bade4050d61f/README.md"
+  ],
+  "status": "failed",
+  "scope": "Author detector and order/species classifier CLI. Author source downloads species classifier on first use.",
+  "job": {
+    "id": "moths",
+    "model": "bjerge-2025-moths-yolov5-resnet50",
+    "variant": "YOLOv5m6 plus author classifiers",
+    "environment": "moths",
+    "adapter": "moths",
+    "scope": "Author detector and order/species classifier CLI. Author source downloads species classifier on first use.",
+    "entrypoint": "detectClassifySpecies.py",
+    "author_sources": [
+      "https://github.com/kimbjerge/MCC24-trap/blob/a817f57915b250d3b4b3f06117d0bade4050d61f/README.md"
+    ],
+    "resources": {
+      "source": "moths-source",
+      "weights": "moths-weights",
+      "image": "flatbug-image"
+    }
+  },
+  "probe_code": {
+    "runner.py": "36fcca950e3a4b4a5c9893abf67641e6be2c23961955b0546d7b1a1ee3e0bd12",
+    "worker.py": "b92e995237ebf404bbb323d192d60217d33638dc5ca77c9e1ff2ec4f14ac2764"
+  },
+  "started_at": "2026-09-30T07:51:09Z",
+  "resources": {
+    "source": {
+      "url": "https://codeload.github.com/kimbjerge/MCC24-trap/zip/a817f57915b250d3b4b3f06117d0bade4050d61f",
+      "sha256": "8c29b85c778ef613a711264776fa52dc529f018374ee0427c40d5d7429deb55d"
+    },
+    "weights": {
+      "url": "https://drive.usercontent.google.com/download?id=12aQpXF7T1YD3PSltI3J5gp4gZ4JQ689A&export=download&confirm=t",
+      "sha256": "05662169edd668128f432ca995d8acb4593b1773d25453177904e0d4fd2c3a15"
+    },
+    "image": {
+      "url": "https://raw.githubusercontent.com/darsa-group/flat-bug/8d40cf4e1742221253c9f524ece2411ee4d15a1e/src/flat_bug/tests/assets/ALUS_Non-miteArachnids_Unknown_2020_11_03_4545.jpg",
+      "sha256": "0646bc669e2f9c0d2f86d502bf0caec50732b63c9ad8819c389f86a0c1750627"
+    }
+  },
+  "environment_lock_sha256": "55e66d539e9fb7e8255ebabe1dc4a7b7f526c8042132535638db2ef17793219d",
+  "command": [
+    "uv",
+    "run",
+    "--locked",
+    "--project",
+    "/home/asger/model-db/src/probe/environments/moths",
+    "python",
+    "/home/asger/model-db/src/probe/probe/worker.py",
+    "/home/asger/model-db/src/probe/runs/20260930T095109-baee6dd5/moths/request.json"
+  ],
+  "exit_code": 1,
+  "reason": "Worker failed; see run.log. No format assignment is justified.",
+  "artifacts": [
+    {
+      "path": "artifacts/2024/trap01/night/20240501010000.jpg",
+      "sha256": "a2f8a7bf3f1c6d4f6e3a2af41839098c80eebd4af5039c04e8eb98590bc0b037",
+      "bytes": 522140
+    },
+    {
+      "path": "artifacts/inputs/blank.png",
+      "sha256": "f3e746bb7e1e1b98acc711541b505fda3ec33a16f6f3264a673bf0cb5647f44a",
+      "bytes": 3039
+    },
+    {
+      "path": "artifacts/inputs/specimen.jpg",
+      "sha256": "0646bc669e2f9c0d2f86d502bf0caec50732b63c9ad8819c389f86a0c1750627",
+      "bytes": 441177
+    },
+    {
+      "path": "artifacts/insectMoths-bestF1-1280m6.pt",
+      "sha256": "5508f1f59f9114fac0c471fa585b2e949cec4e3a8376fca446e14f04f3acbe51",
+      "bytes": 283572833
+    },
+    {
+      "path": "artifacts/predictions.csv",
+      "sha256": "a98ae9dbe0244213419180b448a95a195e79536c56a2a5be436bc1e679214ec5",
+      "bytes": 137
+    }
+  ],
+  "finished_at": "2026-09-30T07:51:36Z",
+  "run_directory": "runs/20260930T095109-baee6dd5/moths"
+}

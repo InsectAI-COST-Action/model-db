@@ -21,22 +21,34 @@ its script.
 
 | Platform | Install |
 | --- | --- |
-| Linux | `./scripts/fetch-hugo.sh` one-time, downloads into `./bin` |
+| Linux | `./scripts/fetch-hugo.sh` once; downloads the Linux binary into `./bin` |
 | macOS | `brew install hugo` |
 | Windows | `winget install Hugo.Hugo.Extended` |
 
-Then start the preview:
+The fetch script downloads a Linux binary; do not run it from Windows Git Bash
+or WSL when you need a native Windows executable. On macOS and Windows, use the
+package-manager installation above and make sure `hugo version` includes
+`+extended`.
+
+Start the preview from the repository root:
 
 ```bash
-./scripts/serve.sh          # Linux → http://localhost:1313/
+./scripts/serve.sh          # Linux; http://localhost:1313/
 ```
 
-`serve.sh` expects the binary at `./bin/hugo`, so on macOS and Windows run Hugo
-directly instead, keeping the `--baseURL` override that puts the preview at the
-site root:
+The script uses `./bin/hugo` when present, otherwise it uses `hugo` from `PATH`.
+On macOS and Windows, start the preview directly from the repository root:
 
 ```bash
 hugo server --baseURL http://localhost:1313/
+```
+
+To build the static site without starting the preview, run this from the
+repository root (use `./bin/hugo` instead of `hugo` if you installed with the
+Linux fetch script):
+
+```bash
+hugo --gc --minify
 ```
 
 ## Adding a model
@@ -93,3 +105,15 @@ can be written as a sentence.
 
 What is left is roughly twenty fields. Eight are required. Everything else has a
 default, so a contributor who does not know the answer can delete the line.
+
+## Prediction output formats
+
+See [the output format catalog](static/formats/README.md) for source-pinned YOLO
+detection and segmentation representations and their interoperability limits.
+
+## Testing author prediction outputs
+
+The isolated [probe project](src/probe/README.md) runs author prediction workflows
+with pinned weights and source files in separate uv environments. See the
+[probe results](src/probe/reports/2026-09-30/README.md) for observed formats and
+unresolved cases.

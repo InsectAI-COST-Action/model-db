@@ -33,7 +33,7 @@ category           = "classification"                  # must already exist in d
 task               = ["Classification", "Embedding"]         # Object Detection | Instance Segmentation |
                                                  # Semantic Segmentation | Classification |
                                                  # Tracking | Embedding | Counting
-architecture       = "CLIP with ViT-B/16 image encoder"                   # YOLOv8, ViT, Swin Transformer…
+architecture       = ["CLIP with ViT-B/16 image encoder"]                   # YOLOv8, ViT, Swin Transformer…
 base_model          = ""                          # If this is a fine-tuned model, name the
                                                  # base model it was fine-tuned from.
 year               = 2023                        # year of publication or release

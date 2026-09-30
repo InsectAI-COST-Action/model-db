@@ -1,0 +1,71 @@
+Downloading sqlalchemy (3.1MiB)
+ Downloaded sqlalchemy
+Installed 2 packages in 28ms
+[34m[1mdetectClassifySpecies: [0mweights=['/home/asger/model-db/src/probe/runs/20260930T095109-baee6dd5/moths/artifacts/insectMoths-bestF1-1280m6.pt'], source=/home/asger/model-db/src/probe/runs/20260930T095109-baee6dd5/moths/artifacts/2024/trap01/night/, data=data/coco128.yaml, imgsz=[1280, 1280], conf_thres=0.2, iou_thres=0.45, max_det=1000, device=cpu, view_img=False, save_txt=False, save_conf=False, save_crop=False, nosave=True, classes=None, agnostic_nms=False, augment=False, visualize=False, update=False, project=runs/detect, name=exp, exist_ok=False, line_thickness=3, hide_labels=False, hide_conf=False, half=False, dnn=False, order_model=./model_order_100524/dhc_best_128.pth, order_labels=./model_order_100524/thresholdsTestTrain.csv, species_model=./ami, result=/home/asger/model-db/src/probe/runs/20260930T095109-baee6dd5/moths/artifacts/predictions
+YOLOv5 🚀 afb0fef torch 2.5.1+cpu CPU
+
+/home/asger/model-db/src/probe/runs/20260930T095109-baee6dd5/moths/source/MCC24-trap-a817f57915b250d3b4b3f06117d0bade4050d61f/models/experimental.py:96: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ckpt = torch.load(attempt_download(w), map_location=map_location)  # load
+Fusing layers... 
+Model Summary: 378 layers, 35248920 parameters, 0 gradients, 48.9 GFLOPs
+[31m[1mrequirements:[0m /home/asger/model-db/src/probe/runs/20260930T095109-baee6dd5/moths/source/MCC24-trap-a817f57915b250d3b4b3f06117d0bade4050d61f/requirements.txt not found, check failed.
+Device cpu
+Moth species model path ./ami
+Order classifier - threshold file ./model_order_100524/thresholdsTestTrain.csv and weights ./model_order_100524/dhc_best_128.pth of image size 128
+['Araneae', 'Coleoptera', 'Diptera Brachycera', 'Diptera Nematocera', 'Diptera Tipulidae', 'Diptera Trichocera', 'Ephemeroptera', 'Hemiptera', 'Hymenoptera Other', 'Hymenoptera Vespidae', 'Lepidoptera Macros', 'Lepidoptera Micros', 'Neuroptera', 'Opiliones', 'Trichoptera', 'Vegetation']
+Info: Initializing inference class UK & Denmark Species Classifier
+Info: Using device 'cpu' for inference
+Info: Creating local directory ami/models
+Info: Downloading https://object-arbutus.cloud.computecanada.ca/ami-models/moths/classification/01-moths-ukdenmark_v2_category_map_species_names.json to ami/models/01-moths-ukdenmark_v2_category_map_species_names.json
+Traceback (most recent call last):
+  File "/home/asger/model-db/src/probe/runs/20260930T095109-baee6dd5/moths/source/MCC24-trap-a817f57915b250d3b4b3f06117d0bade4050d61f/detectClassifySpecies.py", line 387, in <module>
+    main(opt)
+  File "/home/asger/model-db/src/probe/runs/20260930T095109-baee6dd5/moths/source/MCC24-trap-a817f57915b250d3b4b3f06117d0bade4050d61f/detectClassifySpecies.py", line 382, in main
+    run(**vars(opt))
+  File "/home/asger/model-db/src/probe/environments/moths/.venv/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/asger/model-db/src/probe/runs/20260930T095109-baee6dd5/moths/source/MCC24-trap-a817f57915b250d3b4b3f06117d0bade4050d61f/detectClassifySpecies.py", line 177, in run
+    orderSpeciesClass = orderSpeciesClassifier(species_model, order_model, order_labels, device.type, 128)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/asger/model-db/src/probe/runs/20260930T095109-baee6dd5/moths/source/MCC24-trap-a817f57915b250d3b4b3f06117d0bade4050d61f/orderAndSpeciesClassifier.py", line 38, in __init__
+    self.speciesModel = speciesClassifier.UKDenmarkMothSpeciesClassifierMixedResolution(speciesModelPath, "")
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/asger/model-db/src/probe/runs/20260930T095109-baee6dd5/moths/source/MCC24-trap-a817f57915b250d3b4b3f06117d0bade4050d61f/ml/models/base.py", line 120, in __init__
+    self.category_map = self.get_labels(self.labels_path)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/asger/model-db/src/probe/runs/20260930T095109-baee6dd5/moths/source/MCC24-trap-a817f57915b250d3b4b3f06117d0bade4050d61f/ml/models/base.py", line 150, in get_labels
+    local_path = get_or_download_file(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/asger/model-db/src/probe/runs/20260930T095109-baee6dd5/moths/source/MCC24-trap-a817f57915b250d3b4b3f06117d0bade4050d61f/ml/utils.py", line 77, in get_or_download_file
+    resulting_filepath, headers = urllib.request.urlretrieve(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/asger/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/urllib/request.py", line 241, in urlretrieve
+    with contextlib.closing(urlopen(url, data)) as fp:
+                            ^^^^^^^^^^^^^^^^^^
+  File "/home/asger/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/asger/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/urllib/request.py", line 525, in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/asger/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/urllib/request.py", line 634, in http_response
+    response = self.parent.error(
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/asger/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/urllib/request.py", line 563, in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/asger/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/home/asger/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/urllib/request.py", line 643, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 403: Forbidden
+Traceback (most recent call last):
+  File "/home/asger/model-db/src/probe/probe/worker.py", line 224, in <module>
+    main()
+  File "/home/asger/model-db/src/probe/probe/worker.py", line 196, in main
+    subprocess.run(command,cwd=source,check=True)
+  File "/home/asger/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/asger/model-db/src/probe/environments/moths/.venv/bin/python3', '/home/asger/model-db/src/probe/runs/20260930T095109-baee6dd5/moths/source/MCC24-trap-a817f57915b250d3b4b3f06117d0bade4050d61f/detectClassifySpecies.py', '--weights', '/home/asger/model-db/src/probe/runs/20260930T095109-baee6dd5/moths/artifacts/insectMoths-bestF1-1280m6.pt', '--result', '/home/asger/model-db/src/probe/runs/20260930T095109-baee6dd5/moths/artifacts/predictions', '--img', '1280', '--conf', '0.20', '--nosave', '--device', 'cpu', '--source', '/home/asger/model-db/src/probe/runs/20260930T095109-baee6dd5/moths/artifacts/2024/trap01/night/']' returned non-zero exit status 1.

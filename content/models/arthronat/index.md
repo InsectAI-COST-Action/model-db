@@ -6,7 +6,7 @@ description        = "YOLO11 model trained on arthropods over natural background
 # ── Catalogue ───────────────────────────────────────────────────────
 category           = "detection"
 task               = ["Object Detection"]
-architecture       = "YOLO11"
+architecture       = ["YOLO11"]
 base_model         = "https://huggingface.co/Ultralytics/YOLO11"
 year               = 2026
 license            = "AGPLv3"
@@ -17,6 +17,7 @@ date               = 2026-05-08
 vocabulary_scope   = "open"
 geographic_scope   = "France"
 produces           = ["bbox"]
+output_format      = ["ultralytics-detect-results"]
 image_input_size   = "640x640"
 input_modality     = ["image"]
 developer          = "Remy et al."
@@ -158,3 +159,10 @@ path = hf_hub_download(
     revision="54edf7364582e9efda68c04edfd672cfe109fb4a",
 )
 ```
+
+## Output format probe
+
+The author-documented Ultralytics Python interface was probed on CPU with the pinned YOLO11n mosaic33 checkpoint. It returned Results objects with pixel-coordinate boxes; no JSON export was requested. Other weight variants were not run.
+
+Probe date: 2026-09-30. Reproducible setup and evidence are in
+[src/probe](https://github.com/InsectAI-COST-Action/model-db/tree/main/src/probe).

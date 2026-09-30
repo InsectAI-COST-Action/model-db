@@ -243,7 +243,7 @@ table.models tbody th a:hover { text-decoration: underline; }
   white-space: nowrap;
 }
 .scope { font-size: .78rem; text-transform: capitalize; }
-.scope-open, .scope-taxonomic { color: var(--accent); }
+.scope-open { color: var(--accent); }
 .scope-open { font-weight: 600; }
 
 /* Model detail page */
@@ -260,9 +260,9 @@ table.models tbody th a:hover { text-decoration: underline; }
   border-radius: 999px; border: 1px solid var(--border-str);
   background: var(--surface-2); color: var(--text-dim);
 }
-.badge-scope.scope-open,
-.badge-zeroshot { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
-.badge-zeroshot { font-weight: 600; }
+.badge-foundation,
+.badge-scope.scope-open { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+.badge-foundation { font-weight: 600; }
 
 .model-cols { display: grid; grid-template-columns: 1fr; gap: 2rem; }
 @media (min-width: 60rem) {
@@ -336,6 +336,7 @@ table.models tbody th a:hover { text-decoration: underline; }
 
 /* Artefact list (model detail sidebar) */
 
+.asset-format { font-size: .74rem; color: var(--text-mute); margin: 0 0 .5rem; }
 .assets { list-style: none; padding: 0; margin: 0; font-size: .86rem; }
 .assets li {
   padding: .45rem 0;
@@ -368,4 +369,9 @@ table.models .sep { color: var(--text-mute); }
   .cat:not([open]) > summary::after { content: " (expand for details)"; }
   .table-scroll { max-height: none; overflow: visible; }
   a[href^="http"]::after { content: " (" attr(href) ")"; font-size: .8em; color: var(--text-mute); }
+}
+
+
+.center {
+  text-align: center;
 }

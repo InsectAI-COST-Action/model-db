@@ -1,0 +1,21 @@
+{
+  "id": "insectmorphoai",
+  "model": "insectmorphoai",
+  "variant": "OBB and segmentation",
+  "environment": "morpho",
+  "adapter": "morpho",
+  "scope": "Author headless CLI, both analyses, supplied test specimens and default lens calibration; no accuracy claim.",
+  "entrypoint": "utils/ultimate_headless.py",
+  "author_sources": [
+    "https://gitlab.kit.edu/kit/iai/ber/insectmorphoAI/-/blob/b95bd0543f37e43548bb358522e1354953f4ab28/utils/ultimate_headless.py"
+  ],
+  "resources": {
+    "source": "morpho-source",
+    "image": "flatbug-image"
+  },
+  "paths": {
+    "source": "/home/asger/model-db/src/probe/runs/20260930T095026-39324928/insectmorphoai/source/insectmorphoAI-b95bd0543f37e43548bb358522e1354953f4ab28-b95bd0543f37e43548bb358522e1354953f4ab28",
+    "image": "/home/asger/model-db/src/probe/.cache/0646bc669e2f9c0d2f86d502bf0caec50732b63c9ad8819c389f86a0c1750627/image.jpg"
+  },
+  "output": "/home/asger/model-db/src/probe/runs/20260930T095026-39324928/insectmorphoai/artifacts"
+}
