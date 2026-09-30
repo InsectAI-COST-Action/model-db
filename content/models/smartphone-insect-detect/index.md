@@ -11,6 +11,7 @@ base_model         = "Stark et al. (2023) YOLO detectors, trained on citizen sci
 year               = 2025
 license            = "GPL-3.0"
 status             = "deprecated"                # hidden: see the note below the front matter
+training_data      = ["unpublished"]
 build              = { render = "never", list = "never", publishResources = false }
                                                  # Hugo option: no page is generated for this
                                                  # entry and it is left out of every listing.

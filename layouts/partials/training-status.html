@@ -1,0 +1,21 @@
+{{- /*
+  The availability of a model's training data, for the filter: "published" if
+  any entry is a citation, plus each of the field's `sentinels` it uses. A card
+  can be several at once, e.g. ["published", "unpublished"] for a model trained
+  on a public dataset and a private one.
+
+  Called as:  {{ partial "training-status.html" . }}   (a page)
+*/ -}}
+{{- $sentinels := slice -}}
+{{- range hugo.Data.schema.field -}}
+  {{- if eq .name "training_data" }}{{ $sentinels = .sentinels | default slice }}{{ end -}}
+{{- end -}}
+{{- $status := slice -}}
+{{- range (.Params.training_data | default slice) -}}
+  {{- if in $sentinels . -}}
+    {{- $status = $status | append . -}}
+  {{- else if not (in $status "published") -}}
+    {{- $status = $status | append "published" -}}
+  {{- end -}}
+{{- end -}}
+{{- return $status -}}

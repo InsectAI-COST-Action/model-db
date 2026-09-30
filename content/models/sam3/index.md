@@ -12,6 +12,7 @@ base_model         = ""
 year               = 2025
 license            = "custom"
 status             = "published"
+training_data      = ["SA-1B", "unpublished"]
 date               = 2026-09-30
 
 # Optional - delete a line to take the default shown.
@@ -23,7 +24,7 @@ input_modality     = ["text", "image", "box", "point", "mask"]
 developer          = "Meta Superintelligence Labs (Carion, Gustafson, Hu et al.)"
 paper_url          = "https://arxiv.org/abs/2511.16719"
 code_url           = "https://github.com/facebookresearch/sam3"
-pretraining_data   = "SA-Co (Meta data engine, over 4M unique concepts)"
+pretraining_data   = ["unpublished"]
 
 # ── Weights ─────────────────────────────────────────────────────────
 hosting_status     = "link_only"

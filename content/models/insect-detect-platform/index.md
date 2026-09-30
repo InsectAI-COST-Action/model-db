@@ -12,6 +12,7 @@ base_model         = "YOLOv6 pretrained on COCO"
 year               = 2026
 license            = "GPL-3.0-or-later"
 status             = "published"
+training_data      = ["10.5281/zenodo.7725941", "unpublished"]
 date               = 2026-09-29
 
 # Optional - delete a line to take the default shown.

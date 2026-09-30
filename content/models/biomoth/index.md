@@ -13,6 +13,7 @@ base_model         = ""
 year               = 2026
 license            = "Apache-2.0"
 status             = "published"
+training_data      = ["unpublished"]
 date               = 2026-09-30
 
 # Optional - delete a line to take the default shown.

@@ -14,10 +14,24 @@
   {{- if partial "zeroshot.html" . }}{{ $zeroShot = add $zeroShot 1 }}{{ end -}}
 {{- end -}}
 
+{{- /* Training-data availability, in a fixed order: published first, then the
+       field's sentinels as data/schema.toml lists them. Only values some card
+       uses get a checkbox. */ -}}
+{{- $trainingOrder := slice "published" -}}
+{{- range hugo.Data.schema.field -}}
+  {{- if eq .name "training_data" }}{{ $trainingOrder = $trainingOrder | append (.sentinels | default slice) }}{{ end -}}
+{{- end -}}
+{{- $trainingCounts := dict -}}
+{{- range $rows -}}
+  {{- range partial "training-status.html" . -}}
+    {{- $trainingCounts = merge $trainingCounts (dict . (add (index $trainingCounts . | default 0) 1)) -}}
+  {{- end -}}
+{{- end -}}
+
 {{- /* Facets whose row attribute is a `;`-separated list. Declared here rather
        than restated in the JavaScript. */ -}}
 <form class="filter-bar" id="filter-bar" role="search" aria-label="Filter models"
-      data-list-facets="task">
+      data-list-facets="task training">
   <div class="filter-search">
     <label for="filter-q">Search</label>
     <input type="search" id="filter-q" name="q" placeholder="pollinator, YOLO, tree of life…"
@@ -37,6 +51,19 @@
     <label class="chip"><input type="checkbox" data-facet="year" value="{{ . }}"> {{ . }}</label>
     {{- end }}
   </fieldset>
+
+  {{- if $trainingCounts }}
+  <fieldset class="filter-group">
+    <legend>Training data</legend>
+    {{- range $value := $trainingOrder }}
+      {{- with index $trainingCounts $value }}
+    <label class="chip">
+      <input type="checkbox" data-facet="training" value="{{ $value }}"> {{ $value }} <span class="chip-count">{{ . }}</span>
+    </label>
+      {{- end }}
+    {{- end }}
+  </fieldset>
+  {{- end }}
 
   {{- if $zeroShot }}
   <fieldset class="filter-group">

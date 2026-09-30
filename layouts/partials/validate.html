@@ -95,6 +95,43 @@
   {{- end -}}
 {{- end -}}
 
+{{- /* A field with `sentinels` takes free-text entries plus a few fixed words
+       that mean "no citation". Filtering needs those words spelt exactly one
+       way, so a near miss like "Unknown" or "n/a" is an error, not a new value.
+       The words contradict each other, so a value holds at most one of them.
+       Works on string fields too, as a list of one. */ -}}
+{{- range $fields -}}
+  {{- $name := .name -}}
+  {{- $sentinels := .sentinels -}}
+  {{- $value := index $params $name -}}
+  {{- $entries := slice -}}
+  {{- if reflect.IsSlice $value -}}{{- $entries = $value -}}
+  {{- else if eq (printf "%T" $value) "string" -}}{{- $entries = slice $value -}}
+  {{- end -}}
+  {{- if and $sentinels $entries -}}
+    {{- $seen := slice -}}
+    {{- $used := slice -}}
+    {{- range $entries -}}
+      {{- if in $sentinels . -}}{{- $used = $used | append . -}}{{- end -}}
+    {{- end -}}
+    {{- if gt (len $used) 1 -}}
+      {{- errorf "%s: %q lists %s together. Keep the one that is true." $where $name (delimit $used " and ") -}}
+    {{- end -}}
+    {{- range $entries -}}
+      {{- $entry := trim (string .) " " -}}
+      {{- if eq $entry "" -}}
+        {{- errorf "%s: %q has an empty entry. Remove it, or use one of: %s" $where $name (delimit $sentinels ", ") -}}
+      {{- else if and (not (in $sentinels $entry)) (findRE `(?i)^(unknown?|un-?published|not published|n/?a|none|tbd|-)$` $entry) -}}
+        {{- errorf "%s: %q contains %q. Write it as exactly one of: %s" $where $name $entry (delimit $sentinels ", ") -}}
+      {{- end -}}
+      {{- if in $seen $entry -}}
+        {{- errorf "%s: %q lists %q twice" $where $name $entry -}}
+      {{- end -}}
+      {{- $seen = $seen | append $entry -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
 {{- /* The template ships with REPLACE in it. An error once the card is
        published, a warning before that, so work in progress still builds. */ -}}
 {{- $published := eq (index $params "status") "published" -}}

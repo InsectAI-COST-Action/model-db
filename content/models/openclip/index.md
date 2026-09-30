@@ -39,6 +39,7 @@ base_model          = ""                          # If this is a fine-tuned mode
 year               = 2023                        # year of publication or release
 license            = "MIT"                       # SPDX identifier where one exists
 status             = "published"                     # draft | published | deprecated.
+training_data      = ["LAION-2B-en"]
                                                  # Draft is the safe default: only
                                                  # `published` appears on the site.
 
