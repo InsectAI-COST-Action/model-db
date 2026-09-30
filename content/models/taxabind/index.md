@@ -42,6 +42,7 @@ license            = "MIT"                       # SPDX identifier where one exi
 status             = "published"                     # draft | published | deprecated.
                                                  # Draft is the safe default: only
                                                  # `published` appears on the site.
+training_data      = ["https://huggingface.co/datasets/MVRL/iSatNat/tree/914987fc7b0aacb42fe16f88348f811fa6842487", "https://huggingface.co/datasets/MVRL/iSoundNat/tree/6b1e51fa4a677f4a7e4343d8334f5b42143480de", "iNat-2021", "WorldClim 2.1"]
 
 # Optional. Delete any line you do not have an answer for - the default is in
 # the comment.
@@ -59,6 +60,7 @@ input_modality     = ["image", "text"]                          # text | image |
                                                  # takes an image.
 developer          = "Multimodal Vision Research Laboratory, Washington University"                   # who made it, not who curated it
 paper_url          = ""                          # paper, DOI or project page
+pretraining_data   = ["10.57967/hf/1972"]
 
 # ── Weights ───────────────────────────────────────────────────────────────────
 #

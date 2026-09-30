@@ -42,6 +42,10 @@ license            = "MIT"                       # SPDX identifier where one exi
 status             = "draft"                     # draft | published | deprecated.
                                                  # Draft is the safe default: only
                                                  # `published` appears on the site.
+training_data      = ["REPLACE"]                 # DOI(s) of the dataset(s) the weights were
+                                                 # trained on, one entry per dataset or
+                                                 # "unpublished" (not released) or
+                                                 # "unknown" (source does not say).
 
 # Optional. Delete any line you do not have an answer for - the default is in
 # the comment.
@@ -59,6 +63,9 @@ input_modality     = []                          # text | image | box | point | 
                                                  # takes an image.
 developer          = "REPLACE"                   # who made it, not who curated it
 paper_url          = ""                          # paper, DOI or project page
+pretraining_data   = []                          # what the base weights were pre-trained
+                                                 # on, if there was a separate stage.
+                                                 # Same rules as training_data.
 
 # ── Weights ───────────────────────────────────────────────────────────────────
 #

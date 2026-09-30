@@ -40,6 +40,7 @@ base_model          = ""                          # If this is a fine-tuned mode
 year               = 2024                        # year of publication or release
 license            = "Not found"                       # SPDX identifier where one exists
 status             = "published"                     # draft | published | deprecated.
+training_data      = ["https://github.com/uark-cviu/InsectFoundationModel/releases/tag/v1"]
                                                  # Draft is the safe default: only
                                                  # `published` appears on the site.
 

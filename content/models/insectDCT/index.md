@@ -37,6 +37,7 @@ output_format      = ["insectdct-csv"]
 year               = 2026                        # year of publication or release
 license            = "GPL-3.0-or-later"                       # SPDX identifier where one exists
 status             = "published"                     # draft | published | deprecated.
+training_data      = ["10.5281/zenodo.21154490", "unpublished"]
                                                  # Draft is the safe default: only
                                                  # `published` appears on the site.
 

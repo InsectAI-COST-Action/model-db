@@ -11,6 +11,7 @@ base_model         = "ultralytics/yolov5 (yolov5m.pt)"
 year               = 2025
 license            = "AGPL-3.0-or-later"
 status             = "published"
+training_data      = ["https://universe.roboflow.com/alanacsic/merged-all-9kwga/dataset/4"]
 date               = 2026-09-21
 vocabulary_scope   = "closed"
 geographic_scope   = "Balearic Islands, Spain"

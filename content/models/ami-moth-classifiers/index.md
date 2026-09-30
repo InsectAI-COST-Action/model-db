@@ -12,6 +12,7 @@ base_model         = "timm resnet50 (ImageNet); convnext_tiny_in22k"
 year               = 2024
 license            = "AGPL-3.0-only"
 status             = "published"
+training_data      = ["10.5281/zenodo.11358689", "10.15468/dl.6j5bzj", "10.15468/dl.n3zcat", "10.15468/dl.6576q9", "10.15468/dl.hsxw84"]
 date               = 2026-09-30
 
 # Optional - delete a line to take the default shown.

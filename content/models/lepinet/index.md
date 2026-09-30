@@ -12,6 +12,7 @@ base_model         = "imageomics/bioclip-2; timm/convnext_large.dinov3_lvd1689m;
 year               = 2026
 license            = "CC-BY-NC-4.0"
 status             = "published"
+training_data      = ["10.15468/dl.hg37y9", "unpublished"]
 date               = 2026-09-29
 
 # Optional - delete a line to take the default shown.

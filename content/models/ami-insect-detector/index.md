@@ -13,6 +13,7 @@ base_model         = "torchvision fasterrcnn_resnet50_fpn; torchvision fasterrcn
 year               = 2023
 license            = "AGPL-3.0-only"
 status             = "published"
+training_data      = ["unpublished"]
 date               = 2026-09-30
 
 # Optional - delete a line to take the default shown.

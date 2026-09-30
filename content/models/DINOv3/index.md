@@ -38,6 +38,7 @@ architecture       = ["Vision Transformer (ViT)", "ConvNeXt"]
 year               = 2025                        # year of publication or release
 license            = "custom"                    # SPDX identifier where one exists
 status             = "published" 
+training_data      = ["ImageNet-1k", "ImageNet-22k", "Mapillary Street-level Sequences", "unpublished"]
 
 # Optional. Delete any line you do not have an answer for - the default is in
 # the comment.

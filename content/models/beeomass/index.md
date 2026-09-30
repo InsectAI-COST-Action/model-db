@@ -10,6 +10,7 @@ architecture       = ["EfficientNetV2"]
 year               = 2026
 license            = "CC-BY-4.0"
 status             = "published"
+training_data      = ["10.5281/zenodo.20543261"]
 date               = 2026-09-29
 
 # Optional - delete a line to take the default shown.

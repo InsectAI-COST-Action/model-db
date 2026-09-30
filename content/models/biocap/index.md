@@ -40,6 +40,7 @@ base_model          = ""                          # If this is a fine-tuned mode
 year               = 2025                        # year of publication or release
 license            = "MIT"                       # SPDX identifier where one exists
 status             = "published"                     # draft | published | deprecated.
+training_data      = ["10.57967/hf/1972", "10.57967/hf/6801"]
                                                  # Draft is the safe default: only
                                                  # `published` appears on the site.
 

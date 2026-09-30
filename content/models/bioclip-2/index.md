@@ -12,6 +12,7 @@ base_model         = "laion/CLIP-ViT-L-14-laion2B-s32B-b82K"
 year               = 2025
 license            = "MIT"
 status             = "published"
+training_data      = ["10.57967/hf/6786", "LAION-2B-en"]
 date               = 2026-09-29
 
 # Optional - delete a line to take the default shown.
@@ -21,7 +22,7 @@ produces           = ["label", "embedding"]
 image_input_size   = "224x224"
 input_modality     = ["image", "text"]
 taxonomic_coverage = "TreeOfLife-200M (952k taxa)"
-pretraining_data   = "TreeOfLife-200M"
+pretraining_data   = ["LAION-2B-en"]
 developer          = "Jianyang Gu, Samuel Stevens et al. (Imageomics Institute)"
 paper_url          = "https://doi.org/10.48550/arXiv.2505.23883"
 code_url           = "https://github.com/Imageomics/bioclip-2"

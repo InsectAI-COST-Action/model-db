@@ -43,6 +43,7 @@ license            = "GNU GPLv3"                       # SPDX identifier where o
 status             = "published"                     # draft | published | deprecated.
                                                  # Draft is the safe default: only
                                                  # `published` appears on the site.
+training_data      = ["10.5061/dryad.p5hqbzkz7"]
 
 # Optional. Delete any line you do not have an answer for - the default is in
 # the comment.

@@ -11,6 +11,7 @@ base_model         = "Ultralytics yolov8m-obb (DOTA-pretrained); yolov8m-seg (CO
 year               = 2026
 license            = "MIT"
 status             = "published"
+training_data      = ["10.5281/zenodo.18959238"]
 date               = 2026-09-29
 
 # Optional - delete a line to take the default shown.

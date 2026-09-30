@@ -12,7 +12,10 @@
     <dt>Tasks</dt><dd class="no-cap">{{ delimit $p.task ", " }}</dd>
     <dt>Architecture</dt><dd>{{ delimit $p.architecture ", " }}</dd>
     {{- with $p.pretraining_data }}
-    <dt>Pre-training</dt><dd class="no-cap">{{ . }}</dd>
+    <dt>Pre-training</dt><dd class="no-cap">{{ partial "dataset-list.html" (dict "field" "pretraining_data" "entries" .) }}</dd>
+    {{- end }}
+    {{- with $p.training_data }}
+    <dt>Training data</dt><dd class="no-cap">{{ partial "dataset-list.html" (dict "field" "training_data" "entries" .) }}</dd>
     {{- end }}
     <dt>Input size</dt><dd>{{ $p.image_input_size | default "any" }}</dd>
     <dt>Outputs</dt><dd class="no-cap">{{ delimit $produces ", " }}</dd>
