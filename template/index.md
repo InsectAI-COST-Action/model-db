@@ -70,7 +70,8 @@ paper_url          = ""                          # paper, DOI or project page
 # authors host them anyway.
 
 [[assets]]
-key      = "weights"              # the label shown in the sidebar
+key      = "weights"              # the label shown in the sidebar if variant is empty
+variant  = "REPLACE"              # e.g. "YOLOv8n", "YOLOv8s", "YOLOv8m", "YOLOv8l", "Share index", "Dataset page", "GitHub code"
 provider = "huggingface"          # zenodo | huggingface | github | erda | package | url
 url      = "https://..."
 # Optional, and worth adding when you know them:

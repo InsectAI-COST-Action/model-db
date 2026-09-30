@@ -33,6 +33,7 @@ weight_format      = ["PyTorch"]
 
 [[assets]]
 key          = "share-index"
+variant      = "ERDA share index"
 provider     = "erda"
 share_id     = "Bb0CR1FHG6"
 url          = "https://anon.erda.au.dk/cgi-sid/ls.py?share_id=Bb0CR1FHG6"
