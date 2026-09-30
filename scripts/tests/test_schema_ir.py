@@ -129,7 +129,7 @@ class IRTests(unittest.TestCase):
             schema.cast([1, 1])
 
     def test_conversion_through_common_ir_with_explicit_coordinates(self):
-        formats = ROOT / "static/formats/detection"
+        formats = ROOT / "static/formats"
         source = Schema.load(formats / "yolov5-detect-txt.json")
         target = Schema.load(formats / "ultralytics-detect-json.json")
         ir = Schema.from_dict(

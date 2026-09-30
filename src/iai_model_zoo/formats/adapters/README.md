@@ -4,7 +4,7 @@ These adapters consume and return decoded dictionaries. They use the schema
 handler and standard library; no model runtime, NumPy or mask decoder is needed.
 Use `PYTHONPATH=src` when running from this checkout.
 
-Both adapters use [ISIR](../../../../static/formats/detection/isir.json): one
+Both adapters use [ISIR](../../../../static/formats/isir.json): one
 record per image, with `ir_name="ISIR"` and `ir_id=1`. Those fields identify the
 compatibility contract, not an individual result. A different name/version
 fails validation. The optional `category_id`, `polygons`, `area`, image
