@@ -29,10 +29,17 @@ foundation         = false
 
 # ── Catalogue ─────────────────────────────────────────────────────────────────
 
-category           = "detection"                  # must already exist in data/categories.toml
-task               = ["Object Detection"]         # Object Detection | Instance Segmentation |
-                                                 # Semantic Segmentation | Classification |
-                                                 # Tracking | Embedding | Counting
+purpose            = ["REPLACE"]                 # Insect detection - simple background |
+                                                 # Insect detection - complex background |
+                                                 # Insect classification | Functional group
+                                                 # classification | Behaviour classification |
+                                                 # Trait quantification | Model embeddings
+task               = ["REPLACE"]                 # Localisation | Binary Classification |
+                                                 # Multiclass Classification | Instance
+                                                 # Segmentation | Semantic Segmentation |
+                                                 # Tracking | Counting | Regression |
+                                                 # Zero-shot Detection | Zero-shot
+                                                 # Classification
 architecture       = ["REPLACE"]                 # YOLOv8, ViT, Swin Transformer… One
                                                  # entry per architecture.
 base_model          = ""                          # If this is a fine-tuned model, name the
