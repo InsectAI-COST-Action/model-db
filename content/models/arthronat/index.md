@@ -18,6 +18,7 @@ date               = 2026-05-08
 vocabulary_scope   = "open"
 geographic_scope   = "France"
 produces           = ["bbox"]
+target_taxonomic_rank = ["NA"]
 output_format      = ["ultralytics-detect-results"]
 image_input_size   = "640x640"
 input_modality     = ["image"]

@@ -55,6 +55,10 @@ geographic_scope   = ""                          # e.g. "France", "Global"
 # Optional: one verified output profile per architecture; see static/formats/README.md.
 # output_format    = ["ultralytics-detect-json"]
 produces           = ["bbox"]                    # bbox | mask | label | count | track | embedding
+target_taxonomic_rank = ["NA"]                   # rank(s) of the output labels: kingdom |
+                                                 # phylum | class | order | family | genus |
+                                                 # species. ["NA"] on its own for detectors
+                                                 # and any model whose labels are not taxa.
 image_input_size         = "640x640"                   # or "any" for native resolution
 input_modality     = []                          # text | image | box | point | mask.
                                                  # List every input the model

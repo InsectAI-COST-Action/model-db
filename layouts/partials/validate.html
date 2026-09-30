@@ -73,6 +73,13 @@
   {{- end -}}
 {{- end -}}
 
+{{- /* "NA" means the model does not classify to a taxon, so it cannot sit next
+       to a rank. */ -}}
+{{- $ranks := index $params "target_taxonomic_rank" -}}
+{{- if and (reflect.IsSlice $ranks) (in $ranks "NA") (gt (len $ranks) 1) -}}
+  {{- errorf "%s: target_taxonomic_rank lists \"NA\" together with ranks. Use [\"NA\"] on its own, or only the ranks." $where -}}
+{{- end -}}
+
 {{- /* The list of real categories lives in data/categories.toml; copying it into
        the schema would give the two somewhere to disagree. */ -}}
 {{- $categories := hugo.Data.categories.categories -}}

@@ -18,6 +18,7 @@ date               = 2026-09-29
 # Optional - delete a line to take the default shown.
 vocabulary_scope   = "closed"
 produces           = ["bbox","label"]
+target_taxonomic_rank = ["order", "species"]
 image_input_size   = "1280x1280"
 developer          = "Bjerge et al."
 paper_url          = "https://zslpublications.onlinelibrary.wiley.com/doi/full/10.1002/rse2.70007"

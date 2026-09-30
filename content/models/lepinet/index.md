@@ -19,6 +19,7 @@ date               = 2026-09-29
 vocabulary_scope   = "closed"
 geographic_scope   = "Global (mostly North America and Europe)"
 produces           = ["label", "embedding"]
+target_taxonomic_rank = ["family", "genus", "species"]
 image_input_size   = "256x256 (ViT, resampled to 224 inside the model), 320x320 (ConvNeXt), 256x256 (EfficientNet)"
 taxonomic_coverage = "Lepidoptera: 12,041 species, 4,333 genera, 102 families"
 developer          = "Guillaume Mougeot (Aarhus University)"

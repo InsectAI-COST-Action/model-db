@@ -20,6 +20,7 @@ vocabulary_scope   = "closed"
 geographic_scope   = "Global (training insects from Panama, Mexico, Croatia, Germany, Poland, Hawaii, North Carolina, Netherlands, Indonesia, Canada, Seattle)"
 output_format      = ["mothbot-detection-json"]
 produces           = ["bbox"]
+target_taxonomic_rank = ["NA"]
 image_input_size   = "1600x1600"
 taxonomic_coverage = "Class-agnostic: one class, 'creature' (any arthropod on the sheet)"
 developer          = "Digital Naturalism Laboratories"

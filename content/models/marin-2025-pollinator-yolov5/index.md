@@ -16,6 +16,7 @@ date               = 2026-09-21
 vocabulary_scope   = "closed"
 geographic_scope   = "Balearic Islands, Spain"
 produces           = ["bbox"]
+target_taxonomic_rank = ["NA"]
 output_format      = ["pollinator-frame-folders"]
 image_input_size   = "1024x1024"
 input_modality     = ["image"]

@@ -17,6 +17,7 @@ date               = 2026-09-29
 # Optional - delete a line to take the default shown.
 vocabulary_scope   = "closed"
 produces           = ["bbox", "mask", "continuous"]
+target_taxonomic_rank = ["NA"]
 output_format      = ["insectmorphoai-csv"]
 taxonomic_coverage = "OBB: Diptera, Hymenoptera, Coleoptera. Segmentation: Tachinidae only (head, thorax, abdomen)"
 developer          = "Shirali, Hossein et al."

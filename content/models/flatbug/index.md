@@ -18,6 +18,7 @@ date               = 2026-09-21
 vocabulary_scope   = "closed"
 geographic_scope   = "Global"
 produces           = ["bbox", "mask"]
+target_taxonomic_rank = ["NA"]
 output_format      = ["flatbug", "flatbug"]
 image_input_size   = "any"
 taxonomic_coverage = "Terrestrial arthropods, as a single class"

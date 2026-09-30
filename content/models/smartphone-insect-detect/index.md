@@ -21,6 +21,7 @@ date               = 2025-03-29
 vocabulary_scope   = "closed"
 geographic_scope   = "Germany (evaluation: Leipzig and Halle; training images: global citizen science)"
 produces           = ["bbox", "label"]
+target_taxonomic_rank = ["order", "family"]
 output_format      = ["yolov5-detect-txt", "yolov5-detect-txt", "yolov7-detect-txt"]
 image_input_size   = "640x640"
 taxonomic_coverage = "8 arthropod groups: Araneae, Coleoptera, Diptera, Hemiptera, Hymenoptera, Hymenoptera (Formicidae), Lepidoptera, Orthoptera"

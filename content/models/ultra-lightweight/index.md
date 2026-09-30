@@ -53,6 +53,7 @@ geographic_scope   = ""                          # e.g. "France", "Global"
 # Optional: one verified output profile per architecture; see static/formats/README.md.
 # output_format    = ["ultralytics-detect-json"]
 produces           = ["label"]                    # bbox | mask | label | count | track | embedding
+target_taxonomic_rank = ["NA"]
 image_input_size         = "120×160"                   # or "any" for native resolution
 input_modality     = ["image"]                          # text | image | box | point | mask.
                                                  # List every input the model

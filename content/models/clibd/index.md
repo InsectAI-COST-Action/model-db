@@ -17,6 +17,7 @@ date               = 2026-09-29
 # Optional - delete a line to take the default shown.
 vocabulary_scope   = "open"
 produces           = ["label", "embedding"]
+target_taxonomic_rank = ["order", "family", "genus", "species"]
 image_input_size   = "224x224"
 input_modality     = ["image", "text"]
 taxonomic_coverage = "Insects (BIOSCAN-1M and BIOSCAN-5M)"

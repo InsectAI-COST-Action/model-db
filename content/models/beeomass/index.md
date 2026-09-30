@@ -16,6 +16,7 @@ date               = 2026-09-29
 # Optional - delete a line to take the default shown.
 vocabulary_scope   = "open"
 produces           = ["continuous"]
+target_taxonomic_rank = ["NA"]
 image_input_size   = "224x224"
 developer          = "Baghooee et al."
 paper_url          = "https://doi.org/10.32942/X2Q687"
