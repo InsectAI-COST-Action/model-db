@@ -4,7 +4,7 @@ title              = "CLIBD"
 description        = "CLIP-style model that aligns insect images, DNA barcodes and taxonomic labels in one embedding space, for classifying seen and unseen species by retrieval."
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "classification"
+purpose            = ["Insect classification", "Model embeddings"]
 task               = ["Classification", "Embedding"]
 architecture       = ["ViT-B/16", "BarcodeBERT", "BERT-Small"]
 base_model         = "timm/vit_base_patch16_224; BarcodeBERT (5-mer); prajjwal1/bert-small"

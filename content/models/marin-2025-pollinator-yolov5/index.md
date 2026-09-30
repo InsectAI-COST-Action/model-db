@@ -4,7 +4,7 @@ title              = "POLLINATOR — Serra-Marin et al. (2025)"
 description        = "YOLOv5m detector of flower-visiting insects in daytime and nighttime field imagery."
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "detection"
+purpose            = ["Insect detection"]
 task               = ["Object Detection"]
 architecture       = ["YOLOv5m"]
 base_model         = "ultralytics/yolov5 (yolov5m.pt)"

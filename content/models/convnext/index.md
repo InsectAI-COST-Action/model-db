@@ -29,7 +29,7 @@ foundation         = false
 
 # ── Catalogue ─────────────────────────────────────────────────────────────────
 
-category           = "embeddings"
+purpose            = ["Model embeddings"]
 task               = ["Classification", "Embedding"]
 architecture       = ["ConvNeXt-Base"]
 base_model          = "ConvNeXt-Base, pretrained on ImageNet-22k"

@@ -9,7 +9,6 @@
 
   var searchInput = document.getElementById("filter-q");
   var counter = document.getElementById("result-count");
-  var sections = [].slice.call(document.querySelectorAll("details.cat"));
 
   /* The facets are whatever the build emitted as checkboxes, so adding one to
      filter-bar.html cannot silently fail to be filtered here. */
@@ -70,20 +69,11 @@
     var query = searchInput ? searchInput.value.trim().toLowerCase() : "";
     var facets = checkedFacets();
     var visible = 0;
-    var shown = {};
 
     rows.forEach(function (row) {
       var show = matches(row, query, facets);
-      if (show) {
-        visible++;
-        shown[row.getAttribute("data-category")] = true;
-      }
+      if (show) { visible++; }
       if (show === row.hasAttribute("hidden")) { row.toggleAttribute("hidden", !show); }
-    });
-
-    sections.forEach(function (section) {
-      var show = shown[section.id.slice(4)] === true;
-      if (show === section.hasAttribute("hidden")) { section.toggleAttribute("hidden", !show); }
     });
 
     if (counter) {

@@ -4,8 +4,8 @@ title              = "Bjerge et al. (2023)"
 description        = "YOLOv5 model trained on flower pollinators."
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "detection"
-task               = ["Object Detection"]
+purpose            = ["Insect detection"]
+task               = ["Object Detection", "Classification"]
 architecture       = ["YOLOv5"]
 year               = 2023
 license            = "CC-BY-4.0"

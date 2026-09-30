@@ -1,7 +1,6 @@
 {{ define "main" }}
 {{- /* Every model is an ordinary page, so the registry is just a query. */ -}}
 {{- $models := where site.RegularPages "Section" "models" -}}
-{{- $cats := hugo.Data.categories -}}
 {{- $published := where $models "Params.status" "published" -}}
 
 <section class="hero">
@@ -14,21 +13,11 @@
 
 <p class="result-count" id="result-count" aria-live="polite"></p>
 
-{{- range $slug := $cats.order -}}
-  {{- $category := index $cats.categories $slug -}}
-  {{- $rows := sort (where $published "Params.category" $slug) "Title" -}}
-  {{- with $rows }}
-  <details class="cat" id="cat-{{ $slug }}"{{ if $category.open }} open{{ end }}>
-    <summary>
-      <span class="cat-title">{{ $category.title }}</span>
-      <span class="cat-count">{{ len . }} model{{ if ne (len .) 1 }}s{{ end }}</span>
-    </summary>
-    <p class="cat-desc">{{ $category.description }}</p>
-    {{ partial "model-table.html" . }}
-  </details>
-  {{- end -}}
+{{- $rows := sort $published "Title" -}}
+{{- with $rows }}
+{{ partial "model-table.html" . }}
 {{- else -}}
-  <p class="muted">No models are published yet.</p>
+<p class="muted">No models are published yet.</p>
 {{- end }}
 
 {{ end }}

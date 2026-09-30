@@ -29,10 +29,8 @@ foundation         = true
 
 # ── Catalogue ─────────────────────────────────────────────────────────────────
 
-category           = "classification"                  # must already exist in data/categories.toml
-task               = ["Classification", "Embedding"]         # Object Detection | Instance Segmentation |
-                                                 # Semantic Segmentation | Classification |
-                                                 # Tracking | Embedding | Counting
+purpose            = ["Insect classification", "Model embeddings"]
+task               = ["Classification", "Embedding"]
 architecture       = ["CLIP, with ViT-B/16 image encoder, plus other feature extractors."]                 # YOLOv8, ViT, Swin Transformer… One
                                                  # entry per architecture.
 base_model          = ""                          # If this is a fine-tuned model, name the

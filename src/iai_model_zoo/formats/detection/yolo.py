@@ -1,7 +1,7 @@
 """Types for serialized Ultralytics horizontal detection/segmentation JSON.
 
 These describe parsed JSON dictionaries, not the native Results tensor object.
-See static/formats/detection/ultralytics-*-json.json for source revisions and
+See static/formats/ultralytics-*-json.json for source revisions and
 normalization settings. Text exports are positional rows, not these dictionaries.
 """
 

@@ -28,10 +28,8 @@ description        = "Model weights and Python code to detect, classify, and tra
 
 # ── Catalogue ─────────────────────────────────────────────────────────────────
 
-category           = "detection"   # must already exist in data/categories.toml
-task               = ["Object Detection"]         # Object Detection | Instance Segmentation |
-                                                 # Semantic Segmentation | Classification |
-                                                 # Tracking | Embedding | Counting
+purpose            = ["Insect detection", "Insect classification"]
+task               = ["Object Detection", "Classification", "Tracking"]
 architecture       = ["YOLOv11"]                   # YOLOv8, ViT, Swin Transformer…
 output_format      = ["insectdct-csv"]
 year               = 2026                        # year of publication or release

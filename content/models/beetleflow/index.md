@@ -5,7 +5,7 @@ description        = "Segments the body parts (head, pronotum, elytra, legs, ant
 foundation         = false
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "trait-quantification"
+purpose            = ["Trait quantification"]
 task               = ["Semantic Segmentation"]
 architecture       = ["Mask2Former", "Swin Transformer (Swin-L)"]
 base_model         = "facebook/mask2former-swin-large-ade-semantic"

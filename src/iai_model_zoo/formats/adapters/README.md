@@ -6,7 +6,7 @@ runtime, NumPy or mask decoder is imported. Native Ultralytics Results can be
 consumed when the caller already uses that runtime.
 Use `PYTHONPATH=src` when running from this checkout.
 
-All adapters use [ISIR](../../../../static/formats/detection/isir.json): one
+Both adapters use [ISIR](../../../../static/formats/isir.json): one
 record per image, with `ir_name="ISIR"` and `ir_id=1`. Those fields identify the
 compatibility contract, not an individual result. A different name/version
 fails validation. The optional `category_id`, `polygons`, `area`, image
