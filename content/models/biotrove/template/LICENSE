@@ -1,0 +1,9 @@
+Replace this file with the upstream license text, verbatim.
+
+Do not paraphrase it and do not write a summary here, copy the license as the authors
+published it. The `license` field in index.md is a machine-readable shorthand; this file
+is the actual grant, and it is what someone will read if the question is ever contested.
+
+If the upstream project has no license file, delete this file and set
+license = "NOASSERTION" in index.md. That is the honest answer, and it is better than
+guessing.
