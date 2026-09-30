@@ -117,3 +117,15 @@ The isolated [probe project](src/probe/README.md) runs author prediction workflo
 with pinned weights and source files in separate uv environments. See the
 [probe results](src/probe/reports/2026-09-30/README.md) for observed formats and
 unresolved cases.
+
+
+## Output adapter registry
+
+[The read-only registry](src/iai_model_zoo/registry/README.md) joins model cards'
+`output_format` references to format descriptors and their adapter bindings.
+It composes conversion plans through ISIR. Consuming repositories implement
+model loading and inference; adapters operate on their existing outputs.
+
+```bash
+uv run --locked --project src/probe python examples/registry/resolve.py --model arthronat --cardinality one
+```

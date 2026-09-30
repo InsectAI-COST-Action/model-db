@@ -60,6 +60,10 @@
             }
         ],
         "representation": "Arrays describe tensor/ndarray dimensions, and objects describe public attributes. Actual values remain Python objects, tensors and arrays, not JSON. names is a dictionary mapping integer class indices to strings.",
-        "numeric_storage": "Box tensors store floating-point entries, including class and tracking IDs. Those ID columns are declared integer because that is their expected safe cast target. Storage precision depends on the producer/runtime; consumers must preserve ID values during conversion."
+        "numeric_storage": "Box tensors store floating-point entries, including class and tracking IDs. Those ID columns are declared integer because that is their expected safe cast target. Storage precision depends on the producer/runtime; consumers must preserve ID values during conversion.",
+        "adapters": {
+            "import_one": "iai_model_zoo.formats.adapters.ultralytics:to_ir",
+            "import_collection": "iai_model_zoo.formats.adapters.ultralytics:to_ir_many"
+        }
     }
 }

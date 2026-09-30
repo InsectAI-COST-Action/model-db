@@ -41,6 +41,10 @@
         "contours": "Each contour is [x_coordinates, y_coordinates], with equal-length arrays. Author json_data derives contours in original-image coordinates, including the non-polygon mask path.",
         "identifier": "json_data uses null; the flat-bug 1.2.0 CLI probe emitted a list containing a run UUID. This is not a unique image ID.",
         "boxes": "[x1,y1,x2,y2] in original-image pixels with top-left origin.",
-        "areas": "Polygon-mode areas are in image pixel-square units. In the non-polygon path, areas count mask-grid pixels; differing mask dimensions require keeping that distinction."
+        "areas": "Polygon-mode areas are in image pixel-square units. In the non-polygon path, areas count mask-grid pixels; differing mask dimensions require keeping that distinction.",
+        "adapters": {
+            "import_one": "iai_model_zoo.formats.adapters.flatbug:to_ir",
+            "export_one": "iai_model_zoo.formats.adapters.flatbug:from_ir"
+        }
     }
 }

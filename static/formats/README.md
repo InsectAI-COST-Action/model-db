@@ -404,3 +404,41 @@ The site’s **Formats** navigation and model-table format links lead to
 [Runnable examples](../../examples/formats/README.md) demonstrate conversion to
 single-image ISIR and a minimal Ultralytics prediction route. Alternate author
 pipeline routes are described separately, with their evidence and limitations.
+
+## Adapter bindings
+
+Optional `notes.adapters` is just a mapping from operation to Python entry point:
+
+```json
+{
+    "types": {},
+    "enums": {},
+    "structure": "T[object]",
+    "notes": {
+        "adapters": {
+            "import_one": "iai_model_zoo.formats.adapters.flatbug:to_ir",
+            "export_one": "iai_model_zoo.formats.adapters.flatbug:from_ir"
+        }
+    }
+}
+```
+
+This example illustrates the metadata placement; the real Flatbug descriptor
+defines its complete structure.
+
+The four supported keys are `import_one`, `import_collection`, `export_one`, and
+`export_collection`. Import converts this format to ISIR; export converts ISIR to
+this format. The suffix counts images, not detections. COCO uses collection keys;
+AMI and Ultralytics offer both single-image and collection import functions.
+Absent keys mean unsupported operations. No naming convention is used to infer
+Python module names. A descriptor without adapters is still a valid format.
+
+The adapter's API and documentation remain authoritative for arguments,
+containers, options, validation and preservation limits. For example, callers
+must supply YOLO TXT's `profile` and `save_conf`; COCO's API uses `Batch` to retain
+per-image records and dataset metadata. These contracts are not copied here.
+
+Model cards reference descriptor filename stems in `output_format`. New formats
+are discovered directly from descriptor files, including by site validation;
+there is no separate accepted-format list to update. See the
+[registry guide](../../src/iai_model_zoo/registry/README.md) for lookup examples.

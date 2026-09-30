@@ -58,6 +58,10 @@
                     "y2": 60.0
                 }
             }
-        ]
+        ],
+        "adapters": {
+            "import_one": "iai_model_zoo.formats.adapters.ultralytics:json_to_ir",
+            "import_collection": "iai_model_zoo.formats.adapters.ultralytics:json_to_ir_many"
+        }
     }
 }
