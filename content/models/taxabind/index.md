@@ -52,7 +52,7 @@ geographic_scope   = ""                          # e.g. "France", "Global"
 # output_format    = ["ultralytics-detect-json"]
 produces           = ["label", "embedding"]                    # bbox | mask | label | count | track | embedding
 image_input_size         = "224x224"                   # or "any" for native resolution
-input_modality     = ["image", "text", "location", "environmental features", "satelite images", "audio"]                          # text | image | box | point | mask.
+input_modality     = ["image", "text"]                          # text | image | box | point | mask.
                                                  # List every input the model
                                                  # accepts, image included. Leave
                                                  # empty for a model that only
@@ -113,7 +113,7 @@ The image-text representation starts from that provided by BioCLIP. TaxaBind the
 
 ## Inputs and outputs
 
-The model accepts RGB images and text. Use the evaluation preprocessing and tokeniser supplied on HuggingFace. Images are preprocessed to 224x224 pixels using bicubic resizing and the checkpoint's normalisation settings. The text encoder has a context length of 77 tokens. Both encoders produce a 512-D embedding vectors. 
+The model accepts RGB images and text. It also accepts information from extra modalities including: location; environmental features; satelite images and audio. Use the evaluation preprocessing and tokeniser supplied on HuggingFace. Images are preprocessed to 224x224 pixels using bicubic resizing and the checkpoint's normalisation settings. The text encoder has a context length of 77 tokens. Both encoders produce a 512-D embedding vectors. 
 
 ## Performance
 
