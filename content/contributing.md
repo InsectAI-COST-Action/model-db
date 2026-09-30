@@ -30,10 +30,10 @@ guidelines:
 
 - **`status` starts as `draft`.** Only `published` appears on the site, so a
   half-finished entry is invisible until it is set to `published`.
-- **`category` must already exist** in `data/categories.toml`. If your model
-  needs a category the zoo does not have, add it there first, then build.
-- **`task` lists operations only.** A model may do several (e.g., both 
-  detection and segmentation)so write `task = ["Object Detection", "Instance Segmentation"]`.
+- **`purpose` lists ecological use case(s) only.** Pick from the values in
+  `data/schema.toml`, e.g. `purpose = ["Insect classification"]`.
+- **`task` lists ML/CV operations only.** A model may do several (e.g., both
+  detection and segmentation) so write `task = ["Localisation", "Instance Segmentation"]`.
 - **`produces` must agree with `task`.** Declaring a `mask` output without a
   segmentation task is wrong.
 

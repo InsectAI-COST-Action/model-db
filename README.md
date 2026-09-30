@@ -68,7 +68,6 @@ content/models/<id>/index.md   the whole entry: front matter + model card
 content/models/<id>/LICENSE    the upstream license, where it is separate
 template/                      what you copy to start a new model
 data/schema.toml               every field, and the values each accepts
-data/categories.toml           category slugs → titles, descriptions, order
 layouts/                       hand-written templates; no theme, no mounts
 assets/css, assets/js          the site's only stylesheet and only script
 scripts/                       fetch-hugo.sh, serve.sh
