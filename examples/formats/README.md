@@ -1,29 +1,16 @@
-# Human-readable format examples
+# Format inspection examples
 
-Browse **Formats** in the site's navigation or click a model's output-format
-link. The pages are under `content/formats/`; curated values and display text
-live in `data/format_examples.json`. All 26 descriptors have an example.
-Examples are illustrative unless explicitly identified as retained schema
-examples. Python/tensor projections are not presented as author JSON exports.
+For ordinary COCO conversion, start with [the integration example](../conversion/README.md).
+These lower-level examples help inspect formats and adapter behavior:
 
-Run conversion examples without model dependencies:
+- `to_isir.py`: convert the small format fixtures to the intermediate representation.
+  Run `python3 examples/formats/to_isir.py --help` for supported formats.
+- `predict_ultralytics.py`: an optional CPU inference helper for compatible local
+  detection checkpoints. Its command and evidence limits are in the
+  [probe notes](../../src/probe/inference-routes.md).
 
-```bash
-python3 examples/formats/to_isir.py yolov5-detect-txt
-python3 examples/formats/to_isir.py biomoth-csv
-python3 examples/formats/to_isir.py coco
-```
-
-`--help` lists all supported conversions. Each source image becomes one ISIR
-record. COCO demonstrates an explicitly empty second image. Conversion does not
-unify unrelated class vocabularies or invent missing metadata.
-
-`predict_ultralytics.py` is a minimal single-image CPU path for compatible local
-horizontal-detection checkpoints; run it in the locked
-`src/probe/environments/modern` environment. See
-[the single-image guide](../../content/formats/single-image.md) for its command,
-settings and limitations, and proposals for other author pipelines.
-
-The standard format tests validate every example against its schema, check CSV
-and TXT displays, and execute the conversion examples. This does not establish
-prediction equivalence for proposed alternative inference workflows.
+The site's [format pages](../../content/formats/_index.md) retain readable examples,
+interpretation notes and schema links. Their values live in
+`data/format_examples.json`; tests validate them and execute the conversion examples.
+Illustrative values and tensor projections are labelled as such, not presented
+as observed author JSON exports.

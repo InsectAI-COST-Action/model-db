@@ -96,3 +96,6 @@ The [current detection coverage audit](reports/2026-09-30-format-expansion/READM
 includes source-inspected profiles and distinguishes them from runtime evidence.
 BioMoth and Mothbot execute selected original author function bodies from pinned
 sources; their report scope lists omitted notebook/UI and downstream stages.
+
+[Inference examples and proposed alternative routes](inference-routes.md) retain
+the source-specific investigations and their evidence limits.

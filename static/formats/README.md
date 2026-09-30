@@ -281,11 +281,12 @@ vocabulary and producer options still matter.
 
 ### Validation
 
-Run from the repository root (Python 3.10+, standard library only):
+Run from the repository root (the schema checker needs Python 3.10+; the full
+suite uses the locked Python 3.11+ probe coordinator):
 
 ```sh
 python3 scripts/check_formats.py
-python3 -m unittest discover -s scripts/tests -v
+uv run --locked --project src/probe python -m unittest discover -s scripts/tests -q
 ```
 
 The checker accepts individual files or directories as arguments. It checks all
@@ -353,57 +354,17 @@ Existing model cards are consequently not assigned new formats automatically.
 The definitions record source inspection, not an end-to-end inference benchmark.
 Updating the source revision requires rechecking the relevant serializer code.
 
-## Conversion adapters
+## Conversion, examples and evidence
 
-[ISIR adapters](../../src/iai_model_zoo/formats/adapters/README.md) support
-Flatbug/COCO import and export, plus import-only YOLO detection TXT, Ultralytics
-detection Results/JSON, BioMoth CSV and AMI box lists. Each ISIR record describes
-one image; multi-image sources return collections of these records. Image context,
-model identity and inference settings are supplied explicitly when absent from
-the source. Tests include retained real probe outputs and metadata preservation.
-
-## Tested author workflows
-
-The [probe project](../../src/probe/README.md) tests the specialized models'
-actual author entry points with real weights. Custom observed representations:
-
-- [POLLINATOR frame folders](detection/pollinator-frame-folders.json): saved JPEG frames, no machine-readable boxes.
-- [insectsFlowers CSV](detection/insectsflowers-csv.json): headerless pixel boxes, percentage confidence, one-based classes; historical pairing with the 2023 model is unconfirmed.
-- [BeetleFlow color masks](detection/beetleflow-color-mask.json): palette images and overlays for the tested 5-class model.
-- [InsectMorphoAI CSV](detection/insectmorphoai-csv.json): derived morphometric measurements from both analyses.
-- [InsectDCT CSV](detection/insectdct-csv.json): final and hierarchical classification tables from the complete author pipeline.
-
-See the [dated evidence](../../src/probe/reports/2026-09-30/README.md) for checkpoint
-scope, settings and cases that could not be completed.
-
-## Additional author-specific detection outputs
-
-The [coverage audit](../../src/probe/reports/2026-09-30-format-expansion/README.md)
-records the evidence level for every detection card, including version and stage
-limits. The new profiles are:
-
-| Profile | Author interface | Evidence |
-| --- | --- | --- |
-| [BioMoth CSV](detection/biomoth-csv.json) | Notebook batch measurements | Real checkpoint and original notebook functions |
-| [Mothbot JSON](detection/mothbot-detection-json.json) | Detection-stage oriented boxes | Real checkpoint and original JSON writer; later stages excluded |
-| [AMI boxes](detection/ami-detector-boxes.json) | Thresholded integer box list, no scores | Source inspection |
-| [Insect Detect CSV](detection/insect-detect-csv.json) | Camera-trap tracking metadata | Source inspection; hardware probe blocked |
-| [MCC24 CSV](detection/mcc24-csv.json) | Combined detector/order/species pipeline | Source inspection; full run failed on label-map download |
-| [Grounding DINO HF results](detection/grounding-dino-hf-results.json) | Transformers 4.40.2 grounded postprocessor | Source inspection; version-specific Python tensors/phrases |
-| [Ecto-Trigger TFLite score](detection/ecto-trigger-tflite-score.json) | Quantized image-level trigger | Source inspection; no instance boxes |
-
-These profiles preserve emitted units, score meanings, field names and quirks.
-An `output_format` link documents an interface; the descriptor's `notes.evidence`
-and card prose identify whether it was observed or only source-inspected.
-
-
-## Human-readable examples
-
-The site’s **Formats** navigation and model-table format links lead to
-[example pages](../../content/formats/_index.md), with raw schemas linked alongside.
-[Runnable examples](../../examples/formats/README.md) demonstrate conversion to
-single-image ISIR and a minimal Ultralytics prediction route. Alternate author
-pipeline routes are described separately, with their evidence and limitations.
+- [Conversion guide and runnable example](../../examples/conversion/README.md):
+  convert existing predictions to COCO or another supported target.
+- [Format pages](../../content/formats/_index.md): readable examples, interpretation
+  and schema links. [Direct adapter APIs](../../src/iai_model_zoo/formats/adapters/README.md)
+  document detailed options and preservation limits.
+- [Probe results](../../src/probe/reports/2026-09-30/README.md) and
+  [coverage audit](../../src/probe/reports/2026-09-30-format-expansion/README.md):
+  observed interfaces, checkpoint scope and unresolved cases. A documented format
+  is not necessarily verified with real inference; check its evidence notes.
 
 ## Adapter bindings
 
@@ -435,8 +396,8 @@ Python module names. A descriptor without adapters is still a valid format.
 
 The adapter's API and documentation remain authoritative for arguments,
 containers, options, validation and preservation limits. For example, callers
-must supply YOLO TXT's `profile` and `save_conf`; COCO's API uses `Batch` to retain
-per-image records and dataset metadata. These contracts are not copied here.
+supply YOLO TXT producer settings such as `save_conf`. The conversion wrapper
+supplies the profile and handles COCO's dataset container internally. These contracts are not copied here.
 
 Model cards reference descriptor filename stems in `output_format`. New formats
 are discovered directly from descriptor files, including by site validation;

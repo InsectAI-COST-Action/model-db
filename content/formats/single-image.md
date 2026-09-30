@@ -1,95 +1,70 @@
 +++
-title = "Single-image prediction and ISIR"
+title = "Convert model outputs to COCO"
 +++
 
-[Browse the format examples](../). ISIR describes detections on one image;
-a batch is a collection of ISIR records, not one combined record.
+Run inference in your own application, then pass the predictions to `Converter`.
+It selects adapters using the model card's `output_format` and returns the target
+format. It does not load models or run inference.
 
-## Try a conversion without installing a model
+## Convert predictions
 
-From a checkout of this repository:
+From a repository checkout with Python 3.11+ and `PYTHONPATH=src`:
 
-```bash
-python3 examples/formats/to_isir.py yolov5-detect-txt
-python3 examples/formats/to_isir.py ultralytics-detect-json
-python3 examples/formats/to_isir.py biomoth-csv
-python3 examples/formats/to_isir.py coco
+```python
+from iai_model_zoo.formats import Converter, ConversionContext
+from iai_model_zoo.formats.adapters import ImageContext
+
+converter = Converter.open("/path/to/model-db")
+
+# predictions comes from your application's model inference.
+output = converter.convert(
+    predictions,
+    model="arthronat",       # database model name
+    target="coco",
+    context=ConversionContext(
+        image=ImageContext(1, width, height, file_name),
+        categories=categories,  # [{"id": 0, "name": "..."}, ...]
+    ),
+)
 ```
 
-The script reads the small examples shown on these pages and prints ISIR JSON.
-It does not download weights or run inference. Most examples use a 200 × 100
-image with pixel box `[10,20,50,60]`; its ISIR box is `[30,60,40,40]` because
-ISIR uses a bottom-left origin and center/width/height.
+`output` is a COCO dataset dictionary, ready for `json.dump`. Supply the actual
+image dimensions, filename and class vocabulary from your application. Instead
+of `model`, use `source="flatbug"` or another format identifier when you already
+know the output format. If a model lists several formats, also specify `source`
+to identify the one your inference code produces.
 
-Single-image formats produce one object. BioMoth produces a list grouped by
-image. The COCO example produces two records, including an explicitly empty
-image. Example class vocabularies differ across formats: conversion does not
-make the same integer mean the same taxon.
+The same call supports other registered export targets, including `flatbug`.
+Conversion cannot invent missing information: for example, Flatbug export needs
+contours and areas, and COCO annotations need category IDs matching the vocabulary.
+An unsupported format needs an adapter before it can be converted.
 
-The Python adapter API and image-manifest examples are documented in
-[the adapter README](https://github.com/InsectAI-COST-Action/model-db/blob/main/src/iai_model_zoo/formats/adapters/README.md).
-Image dimensions and producer options must be supplied where the source omits
-them. Unknown model identity, capture time and inference time remain unknown.
+## Multiple images and producer settings
 
-## A minimal single-image Ultralytics route
+Set `cardinality="collection"` for multi-image input. When the source omits image
+information, supply `images={source_key: ImageContext(...)}` in the context.
+COCO output keeps images separate and contains dataset-wide annotations.
 
-For a compatible **horizontal-detection** checkpoint, the supplied example calls
-`YOLO.predict` directly and passes the one-image Results object to ISIR:
+Use `import_options` for producer settings. For example, YOLO TXT requires
+`import_options={"save_conf": False}` when its rows contain no confidence column.
+Use the settings that actually produced your outputs; conversion does not guess
+them from the model architecture.
+
+COCO image and annotation IDs must be unique integers. Valid source IDs are
+preserved. When needed, supply `image_ids` and `annotation_ids` mappings through
+`ConversionContext`; automatic ID allocation is not performed.
+
+## Run an example without a model
 
 ```bash
-uv run --locked --project src/probe/environments/modern \
-  python examples/formats/predict_ultralytics.py \
-  --weights /path/to/author-detector.pt \
-  --image /path/to/frame.jpg \
-  --model-name "ArthroNat YOLO11n mosaic33" \
-  --imgsz 640 --conf 0.25 --iou 0.7 > prediction.isir.json
+uv run --locked --project src/probe python examples/conversion/pipeline.py
 ```
 
-Use a downloaded, compatible detector checkpoint from the model card. Paths and
-model name above are caller-supplied; the command does not select or fetch a
-model. It runs on CPU with two threads and records the explicitly selected
-prediction settings. It rejects segmentation, oriented-box and classification
-models, because their geometry requires different handling.
+This prints COCO JSON from illustrative saved predictions. Replace the example's
+predictor with your application's inference function. No model download is needed.
 
-This helper was exercised with the pinned ArthroNat YOLO11n mosaic33 checkpoint
-and existing specimen fixture, producing valid single-image ISIR. This checks
-the interface on one image, not detection accuracy or every checkpoint variant.
-
-This route is suited to ArthroNat's documented Ultralytics interface. It is not
-a universal replacement for specialized author pipelines. The settings shown
-are this example's settings, not a claim of equivalence to every author's
-configuration. The locked environment also makes the first setup larger than
-the small conversion-only example.
-
-## Alternative routes worth pursuing
-
-An alternative should have its own invocation and evidence. Keep the author
-pipeline's advertised format; document the alternate format alongside it rather
-than silently replacing the database entry.
-
-| Model | Simpler route | What changes / current evidence |
-| --- | --- | --- |
-| ArthroNat | One `YOLO.predict` call → detection Results → ISIR | Uses the documented model API; runnable helper above. Existing checkpoint probe covers this interface. |
-| BioMoth | Load the TorchScript checkpoint once; call the notebook's letterbox, parser, NMS and coordinate-restoration helpers on one image | Avoid notebook UI, folder loops and CSV append operations. The probe already executes these original functions with real weights, but a dedicated single-image wrapper has not been packaged. Keep the author parsing/NMS; directly treating the raw tensor as boxes would be wrong. |
-| AMI | Extract the author's checkpoint construction and image transform; run one image and its original thresholding | Avoid database queues and persistence. The postprocessed integer boxes already have an ISIR importer. Source-inspected proposal only; preserve model-specific thresholds and integer truncation. Keeping raw scores instead would be a separate interface. |
-| InsectDCT | A detector-only call can separate detection from hierarchical classification and tracking | The author uses motion-enhanced inputs. A raw RGB single-image call changes the input distribution and may change detection quality. It cannot reproduce the full pipeline's taxon labels or classifier scores. Needs a separate probe. |
-| Mothbot | Direct OBB prediction plus the original JSON writer on one image | The existing probe exercises this route with real weights, excluding GUI, thumbnail writing and later identification. It yields oriented boxes, so the horizontal-detection helper deliberately rejects it. An OBB-to-ISIR convention remains to be implemented. |
-| POLLINATOR | Call the pinned YOLOv5 detector on one image and retain its box results instead of drawing video frames | An alternate interface could expose machine-readable boxes that the author export discards. Preserve both model filtering and the script's additional confidence filter. No dedicated single-image alternate probe yet; modern Ultralytics is not a drop-in replacement for this legacy checkpoint. |
-
-These proposals are grounded in the pinned source interfaces documented on the
-[BioMoth](../detection/biomoth-csv/), [AMI](../detection/ami-detector-boxes/),
-[InsectDCT](../detection/insectdct-csv/), [Mothbot](../detection/mothbot-detection-json/)
-and [POLLINATOR](../detection/pollinator-frame-folders/) format pages. Each links
-to its author source and states the limits of runtime evidence.
-
-## What an alternative must preserve
-
-Preserve preprocessing, coordinate restoration, thresholding/NMS, the checkpoint's
-class vocabulary and image identity. Test a populated image and a known empty
-image. If removing a stage changes these semantics, describe that difference;
-an easier interface is not evidence of equivalent predictions.
-
-Do not invent full-image boxes for Ecto-Trigger's presence score or recover
-precise boxes from annotated JPEGs. Likewise, measurements without positions
-cannot be converted into localized instances. Those outputs need a different
-representation or access to an earlier inference stage.
+See the [abstract pipeline example](https://github.com/InsectAI-COST-Action/model-db/blob/main/examples/conversion/pipeline.py)
+and [integration guide](https://github.com/InsectAI-COST-Action/model-db/blob/main/examples/conversion/README.md)
+for context, metadata and ID-mapping examples. [Browse the format examples](../)
+for source layouts, coordinate interpretation and machine-readable schemas.
+ISIR is used internally; callers do not need to construct it for ordinary conversions.

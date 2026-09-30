@@ -119,16 +119,17 @@ with pinned weights and source files in separate uv environments. See the
 unresolved cases.
 
 
-## Output adapter registry
+## Convert predictions to COCO
 
-[The read-only registry](src/iai_model_zoo/registry/README.md) joins model cards'
-`output_format` references to format descriptors and their adapter bindings.
-It composes conversion plans through ISIR. Consuming repositories implement
-model loading and inference; adapters operate on their existing outputs.
+Use the [conversion API and abstract predictor example](examples/conversion/README.md)
+to convert existing predictions in one call. Your application handles model
+loading and inference; the converter selects adapters from the database.
+
+Run the saved-output example without downloading a model:
 
 ```bash
-uv run --locked --project src/probe python examples/registry/resolve.py --model arthronat --cardinality one
+uv run --locked --project src/probe python examples/conversion/pipeline.py
 ```
 
-For ordinary pipelines, use the [conversion API and abstract predictor example](examples/conversion/README.md)
-to turn existing model outputs into ISIR or COCO in one call.
+For discovery and diagnostics, [Registry](src/iai_model_zoo/registry/README.md)
+inspects available conversion paths without executing them.

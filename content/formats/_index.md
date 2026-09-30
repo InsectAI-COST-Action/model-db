@@ -2,6 +2,15 @@
 title = "Output formats and examples"
 +++
 
+Convert existing model predictions to a standard format such as **COCO** using
+one Python call. Your application runs the model; the conversion module looks
+up its output adapter and handles the conversion.
+
+[How to convert predictions to COCO](single-image/) ·
+[Runnable pipeline example](https://github.com/InsectAI-COST-Action/model-db/blob/main/examples/conversion/pipeline.py)
+
+## Understand the source format
+
 A model architecture does not uniquely determine its output format. A wrapper
 might return boxes, write measurement tables, or save annotated photographs.
 The examples below show the actual documented interfaces, including units and
@@ -17,12 +26,11 @@ For the same box in a **200 × 100** image:
 | YOLO normalized box | `[0.15,0.4,0.2,0.4]` | Center and size, divided by image dimensions |
 | ISIR box | `[30,60,40,40]` | Pixel center and size, **bottom-left** origin |
 
-ISIR describes **one image**. Batch inputs become a collection of ISIR records,
-including known empty images. A CSV without detections cannot tell us whether an
+Each image retains its own detections during conversion, including known empty
+images. ISIR is the internal representation used between adapters. A CSV without detections cannot tell us whether an
 image was processed; preserve the input manifest and run completion information.
 Class IDs also require the correct model vocabulary.
 
-Start with [single-image inference and runnable conversion examples](single-image/).
 Each format page links back to its machine-readable schema. Schemas document
 an interface; source inspection and successful inference are different evidence
 levels, identified in their notes and model cards.
