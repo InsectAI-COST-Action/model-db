@@ -29,36 +29,25 @@ foundation         = true
 
 # ── Catalogue ─────────────────────────────────────────────────────────────────
 
-category           = "classification"                  # must already exist in data/categories.toml
-task               = ["Classification", "Embedding"]         # Object Detection | Instance Segmentation |
-                                                 # Semantic Segmentation | Classification |
-                                                 # Tracking | Embedding | Counting
-architecture       = ["OpenAI CLIP ViT-B/16"]                 # YOLOv8, ViT, Swin Transformer… One
-                                                 # entry per architecture.
-base_model          = ""                          # If this is a fine-tuned model, name the
-                                                 # base model it was fine-tuned from.
-year               = 2025                        # year of publication or release
-license            = "MIT"                       # SPDX identifier where one exists
-status             = "published"                     # draft | published | deprecated.
-                                                 # Draft is the safe default: only
-                                                 # `published` appears on the site.
+purpose            = ["Insect classification", "Model embeddings"]
+task               = ["Classification", "Embedding"]
+architecture       = ["OpenAI CLIP ViT-B/16"]
+# base_model          = "" 
+year               = 2025
+license            = "MIT"
+status             = "published" 
 
 # Optional. Delete any line you do not have an answer for - the default is in
 # the comment.
-date               = 2026-09-30                  # when this entry was added to the zoo
-vocabulary_scope   = "open"                    # closed | open.
-geographic_scope   = ""                          # e.g. "France", "Global"
-# Optional: one verified output profile per architecture; see static/formats/README.md.
+date               = 2026-09-30 
+vocabulary_scope   = "open" 
+geographic_scope   = "" 
 # output_format    = ["ultralytics-detect-json"]
 produces           = ["label", "embedding"]
-image_input_size         = "224x224"                   # or "any" for native resolution
-input_modality     = ["image", "text"]                          # text | image | box | point | mask.
-                                                 # List every input the model
-                                                 # accepts, image included. Leave
-                                                 # empty for a model that only
-                                                 # takes an image.
-developer          = "Imageomics Institute"                   # who made it, not who curated it
-paper_url          = "https://arxiv.org/abs/2510.20095"                          # paper, DOI or project page
+image_input_size         = "224x224" 
+input_modality     = ["image", "text"] 
+developer          = "Imageomics Institute" 
+paper_url          = "https://arxiv.org/abs/2510.20095" 
 
 # ── Weights ───────────────────────────────────────────────────────────────────
 #
