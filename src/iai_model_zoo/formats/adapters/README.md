@@ -351,3 +351,23 @@ columns and native metadata retention. A controlled compatibility check with
 pinned Ultralytics 8.4.90 exercises actual Results objects and JSON export for
 tracked, untracked and empty inputs in both coordinate modes; this is not a new
 checkpoint inference run.
+
+## Grounding DINO and MCC24 imports
+
+The pinned HF grounded postprocessor returns a list of image results. Use
+`source="grounding-dino-hf-results"`, `cardinality="collection"`, ordered
+`ConversionContext(images=[...])`, and `import_options={"normalized": False}`
+for pixel coordinates (or `True` for normalized coordinates). Boxes, scores and
+phrases must have equal lengths. Phrases are retained as metadata; COCO export
+uses the generic object category. Custom Grounding DINO postprocessors require
+separate matching contracts.
+
+Use `source="mcc24-csv"`, `cardinality="collection"` and an image manifest keyed
+by exact CSV `fileName` values for MCC24. Detection percentage confidence is
+converted to 0–1. Detector/classifier IDs and order/species scores stay in native
+metadata. Malformed CSV, invalid boxes and duplicate detection keys are rejected.
+`include_empty=True` is available only when the caller knows missing rows mean a
+completed image with no detections.
+
+Both additions are tested with source-contract fixtures, not new inference runs.
+See the [native/alternative coverage review](../../../../content/formats/coverage.md).

@@ -9,6 +9,9 @@ up its output adapter and handles the conversion.
 [How to convert predictions to COCO](single-image/) ·
 [Runnable pipeline example](https://github.com/InsectAI-COST-Action/model-db/blob/main/examples/conversion/pipeline.py)
 
+[Native and alternative route coverage](coverage/) distinguishes available adapters
+from real-output verification and application-specific inference routes.
+
 ## Understand the source format
 
 A model architecture does not uniquely determine its output format. A wrapper

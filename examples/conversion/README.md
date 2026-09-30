@@ -96,3 +96,9 @@ sidecars when a target cannot represent all your metadata.
 Only use snapshots whose adapter references you trust: conversion imports and
 executes their callables. `Registry.query()` remains a metadata-only discovery
 API and does not import implementations. Neither API executes models.
+
+For alternate inference routes, select their actual output with `source` instead
+of relying on the model card. Supply model provenance through `Metadata`; using
+both `model` and `source` requires the source to be declared on that card.
+See the [coverage review](../../content/formats/coverage.md) for native support,
+alternative routes, and their separate evidence levels.
