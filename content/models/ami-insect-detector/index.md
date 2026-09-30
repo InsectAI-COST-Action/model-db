@@ -5,7 +5,7 @@ description        = "Class-agnostic Faster R-CNN that boxes every insect on a n
 foundation         = false
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "detection"
+purpose            = ["Insect detection"]
 task               = ["Object Detection"]
 architecture       = ["Faster R-CNN ResNet50-FPN", "Faster R-CNN MobileNetV3-Large-FPN"]
 base_model         = "torchvision fasterrcnn_resnet50_fpn; torchvision fasterrcnn_mobilenet_v3_large_fpn"
