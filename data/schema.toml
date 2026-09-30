@@ -91,7 +91,7 @@ help        = "Year of publication or release. 4-digit number, no quotes."
 name        = "license"
 type        = "string"
 required    = true
-help        = "SPDX identifier where one exists, e.g. MIT, CC-BY-4.0. See them at https://spdx.org/licenses/."
+help        = "SPDX identifier where one exists, e.g. MIT, CC-BY-4.0. See them at https://spdx.org/licenses/. If the license is not listed there, use 'custom' and explain in the model card."
 
 [[field]]
 name        = "status"
