@@ -5,8 +5,8 @@ description        = "Single-class YOLO11s detector that counts moths on blackli
 foundation         = false
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "detection"
-task               = ["Object Detection", "Counting"]
+purpose            = ["Insect detection", "Trait quantification"]
+task               = ["Object Detection", "Counting", "Regression]
 architecture       = ["YOLO11s"]
 base_model         = ""
 year               = 2026
