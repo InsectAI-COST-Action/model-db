@@ -1,0 +1,52 @@
+{
+    "types" : {
+        "instance" : {
+            "id" : "T[int] | T[string]",
+            "bbox" : "T[bbox]",
+            "confidence" : "? : T[float]",
+            "angle"      : "? : T[float]"
+        },
+        "bbox" : ["T[float]", "T[float]", "T[float]", "T[float]"],
+        "image" : {
+            "width" : "T[int]",
+            "height": "T[int]",
+            "id"    : "T[int] | T[string]",
+            "format": "? : T[string(E[image_formats])]"
+        },
+        "model" : {
+            "name"  : "? : T[string]",
+            "uuid" : "? : T[UUIDv4]"
+        },
+        "prediction" : {
+            "timestamp" : "? : T[ISO]",
+            "config"    : "? : T[obj]"
+        },
+        "context" : {
+            "timestamp" : "? : T[ISO]",
+            "longitude" : "? : T[float]",
+            "latitude"  : "? : T[float]",
+            "crs"       : "? : T[int] | T[string]",
+            "tag_list"  : "? : [T[string]]",
+            "group_name": "? : T[string]",
+            "group_id"  : "? : T[int]"
+        }
+
+    },
+    "structure" : {
+        "instances" : ["T[instance]"],
+        "image"     : "T[image]",
+        "model"     : "? : T[model]",
+        "inference" : "? : T[inference]",
+        "context"   : "? : T[context]",
+        "ir_name"   : "T[string]",
+        "ir_id"     : "T[int]",
+        "extra_information" : "? : T[obj]"
+    },
+    "notes" : {
+        "bbox" : "We use xywh: center coordinates and width/height - not normalized. Coordinate system has origin (0,0) at bottom-left, and top-right is (width, height).",
+        "angle": "Angle in radians.",
+        "uuid" : "We use UUIDv4, see: https://datatracker.ietf.org/doc/html/rfc9562.html#section-5.4",
+        "ISO"  : "We use ISO 8601 (YYYY-MM-DDTHH:mm:ss.sssZ), see: https://www.iso.org/iso-8601-date-and-time-format.html",
+        "crs"  : "We suggest using EPSG codes, either specified as an integer or 'EPSG:XXXX'. Proj string can also be used."
+    }
+}
