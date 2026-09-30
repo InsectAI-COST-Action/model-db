@@ -4,8 +4,8 @@ title              = "Insect Detect platform"
 description        = "Detects arthropods on homogeneous backgrounds, trained on a colored platform background."
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "detection"
-task               = ["Object Detection"]
+purpose            = ["Insect detection"]
+task               = ["Object Detection", "Classification"]
 architecture       = ["YOLOv6"]
 base_model         = "YOLOv6 pretrained on COCO"
 year               = 2026
