@@ -5,8 +5,8 @@ description        = "Global and regional ResNet50 moth species classifiers, a m
 foundation         = false
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "classification"
-task               = ["Classification"]
+purpose            = ["Insect classification"]
+task               = ["Binary Classification", "Classification"]
 architecture       = ["ResNet50", "ConvNeXt-T"]
 base_model         = "timm resnet50 (ImageNet); convnext_tiny_in22k"
 year               = 2024
