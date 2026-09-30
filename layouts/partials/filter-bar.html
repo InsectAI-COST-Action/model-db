@@ -3,6 +3,7 @@
 {{- /* Built at build time, so the facet list is correct with JavaScript disabled
        and a task added to any card gets its own checkbox with no edit here. */ -}}
 {{- $tasks := slice -}}
+{{- $purposes := slice -}}
 {{- $years := slice -}}
 {{- $licenses := slice -}}
 {{- $zeroShot := 0 -}}
@@ -10,6 +11,9 @@
   {{- /* One checkbox per member, not one per whole task list. */ -}}
   {{- range .Params.task -}}
     {{- if not (in $tasks .) }}{{ $tasks = $tasks | append . }}{{ end -}}
+  {{- end -}}
+  {{- range .Params.purpose -}}
+    {{- if not (in $purposes .) }}{{ $purposes = $purposes | append . }}{{ end -}}
   {{- end -}}
   {{- with .Params.year }}{{ if not (in $years .) }}{{ $years = $years | append . }}{{ end }}{{ end -}}
   {{- with .Params.license }}{{ if not (in $licenses .) }}{{ $licenses = $licenses | append . }}{{ end }}{{ end -}}
@@ -19,12 +23,19 @@
 {{- /* Facets whose row attribute is a `;`-separated list. Declared here rather
        than restated in the JavaScript. */ -}}
 <form class="filter-bar" id="filter-bar" role="search" aria-label="Filter models"
-      data-list-facets="task">
+      data-list-facets="task purpose">
   <div class="filter-search">
     <label for="filter-q">Search</label>
     <input type="search" id="filter-q" name="q" placeholder="pollinator, YOLO, tree of life…"
            autocomplete="off">
   </div>
+
+  <fieldset class="filter-group">
+    <legend>Purpose</legend>
+    {{- range sort $purposes }}
+    <label class="chip"><input type="checkbox" data-facet="purpose" value="{{ . }}"> {{ . }}</label>
+    {{- end }}
+  </fieldset>
 
   <fieldset class="filter-group">
     <legend>Task</legend>

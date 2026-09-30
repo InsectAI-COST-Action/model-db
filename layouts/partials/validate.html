@@ -73,17 +73,6 @@
   {{- end -}}
 {{- end -}}
 
-{{- /* The list of real categories lives in data/categories.toml; copying it into
-       the schema would give the two somewhere to disagree. */ -}}
-{{- $categories := hugo.Data.categories.categories -}}
-{{- with index $params "category" -}}
-  {{- if not (index $categories .) -}}
-    {{- $slugs := slice -}}
-    {{- range $slug, $ignored := $categories -}}{{- $slugs = $slugs | append $slug -}}{{- end -}}
-    {{- errorf "%s: category %q is not in data/categories.toml. Known: %s" $where . (delimit (sort $slugs) ", ") -}}
-  {{- end -}}
-{{- end -}}
-
 {{- /* A Hugging Face repository is a git repository, so a link to a branch can
        change under a catalogue entry that stays put. Only a commit hash cannot. */ -}}
 {{- with index $params "hf_repo" -}}

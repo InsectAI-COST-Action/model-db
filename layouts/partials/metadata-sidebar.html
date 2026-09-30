@@ -1,14 +1,13 @@
 {{- $page := .page -}}
 {{- $p := $page.Params -}}
-{{- $category := .category -}}
 {{- $produces := $p.produces | default slice -}}
 {{- $assets := $p.assets | default slice -}}
 
 <div class="meta-block">
   <h2 class="meta-title">At a glance</h2>
   <dl class="meta-list">
-    {{- with $category }}
-    <dt>Category</dt><dd>{{ .title }}</dd>
+    {{- with $p.purpose }}
+    <dt>Purpose</dt><dd class="no-cap">{{ delimit . ", " }}</dd>
     {{- end }}
     <dt>Tasks</dt><dd class="no-cap">{{ delimit $p.task ", " }}</dd>
     <dt>Architecture</dt><dd>{{ delimit $p.architecture ", " }}</dd>
