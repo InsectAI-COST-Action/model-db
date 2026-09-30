@@ -64,3 +64,17 @@ Existing model cards are consequently not assigned new formats automatically.
 
 The definitions record source inspection, not an end-to-end inference benchmark.
 Updating the source revision requires rechecking the relevant serializer code.
+
+## Tested author workflows
+
+The [probe project](../../src/probe/README.md) tests the specialized models'
+actual author entry points with real weights. Custom observed representations:
+
+- [POLLINATOR frame folders](detection/pollinator-frame-folders.json): saved JPEG frames, no machine-readable boxes.
+- [insectsFlowers CSV](detection/insectsflowers-csv.json): headerless pixel boxes, percentage confidence, one-based classes; historical pairing with the 2023 model is unconfirmed.
+- [BeetleFlow color masks](detection/beetleflow-color-mask.json): palette images and overlays for the tested 5-class model.
+- [InsectMorphoAI CSV](detection/insectmorphoai-csv.json): derived morphometric measurements from both analyses.
+- [InsectDCT CSV](detection/insectdct-csv.json): final and hierarchical classification tables from the complete author pipeline.
+
+See the [dated evidence](../../src/probe/reports/2026-09-30/README.md) for checkpoint
+scope, settings and cases that could not be completed.

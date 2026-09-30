@@ -1,0 +1,95 @@
+{
+    "id": "insectdct-csv",
+    "serialization": "text/csv with header",
+    "producer": "pipeDetectAndClassifyInsectsTaxon.py",
+    "sources": [
+        {
+            "url": "https://github.com/kimbjerge/insectDCT/blob/e459ae87ebe39732963e77e0fcdd0a9a28672a08/pipeDetectAndClassifyInsectsTaxon.py",
+            "revision": "e459ae87ebe39732963e77e0fcdd0a9a28672a08"
+        }
+    ],
+    "types": {},
+    "structure": {
+        "sequence-HI.csv": {
+            "header": [
+                "Label1",
+                "LabelId1",
+                "Logit1",
+                "Conf1",
+                "Above1",
+                "Label2",
+                "LabelId2",
+                "Logit2",
+                "Conf2",
+                "Above2",
+                "Label3",
+                "LabelId3",
+                "Logit3",
+                "Conf3",
+                "Above3",
+                "Checked",
+                "frameId"
+            ],
+            "example_row": [
+                "Hymenoptera_bees",
+                "7",
+                "11.560938835144043",
+                "0.5280153609116043",
+                "True",
+                "Apoidea",
+                "2",
+                "12.471245765686035",
+                "0.20797051520137505",
+                "True",
+                "Apoidea striped",
+                "11",
+                "12.3587007522583",
+                "0.0003140208778682231",
+                "True",
+                "True",
+                "0"
+            ]
+        },
+        "sequence-CL.csv": {
+            "header": [
+                "trap",
+                "trapId",
+                "date",
+                "time",
+                "taxaConf",
+                "taxaLabel",
+                "taxaId",
+                "taxaLevel",
+                "frameId",
+                "x1",
+                "y1",
+                "x2",
+                "y2",
+                "fileName"
+            ],
+            "example_row": [
+                "sequence",
+                "0",
+                "20250221",
+                "115731",
+                "0.03140208778682231",
+                "Apoidea striped",
+                "12",
+                "3",
+                "0",
+                "1307",
+                "601",
+                "1355",
+                "663",
+                "sequence/pi2_2025_02_21_11_57_31.jpg"
+            ]
+        }
+    },
+    "notes": {
+        "scope": "Default CSVformat=tracking and hierarchical ConvNextBase V6. Each row is a detected/classified instance. Filename stems derive from the input sequence.",
+        "confidence": "CL taxaConf is classifier probability multiplied by 100. HI Conf1/2/3 contain classifier probabilities, not YOLO detector scores.",
+        "classes": "CL taxaId adds one to the selected classifier index. HI LabelId fields retain classifier indices. These are not the detector class vocabulary.",
+        "coordinates": "CL x1,y1,x2,y2 are pixel corners in the processed frame; frame preprocessing and motion alignment must be retained with the results.",
+        "variants": "CSVformat other than tracking uses a different CL header. This definition describes only the observed default."
+    }
+}

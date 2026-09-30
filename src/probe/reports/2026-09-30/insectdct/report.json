@@ -1,0 +1,735 @@
+{
+  "schema_version": 1,
+  "probe": "insectdct",
+  "model": "insectDCT",
+  "variant": "insects8Motion11s + ConvNextBase V6",
+  "capability": "output_format",
+  "author_sources": [
+    "https://github.com/kimbjerge/insectDCT/blob/e459ae87ebe39732963e77e0fcdd0a9a28672a08/pipeDetectAndClassifyInsectsTaxon.py",
+    "https://github.com/kimbjerge/insectDCT/blob/e459ae87ebe39732963e77e0fcdd0a9a28672a08/README.md"
+  ],
+  "status": "observed",
+  "scope": "Full author detector/classifier pipeline on all 35 supplied consecutive sample frames, CPU, movie saving disabled.",
+  "job": {
+    "id": "insectdct",
+    "model": "insectDCT",
+    "scope": "Full author detector/classifier pipeline on all 35 supplied consecutive sample frames, CPU, movie saving disabled.",
+    "author_sources": [
+      "https://github.com/kimbjerge/insectDCT/blob/e459ae87ebe39732963e77e0fcdd0a9a28672a08/pipeDetectAndClassifyInsectsTaxon.py",
+      "https://github.com/kimbjerge/insectDCT/blob/e459ae87ebe39732963e77e0fcdd0a9a28672a08/README.md"
+    ],
+    "environment": "insectdct",
+    "adapter": "insectdct",
+    "variant": "insects8Motion11s + ConvNextBase V6",
+    "entrypoint": "pipeDetectAndClassifyInsectsTaxon.py",
+    "resources": {
+      "weights": "insectdct-weights",
+      "classifier": "insectdct-classifier",
+      "image": "bumblebee-image",
+      "pipeDetectAndClassifyInsectsTaxon.py": "insectdct-pipeDetectAndClassifyInsectsTaxon.py",
+      "common/hierarchical_classifier.py": "insectdct-common/hierarchical_classifier.py",
+      "common/motionEnhancement.py": "insectdct-common/motionEnhancement.py",
+      "common/resnet50tf.py": "insectdct-common/resnet50tf.py",
+      "common/convNext.py": "insectdct-common/convNext.py",
+      "common/efficientNet.py": "insectdct-common/efficientNet.py",
+      "frame:pi2_2025_02_21_11_57_31.jpg": "sequence-pi2_2025_02_21_11_57_31.jpg",
+      "frame:pi2_2025_02_21_11_57_32.jpg": "sequence-pi2_2025_02_21_11_57_32.jpg",
+      "frame:pi2_2025_02_21_11_57_34.jpg": "sequence-pi2_2025_02_21_11_57_34.jpg",
+      "frame:pi2_2025_02_21_11_57_36.jpg": "sequence-pi2_2025_02_21_11_57_36.jpg",
+      "frame:pi2_2025_02_21_11_57_38.jpg": "sequence-pi2_2025_02_21_11_57_38.jpg",
+      "frame:pi2_2025_02_21_11_57_40.jpg": "sequence-pi2_2025_02_21_11_57_40.jpg",
+      "frame:pi2_2025_02_21_11_57_42.jpg": "sequence-pi2_2025_02_21_11_57_42.jpg",
+      "frame:pi2_2025_02_21_11_57_44.jpg": "sequence-pi2_2025_02_21_11_57_44.jpg",
+      "frame:pi2_2025_02_21_11_57_46.jpg": "sequence-pi2_2025_02_21_11_57_46.jpg",
+      "frame:pi2_2025_02_21_11_57_47.jpg": "sequence-pi2_2025_02_21_11_57_47.jpg",
+      "frame:pi2_2025_02_21_11_57_49.jpg": "sequence-pi2_2025_02_21_11_57_49.jpg",
+      "frame:pi2_2025_02_21_11_57_51.jpg": "sequence-pi2_2025_02_21_11_57_51.jpg",
+      "frame:pi2_2025_02_21_11_57_53.jpg": "sequence-pi2_2025_02_21_11_57_53.jpg",
+      "frame:pi2_2025_02_21_11_57_55.jpg": "sequence-pi2_2025_02_21_11_57_55.jpg",
+      "frame:pi2_2025_02_21_11_57_57.jpg": "sequence-pi2_2025_02_21_11_57_57.jpg",
+      "frame:pi2_2025_02_21_11_57_58.jpg": "sequence-pi2_2025_02_21_11_57_58.jpg",
+      "frame:pi2_2025_02_21_11_58_00.jpg": "sequence-pi2_2025_02_21_11_58_00.jpg",
+      "frame:pi2_2025_02_21_11_58_03.jpg": "sequence-pi2_2025_02_21_11_58_03.jpg",
+      "frame:pi2_2025_02_21_11_58_05.jpg": "sequence-pi2_2025_02_21_11_58_05.jpg",
+      "frame:pi2_2025_02_21_11_58_07.jpg": "sequence-pi2_2025_02_21_11_58_07.jpg",
+      "frame:pi2_2025_02_21_11_58_09.jpg": "sequence-pi2_2025_02_21_11_58_09.jpg",
+      "frame:pi2_2025_02_21_11_58_10.jpg": "sequence-pi2_2025_02_21_11_58_10.jpg",
+      "frame:pi2_2025_02_21_11_58_12.jpg": "sequence-pi2_2025_02_21_11_58_12.jpg",
+      "frame:pi2_2025_02_21_11_58_14.jpg": "sequence-pi2_2025_02_21_11_58_14.jpg",
+      "frame:pi2_2025_02_21_11_58_16.jpg": "sequence-pi2_2025_02_21_11_58_16.jpg",
+      "frame:pi2_2025_02_21_11_58_18.jpg": "sequence-pi2_2025_02_21_11_58_18.jpg",
+      "frame:pi2_2025_02_21_11_58_20.jpg": "sequence-pi2_2025_02_21_11_58_20.jpg",
+      "frame:pi2_2025_02_21_11_58_21.jpg": "sequence-pi2_2025_02_21_11_58_21.jpg",
+      "frame:pi2_2025_02_21_11_58_23.jpg": "sequence-pi2_2025_02_21_11_58_23.jpg",
+      "frame:pi2_2025_02_21_11_58_25.jpg": "sequence-pi2_2025_02_21_11_58_25.jpg",
+      "frame:pi2_2025_02_21_11_58_27.jpg": "sequence-pi2_2025_02_21_11_58_27.jpg",
+      "frame:pi2_2025_02_21_11_58_29.jpg": "sequence-pi2_2025_02_21_11_58_29.jpg",
+      "frame:pi2_2025_02_21_11_58_31.jpg": "sequence-pi2_2025_02_21_11_58_31.jpg",
+      "frame:pi2_2025_02_21_11_58_33.jpg": "sequence-pi2_2025_02_21_11_58_33.jpg",
+      "frame:pi2_2025_02_21_11_58_34.jpg": "sequence-pi2_2025_02_21_11_58_34.jpg",
+      "torch-cache:convnext_base-6075fbad.pth": "insectdct-backbone"
+    }
+  },
+  "probe_code": {
+    "runner.py": "f19c079dcf784d789b2788000e2232eb9e057ecc673a9c6fb3226ab289bc9a0a",
+    "worker.py": "e816080ae0c61a6a7937d1f0e015a591edf9212d02f9c217f4dfb8b9b7a537ea"
+  },
+  "started_at": "2026-09-30T07:59:33Z",
+  "resources": {
+    "weights": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/runs/detect/insects8Motion11s/weights/best.pt",
+      "sha256": "aa52f247edf60a96ae757d46cf14b64d9c15dbbcaa122dfbaed90ee27eb0d278"
+    },
+    "classifier": {
+      "url": "https://drive.usercontent.google.com/download?id=1V8uWDIjT1DHo3CyxRjOk6vZYkeBjKX_0&export=download&confirm=t",
+      "sha256": "25fa68a8ac425d10d37979fc7289f8a85427e6f1d02d265f390440e76ef146a9"
+    },
+    "image": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/BumblebeeSedum.jpg",
+      "sha256": "77d805dbfdbe50168bc19f404906df7a7eb3214dc7b8fefe0a8d14632e773e14"
+    },
+    "pipeDetectAndClassifyInsectsTaxon.py": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/pipeDetectAndClassifyInsectsTaxon.py",
+      "sha256": "03ff0480df6c5e3851ed915623c4e23c1043235d292d31d23e027535b4f9d6fe"
+    },
+    "common/hierarchical_classifier.py": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/common/hierarchical_classifier.py",
+      "sha256": "8b493d158443290c7440869768afac287706bdcdb190e35146db77c5ff5eb786"
+    },
+    "common/motionEnhancement.py": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/common/motionEnhancement.py",
+      "sha256": "232e4823ec62b1c789370217709e342e7aa8ce9249286bb44e6928b7fa53ea8f"
+    },
+    "common/resnet50tf.py": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/common/resnet50tf.py",
+      "sha256": "53c0214446d439c4b6f26e217aa59793133324b2823424115d145550f7d77a92"
+    },
+    "common/convNext.py": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/common/convNext.py",
+      "sha256": "a74ea8c0e0ebf63ddcb0adb649cb296d2ca0af3eee2108cea42c6eb0adb1d624"
+    },
+    "common/efficientNet.py": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/common/efficientNet.py",
+      "sha256": "e76dd9100bfaf583fe5dab84f8a960f58890a1b349c258dc7818c13603f131b5"
+    },
+    "frame:pi2_2025_02_21_11_57_31.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_31.jpg",
+      "sha256": "2aa6ac5d73dc4a574fe7a6c125e81265e41eff78285a608bc90c833c96f9a032"
+    },
+    "frame:pi2_2025_02_21_11_57_32.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_32.jpg",
+      "sha256": "494b70d8547c3bda8a9181735ac9f3fbf184b687e9288d796e0d611406a4f384"
+    },
+    "frame:pi2_2025_02_21_11_57_34.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_34.jpg",
+      "sha256": "ef264c9e3d804b398b78d8c1332b9963a2265b191d07aa4dd29161dd8d381a09"
+    },
+    "frame:pi2_2025_02_21_11_57_36.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_36.jpg",
+      "sha256": "66cde77a10a1a5bde3057e95a4c1fe32229b2c211db015431aaa4b6e373cf02d"
+    },
+    "frame:pi2_2025_02_21_11_57_38.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_38.jpg",
+      "sha256": "4206aebc6446402481641b4acf41b3bc18d67507aef1095c3f493b0526ca4b5a"
+    },
+    "frame:pi2_2025_02_21_11_57_40.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_40.jpg",
+      "sha256": "965c3287d2b3854fce6ff741c0e2b0a5984e0b29dab7f4e27e0b1ff67ca85dc3"
+    },
+    "frame:pi2_2025_02_21_11_57_42.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_42.jpg",
+      "sha256": "0c4ee7a2b9194d32fb0bbf00686cf4ab0b1e2875ebe372f9017248721198ca16"
+    },
+    "frame:pi2_2025_02_21_11_57_44.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_44.jpg",
+      "sha256": "cc973120a5642b343baed92e3c423f5554afe529da72f45a630c89f4f778f219"
+    },
+    "frame:pi2_2025_02_21_11_57_46.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_46.jpg",
+      "sha256": "5e60d514c986a29e7d7ca1388ed9dada2b8484893b9e2e9ba183fd07fce1a147"
+    },
+    "frame:pi2_2025_02_21_11_57_47.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_47.jpg",
+      "sha256": "b44da9e7800f141f47c5316ca8024bc366918eee349a1439a0db02cd1e126a27"
+    },
+    "frame:pi2_2025_02_21_11_57_49.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_49.jpg",
+      "sha256": "39f5711f960797a1005f9e4171de5e10fb10518669f78dbd8654018ba9c02279"
+    },
+    "frame:pi2_2025_02_21_11_57_51.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_51.jpg",
+      "sha256": "a106114f389384ef99fd684da8740234749db85b94d5ed4d5109920d2b0e7329"
+    },
+    "frame:pi2_2025_02_21_11_57_53.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_53.jpg",
+      "sha256": "a55db3152ab9c045b9ed7d28557bfbac71c5991e5dfd7a4308eb7feaadfcf64e"
+    },
+    "frame:pi2_2025_02_21_11_57_55.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_55.jpg",
+      "sha256": "12e684d53d64f8de1a6af194ef80d00865e2074fe47924d7d15b9dda9a9d1f8a"
+    },
+    "frame:pi2_2025_02_21_11_57_57.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_57.jpg",
+      "sha256": "7208def58ae5b6d85d42ccbd23f0ddd5c65d9b54b001efda7d7ea665090390b4"
+    },
+    "frame:pi2_2025_02_21_11_57_58.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_57_58.jpg",
+      "sha256": "855ce45400cdc49a343d58e87519cbc14995571a9c00b3064bd522d19f5f00dc"
+    },
+    "frame:pi2_2025_02_21_11_58_00.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_00.jpg",
+      "sha256": "08462dfebf4784b612a50cc479a9c3be6491b4172663f431d3dce60b83bb0363"
+    },
+    "frame:pi2_2025_02_21_11_58_03.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_03.jpg",
+      "sha256": "3746c0beb361c61f01d9fe97de93c11af8dae5f8ebd25ca8a331d832798f805c"
+    },
+    "frame:pi2_2025_02_21_11_58_05.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_05.jpg",
+      "sha256": "8511f00d29d85721365d561907b643f07af289e919a8ed234319a5b417cd71be"
+    },
+    "frame:pi2_2025_02_21_11_58_07.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_07.jpg",
+      "sha256": "aa923909a42aee07101b5b06f13141a00a58f5cf25708253ec84c0d4afb9e789"
+    },
+    "frame:pi2_2025_02_21_11_58_09.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_09.jpg",
+      "sha256": "6d9c0456bf89cdf6865d4d4cff56c29a78ce83b9da2aa3863038f8ee6b233d2b"
+    },
+    "frame:pi2_2025_02_21_11_58_10.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_10.jpg",
+      "sha256": "398d3135e759972458184e3686fc796bdab3909b9f17ebbc50e1332338b3553a"
+    },
+    "frame:pi2_2025_02_21_11_58_12.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_12.jpg",
+      "sha256": "4c6de6a6deac930fce4f815314fd15419d40a698d11bbe9603c24327db472921"
+    },
+    "frame:pi2_2025_02_21_11_58_14.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_14.jpg",
+      "sha256": "0fd16614e714f511f92979ed9e29b015cd91a90e670cda03195bfbfc314bd5e7"
+    },
+    "frame:pi2_2025_02_21_11_58_16.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_16.jpg",
+      "sha256": "b575e0d619098a4190aaf94d1c464cca80ad639f279530da7612055aad05bc54"
+    },
+    "frame:pi2_2025_02_21_11_58_18.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_18.jpg",
+      "sha256": "4a7aff024edf420184f1cd3ed9ebc6e3d6bc29027602c1d5a03afb414f796af6"
+    },
+    "frame:pi2_2025_02_21_11_58_20.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_20.jpg",
+      "sha256": "c331be9b00bd5967df602eb301548f05ccc002decdc007efb32d854e5f3fdcf3"
+    },
+    "frame:pi2_2025_02_21_11_58_21.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_21.jpg",
+      "sha256": "e108d31c73ac23bf878993a51827ea091e61e803257a2eb6a99ea443e8572f9c"
+    },
+    "frame:pi2_2025_02_21_11_58_23.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_23.jpg",
+      "sha256": "cd761e0a384ec61b9d6553e41c2d1753ae6de7df716c45baace586c44684fac0"
+    },
+    "frame:pi2_2025_02_21_11_58_25.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_25.jpg",
+      "sha256": "ebb82fbc271b032a9b1de4af82cbecab47f8342561567293d4a3ae7298368493"
+    },
+    "frame:pi2_2025_02_21_11_58_27.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_27.jpg",
+      "sha256": "31f3b81a8e456ee69c14471ee924885539706198148390685cddc119b8783110"
+    },
+    "frame:pi2_2025_02_21_11_58_29.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_29.jpg",
+      "sha256": "e681716b67a7fc86eda6031bdda51804c8b98c62cce649afe4ed9475d75c85ef"
+    },
+    "frame:pi2_2025_02_21_11_58_31.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_31.jpg",
+      "sha256": "b9e31d1f3a48d6da3efd9cd07416321b696c4196ad8c1b2443f7c5a627c364c8"
+    },
+    "frame:pi2_2025_02_21_11_58_33.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_33.jpg",
+      "sha256": "7e328c0974e259ecefe616b90254cebb1be2f86a9a3a86e60423bd5a3f14636e"
+    },
+    "frame:pi2_2025_02_21_11_58_34.jpg": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/images/pi1_2025_02_21/pi2_2025_02_21_11_58_34.jpg",
+      "sha256": "ce9448bbaddc132383b6d5efe3c1354d7680dd82a20a709066feef6e09235391"
+    },
+    "torch-cache:convnext_base-6075fbad.pth": {
+      "url": "https://download.pytorch.org/models/convnext_base-6075fbad.pth",
+      "sha256": "6075fbad31c688f9ed013922a59daf0fc2f4dc12e6e43bc01fa840c7bd1ca2cd"
+    }
+  },
+  "environment_lock_sha256": "7049d0e63f5602967a2acf47c6c38bbd4e9e093945069ebab0322bfc20a851c7",
+  "command": [
+    "uv",
+    "run",
+    "--locked",
+    "--project",
+    "/home/asger/model-db/src/probe/environments/insectdct",
+    "python",
+    "/home/asger/model-db/src/probe/probe/worker.py",
+    "/home/asger/model-db/src/probe/runs/20260930T095933-c16b7a90/insectdct/request.json"
+  ],
+  "exit_code": 0,
+  "observation": {
+    "inference": "real checkpoint, CPU",
+    "packages": {
+      "pyparsing": "3.3.3",
+      "cycler": "0.12.1",
+      "pillow": "12.3.0",
+      "contourpy": "1.3.3",
+      "six": "1.17.0",
+      "fonttools": "4.66.1",
+      "urllib3": "2.8.0",
+      "mpmath": "1.3.0",
+      "certifi": "2026.7.22",
+      "filelock": "4.0.7",
+      "typing_extensions": "4.16.0",
+      "sympy": "1.13.1",
+      "ultralytics-thop": "2.2.1",
+      "MarkupSafe": "3.0.3",
+      "tzdata": "2026.4",
+      "python-dateutil": "2.9.0.post0",
+      "nvidia-ml-py": "13.615.71",
+      "pandas": "2.2.3",
+      "charset-normalizer": "3.5.2",
+      "PyYAML": "6.0.3",
+      "psutil": "7.2.2",
+      "polars": "1.44.2",
+      "fsspec": "2026.9.0",
+      "opencv-python": "4.10.0.84",
+      "Jinja2": "3.1.6",
+      "scipy": "1.15.2",
+      "kiwisolver": "1.5.1",
+      "numpy": "1.26.4",
+      "packaging": "26.3",
+      "torch": "2.5.1+cpu",
+      "polars-runtime-32": "1.44.2",
+      "requests": "2.34.2",
+      "pytz": "2026.4",
+      "torchvision": "0.20.1+cpu",
+      "idna": "3.20",
+      "networkx": "3.6.1",
+      "matplotlib": "3.11.2",
+      "ultralytics": "8.4.90"
+    },
+    "entrypoint": "pipeDetectAndClassifyInsectsTaxon.py",
+    "settings": {},
+    "author_command": [
+      "/home/asger/model-db/src/probe/runs/20260930T095933-c16b7a90/insectdct/artifacts/author-source/pipeDetectAndClassifyInsectsTaxon.py",
+      "--device",
+      "cpu",
+      "--images",
+      "/home/asger/model-db/src/probe/runs/20260930T095933-c16b7a90/insectdct/artifacts/sequence/",
+      "--resultsDir",
+      "/home/asger/model-db/src/probe/runs/20260930T095933-c16b7a90/insectdct/artifacts/predictions",
+      "--yoloWeights",
+      "/home/asger/model-db/src/probe/.cache/aa52f247edf60a96ae757d46cf14b64d9c15dbbcaa122dfbaed90ee27eb0d278/insects8Motion11s.pt",
+      "--moviePredict",
+      "",
+      "--hierachical",
+      "/home/asger/model-db/src/probe/runs/20260930T095933-c16b7a90/insectdct/artifacts/models_save/HierarchicalClassifier_CNB_V6.pth",
+      "--labels",
+      "/home/asger/model-db/src/probe/runs/20260930T095933-c16b7a90/insectdct/artifacts/models_save/HierarchicalLabels3L_CNB_V6.pkl",
+      "--thresholds",
+      "/home/asger/model-db/src/probe/runs/20260930T095933-c16b7a90/insectdct/artifacts/models_save/HierarchicalThresholds3S_CNB_V6.csv"
+    ],
+    "representation": "insectdct-csv",
+    "files": [
+      {
+        "file": "predictions/sequence-HI.csv",
+        "header": [
+          "Label1",
+          "LabelId1",
+          "Logit1",
+          "Conf1",
+          "Above1",
+          "Label2",
+          "LabelId2",
+          "Logit2",
+          "Conf2",
+          "Above2",
+          "Label3",
+          "LabelId3",
+          "Logit3",
+          "Conf3",
+          "Above3",
+          "Checked",
+          "frameId"
+        ],
+        "rows": 40,
+        "sample": [
+          [
+            "Hymenoptera_bees",
+            "7",
+            "11.560938835144043",
+            "0.5280153609116043",
+            "True",
+            "Apoidea",
+            "2",
+            "12.471245765686035",
+            "0.20797051520137505",
+            "True",
+            "Apoidea striped",
+            "11",
+            "12.3587007522583",
+            "0.0003140208778682231",
+            "True",
+            "True",
+            "0"
+          ],
+          [
+            "Hymenoptera_bees",
+            "7",
+            "10.896728515625",
+            "0.3142956857626906",
+            "True",
+            "Megachilidae",
+            "23",
+            "10.675244331359863",
+            "7.749831829904455e-06",
+            "True",
+            "Megachilidae",
+            "49",
+            "9.18006420135498",
+            "5.200137284288305e-09",
+            "False",
+            "True",
+            "1"
+          ]
+        ]
+      },
+      {
+        "file": "predictions/sequence-CL.csv",
+        "header": [
+          "trap",
+          "trapId",
+          "date",
+          "time",
+          "taxaConf",
+          "taxaLabel",
+          "taxaId",
+          "taxaLevel",
+          "frameId",
+          "x1",
+          "y1",
+          "x2",
+          "y2",
+          "fileName"
+        ],
+        "rows": 40,
+        "sample": [
+          [
+            "sequence",
+            "0",
+            "20250221",
+            "115731",
+            "0.03140208778682231",
+            "Apoidea striped",
+            "12",
+            "3",
+            "0",
+            "1307",
+            "601",
+            "1355",
+            "663",
+            "sequence/pi2_2025_02_21_11_57_31.jpg"
+          ],
+          [
+            "sequence",
+            "0",
+            "20250221",
+            "115732",
+            "0.0007749831829904455",
+            "Megachilidae",
+            "24",
+            "2",
+            "1",
+            "1284",
+            "642",
+            "1334",
+            "709",
+            "sequence/pi2_2025_02_21_11_57_32.jpg"
+          ]
+        ]
+      }
+    ]
+  },
+  "artifacts": [
+    {
+      "path": "artifacts/author-source/common/__pycache__/convNext.cpython-311.pyc",
+      "sha256": "09aa156bee5c9212e2d52a6ea9ad3b079934d84464361cce316c89161764caa9",
+      "bytes": 5322
+    },
+    {
+      "path": "artifacts/author-source/common/__pycache__/efficientNet.cpython-311.pyc",
+      "sha256": "89500e4d321862bb9e1358f12e970c46b2b1a23c2cd5a299d201d70bd08fb2cd",
+      "bytes": 5153
+    },
+    {
+      "path": "artifacts/author-source/common/__pycache__/hierarchical_classifier.cpython-311.pyc",
+      "sha256": "42cef16ac0e4fc6f143847bf486abdfcea279385b1ee3fab07949c20cf90c87e",
+      "bytes": 21969
+    },
+    {
+      "path": "artifacts/author-source/common/__pycache__/motionEnhancement.cpython-311.pyc",
+      "sha256": "f565930696d41571a11cbe6cf45535085d6b58dd4c876f4315a4cee7427793a1",
+      "bytes": 7098
+    },
+    {
+      "path": "artifacts/author-source/common/__pycache__/resnet50tf.cpython-311.pyc",
+      "sha256": "9506a8552d4a6b7900a51c1011362270cbb95c7c90b45f01062275b4ded0ad74",
+      "bytes": 4366
+    },
+    {
+      "path": "artifacts/author-source/common/convNext.py",
+      "sha256": "a74ea8c0e0ebf63ddcb0adb649cb296d2ca0af3eee2108cea42c6eb0adb1d624",
+      "bytes": 3394
+    },
+    {
+      "path": "artifacts/author-source/common/efficientNet.py",
+      "sha256": "e76dd9100bfaf583fe5dab84f8a960f58890a1b349c258dc7818c13603f131b5",
+      "bytes": 3466
+    },
+    {
+      "path": "artifacts/author-source/common/hierarchical_classifier.py",
+      "sha256": "8b493d158443290c7440869768afac287706bdcdb190e35146db77c5ff5eb786",
+      "bytes": 17835
+    },
+    {
+      "path": "artifacts/author-source/common/motionEnhancement.py",
+      "sha256": "232e4823ec62b1c789370217709e342e7aa8ce9249286bb44e6928b7fa53ea8f",
+      "bytes": 4923
+    },
+    {
+      "path": "artifacts/author-source/common/resnet50tf.py",
+      "sha256": "53c0214446d439c4b6f26e217aa59793133324b2823424115d145550f7d77a92",
+      "bytes": 4181
+    },
+    {
+      "path": "artifacts/author-source/pipeDetectAndClassifyInsectsTaxon.py",
+      "sha256": "03ff0480df6c5e3851ed915623c4e23c1043235d292d31d23e027535b4f9d6fe",
+      "bytes": 31681
+    },
+    {
+      "path": "artifacts/inputs/blank.png",
+      "sha256": "f3e746bb7e1e1b98acc711541b505fda3ec33a16f6f3264a673bf0cb5647f44a",
+      "bytes": 3039
+    },
+    {
+      "path": "artifacts/inputs/specimen.jpg",
+      "sha256": "77d805dbfdbe50168bc19f404906df7a7eb3214dc7b8fefe0a8d14632e773e14",
+      "bytes": 1109187
+    },
+    {
+      "path": "artifacts/models_save/HierarchicalClassifier_CNB_V6.pth",
+      "sha256": "160a96fbc8dca19f8250d841803b9119943712930d4ae3d59479b180f285d141",
+      "bytes": 353669282
+    },
+    {
+      "path": "artifacts/models_save/HierarchicalLabels3L_CNB_V6.pkl",
+      "sha256": "45a064838bb2b470f6f2bc7a9083a7d0aabce93df02535720d2c3ba19617b6c0",
+      "bytes": 2958
+    },
+    {
+      "path": "artifacts/models_save/HierarchicalThresholds3S_CNB_V6.csv",
+      "sha256": "20acdaee8f9416e625ded3bec72d512c69b576e1294cc0e0519349451ffda741",
+      "bytes": 8471
+    },
+    {
+      "path": "artifacts/observed.json",
+      "sha256": "aeff937002b6aa87214b70bb1c4d26d7a9e19ec25b1491b4534e01bfd842ef0c",
+      "bytes": 4611
+    },
+    {
+      "path": "artifacts/predictions/pipeDetectAndClassifyInsectsTaxon.txt",
+      "sha256": "db03fd0eb45fc09ab3f8f1c2da75014abe39c7149cc13ff9ec03a33b4eb3ee9c",
+      "bytes": 1375
+    },
+    {
+      "path": "artifacts/predictions/sequence-CL.csv",
+      "sha256": "98cd2e6d7ff73de81e3f1285f436bb13619cb07838319de1cc8d27b826b7b9ed",
+      "bytes": 4997
+    },
+    {
+      "path": "artifacts/predictions/sequence-HI.csv",
+      "sha256": "0ad170236ab9dd8f905adf1a5e4bc720b4e7ac632b744c69ed57db410c85c3f5",
+      "bytes": 7638
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_57_31.jpg",
+      "sha256": "2aa6ac5d73dc4a574fe7a6c125e81265e41eff78285a608bc90c833c96f9a032",
+      "bytes": 451986
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_57_32.jpg",
+      "sha256": "494b70d8547c3bda8a9181735ac9f3fbf184b687e9288d796e0d611406a4f384",
+      "bytes": 453159
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_57_34.jpg",
+      "sha256": "ef264c9e3d804b398b78d8c1332b9963a2265b191d07aa4dd29161dd8d381a09",
+      "bytes": 453774
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_57_36.jpg",
+      "sha256": "66cde77a10a1a5bde3057e95a4c1fe32229b2c211db015431aaa4b6e373cf02d",
+      "bytes": 454997
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_57_38.jpg",
+      "sha256": "4206aebc6446402481641b4acf41b3bc18d67507aef1095c3f493b0526ca4b5a",
+      "bytes": 455731
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_57_40.jpg",
+      "sha256": "965c3287d2b3854fce6ff741c0e2b0a5984e0b29dab7f4e27e0b1ff67ca85dc3",
+      "bytes": 456761
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_57_42.jpg",
+      "sha256": "0c4ee7a2b9194d32fb0bbf00686cf4ab0b1e2875ebe372f9017248721198ca16",
+      "bytes": 457530
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_57_44.jpg",
+      "sha256": "cc973120a5642b343baed92e3c423f5554afe529da72f45a630c89f4f778f219",
+      "bytes": 458429
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_57_46.jpg",
+      "sha256": "5e60d514c986a29e7d7ca1388ed9dada2b8484893b9e2e9ba183fd07fce1a147",
+      "bytes": 459185
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_57_47.jpg",
+      "sha256": "b44da9e7800f141f47c5316ca8024bc366918eee349a1439a0db02cd1e126a27",
+      "bytes": 460073
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_57_49.jpg",
+      "sha256": "39f5711f960797a1005f9e4171de5e10fb10518669f78dbd8654018ba9c02279",
+      "bytes": 461197
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_57_51.jpg",
+      "sha256": "a106114f389384ef99fd684da8740234749db85b94d5ed4d5109920d2b0e7329",
+      "bytes": 462536
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_57_53.jpg",
+      "sha256": "a55db3152ab9c045b9ed7d28557bfbac71c5991e5dfd7a4308eb7feaadfcf64e",
+      "bytes": 462973
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_57_55.jpg",
+      "sha256": "12e684d53d64f8de1a6af194ef80d00865e2074fe47924d7d15b9dda9a9d1f8a",
+      "bytes": 463629
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_57_57.jpg",
+      "sha256": "7208def58ae5b6d85d42ccbd23f0ddd5c65d9b54b001efda7d7ea665090390b4",
+      "bytes": 464374
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_57_58.jpg",
+      "sha256": "855ce45400cdc49a343d58e87519cbc14995571a9c00b3064bd522d19f5f00dc",
+      "bytes": 465776
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_58_00.jpg",
+      "sha256": "08462dfebf4784b612a50cc479a9c3be6491b4172663f431d3dce60b83bb0363",
+      "bytes": 466232
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_58_03.jpg",
+      "sha256": "3746c0beb361c61f01d9fe97de93c11af8dae5f8ebd25ca8a331d832798f805c",
+      "bytes": 467546
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_58_05.jpg",
+      "sha256": "8511f00d29d85721365d561907b643f07af289e919a8ed234319a5b417cd71be",
+      "bytes": 468289
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_58_07.jpg",
+      "sha256": "aa923909a42aee07101b5b06f13141a00a58f5cf25708253ec84c0d4afb9e789",
+      "bytes": 468928
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_58_09.jpg",
+      "sha256": "6d9c0456bf89cdf6865d4d4cff56c29a78ce83b9da2aa3863038f8ee6b233d2b",
+      "bytes": 469680
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_58_10.jpg",
+      "sha256": "398d3135e759972458184e3686fc796bdab3909b9f17ebbc50e1332338b3553a",
+      "bytes": 471090
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_58_12.jpg",
+      "sha256": "4c6de6a6deac930fce4f815314fd15419d40a698d11bbe9603c24327db472921",
+      "bytes": 471666
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_58_14.jpg",
+      "sha256": "0fd16614e714f511f92979ed9e29b015cd91a90e670cda03195bfbfc314bd5e7",
+      "bytes": 472507
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_58_16.jpg",
+      "sha256": "b575e0d619098a4190aaf94d1c464cca80ad639f279530da7612055aad05bc54",
+      "bytes": 473511
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_58_18.jpg",
+      "sha256": "4a7aff024edf420184f1cd3ed9ebc6e3d6bc29027602c1d5a03afb414f796af6",
+      "bytes": 473991
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_58_20.jpg",
+      "sha256": "c331be9b00bd5967df602eb301548f05ccc002decdc007efb32d854e5f3fdcf3",
+      "bytes": 473940
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_58_21.jpg",
+      "sha256": "e108d31c73ac23bf878993a51827ea091e61e803257a2eb6a99ea443e8572f9c",
+      "bytes": 474621
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_58_23.jpg",
+      "sha256": "cd761e0a384ec61b9d6553e41c2d1753ae6de7df716c45baace586c44684fac0",
+      "bytes": 474767
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_58_25.jpg",
+      "sha256": "ebb82fbc271b032a9b1de4af82cbecab47f8342561567293d4a3ae7298368493",
+      "bytes": 475319
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_58_27.jpg",
+      "sha256": "31f3b81a8e456ee69c14471ee924885539706198148390685cddc119b8783110",
+      "bytes": 475505
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_58_29.jpg",
+      "sha256": "e681716b67a7fc86eda6031bdda51804c8b98c62cce649afe4ed9475d75c85ef",
+      "bytes": 475944
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_58_31.jpg",
+      "sha256": "b9e31d1f3a48d6da3efd9cd07416321b696c4196ad8c1b2443f7c5a627c364c8",
+      "bytes": 477199
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_58_33.jpg",
+      "sha256": "7e328c0974e259ecefe616b90254cebb1be2f86a9a3a86e60423bd5a3f14636e",
+      "bytes": 477358
+    },
+    {
+      "path": "artifacts/sequence/pi2_2025_02_21_11_58_34.jpg",
+      "sha256": "ce9448bbaddc132383b6d5efe3c1354d7680dd82a20a709066feef6e09235391",
+      "bytes": 477271
+    }
+  ],
+  "finished_at": "2026-09-30T08:00:19Z",
+  "run_directory": "runs/20260930T095933-c16b7a90/insectdct"
+}

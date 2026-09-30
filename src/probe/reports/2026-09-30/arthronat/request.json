@@ -1,0 +1,21 @@
+{
+  "id": "arthronat",
+  "model": "arthronat",
+  "variant": "YOLO11n mosaic33",
+  "environment": "modern",
+  "adapter": "ultralytics",
+  "entrypoint": "ultralytics.YOLO(weights).predict",
+  "scope": "Author-documented Ultralytics Python interface, one representative published variant.",
+  "author_sources": [
+    "https://huggingface.co/edgaremy/arthropod-detector/blob/54edf7364582e9efda68c04edfd672cfe109fb4a/README.md"
+  ],
+  "resources": {
+    "weights": "arthronat",
+    "image": "bumblebee-image"
+  },
+  "paths": {
+    "weights": "/home/asger/model-db/src/probe/.cache/00c1dcb611dd70b7493f953c92323baf16d3059f7314fa126a40c89f2fae761c/arthronat.pt",
+    "image": "/home/asger/model-db/src/probe/.cache/77d805dbfdbe50168bc19f404906df7a7eb3214dc7b8fefe0a8d14632e773e14/image.jpg"
+  },
+  "output": "/home/asger/model-db/src/probe/runs/20260930T093731-6b1843c4/arthronat/artifacts"
+}

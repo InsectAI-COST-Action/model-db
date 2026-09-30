@@ -42,7 +42,8 @@
     "structure" : {
         "info": "T[info]", 
         "images": ["T[image]"], 
-        "annotations": ["T[annotation]"], 
-        "licenses": ["T[license]"]
+        "annotations": ["T[annotation]"],
+        "licenses": ["T[license]"],
+        "categories": ["T[category]"]
     }
 }

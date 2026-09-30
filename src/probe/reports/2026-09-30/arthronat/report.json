@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "probe": "arthronat",
+  "model": "arthronat",
+  "variant": "YOLO11n mosaic33",
+  "capability": "output_format",
+  "author_sources": [
+    "https://huggingface.co/edgaremy/arthropod-detector/blob/54edf7364582e9efda68c04edfd672cfe109fb4a/README.md"
+  ],
+  "status": "observed",
+  "scope": "Author-documented Ultralytics Python interface, one representative published variant.",
+  "started_at": "2026-09-30T07:38:02Z",
+  "resources": {
+    "weights": {
+      "url": "https://huggingface.co/edgaremy/arthropod-detector/resolve/54edf7364582e9efda68c04edfd672cfe109fb4a/yolo11n_ArthroNat_mosaic33.pt",
+      "sha256": "00c1dcb611dd70b7493f953c92323baf16d3059f7314fa126a40c89f2fae761c"
+    },
+    "image": {
+      "url": "https://raw.githubusercontent.com/kimbjerge/insectDCT/e459ae87ebe39732963e77e0fcdd0a9a28672a08/BumblebeeSedum.jpg",
+      "sha256": "77d805dbfdbe50168bc19f404906df7a7eb3214dc7b8fefe0a8d14632e773e14"
+    }
+  },
+  "environment_lock_sha256": "c32da0ece2d66b53c39a5baf298881fb0304cfde9d0f9d0a8ef31220c365324c",
+  "command": [
+    "uv",
+    "run",
+    "--locked",
+    "--project",
+    "/home/asger/model-db/src/probe/environments/modern",
+    "python",
+    "/home/asger/model-db/src/probe/probe/worker.py",
+    "/home/asger/model-db/src/probe/runs/20260930T093731-6b1843c4/arthronat/request.json"
+  ],
+  "exit_code": 0,
+  "observation": {
+    "inference": "real checkpoint, CPU",
+    "packages": {
+      "pyparsing": "3.3.3",
+      "cycler": "0.12.1",
+      "pillow": "12.3.0",
+      "contourpy": "1.3.3",
+      "six": "1.17.0",
+      "fonttools": "4.66.1",
+      "urllib3": "2.8.0",
+      "mpmath": "1.3.0",
+      "certifi": "2026.7.22",
+      "filelock": "4.0.7",
+      "typing_extensions": "4.16.0",
+      "sympy": "1.13.1",
+      "ultralytics-thop": "2.2.1",
+      "MarkupSafe": "3.0.3",
+      "python-dateutil": "2.9.0.post0",
+      "nvidia-ml-py": "13.615.71",
+      "charset-normalizer": "3.5.2",
+      "PyYAML": "6.0.3",
+      "psutil": "7.2.2",
+      "polars": "1.44.2",
+      "fsspec": "2026.9.0",
+      "opencv-python": "4.10.0.84",
+      "Jinja2": "3.1.6",
+      "kiwisolver": "1.5.1",
+      "numpy": "1.26.4",
+      "packaging": "26.3",
+      "torch": "2.5.1+cpu",
+      "polars-runtime-32": "1.44.2",
+      "requests": "2.34.2",
+      "torchvision": "0.20.1+cpu",
+      "idna": "3.20",
+      "networkx": "3.6.1",
+      "matplotlib": "3.11.2",
+      "ultralytics": "8.4.90"
+    },
+    "entrypoint": "ultralytics.YOLO(weights).predict",
+    "settings": {},
+    "representation": "ultralytics-detect-results",
+    "results": [
+      {
+        "image": "blank.png",
+        "type": "ultralytics.engine.results.Results",
+        "boxes_shape": [
+          0,
+          6
+        ],
+        "boxes_dtype": "torch.float32",
+        "boxes": [],
+        "orig_shape": [
+          640,
+          640
+        ],
+        "has_masks": false
+      },
+      {
+        "image": "specimen.jpg",
+        "type": "ultralytics.engine.results.Results",
+        "boxes_shape": [
+          1,
+          6
+        ],
+        "boxes_dtype": "torch.float32",
+        "boxes": [
+          [
+            677.1815185546875,
+            478.4287414550781,
+            1086.1361083984375,
+            788.0169067382812,
+            0.43164703249931335,
+            0.0
+          ]
+        ],
+        "orig_shape": [
+          1275,
+          2285
+        ],
+        "has_masks": false
+      }
+    ],
+    "note": "Observed Python return object; this evidence JSON is written by the probe, not by the author API."
+  },
+  "artifacts": [
+    {
+      "path": "artifacts/inputs/blank.png",
+      "sha256": "f3e746bb7e1e1b98acc711541b505fda3ec33a16f6f3264a673bf0cb5647f44a",
+      "bytes": 3039
+    },
+    {
+      "path": "artifacts/inputs/specimen.jpg",
+      "sha256": "77d805dbfdbe50168bc19f404906df7a7eb3214dc7b8fefe0a8d14632e773e14",
+      "bytes": 1109187
+    },
+    {
+      "path": "artifacts/observed.json",
+      "sha256": "da565ebee2d07736bd74bfb28c4739b9e76b477b3d88bee2b6b25c495e7b95b2",
+      "bytes": 2021
+    },
+    {
+      "path": "artifacts/python-results.json",
+      "sha256": "c7793f37e32f063ef873338a2f8b5efea5617ade330d54bd7230d154922c2cd4",
+      "bytes": 687
+    }
+  ],
+  "finished_at": "2026-09-30T07:38:06Z",
+  "run_directory": "runs/20260930T093731-6b1843c4/arthronat"
+}

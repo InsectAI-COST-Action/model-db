@@ -1,0 +1,364 @@
+[
+  {
+    "id": "stark-yolov5_n",
+    "model": "stark-2023-pollinator-yolov5",
+    "variant": "yolov5_n",
+    "environment": "legacy",
+    "adapter": "legacy-txt",
+    "entrypoint": "detect.py --save-txt --save-conf --nosave",
+    "format": "yolov5-detect-txt",
+    "scope": "Author-documented detector CLI with real study checkpoint; excludes downstream evaluation conversions.",
+    "author_sources": [
+      "https://github.com/stark-t/PAI/blob/d277ee402d605aa96795ad2751f3a7b3b4cdd6c7/detectors/README.md"
+    ],
+    "settings": {
+      "confidence": 0.2,
+      "iou": 0.5,
+      "device": "cpu",
+      "img_size": 640,
+      "note": "Author-recommended Stark settings; smartphone accepts these as CLI parameters."
+    },
+    "resources": {
+      "weights": "yolov5_n",
+      "source": "yolov5-source",
+      "image": "bumblebee-image",
+      "image_extra": "flatbug-image"
+    }
+  },
+  {
+    "id": "stark-yolov5_s",
+    "model": "stark-2023-pollinator-yolov5",
+    "variant": "yolov5_s",
+    "environment": "legacy",
+    "adapter": "legacy-txt",
+    "entrypoint": "detect.py --save-txt --save-conf --nosave",
+    "format": "yolov5-detect-txt",
+    "scope": "Author-documented detector CLI with real study checkpoint; excludes downstream evaluation conversions.",
+    "author_sources": [
+      "https://github.com/stark-t/PAI/blob/d277ee402d605aa96795ad2751f3a7b3b4cdd6c7/detectors/README.md"
+    ],
+    "settings": {
+      "confidence": 0.3,
+      "iou": 0.6,
+      "device": "cpu",
+      "img_size": 640,
+      "note": "Author-recommended Stark settings; smartphone accepts these as CLI parameters."
+    },
+    "resources": {
+      "weights": "yolov5_s",
+      "source": "yolov5-source",
+      "image": "bumblebee-image",
+      "image_extra": "flatbug-image"
+    }
+  },
+  {
+    "id": "stark-yolov7_tiny",
+    "model": "stark-2023-pollinator-yolov5",
+    "variant": "yolov7_tiny",
+    "environment": "legacy",
+    "adapter": "legacy-txt",
+    "entrypoint": "detect.py --save-txt --save-conf --nosave",
+    "format": "yolov7-detect-txt",
+    "scope": "Author-documented detector CLI with real study checkpoint; excludes downstream evaluation conversions.",
+    "author_sources": [
+      "https://github.com/stark-t/PAI/blob/d277ee402d605aa96795ad2751f3a7b3b4cdd6c7/detectors/README.md"
+    ],
+    "settings": {
+      "confidence": 0.1,
+      "iou": 0.3,
+      "device": "cpu",
+      "img_size": 640,
+      "note": "Author-recommended Stark settings; smartphone accepts these as CLI parameters."
+    },
+    "resources": {
+      "weights": "yolov7_tiny",
+      "source": "yolov7-source",
+      "image": "bumblebee-image",
+      "image_extra": "flatbug-image"
+    }
+  },
+  {
+    "id": "smartphone-yolov5_n",
+    "model": "smartphone-insect-detect",
+    "variant": "yolov5_n",
+    "environment": "legacy",
+    "adapter": "legacy-txt",
+    "entrypoint": "detect.py --save-txt --save-conf --nosave",
+    "format": "yolov5-detect-txt",
+    "scope": "Author-documented detector CLI with real study checkpoint; excludes downstream evaluation conversions.",
+    "author_sources": [
+      "https://github.com/valentinitnelav/smartphone-insect-detect/blob/7d1ab1e249ca8f9a84466c037a9e7fd4670c8873/code/detect.sh"
+    ],
+    "settings": {
+      "confidence": 0.2,
+      "iou": 0.5,
+      "device": "cpu",
+      "img_size": 640,
+      "note": "Author-recommended Stark settings; smartphone accepts these as CLI parameters."
+    },
+    "resources": {
+      "weights": "yolov5_n",
+      "source": "yolov5-source",
+      "image": "bumblebee-image",
+      "image_extra": "flatbug-image"
+    }
+  },
+  {
+    "id": "smartphone-yolov5_s",
+    "model": "smartphone-insect-detect",
+    "variant": "yolov5_s",
+    "environment": "legacy",
+    "adapter": "legacy-txt",
+    "entrypoint": "detect.py --save-txt --save-conf --nosave",
+    "format": "yolov5-detect-txt",
+    "scope": "Author-documented detector CLI with real study checkpoint; excludes downstream evaluation conversions.",
+    "author_sources": [
+      "https://github.com/valentinitnelav/smartphone-insect-detect/blob/7d1ab1e249ca8f9a84466c037a9e7fd4670c8873/code/detect.sh"
+    ],
+    "settings": {
+      "confidence": 0.3,
+      "iou": 0.6,
+      "device": "cpu",
+      "img_size": 640,
+      "note": "Author-recommended Stark settings; smartphone accepts these as CLI parameters."
+    },
+    "resources": {
+      "weights": "yolov5_s",
+      "source": "yolov5-source",
+      "image": "bumblebee-image",
+      "image_extra": "flatbug-image"
+    }
+  },
+  {
+    "id": "smartphone-yolov7_tiny",
+    "model": "smartphone-insect-detect",
+    "variant": "yolov7_tiny",
+    "environment": "legacy",
+    "adapter": "legacy-txt",
+    "entrypoint": "detect.py --save-txt --save-conf --nosave",
+    "format": "yolov7-detect-txt",
+    "scope": "Author-documented detector CLI with real study checkpoint; excludes downstream evaluation conversions.",
+    "author_sources": [
+      "https://github.com/valentinitnelav/smartphone-insect-detect/blob/7d1ab1e249ca8f9a84466c037a9e7fd4670c8873/code/detect.sh"
+    ],
+    "settings": {
+      "confidence": 0.1,
+      "iou": 0.3,
+      "device": "cpu",
+      "img_size": 640,
+      "note": "Author-recommended Stark settings; smartphone accepts these as CLI parameters."
+    },
+    "resources": {
+      "weights": "yolov7_tiny",
+      "source": "yolov7-source",
+      "image": "bumblebee-image",
+      "image_extra": "flatbug-image"
+    }
+  },
+  {
+    "id": "arthronat",
+    "model": "arthronat",
+    "variant": "YOLO11n mosaic33",
+    "environment": "modern",
+    "adapter": "ultralytics",
+    "entrypoint": "ultralytics.YOLO(weights).predict",
+    "scope": "Author-documented Ultralytics Python interface, one representative published variant.",
+    "author_sources": [
+      "https://huggingface.co/edgaremy/arthropod-detector/blob/54edf7364582e9efda68c04edfd672cfe109fb4a/README.md"
+    ],
+    "resources": {
+      "weights": "arthronat",
+      "image": "bumblebee-image"
+    }
+  },
+  {
+    "id": "pollinator",
+    "model": "marin-2025-pollinator-yolov5",
+    "variant": "YOLOv5m",
+    "environment": "legacy",
+    "adapter": "pollinator",
+    "entrypoint": "YOLOv5_POLLINATOR_detect_and_save_with_and_without_object.py",
+    "scope": "Full author video script on a two-frame generated video; torch.hub dependency redirected to pinned local source without changing inference.",
+    "author_sources": [
+      "https://github.com/aranchalana/POLLINATOR/blob/ecbafff8fd03efaa299f8d07eb121b9ccd05c6dd/YOLOv5_POLLINATOR_detect_and_save_with_and_without_object.py"
+    ],
+    "resources": {
+      "weights": "pollinator",
+      "source": "yolov5-source",
+      "author_script": "pollinator-script",
+      "image": "bumblebee-image"
+    },
+    "coverage_note": "Current fixtures exercised without_object only; with_object annotations are supported by source inspection, not observed in this run."
+  },
+  {
+    "id": "flatbug-N",
+    "model": "flatbug",
+    "variant": "N",
+    "environment": "flatbug",
+    "adapter": "flatbug",
+    "entrypoint": "fb_predict",
+    "scope": "Released flat-bug 1.2.0 CLI defaults, explicit checkpoint and CPU; one representative for each architecture.",
+    "author_sources": [
+      "https://pypi.org/project/flat-bug/1.2.0/"
+    ],
+    "resources": {
+      "weights": "flatbug-N",
+      "image": "flatbug-image"
+    }
+  },
+  {
+    "id": "flatbug-M_v2",
+    "model": "flatbug",
+    "variant": "M_v2",
+    "environment": "flatbug",
+    "adapter": "flatbug",
+    "entrypoint": "fb_predict",
+    "scope": "Released flat-bug 1.2.0 CLI defaults, explicit checkpoint and CPU; one representative for each architecture.",
+    "author_sources": [
+      "https://pypi.org/project/flat-bug/1.2.0/"
+    ],
+    "resources": {
+      "weights": "flatbug-M_v2",
+      "image": "flatbug-image"
+    }
+  },
+  {
+    "id": "bjerge",
+    "model": "bjerge-2023-pollinator-yolov5",
+    "scope": "User-supplied author CSV exporter with the registry Zenodo checkpoint; repository describes a later study, so historical pairing is not established.",
+    "author_sources": [
+      "https://zenodo.org/records/7395752",
+      "https://github.com/kimbjerge/insectsFlowers/blob/eacd588d8069e6882c287f9039abf7064b210a20/yolov5/detectCSVNI2v2.py"
+    ],
+    "environment": "legacy",
+    "adapter": "bjerge",
+    "variant": "insect1201-bestF1-1280v5s6",
+    "entrypoint": "yolov5/detectCSVNI2v2.py --save-txt --save-conf",
+    "resources": {
+      "source": "bjerge-source",
+      "weights": "bjerge-weights",
+      "image": "bumblebee-image",
+      "image_extra": "flatbug-image"
+    }
+  },
+  {
+    "id": "insectdct",
+    "model": "insectDCT",
+    "scope": "Full author detector/classifier pipeline on all 35 supplied consecutive sample frames, CPU, movie saving disabled.",
+    "author_sources": [
+      "https://github.com/kimbjerge/insectDCT/blob/e459ae87ebe39732963e77e0fcdd0a9a28672a08/pipeDetectAndClassifyInsectsTaxon.py",
+      "https://github.com/kimbjerge/insectDCT/blob/e459ae87ebe39732963e77e0fcdd0a9a28672a08/README.md"
+    ],
+    "environment": "insectdct",
+    "adapter": "insectdct",
+    "variant": "insects8Motion11s + ConvNextBase V6",
+    "entrypoint": "pipeDetectAndClassifyInsectsTaxon.py",
+    "resources": {
+      "weights": "insectdct-weights",
+      "classifier": "insectdct-classifier",
+      "image": "bumblebee-image",
+      "pipeDetectAndClassifyInsectsTaxon.py": "insectdct-pipeDetectAndClassifyInsectsTaxon.py",
+      "common/hierarchical_classifier.py": "insectdct-common/hierarchical_classifier.py",
+      "common/motionEnhancement.py": "insectdct-common/motionEnhancement.py",
+      "common/resnet50tf.py": "insectdct-common/resnet50tf.py",
+      "common/convNext.py": "insectdct-common/convNext.py",
+      "common/efficientNet.py": "insectdct-common/efficientNet.py",
+      "frame:pi2_2025_02_21_11_57_31.jpg": "sequence-pi2_2025_02_21_11_57_31.jpg",
+      "frame:pi2_2025_02_21_11_57_32.jpg": "sequence-pi2_2025_02_21_11_57_32.jpg",
+      "frame:pi2_2025_02_21_11_57_34.jpg": "sequence-pi2_2025_02_21_11_57_34.jpg",
+      "frame:pi2_2025_02_21_11_57_36.jpg": "sequence-pi2_2025_02_21_11_57_36.jpg",
+      "frame:pi2_2025_02_21_11_57_38.jpg": "sequence-pi2_2025_02_21_11_57_38.jpg",
+      "frame:pi2_2025_02_21_11_57_40.jpg": "sequence-pi2_2025_02_21_11_57_40.jpg",
+      "frame:pi2_2025_02_21_11_57_42.jpg": "sequence-pi2_2025_02_21_11_57_42.jpg",
+      "frame:pi2_2025_02_21_11_57_44.jpg": "sequence-pi2_2025_02_21_11_57_44.jpg",
+      "frame:pi2_2025_02_21_11_57_46.jpg": "sequence-pi2_2025_02_21_11_57_46.jpg",
+      "frame:pi2_2025_02_21_11_57_47.jpg": "sequence-pi2_2025_02_21_11_57_47.jpg",
+      "frame:pi2_2025_02_21_11_57_49.jpg": "sequence-pi2_2025_02_21_11_57_49.jpg",
+      "frame:pi2_2025_02_21_11_57_51.jpg": "sequence-pi2_2025_02_21_11_57_51.jpg",
+      "frame:pi2_2025_02_21_11_57_53.jpg": "sequence-pi2_2025_02_21_11_57_53.jpg",
+      "frame:pi2_2025_02_21_11_57_55.jpg": "sequence-pi2_2025_02_21_11_57_55.jpg",
+      "frame:pi2_2025_02_21_11_57_57.jpg": "sequence-pi2_2025_02_21_11_57_57.jpg",
+      "frame:pi2_2025_02_21_11_57_58.jpg": "sequence-pi2_2025_02_21_11_57_58.jpg",
+      "frame:pi2_2025_02_21_11_58_00.jpg": "sequence-pi2_2025_02_21_11_58_00.jpg",
+      "frame:pi2_2025_02_21_11_58_03.jpg": "sequence-pi2_2025_02_21_11_58_03.jpg",
+      "frame:pi2_2025_02_21_11_58_05.jpg": "sequence-pi2_2025_02_21_11_58_05.jpg",
+      "frame:pi2_2025_02_21_11_58_07.jpg": "sequence-pi2_2025_02_21_11_58_07.jpg",
+      "frame:pi2_2025_02_21_11_58_09.jpg": "sequence-pi2_2025_02_21_11_58_09.jpg",
+      "frame:pi2_2025_02_21_11_58_10.jpg": "sequence-pi2_2025_02_21_11_58_10.jpg",
+      "frame:pi2_2025_02_21_11_58_12.jpg": "sequence-pi2_2025_02_21_11_58_12.jpg",
+      "frame:pi2_2025_02_21_11_58_14.jpg": "sequence-pi2_2025_02_21_11_58_14.jpg",
+      "frame:pi2_2025_02_21_11_58_16.jpg": "sequence-pi2_2025_02_21_11_58_16.jpg",
+      "frame:pi2_2025_02_21_11_58_18.jpg": "sequence-pi2_2025_02_21_11_58_18.jpg",
+      "frame:pi2_2025_02_21_11_58_20.jpg": "sequence-pi2_2025_02_21_11_58_20.jpg",
+      "frame:pi2_2025_02_21_11_58_21.jpg": "sequence-pi2_2025_02_21_11_58_21.jpg",
+      "frame:pi2_2025_02_21_11_58_23.jpg": "sequence-pi2_2025_02_21_11_58_23.jpg",
+      "frame:pi2_2025_02_21_11_58_25.jpg": "sequence-pi2_2025_02_21_11_58_25.jpg",
+      "frame:pi2_2025_02_21_11_58_27.jpg": "sequence-pi2_2025_02_21_11_58_27.jpg",
+      "frame:pi2_2025_02_21_11_58_29.jpg": "sequence-pi2_2025_02_21_11_58_29.jpg",
+      "frame:pi2_2025_02_21_11_58_31.jpg": "sequence-pi2_2025_02_21_11_58_31.jpg",
+      "frame:pi2_2025_02_21_11_58_33.jpg": "sequence-pi2_2025_02_21_11_58_33.jpg",
+      "frame:pi2_2025_02_21_11_58_34.jpg": "sequence-pi2_2025_02_21_11_58_34.jpg",
+      "torch-cache:convnext_base-6075fbad.pth": "insectdct-backbone"
+    }
+  },
+  {
+    "id": "beetleflow",
+    "model": "beetleflow",
+    "variant": "5-class",
+    "environment": "beetleflow",
+    "adapter": "beetleflow",
+    "scope": "Author batch segmentation CLI, 5-class checkpoint and author test image; original resolution outputs.",
+    "entrypoint": "pipeline/3_segmentation/batch_inference.py",
+    "author_sources": [
+      "https://github.com/Imageomics/BeetleFlow/blob/ab0bf99555832647ff57d0e5a51e671f6b8e40cf/pipeline/3_segmentation/batch_inference.py"
+    ],
+    "resources": {
+      "weights": "beetleflow-model.safetensors",
+      "config": "beetleflow-config.json",
+      "author_script": "beetleflow-script",
+      "image": "beetleflow-image"
+    }
+  },
+  {
+    "id": "insectmorphoai",
+    "model": "insectmorphoai",
+    "variant": "OBB and segmentation",
+    "environment": "morpho",
+    "adapter": "morpho",
+    "scope": "Author headless CLI, both analyses, supplied test specimens and default lens calibration; no accuracy claim.",
+    "entrypoint": "utils/ultimate_headless.py",
+    "author_sources": [
+      "https://gitlab.kit.edu/kit/iai/ber/insectmorphoAI/-/blob/b95bd0543f37e43548bb358522e1354953f4ab28/utils/ultimate_headless.py"
+    ],
+    "resources": {
+      "source": "morpho-source",
+      "image": "flatbug-image"
+    }
+  },
+  {
+    "id": "moths",
+    "model": "bjerge-2025-moths-yolov5-resnet50",
+    "variant": "YOLOv5m6 plus author classifiers",
+    "environment": "moths",
+    "adapter": "moths",
+    "scope": "Author detector and order/species classifier CLI. Author source downloads species classifier on first use.",
+    "entrypoint": "detectClassifySpecies.py",
+    "author_sources": [
+      "https://github.com/kimbjerge/MCC24-trap/blob/a817f57915b250d3b4b3f06117d0bade4050d61f/README.md"
+    ],
+    "resources": {
+      "source": "moths-source",
+      "weights": "moths-weights",
+      "image": "flatbug-image"
+    }
+  },
+  {
+    "id": "insect-detect-platform",
+    "model": "insect-detect-platform",
+    "scope": "Author DepthAI camera-trap deployment",
+    "author_sources": [
+      "https://github.com/maxsitt/insect-detect/tree/v2.0.0"
+    ],
+    "blocked": "Requires a Luxonis OAK device and camera input. Host USB enumeration found only Linux root hubs; no OAK device is attached. No substitute framework output is advertised."
+  }
+]

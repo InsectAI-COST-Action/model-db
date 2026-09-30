@@ -15,6 +15,7 @@ date               = 2026-09-21
 vocabulary_scope   = "closed"
 geographic_scope   = "Studied in the Balearic Islands, Spain"
 produces           = ["bbox"]
+output_format      = ["pollinator-frame-folders"]
 image_input_size   = "1024x1024"
 input_modality     = ["image"]
 taxonomic_coverage = "Flower-visiting insects; one detection class: pollinator"
@@ -144,3 +145,10 @@ declares **AGPLv3** (`agpl-3.0`) for the model repository containing
 
 Software: Arancha Lana (2025). *aranchalana/POLLINATOR: First stable release of
 POLLINATOR code* (v1.0). [Zenodo](https://doi.org/10.5281/zenodo.17130918).
+
+## Output format probe
+
+The author video script was run with the published checkpoint. It saves JPEG frames into with_object and without_object folders and exports no machine-readable boxes. The tested frames exercised without_object only; the annotated with_object branch is documented by the source.
+
+Probe date: 2026-09-30. Reproducible setup and evidence are in
+[src/probe](https://github.com/InsectAI-COST-Action/model-db/tree/main/src/probe).

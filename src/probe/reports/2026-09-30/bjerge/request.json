@@ -1,0 +1,26 @@
+{
+  "id": "bjerge",
+  "model": "bjerge-2023-pollinator-yolov5",
+  "scope": "User-supplied author CSV exporter with the registry Zenodo checkpoint; repository describes a later study, so historical pairing is not established.",
+  "author_sources": [
+    "https://zenodo.org/records/7395752",
+    "https://github.com/kimbjerge/insectsFlowers/blob/eacd588d8069e6882c287f9039abf7064b210a20/yolov5/detectCSVNI2v2.py"
+  ],
+  "environment": "legacy",
+  "adapter": "bjerge",
+  "variant": "insect1201-bestF1-1280v5s6",
+  "entrypoint": "yolov5/detectCSVNI2v2.py --save-txt --save-conf",
+  "resources": {
+    "source": "bjerge-source",
+    "weights": "bjerge-weights",
+    "image": "bumblebee-image",
+    "image_extra": "flatbug-image"
+  },
+  "paths": {
+    "source": "/home/asger/model-db/src/probe/runs/20260930T094336-8fa8e46a/bjerge/source/insectsFlowers-eacd588d8069e6882c287f9039abf7064b210a20",
+    "weights": "/home/asger/model-db/src/probe/.cache/9bdf209c1c1f6c9eb0e41c8eca09e1c7a4f38118224e85292c9da0af9197edd6/weights.zip",
+    "image": "/home/asger/model-db/src/probe/.cache/77d805dbfdbe50168bc19f404906df7a7eb3214dc7b8fefe0a8d14632e773e14/image.jpg",
+    "image_extra": "/home/asger/model-db/src/probe/.cache/0646bc669e2f9c0d2f86d502bf0caec50732b63c9ad8819c389f86a0c1750627/image.jpg"
+  },
+  "output": "/home/asger/model-db/src/probe/runs/20260930T094336-8fa8e46a/bjerge/artifacts"
+}

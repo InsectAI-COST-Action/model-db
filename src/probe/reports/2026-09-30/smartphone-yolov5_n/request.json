@@ -1,0 +1,31 @@
+{
+  "id": "smartphone-yolov5_n",
+  "model": "smartphone-insect-detect",
+  "variant": "yolov5_n",
+  "environment": "legacy",
+  "adapter": "legacy-txt",
+  "entrypoint": "detect.py --save-txt --save-conf --nosave",
+  "format": "yolov5-detect-txt",
+  "scope": "Author-documented detector CLI with real study checkpoint; excludes downstream evaluation conversions.",
+  "author_sources": [
+    "https://github.com/valentinitnelav/smartphone-insect-detect/blob/7d1ab1e249ca8f9a84466c037a9e7fd4670c8873/code/detect.sh"
+  ],
+  "settings": {
+    "confidence": 0.2,
+    "iou": 0.5,
+    "device": "cpu",
+    "img_size": 640,
+    "note": "Author-recommended Stark settings; smartphone accepts these as CLI parameters."
+  },
+  "resources": {
+    "weights": "yolov5_n",
+    "source": "yolov5-source",
+    "image": "bumblebee-image"
+  },
+  "paths": {
+    "weights": "/home/asger/model-db/src/probe/.cache/4752ab81e3cdac5d50e9cee6a7df27751872c4790c07d9ff09c74856ff5d0d8f/yolov5_n.pt",
+    "source": "/home/asger/model-db/src/probe/runs/20260930T093731-6b1843c4/smartphone-yolov5_n/source/yolov5-17c500461d7b14a24133d91bc6437af62914074c",
+    "image": "/home/asger/model-db/src/probe/.cache/77d805dbfdbe50168bc19f404906df7a7eb3214dc7b8fefe0a8d14632e773e14/image.jpg"
+  },
+  "output": "/home/asger/model-db/src/probe/runs/20260930T093731-6b1843c4/smartphone-yolov5_n/artifacts"
+}

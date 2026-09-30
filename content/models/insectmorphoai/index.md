@@ -16,6 +16,7 @@ date               = 2026-09-29
 # Optional - delete a line to take the default shown.
 vocabulary_scope   = "closed"
 produces           = ["bbox", "mask", "continuous"]
+output_format      = ["insectmorphoai-csv"]
 taxonomic_coverage = "OBB: Diptera, Hymenoptera, Coleoptera. Segmentation: Tachinidae only (head, thorax, abdomen)"
 developer          = "Shirali, Hossein et al."
 paper_url          = "https://doi.org/10.1016/j.ecoinf.2026.103854"
@@ -217,3 +218,10 @@ python utils/ultimate_headless.py --input ./images --output ./results --analysis
 
 Use `--analysis-type obb` or `seg` to run one module only, and `--custom-lens-factor` (mm/px)
 for imaging setups without a built-in profile.
+
+## Output format probe
+
+The author headless CLI was run on all three supplied test specimens with both analyses and default calibration. It saved Rapid Scan and Detailed Analysis CSVs, each with three measurement rows. These are postprocessed morphometric outputs, not native YOLO results.
+
+Probe date: 2026-09-30. Reproducible setup and evidence are in
+[src/probe](https://github.com/InsectAI-COST-Action/model-db/tree/main/src/probe).

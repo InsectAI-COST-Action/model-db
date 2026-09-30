@@ -16,6 +16,7 @@ date               = 2026-09-21
 vocabulary_scope   = "closed"
 geographic_scope   = "Europe"
 produces           = ["bbox", "label"]
+output_format      = ["yolov5-detect-txt", "yolov7-detect-txt"]
 image_input_size   = "640x640"
 taxonomic_coverage = "8 groups: Araneae, Coleoptera, Diptera, Hemiptera, Hymenoptera, Formicidae, Lepidoptera, Orthoptera"
 developer          = "Stark, Thomas; Ştefan, Valentin et al."
@@ -165,3 +166,10 @@ The three `.pt` files are in the
 of the stark-t/PAI repository and download without authentication. 
 
 See also the [detectors README](https://github.com/stark-t/PAI/tree/main/detectors#readme).
+
+## Output format probe
+
+The author-recommended detect.py commands were run with the nano, small and tiny study checkpoints. Their --save-txt --save-conf output has six columns: class, normalized center x/y, width, height, confidence. A blank control produces no label file.
+
+Probe date: 2026-09-30. Reproducible setup and evidence are in
+[src/probe](https://github.com/InsectAI-COST-Action/model-db/tree/main/src/probe).
