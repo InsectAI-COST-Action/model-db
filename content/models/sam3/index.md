@@ -5,7 +5,7 @@ description        = "Promptable foundation model that finds, segments and track
 foundation         = true
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "detection"
+purpose            = ["Insect detection", "Model embeddings"]
 task               = ["Object Detection", "Instance Segmentation", "Tracking"]
 architecture       = ["ViT (ViTDet) + DETR detector + SAM 2 tracker"]
 base_model         = ""
