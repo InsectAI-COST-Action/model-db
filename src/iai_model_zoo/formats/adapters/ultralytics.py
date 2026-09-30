@@ -134,3 +134,26 @@ def json_to_ir_many(inputs, *, images, normalized, include_empty=False):
     return collection(inputs, images, lambda data, ctx: json_to_ir(
         data, image=ctx, normalized=normalized,
     ), include_empty=include_empty)
+
+
+# Uniform conversion interface; direct APIs above remain supported.
+
+def import_one(data, *, context, options, source):
+    from ..conversion import ConversionBatch, invoke
+    result = invoke(to_ir, data, options, image=context.image)
+    return ConversionBatch([result])
+
+def import_collection(data, *, context, options, source):
+    from ..conversion import ConversionBatch, invoke
+    result = invoke(to_ir_many, data, options, images=context.images)
+    return ConversionBatch(result)
+
+def json_import_one(data, *, context, options, source):
+    from ..conversion import ConversionBatch, invoke
+    result = invoke(json_to_ir, data, options, image=context.image)
+    return ConversionBatch([result])
+
+def json_import_collection(data, *, context, options, source):
+    from ..conversion import ConversionBatch, invoke
+    result = invoke(json_to_ir_many, data, options, images=context.images)
+    return ConversionBatch(result)

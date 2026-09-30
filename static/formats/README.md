@@ -416,8 +416,8 @@ Optional `notes.adapters` is just a mapping from operation to Python entry point
     "structure": "T[object]",
     "notes": {
         "adapters": {
-            "import_one": "iai_model_zoo.formats.adapters.flatbug:to_ir",
-            "export_one": "iai_model_zoo.formats.adapters.flatbug:from_ir"
+            "import_one": "iai_model_zoo.formats.adapters.flatbug:import_one",
+            "export_one": "iai_model_zoo.formats.adapters.flatbug:export_one"
         }
     }
 }
@@ -442,3 +442,10 @@ Model cards reference descriptor filename stems in `output_format`. New formats
 are discovered directly from descriptor files, including by site validation;
 there is no separate accepted-format list to update. See the
 [registry guide](../../src/iai_model_zoo/registry/README.md) for lookup examples.
+
+Registered entry points use the uniform conversion wrapper API:
+`(data, *, context, options, source)`. Importers return `ConversionBatch` (ISIR
+image records plus dataset metadata); exporters accept that batch and return
+the target representation. The suffix still counts images. Wrappers can delegate
+to existing direct functions; the latter keep their existing signatures.
+See [the integration guide](../../examples/conversion/README.md).

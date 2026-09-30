@@ -60,8 +60,8 @@
             }
         ],
         "adapters": {
-            "import_one": "iai_model_zoo.formats.adapters.ultralytics:json_to_ir",
-            "import_collection": "iai_model_zoo.formats.adapters.ultralytics:json_to_ir_many"
+            "import_one": "iai_model_zoo.formats.adapters.ultralytics:json_import_one",
+            "import_collection": "iai_model_zoo.formats.adapters.ultralytics:json_import_collection"
         }
     }
 }

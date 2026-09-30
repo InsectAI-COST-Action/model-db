@@ -208,3 +208,16 @@ def from_ir(batch, *, image_ids=None, annotation_ids=None):
     result.update(images=images, annotations=annotations)
     result.setdefault("categories", [])
     return schema("coco").cast(result)
+
+
+# Uniform conversion interface; direct APIs above remain supported.
+
+def import_collection(data, *, context, options, source):
+    from ..conversion import ConversionBatch, invoke
+    result = invoke(to_ir, data, options)
+    return ConversionBatch(result.images, result.metadata)
+
+def export_collection(data, *, context, options, source):
+    from ..conversion import ConversionBatch, invoke
+    result = invoke(from_ir, Batch(data.images, data.metadata), options, image_ids=context.image_ids, annotation_ids=context.annotation_ids)
+    return result

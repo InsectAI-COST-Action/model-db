@@ -58,7 +58,7 @@
             }
         ],
         "adapters": {
-            "import_collection": "iai_model_zoo.formats.adapters.biomoth:to_ir"
+            "import_collection": "iai_model_zoo.formats.adapters.biomoth:import_collection"
         }
     }
 }

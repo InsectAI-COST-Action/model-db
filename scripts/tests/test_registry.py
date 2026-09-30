@@ -39,7 +39,7 @@ class RegistryTests(unittest.TestCase):
         r = Registry.open(self.root)
         p = r.resolve(model='arthronat', cardinality='one')
         self.assertEqual(p['status'], 'ready')
-        self.assertTrue(p['steps'][0]['implementation'].endswith('ultralytics:to_ir'))
+        self.assertTrue(p['steps'][0]['implementation'].endswith('ultralytics:import_one'))
         p = r.resolve(source='flatbug', target='coco')
         self.assertEqual([s['operation'] for s in p['steps']], ['adapter', 'collect', 'adapter'])
         self.assertEqual(p['output_cardinality'], 'collection')

@@ -125,3 +125,12 @@ Run all language and conversion tests from the repository root:
 python3 scripts/check_formats.py
 python3 -m unittest discover -s scripts/tests -v
 ```
+
+## Simple output conversion
+
+Use `Converter.open(snapshot_path)` and `converter.convert(predictions,
+model=..., target=..., context=ConversionContext(...))` to convert already-produced
+outputs without handling callable imports or intermediate containers.
+See the [integration guide and runnable abstract example](../../../examples/conversion/README.md).
+Model loading and inference belong to the consuming application. Existing schema
+`convert` and direct adapter APIs are unchanged.

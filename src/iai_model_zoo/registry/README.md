@@ -24,6 +24,12 @@ predictions are valid. `unsupported` means a necessary mapping is absent.
 `needs_context` means ISIR input cardinality is unspecified. Missing API
 arguments and invalid predictions are diagnosed by the adapters when called.
 
+For routine integration, use [Converter](../../../examples/conversion/README.md),
+which executes the plan and manages intermediate containers. Descriptor entry
+points now use the uniform `(data, *, context, options, source)` wrapper API;
+importers return `ConversionBatch`, exporters accept it. Direct adapter functions
+remain available.
+
 Plans contain detached model/format records, entry-point strings, explicit
 collection operations and metadata fingerprints. They do not execute the plan.
 `collect` wraps one image for a collection exporter; `mode='each'` applies an

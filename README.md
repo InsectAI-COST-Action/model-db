@@ -129,3 +129,6 @@ model loading and inference; adapters operate on their existing outputs.
 ```bash
 uv run --locked --project src/probe python examples/registry/resolve.py --model arthronat --cardinality one
 ```
+
+For ordinary pipelines, use the [conversion API and abstract predictor example](examples/conversion/README.md)
+to turn existing model outputs into ISIR or COCO in one call.
