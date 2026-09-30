@@ -1,0 +1,14 @@
+{{- $url := "https://api.github.com/repos/InsectAI-COST-Action/model-db/contributors?per_page=100" -}}
+
+{{- with try (resources.GetRemote $url) -}}
+  {{- with .Err -}}
+    {{- warnf "contributors: %s" . -}}
+  {{- else -}}
+    {{- $contributors := .Value.Content | transform.Unmarshal -}}
+    <div class="github-contributors">
+      {{- range $contributors }}
+      <a href="{{ .html_url }}" title="{{ .login }}" rel="noopener"><img src="{{ .avatar_url }}" alt="{{ .login }}" width="40" height="40"></a>
+      {{- end }}
+    </div>
+  {{- end -}}
+{{- end -}}

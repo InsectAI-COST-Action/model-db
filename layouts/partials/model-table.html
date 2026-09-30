@@ -25,7 +25,6 @@
       <tr data-id="{{ path.Base .File.Dir }}"
           data-task="{{ delimit ($p.task | default slice) ";" }}"
           data-year="{{ $p.year }}"
-          data-license="{{ $p.license }}"
           data-category="{{ $p.category }}"
           data-zeroshot="{{ if partial "zeroshot.html" . }}true{{ else }}false{{ end }}"
           data-search="{{ lower $haystack }}">

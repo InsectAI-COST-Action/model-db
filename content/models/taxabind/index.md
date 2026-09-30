@@ -23,41 +23,41 @@
 
 # ── Identity ──────────────────────────────────────────────────────────────────
 
-title              = "REPLACE WITH THE MODEL NAME"
-description        = "One sentence, in plain language, saying what the model does."
-foundation         = false
+title              = "TaxaBind"
+description        = "Ecology-focussed general purpose model for zero-shot species classification. Informed by many modalities. "
+foundation         = true
 
 # ── Catalogue ─────────────────────────────────────────────────────────────────
 
-category           = "detection"                  # must already exist in data/categories.toml
-task               = ["Object Detection"]         # Object Detection | Instance Segmentation |
+category           = "classification"                  # must already exist in data/categories.toml
+task               = ["Classification", "Embedding"]         # Object Detection | Instance Segmentation |
                                                  # Semantic Segmentation | Classification |
                                                  # Tracking | Embedding | Counting
-architecture       = ["REPLACE"]                 # YOLOv8, ViT, Swin Transformer… One
+architecture       = ["CLIP, with ViT-B/16 image encoder, plus other feature extractors."]                 # YOLOv8, ViT, Swin Transformer… One
                                                  # entry per architecture.
 base_model          = ""                          # If this is a fine-tuned model, name the
                                                  # base model it was fine-tuned from.
 year               = 2025                        # year of publication or release
 license            = "MIT"                       # SPDX identifier where one exists
-status             = "draft"                     # draft | published | deprecated.
+status             = "published"                     # draft | published | deprecated.
                                                  # Draft is the safe default: only
                                                  # `published` appears on the site.
 
 # Optional. Delete any line you do not have an answer for - the default is in
 # the comment.
-date               = 2026-09-22                  # when this entry was added to the zoo
-vocabulary_scope   = "closed"                    # closed | open.
+date               = 2026-09-30                  # when this entry was added to the zoo
+vocabulary_scope   = "open"                    # closed | open.
 geographic_scope   = ""                          # e.g. "France", "Global"
 # Optional: one verified output profile per architecture; see static/formats/README.md.
 # output_format    = ["ultralytics-detect-json"]
-produces           = ["bbox"]                    # bbox | mask | label | count | track | embedding
-image_input_size         = "640x640"                   # or "any" for native resolution
-input_modality     = []                          # text | image | box | point | mask.
+produces           = ["label", "embedding"]                    # bbox | mask | label | count | track | embedding
+image_input_size         = "224x224"                   # or "any" for native resolution
+input_modality     = ["image", "text"]                          # text | image | box | point | mask.
                                                  # List every input the model
                                                  # accepts, image included. Leave
                                                  # empty for a model that only
                                                  # takes an image.
-developer          = "REPLACE"                   # who made it, not who curated it
+developer          = "Multimodal Vision Research Laboratory, Washington University"                   # who made it, not who curated it
 paper_url          = ""                          # paper, DOI or project page
 
 # ── Weights ───────────────────────────────────────────────────────────────────
@@ -70,10 +70,9 @@ paper_url          = ""                          # paper, DOI or project page
 # authors host them anyway.
 
 [[assets]]
-key      = "weights"              # the label shown in the sidebar if variant is empty
-variant  = "REPLACE"              # e.g. "YOLOv8n", "YOLOv8s", "YOLOv8m", "YOLOv8l", "Share index", "Dataset page", "GitHub code"
+key      = "weights"              # the label shown in the sidebar
 provider = "huggingface"          # zenodo | huggingface | github | erda | package | url
-url      = "https://..."
+url      = "https://huggingface.co/MVRL/taxabind-vit-b-16/tree/6061697951cb566e99369cc1cade059a2a37b7e5"
 # Optional, and worth adding when you know them:
 # filename   = "model.pt"
 # size_bytes = 6275129
@@ -94,8 +93,8 @@ url      = "https://..."
 # The site then shows both links: the pinned revision as curated, and the
 # author's current version.
 
-hf_repo     = ""
-hf_revision = ""
+hf_repo            = "MVRL/taxabind-vit-b-16"
+hf_revision        = "6061697951cb566e99369cc1cade059a2a37b7e5"
 +++
 
 <!--
@@ -106,39 +105,38 @@ hf_revision = ""
   that do not apply, and add whatever does.
 -->
 
-**Intended use.** One or two sentences on what this model is for, and the
-situation it was built for. A reader who is scanning five entries should be able
-to tell from this paragraph whether this one is theirs.
+**Intended use.** Model provides representations for classification and retrieval which can be informed by multiple modalities of training information. Can be used zero shot. Not all modalities have to be used at for inference. 
 
 ## Architecture and training
 
-What the model is, how it was trained, and on what. Name the training data.
+The image-text representation starts from that provided by BioCLIP. TaxaBind then aligns additional modalities with ground-level species images using contrastive learning using: iSatNat, which contains 2.7 million species-image and species-satelite image pairs, iSoundNat which contains 88,130 image-audio pairs. Geographic coordinates come from iNaturalist 2021, environmental variables come from WorldClim 2.1. 
 
 ## Inputs and outputs
 
-What it expects (image size, channels, preprocessing) and what it returns.
-Anything a user must do to their images before the model works is worth saying.
+The model accepts RGB images and text. It also accepts information from extra modalities including: location; environmental features; satelite images and audio. Use the evaluation preprocessing and tokeniser supplied on HuggingFace. Images are preprocessed to 224x224 pixels using bicubic resizing and the checkpoint's normalisation settings. The text encoder has a context length of 77 tokens. Both encoders produce a 512-D embedding vectors. 
 
 ## Performance
 
-Report what the source publication reports, **with the evaluation set named**.
-Do not re-run it and do not estimate: an mAP without its benchmark is not a
-comparable quantity. If nothing is reported, write "Not reported in the source
-publication", that is a useful fact in itself.
+One table in the paper reports zero-shot classification accuracy using image inputs matched against taxanomic text strings. These include evaluations which contain insect classses, although no insect-only evaluation is provided. 
 
 ## Limitations
 
-**This is the section that matters most.** An empty limitations section is worse
-than no card at all, because it implies somebody checked. Say where the model
-fails: backgrounds, life stages, image quality, resolution, occlusion, scale,
-taxa it has never seen and cannot be expected to handle.
+Reported benchmarks do not establish performance for a given insect monitoring workflow. 
+
+Classification zero shot is only possible depending on the supplied candidate taxa names. Further fine tuning may be required for your task. 
 
 ## How to obtain the weights
 
-Where they live, what the license actually permits, and whether the link is
-pinned. Say here if there is anything a downloader has to do, request access,
-accept a gate, convert a format.
+Download the image–text checkpoint from
+[MVRL/taxabind-vit-b-16](https://huggingface.co/MVRL/taxabind-vit-b-16).
 
 ## Citation
 
-BibTeX, or the reference as the authors would want it cited.
+@inproceedings{sastry2025taxabind,
+  title        = {{TaxaBind}: A Unified Embedding Space for Ecological Applications},
+  author       = {Sastry, Srikumar and Khanal, Subash and Dhakal, Aayush and Ahmad, Adeel and Jacobs, Nathan},
+  booktitle    = {Winter Conference on Applications of Computer Vision},
+  year         = {2025},
+  organization = {IEEE/CVF},
+  url          = {https://arxiv.org/abs/2411.00683}
+}
