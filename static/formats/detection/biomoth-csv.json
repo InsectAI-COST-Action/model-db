@@ -1,0 +1,61 @@
+{
+    "types": {
+        "row": {
+            "filePath": "T[string]",
+            "fileName": "T[string]",
+            "year": "T[integer]",
+            "site": "T[string]",
+            "X_Min": "T[float]",
+            "Y_Min": "T[float]",
+            "X_Max": "T[float]",
+            "Y_Max": "T[float]",
+            "d_X": "T[float]",
+            "d_Y": "T[float]",
+            "d_X_cm": "T[float]",
+            "d_Y_cm": "T[float]",
+            "size": "T[float]",
+            "confidence": "T[float]",
+            "class": "T[integer]"
+        }
+    },
+    "enums": {},
+    "structure": [
+        "T[row]"
+    ],
+    "notes": {
+        "id": "biomoth-csv",
+        "evidence": "Real author checkpoint on CPU, populated specimen output and empty blank control. See src/probe/reports/2026-09-30-format-expansion/biomoth/report.json for exact invocation and scope. This is a format probe, not an accuracy evaluation.",
+        "serialization": "text/csv with header",
+        "representation": "One CSV table decoded using the header as field names. Numeric cells may be safely cast to the declared types; the author writes CSV, not JSON objects.",
+        "header": [
+            "filePath",
+            "fileName",
+            "year",
+            "site",
+            "X_Min",
+            "Y_Min",
+            "X_Max",
+            "Y_Max",
+            "d_X",
+            "d_Y",
+            "d_X_cm",
+            "d_Y_cm",
+            "size",
+            "confidence",
+            "class"
+        ],
+        "producer": "runInference.ipynb batch_process",
+        "scope": "Active batch export predictions_2023.csv after TorchScript inference, confidence filtering, NMS and undoing letterbox padding. Excludes commented single-image CSV exports and downstream biomass aggregation.",
+        "coordinates": "X_Min,Y_Min,X_Max,Y_Max are floating-point original-image pixel corners, clipped to image bounds. d_X and d_Y are pixel width/height.",
+        "measurements": "d_X_cm=d_X*(83/6040), d_Y_cm=d_Y*(44/3420); size is their product in square centimetres. These are hard-coded author calibration factors, not calibration for arbitrary images.",
+        "identity": "year is hard-coded to 2023; site comes from LOCATIONS; filePath is site/fileName. The single-class branch assigns class 0; float serialization such as 0.0 is safely castable to integer.",
+        "confidence": "Detector confidence in [0,1]; notebook defaults CONF_THRES=0.25 and IOU_THRES=0.50.",
+        "empty": "Images without retained detections contribute no rows, so the CSV alone cannot distinguish them from unprocessed images. A header is written even when the first image has no detections.",
+        "sources": [
+            {
+                "url": "https://github.com/Suhavi/Lepidoptera_Hubbard_Brook/blob/1d631ce7af4c0fa8eae5d60d8f2ec352fa2644f3/notebooks/runInference.ipynb",
+                "revision": "1d631ce7af4c0fa8eae5d60d8f2ec352fa2644f3"
+            }
+        ]
+    }
+}

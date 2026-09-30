@@ -1,0 +1,33 @@
+{
+    "types": {},
+    "enums": {},
+    "structure": [
+        [
+            "T[integer]"
+        ]
+    ],
+    "notes": {
+        "id": "ecto-trigger-tflite-score",
+        "evidence": "Source inspection at the pinned revisions; no full inference observation claimed.",
+        "producer": "Ecto-Trigger deployment guide: TFLite interpreter get_tensor(output index)",
+        "serialization": "NumPy uint8 output tensor",
+        "representation": "Structure is the nested-list projection of the returned tensor, not an author JSON export.",
+        "scope": "Quantized TFLite deployment path. The guide uses model_weights/8/quant/8_int8.tflite; source inspection only, neither the released tensor nor physical deployment has been runtime-verified here. Unquantized Keras sigmoid output has a different floating-point representation.",
+        "shape": "Single-image deployment returns shape (1,1), with one image-level insect-presence score. Singleton schema arrays express repetition; the exact dimensions are documented here because the language cannot constrain a repeated array length to one.",
+        "values": "Raw unsigned byte in [0,255]. This is not a floating-point probability in [0,1]; converting back to model units requires the output tensor quantization scale and zero point. No bounding boxes, instance classes or counts are returned.",
+        "sources": [
+            {
+                "url": "https://github.com/rossGardiner/ecto-trigger/blob/a6039434a48dcbf5ab4a96245d6ee349f4f2507c/guides/deployment.md",
+                "revision": "a6039434a48dcbf5ab4a96245d6ee349f4f2507c"
+            },
+            {
+                "url": "https://github.com/rossGardiner/ecto-trigger/blob/a6039434a48dcbf5ab4a96245d6ee349f4f2507c/model_quantiser.py",
+                "revision": "a6039434a48dcbf5ab4a96245d6ee349f4f2507c"
+            },
+            {
+                "url": "https://github.com/rossGardiner/ecto-trigger/blob/a6039434a48dcbf5ab4a96245d6ee349f4f2507c/model_loader.py",
+                "revision": "a6039434a48dcbf5ab4a96245d6ee349f4f2507c"
+            }
+        ]
+    }
+}

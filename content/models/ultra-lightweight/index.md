@@ -34,6 +34,7 @@ task               = ["Classification"]         # Object Detection | Instance Se
                                                  # Semantic Segmentation | Classification |
                                                  # Tracking | Embedding | Counting
 architecture       = ["MobileNetv2"]                 # YOLOv8, ViT, Swin Transformer… One
+output_format      = ["ecto-trigger-tflite-score"]
                                                  # entry per architecture.
 base_model          = ""                          # If this is a fine-tuned model, name the
                                                  # base model it was fine-tuned from.
@@ -120,6 +121,8 @@ They are trained on a mixture of iNaturalist data and field datasets of insects 
 ## Inputs and outputs
 
 It accepts images and produces a confidence value [0, 1], of that image containing an insect. 
+
+The documented [Ecto-Trigger TFLite score profile](/formats/detection/ecto-trigger-tflite-score.json) follows the author deployment guide at revision `a603943`. The quantized runtime returns a `(1,1)` unsigned-byte tensor with one image-level insect-presence score, rather than instance boxes. The unquantized Keras model has a floating-point sigmoid output. This profile is source-inspected; released-artifact inference and physical deployment have not been probed.
 
 ## Performance
 

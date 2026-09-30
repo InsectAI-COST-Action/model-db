@@ -360,5 +360,69 @@
       "https://github.com/maxsitt/insect-detect/tree/v2.0.0"
     ],
     "blocked": "Requires a Luxonis OAK device and camera input. Host USB enumeration found only Linux root hubs; no OAK device is attached. No substitute framework output is advertised."
+  },
+  {
+    "id": "biomoth",
+    "model": "biomoth",
+    "environment": "legacy",
+    "adapter": "biomoth",
+    "entrypoint": "runInference.ipynb: batch_process",
+    "scope": "Original notebook function definitions with real TorchScript weights; fixture paths and CPU selected, notebook visualization cells excluded.",
+    "author_sources": [
+      "https://raw.githubusercontent.com/Suhavi/Lepidoptera_Hubbard_Brook/1d631ce7af4c0fa8eae5d60d8f2ec352fa2644f3/notebooks/runInference.ipynb"
+    ],
+    "resources": {
+      "weights": "biomoth-weights",
+      "author_script": "biomoth-notebook",
+      "image": "flatbug-image"
+    }
+  },
+  {
+    "id": "mothbot",
+    "model": "mothbot",
+    "environment": "modern",
+    "adapter": "mothbot",
+    "entrypoint": "pipeline/detect.py: _save_result",
+    "scope": "Real MBD-1-1 OBB inference followed by original author JSON writer. Excludes GUI, thumbnail writing, blur enrichment, classification and tracking.",
+    "author_sources": [
+      "https://raw.githubusercontent.com/Digital-Naturalism-Laboratories/Mothbot_Process/7514bee8ace5c9cb859f3566ed3088a7824b692c/pipeline/detect.py"
+    ],
+    "resources": {
+      "weights": "mothbot-weights",
+      "author_script": "mothbot-detect",
+      "common": "mothbot-common",
+      "image": "flatbug-image"
+    }
+  },
+  {
+    "id": "ami-insect-detector",
+    "model": "ami-insect-detector",
+    "scope": "Source inspection only; no inference observation claimed.",
+    "blocked": "Source-inspected postprocessor; full detector inference has not yet been implemented in the probe.",
+    "author_sources": [
+      "https://github.com/RolnickLab/ami-data-companion/blob/55d0787570f8c9d92c450f4fb65a58dd25cf6634/trapdata/ml/models/localization.py",
+      "https://github.com/RolnickLab/ami-data-companion/blob/55d0787570f8c9d92c450f4fb65a58dd25cf6634/trapdata/ml/models/base.py"
+    ]
+  },
+  {
+    "id": "grounding-dino",
+    "model": "grounding-dino",
+    "scope": "Source inspection only; no inference observation claimed.",
+    "blocked": "Source-inspected Hugging Face postprocessor; full checkpoint inference has not yet been implemented in the probe.",
+    "author_sources": [
+      "https://github.com/huggingface/transformers/blob/4fdf58afb72b0754da30037fc800b6044e7d9c99/src/transformers/models/grounding_dino/processing_grounding_dino.py",
+      "https://huggingface.co/IDEA-Research/grounding-dino-base/blob/12bdfa3120f3e7ec7b434d90674b3396eccf88eb/README.md"
+    ]
+  },
+  {
+    "id": "ultra-lightweight",
+    "model": "ultra-lightweight",
+    "scope": "Source inspection only; no inference observation claimed.",
+    "blocked": "Source-inspected quantized trigger interface; a runtime adapter for the author TFLite deployment example has not yet been implemented. No released-artifact inference or hardware deployment is claimed.",
+    "author_sources": [
+      "https://github.com/rossGardiner/ecto-trigger/blob/a6039434a48dcbf5ab4a96245d6ee349f4f2507c/guides/deployment.md",
+      "https://github.com/rossGardiner/ecto-trigger/blob/a6039434a48dcbf5ab4a96245d6ee349f4f2507c/model_quantiser.py",
+      "https://github.com/rossGardiner/ecto-trigger/blob/a6039434a48dcbf5ab4a96245d6ee349f4f2507c/model_loader.py"
+    ]
   }
 ]

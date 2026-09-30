@@ -8,6 +8,7 @@ foundation         = false
 category           = "detection"
 task               = ["Object Detection", "Counting"]
 architecture       = ["YOLO11s"]
+output_format      = ["biomoth-csv"]
 base_model         = ""
 year               = 2026
 license            = "Apache-2.0"
@@ -65,10 +66,12 @@ traps in long-term ecological studies. It answers *how many moths, and how much 
 ## Inputs and outputs
 
 - **Input:** RGB sheet photos, letterboxed to 640. The source photos are about 6000 px wide.
-- **Output:** Ultralytics boxes with a confidence score, for one class.
+- **Output:** A custom batch CSV containing boxes, confidence, class and measurements after TorchScript inference and author postprocessing.
 - **Thresholds:** the README recommends `conf = 0.23`, while the inference notebook uses 0.25,
   with NMS IoU 0.5.
 - **Counts and biomass** are aggregated per image and per night in the `runTrends` notebook.
+
+The documented [BioMoth CSV profile](/formats/detection/biomoth-csv.json) follows `runInference.ipynb` at revision `1d631ce`. Its active batch export writes 15 columns, including original-image pixel boxes, confidence, class, image/site metadata and calibrated dimensions. A CPU probe of the real TorchScript checkpoint and original notebook functions produced 32 rows on a specimen fixture and none on a blank control. The hard-coded year and calibration factors are preserved; this does not validate physical measurements on that fixture.
 
 ## Performance
 

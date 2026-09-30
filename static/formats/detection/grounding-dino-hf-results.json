@@ -1,0 +1,40 @@
+{
+    "types": {
+        "image_result": {
+            "scores": [
+                "T[float]"
+            ],
+            "labels": [
+                "T[string]"
+            ],
+            "boxes": [
+                "T[float_quad]"
+            ]
+        }
+    },
+    "enums": {},
+    "structure": [
+        "T[image_result]"
+    ],
+    "notes": {
+        "id": "grounding-dino-hf-results",
+        "evidence": "Source inspection at the pinned revisions; no full inference observation claimed.",
+        "producer": "Transformers 4.40.2 GroundingDinoProcessor.post_process_grounded_object_detection",
+        "serialization": "Python list of dictionaries; scores and boxes are torch tensors, labels is a list of strings",
+        "representation": "Structure describes the tensor-to-list projection for schema validation, not a JSON exporter supplied by the model.",
+        "scope": "Version-specific Hugging Face workflow matching the author model card box_threshold/text_threshold example. Later Transformers releases may change keys and signatures. Excludes raw model logits and the separate original GroundingDINO repository API.",
+        "coordinates": "boxes is N x 4 in [x1,y1,x2,y2] order. With target_sizes=[(height,width)] as in the model card, coordinates are original-image pixels; without target_sizes they are normalized. No clipping is done in this postprocessor.",
+        "confidence": "scores is the maximum sigmoid token-alignment score per retained query, strictly greater than box_threshold. labels contains decoded prompt phrases selected using text_threshold, not numeric category IDs.",
+        "batch": "One dictionary per image; scores, labels and boxes have equal length. Empty results have zero rows in all three fields. Image identities, dimensions and prompt are not included.",
+        "sources": [
+            {
+                "url": "https://github.com/huggingface/transformers/blob/4fdf58afb72b0754da30037fc800b6044e7d9c99/src/transformers/models/grounding_dino/processing_grounding_dino.py",
+                "revision": "4fdf58afb72b0754da30037fc800b6044e7d9c99"
+            },
+            {
+                "url": "https://huggingface.co/IDEA-Research/grounding-dino-base/blob/12bdfa3120f3e7ec7b434d90674b3396eccf88eb/README.md",
+                "revision": "12bdfa3120f3e7ec7b434d90674b3396eccf88eb"
+            }
+        ]
+    }
+}
