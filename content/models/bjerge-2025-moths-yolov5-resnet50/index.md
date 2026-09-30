@@ -7,6 +7,7 @@ description        = "YOLOv5 model and several ResNet50 classifiers trained to i
 category           = "detection"
 task               = ["Object Detection","Classification"]
 architecture       = ["YOLOv5","ResNet50"]
+output_format      = ["mcc24-csv", "mcc24-csv"]
 base_model         = ""
 year               = 2025
 license            = "CC-BY-4.0"
@@ -75,6 +76,8 @@ note         = "The weights file is in the named folder and derived from https:/
 - **Channel order:** RGB
 - **Outputs:** bounding boxes
 - **Input modality:** image only (discriminative model)
+
+The documented [MCC24 CSV profile](/formats/detection/mcc24-csv.json) follows `detectClassifySpecies.py` at revision `a817f57`. It combines pixel boxes and detector scores with order/species classifications in a 19-column CSV. This is source-inspected only: the retained full-pipeline probe failed when the author classifier label-map URL returned HTTP 403. Both architecture entries refer to this combined pipeline export.
 
 ## Performance
 

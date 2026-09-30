@@ -1,95 +1,148 @@
 {
-    "id": "insectdct-csv",
-    "serialization": "text/csv with header",
-    "producer": "pipeDetectAndClassifyInsectsTaxon.py",
-    "sources": [
-        {
-            "url": "https://github.com/kimbjerge/insectDCT/blob/e459ae87ebe39732963e77e0fcdd0a9a28672a08/pipeDetectAndClassifyInsectsTaxon.py",
-            "revision": "e459ae87ebe39732963e77e0fcdd0a9a28672a08"
-        }
-    ],
-    "types": {},
-    "structure": {
-        "sequence-HI.csv": {
-            "header": [
-                "Label1",
-                "LabelId1",
-                "Logit1",
-                "Conf1",
-                "Above1",
-                "Label2",
-                "LabelId2",
-                "Logit2",
-                "Conf2",
-                "Above2",
-                "Label3",
-                "LabelId3",
-                "Logit3",
-                "Conf3",
-                "Above3",
-                "Checked",
-                "frameId"
-            ],
-            "example_row": [
-                "Hymenoptera_bees",
-                "7",
-                "11.560938835144043",
-                "0.5280153609116043",
-                "True",
-                "Apoidea",
-                "2",
-                "12.471245765686035",
-                "0.20797051520137505",
-                "True",
-                "Apoidea striped",
-                "11",
-                "12.3587007522583",
-                "0.0003140208778682231",
-                "True",
-                "True",
-                "0"
-            ]
+    "types": {
+        "hierarchical_row": {
+            "Label1": "T[string]",
+            "LabelId1": "T[integer]",
+            "Logit1": "T[float]",
+            "Conf1": "T[float]",
+            "Above1": "T[string](E[boolean_text])",
+            "Label2": "T[string]",
+            "LabelId2": "T[integer]",
+            "Logit2": "T[float]",
+            "Conf2": "T[float]",
+            "Above2": "T[string](E[boolean_text])",
+            "Label3": "T[string]",
+            "LabelId3": "T[integer]",
+            "Logit3": "T[float]",
+            "Conf3": "T[float]",
+            "Above3": "T[string](E[boolean_text])",
+            "Checked": "T[string](E[boolean_text])",
+            "frameId": "T[integer]"
         },
-        "sequence-CL.csv": {
-            "header": [
-                "trap",
-                "trapId",
-                "date",
-                "time",
-                "taxaConf",
-                "taxaLabel",
-                "taxaId",
-                "taxaLevel",
-                "frameId",
-                "x1",
-                "y1",
-                "x2",
-                "y2",
-                "fileName"
-            ],
-            "example_row": [
-                "sequence",
-                "0",
-                "20250221",
-                "115731",
-                "0.03140208778682231",
-                "Apoidea striped",
-                "12",
-                "3",
-                "0",
-                "1307",
-                "601",
-                "1355",
-                "663",
-                "sequence/pi2_2025_02_21_11_57_31.jpg"
-            ]
-        }
+        "hierarchical_table": [
+            "T[hierarchical_row]"
+        ],
+        "classification_row": {
+            "trap": "T[string]",
+            "trapId": "T[integer]",
+            "date": "T[string]",
+            "time": "T[string]",
+            "taxaConf": "T[float]",
+            "taxaLabel": "T[string]",
+            "taxaId": "T[integer]",
+            "taxaLevel": "T[integer]",
+            "frameId": "T[integer]",
+            "x1": "T[integer]",
+            "y1": "T[integer]",
+            "x2": "T[integer]",
+            "y2": "T[integer]",
+            "fileName": "T[string]"
+        },
+        "classification_table": [
+            "T[classification_row]"
+        ]
     },
+    "enums": {
+        "boolean_text": [
+            "True",
+            "False"
+        ]
+    },
+    "structure": "T[hierarchical_table] | T[classification_table]",
     "notes": {
         "scope": "Default CSVformat=tracking and hierarchical ConvNextBase V6. Each row is a detected/classified instance. Filename stems derive from the input sequence.",
         "confidence": "CL taxaConf is classifier probability multiplied by 100. HI Conf1/2/3 contain classifier probabilities, not YOLO detector scores.",
         "classes": "CL taxaId adds one to the selected classifier index. HI LabelId fields retain classifier indices. These are not the detector class vocabulary.",
         "coordinates": "CL x1,y1,x2,y2 are pixel corners in the processed frame; frame preprocessing and motion alignment must be retained with the results.",
-        "variants": "CSVformat other than tracking uses a different CL header. This definition describes only the observed default."
+        "variants": "CSVformat other than tracking uses a different CL header. This definition describes only the observed default.",
+        "id": "insectdct-csv",
+        "serialization": "text/csv with header",
+        "producer": "pipeDetectAndClassifyInsectsTaxon.py",
+        "sources": [
+            {
+                "url": "https://github.com/kimbjerge/insectDCT/blob/e459ae87ebe39732963e77e0fcdd0a9a28672a08/pipeDetectAndClassifyInsectsTaxon.py",
+                "revision": "e459ae87ebe39732963e77e0fcdd0a9a28672a08"
+            }
+        ],
+        "tables": {
+            "sequence-HI.csv": {
+                "header": [
+                    "Label1",
+                    "LabelId1",
+                    "Logit1",
+                    "Conf1",
+                    "Above1",
+                    "Label2",
+                    "LabelId2",
+                    "Logit2",
+                    "Conf2",
+                    "Above2",
+                    "Label3",
+                    "LabelId3",
+                    "Logit3",
+                    "Conf3",
+                    "Above3",
+                    "Checked",
+                    "frameId"
+                ],
+                "example_row": [
+                    "Hymenoptera_bees",
+                    "7",
+                    "11.560938835144043",
+                    "0.5280153609116043",
+                    "True",
+                    "Apoidea",
+                    "2",
+                    "12.471245765686035",
+                    "0.20797051520137505",
+                    "True",
+                    "Apoidea striped",
+                    "11",
+                    "12.3587007522583",
+                    "0.0003140208778682231",
+                    "True",
+                    "True",
+                    "0"
+                ],
+                "type": "hierarchical_table"
+            },
+            "sequence-CL.csv": {
+                "header": [
+                    "trap",
+                    "trapId",
+                    "date",
+                    "time",
+                    "taxaConf",
+                    "taxaLabel",
+                    "taxaId",
+                    "taxaLevel",
+                    "frameId",
+                    "x1",
+                    "y1",
+                    "x2",
+                    "y2",
+                    "fileName"
+                ],
+                "example_row": [
+                    "sequence",
+                    "0",
+                    "20250221",
+                    "115731",
+                    "0.03140208778682231",
+                    "Apoidea striped",
+                    "12",
+                    "3",
+                    "0",
+                    "1307",
+                    "601",
+                    "1355",
+                    "663",
+                    "sequence/pi2_2025_02_21_11_57_31.jpg"
+                ],
+                "type": "classification_table"
+            }
+        },
+        "representation": "Each structure variant describes one CSV table after reading the header as field names and decoding numeric cells. The producer writes CSV, not JSON objects. notes.tables gives each filename, exact column order and an observed example row; variable filename stems are described in scope. Empty cells remain empty strings, not absent fields.",
+        "numbers": "IDs, taxaLevel, frameId and box coordinates are integers. Date/time are YYYYMMDD/HHMMSS strings, not ISO timestamps. Above1/2/3 and Checked are literal True/False CSV strings."
     }
 }

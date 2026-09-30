@@ -1,0 +1,66 @@
+{
+    "types": {
+        "row": {
+            "device_id": "T[string]",
+            "session_id": "T[integer]",
+            "timestamp": "T[string]",
+            "label": "T[string]",
+            "confidence": "T[float]",
+            "track_id": "T[integer]",
+            "track_status": "T[string](E[track_status])",
+            "x_min": "T[float]",
+            "y_min": "T[float]",
+            "x_max": "T[float]",
+            "y_max": "T[float]",
+            "lens_position": "T[integer]",
+            "iso_sensitivity": "T[integer]",
+            "exposure_time": "T[float]",
+            "filename": "T[string]"
+        }
+    },
+    "enums": {
+        "track_status": [
+            "NEW",
+            "TRACKED"
+        ]
+    },
+    "structure": [
+        "T[row]"
+    ],
+    "notes": {
+        "id": "insect-detect-csv",
+        "evidence": "Source inspection at the pinned revisions; no full inference observation claimed.",
+        "serialization": "text/csv with header",
+        "representation": "One CSV table decoded using the header as field names. Numeric cells may be safely cast to the declared types; the author writes CSV, not JSON objects.",
+        "header": [
+            "device_id",
+            "session_id",
+            "timestamp",
+            "label",
+            "confidence",
+            "track_id",
+            "track_status",
+            "x_min",
+            "y_min",
+            "x_max",
+            "y_max",
+            "lens_position",
+            "iso_sensitivity",
+            "exposure_time",
+            "filename"
+        ],
+        "producer": "insect-detect v2.0.0 src/insectdetect/capture.py metadata_writer",
+        "scope": "Camera-trap session metadata CSV for active DepthAI tracklets. Full hardware inference remains unverified because no OAK device is attached.",
+        "coordinates": "x_min,y_min,x_max,y_max are frame-normalized corners after deletterboxing, rounded to four decimals; multiply x by original frame width and y by original frame height for pixels.",
+        "confidence": "Detector confidence in [0,1], rounded to two decimals; label is the configured display name rather than a numeric class ID.",
+        "tracking": "Only NEW and TRACKED tracklets are written; LOST and REMOVED have no CSV rows. track_id is a tracker identifier, not a class index.",
+        "timestamp": "timestamp is datetime.now().isoformat(): local time without a timezone suffix, so it is declared string, not the stricter schema ISO type.",
+        "camera": "device_id is HOSTNAME; session_id is an incrementing integer. exposure_time is milliseconds rounded to two decimals, iso_sensitivity and lens_position are camera metadata. filename associates the row with its JPEG.",
+        "sources": [
+            {
+                "url": "https://github.com/maxsitt/insect-detect/blob/24476f48b1710dcb711362267425c598c821e7c0/src/insectdetect/capture.py",
+                "revision": "24476f48b1710dcb711362267425c598c821e7c0"
+            }
+        ]
+    }
+}

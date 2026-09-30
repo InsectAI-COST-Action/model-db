@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 import tempfile
 import unittest
@@ -80,7 +81,7 @@ class RunnerTests(unittest.TestCase):
         jobs = json.loads((ROOT / "models.json").read_text())
         cards = []
         for card in (ROOT.parents[1] / "content/models").glob("*/index.md"):
-            metadata = tomllib.loads(card.read_text().split("+++")[1])
+            metadata = tomllib.loads(re.split(r"^\+\+\+\s*$", card.read_text(), flags=re.MULTILINE)[1])
             if metadata.get("category") == "detection":
                 cards.append(card.parent.name)
         self.assertLessEqual(set(cards), {j["model"] for j in jobs})

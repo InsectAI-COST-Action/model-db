@@ -91,7 +91,7 @@ help        = "Year of publication or release. 4-digit number, no quotes."
 name        = "license"
 type        = "string"
 required    = true
-help        = "SPDX identifier where one exists, e.g. MIT, CC-BY-4.0. See them at https://spdx.org/licenses/."
+help        = "SPDX identifier where one exists, e.g. MIT, CC-BY-4.0. See them at https://spdx.org/licenses/. If the license is not listed there, use 'custom' and explain in the model card."
 
 [[field]]
 name        = "status"
@@ -130,7 +130,7 @@ help        = "What comes out. Shown as the Outputs line in the sidebar."
 name        = "output_format"
 type        = "list"
 required    = false
-values      = ["coco", "flatbug", "pollinator-frame-folders", "insectsflowers-csv", "beetleflow-color-mask", "insectdct-csv", "insectmorphoai-csv", "ultralytics-detect-json", "ultralytics-detect-results", "ultralytics-detect-txt", "ultralytics-segment-json", "ultralytics-segment-results", "ultralytics-segment-txt", "yolov5-detect-results", "yolov5-detect-txt", "yolov5-segment-txt", "yolov7-detect-txt", "yolov7-segment-txt", "other"]
+values      = ["ami-detector-boxes", "biomoth-csv", "mothbot-detection-json", "insect-detect-csv", "mcc24-csv", "grounding-dino-hf-results", "ecto-trigger-tflite-score", "coco", "flatbug", "pollinator-frame-folders", "insectsflowers-csv", "beetleflow-color-mask", "insectdct-csv", "insectmorphoai-csv", "ultralytics-detect-json", "ultralytics-detect-results", "ultralytics-detect-txt", "ultralytics-segment-json", "ultralytics-segment-results", "ultralytics-segment-txt", "yolov5-detect-results", "yolov5-detect-txt", "yolov5-segment-txt", "yolov7-detect-txt", "yolov7-segment-txt", "other"]
 help        = "Actual output representation, one entry per architecture. Choose the producing API/exporter, not just the architecture; see static/formats/README.md."
 
 [[field]]

@@ -32,6 +32,7 @@ foundation         = true
 category           = "detection" 
 task               = ["Object Detection", "Classification", "Embedding"] 
 architecture       = ["Swin Transformer"] 
+output_format      = ["grounding-dino-hf-results"]
 # base_model         = "DINO"                    # If this is a fine-tuned model, name the
                                               # base model it was fine-tuned from.
 year               = 2023 
@@ -122,6 +123,8 @@ Grounding DINO combines a DINO-style DETR detector with grounded pre-training th
 - Maximum ~900 object proposals (reduced to 300 in 1.6+)
 
 **Preprocessing requirement:** No class list needed.
+
+The documented [Hugging Face results profile](/formats/detection/grounding-dino-hf-results.json) describes `post_process_grounded_object_detection` in Transformers **4.40.2**, matching the author model-card example. It returns one dictionary per image with `scores` and `boxes` tensors plus decoded phrase `labels`. Passing `target_sizes` produces pixel corners; omitting it produces normalized corners. This profile is source-inspected only and deliberately version-specific: newer Transformers APIs can change keys and signatures.
 
 ## Performance
 

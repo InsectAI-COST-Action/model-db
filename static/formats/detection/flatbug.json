@@ -1,32 +1,46 @@
 {
     "types": {
-        "box": [
-            "T[float]",
-            "T[float]",
-            "T[float]",
-            "T[float]"
-        ],
+        "box": "T[float_quad]",
         "contour": [
-            ["T[float]"],
-            ["T[float]"]
+            "T[float_vector]",
+            "T[float_vector]"
         ]
     },
+    "enums": {},
     "structure": {
-        "boxes": ["T[box]"],
-        "contours": ["T[contour]"],
-        "confs": ["T[float]"],
-        "classes": ["T[int]"],
-        "scales": ["T[float]"],
-        "areas": ["T[float]"],
-        "image_path": "T[str]",
-        "image_width": "T[int]",
-        "image_height": "T[int]",
-        "mask_width": "T[int]",
-        "mask_height": "T[int]",
-        "identifier": "? : null | T[str]"
+        "boxes": [
+            "T[box]"
+        ],
+        "contours": [
+            "T[contour]"
+        ],
+        "confs": [
+            "T[float]"
+        ],
+        "classes": [
+            "T[integer]"
+        ],
+        "scales": [
+            "T[float]"
+        ],
+        "areas": [
+            "T[float]"
+        ],
+        "image_path": "T[string]",
+        "image_width": "T[integer]",
+        "image_height": "T[integer]",
+        "mask_width": "T[integer]",
+        "mask_height": "T[integer]",
+        "identifier": "? : T[null] | T[string] | [T[string]]"
     },
     "notes": {
         "mask_dimensions": "In practice there is never any difference between image and mask dimension with the flatbug models.",
-        "classes": "Since the flatbug models do not try to do classification, the values in classification is actually just all ones (1)."
+        "classes": "Since the flatbug models do not try to do classification, the values in classification is actually just all ones (1).",
+        "serialization": "application/json",
+        "numbers": "Class IDs and image/mask dimensions are integers. Coordinates, confidence, scales and areas are floating-point values.",
+        "contours": "Each contour is [x_coordinates, y_coordinates], with equal-length arrays. Author json_data derives contours in original-image coordinates, including the non-polygon mask path.",
+        "identifier": "json_data uses null; the flat-bug 1.2.0 CLI probe emitted a list containing a run UUID. This is not a unique image ID.",
+        "boxes": "[x1,y1,x2,y2] in original-image pixels with top-left origin.",
+        "areas": "Polygon-mode areas are in image pixel-square units. In the non-polygon path, areas count mask-grid pixels; differing mask dimensions require keeping that distinction."
     }
 }

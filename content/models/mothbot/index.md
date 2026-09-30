@@ -17,7 +17,7 @@ date               = 2026-09-30
 # Optional - delete a line to take the default shown.
 vocabulary_scope   = "closed"
 geographic_scope   = "Global (training insects from Panama, Mexico, Croatia, Germany, Poland, Hawaii, North Carolina, Netherlands, Indonesia, Canada, Seattle)"
-output_format      = ["other"]
+output_format      = ["mothbot-detection-json"]
 produces           = ["bbox"]
 image_input_size   = "1600x1600"
 taxonomic_coverage = "Class-agnostic: one class, 'creature' (any arthropod on the sheet)"
@@ -85,7 +85,7 @@ The rest of the Mothbot pipeline uses off-the-shelf models, which are not part o
 ## Inputs and outputs
 
 - **Input:** RGB light-trap photos, run at `imgsz = 1600`.
-- **Defaults:** the shipped YAMLs set `conf = 0.1` and `max_det = 5000` (MBD-1-1) or `500` (MBD-1-0).
+- **Shipped YAML settings:** the YAMLs set `conf = 0.1` and `max_det = 5000` (MBD-1-1) or `500` (MBD-1-0).
 - **Output:** one JSON per image in X-AnyLabeling/LabelMe style. Each detection is a `shape` with
   `label: "creature"`, `shape_type: "rotation"` and four corner points. Cropped patches are saved
   next to it.
@@ -93,6 +93,8 @@ The rest of the Mothbot pipeline uses off-the-shelf models, which are not part o
   finally write a Darwin-Core-like CSV.
 - **Models:** `.pt` files run through `ultralytics.YOLO`. ONNX export is referenced in the YAMLs,
   but the ONNX files are not in the repository and ONNX selection is disabled in the UI.
+
+The documented [Mothbot detection JSON profile](/formats/detection/mothbot-detection-json.json) follows the PyTorch OBB writer at revision `7514bee`. A CPU probe of MBD-1-1 and the original `_save_result` produced 15 shapes on a specimen fixture and an empty shape list on a blank control. The source invocation uses `imgsz=1600` and `max_det=10000`, leaving confidence/IoU to the model library; YAML training settings are not explicitly forwarded here. The probe covers inference and JSON serialization, excluding thumbnail generation, optional blur enrichment and later identification/tracking stages.
 
 ## Performance
 

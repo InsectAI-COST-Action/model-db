@@ -23,7 +23,7 @@ header's bottom border scrolls away with the rows.
   --focus:     #1f5fa8;
 
   --radius: 6px;
-  --measure: 74rem;
+  --measure: 92rem;
 
   --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
@@ -152,7 +152,7 @@ a:hover { text-decoration-thickness: 2px; }
   font: inherit; font-size: .84rem; padding: .35rem .8rem;
   border: 1px solid var(--border-str); border-radius: var(--radius);
   background: var(--surface); color: var(--text-dim); cursor: pointer;
-  align-self: flex-end;
+  align-self: flex-end; margin-left: auto;
 }
 .filter-reset:hover { color: var(--text); border-color: var(--text-dim); }
 
@@ -199,7 +199,7 @@ a:hover { text-decoration-thickness: 2px; }
 
 .table-scroll {
   overflow: auto;
-  max-height: 78vh;
+  max-height: 88vh;
   margin: 0 1.1rem 1.1rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -334,15 +334,20 @@ table.models tbody th a:hover { text-decoration: underline; }
   color: var(--text-dim); font-size: .86rem;
 }
 
-/* Artefact list (model detail sidebar) */
+/* Assets (model detail header) */
 
+.asset-block { margin: 0 0 2rem; }
 .asset-format { font-size: .74rem; color: var(--text-mute); margin: 0 0 .5rem; }
-.assets { list-style: none; padding: 0; margin: 0; font-size: .86rem; }
-.assets li {
-  padding: .45rem 0;
-  border-bottom: 1px solid var(--border);
+.assets {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-wrap: wrap; gap: .6rem;
+  font-size: .86rem;
 }
-.assets li:last-child { border-bottom: 0; padding-bottom: 0; }
+.assets li {
+  flex: 0 0 auto; min-width: 11rem;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: .55rem .9rem;
+}
 .assets a { display: block; font-weight: 600; }
 .asset-file {
   display: block; font-family: var(--mono); font-size: .74rem;

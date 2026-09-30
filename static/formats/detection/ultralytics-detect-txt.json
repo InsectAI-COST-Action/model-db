@@ -1,66 +1,68 @@
 {
-    "id": "ultralytics-detect-txt",
-    "serialization": "text/plain",
     "types": {
         "row": [
-            "T[int]",
+            "T[integer]",
             "T[float]",
             "T[float]",
             "T[float]",
             "T[float]",
             "? : T[float]",
-            "? : T[int]"
+            "? : T[integer]"
         ]
     },
+    "enums": {},
     "structure": [
         "T[row]"
     ],
-    "columns": [
-        "class",
-        "x_center",
-        "y_center",
-        "width",
-        "height",
-        "confidence (only with save_conf)",
-        "track_id (only for tracking results)"
-    ],
-    "coordinates": "Box center and size, divided by original image width/height respectively.",
     "notes": {
         "encoding": "Space-separated numeric values formatted with %g; one instance per line, trailing newline. This JSON file describes the text layout; the producer does not emit JSON.",
         "classes": "Zero-based model class index. Class meanings require the producing model class-name mapping, which is not embedded.",
-        "confidence": "Last column is present only when save_conf is enabled; disabled by default.",
+        "confidence": "Confidence is included only with save_conf; a tracking ID, when present, follows it.",
         "files": "Appends to the output text file. No write when no detections exist; an existing file is not cleared.",
         "metadata": "No image dimensions, image path or class names in each row. Keep source-image association externally.",
         "tracking": "Tracking appends an integer track_id after the optional confidence. A sixth detection column can therefore be confidence OR track_id; the producer options must be known.",
-        "order": "Preserves Results.boxes order, except that segmentation rows with fewer than three contour points are skipped."
-    },
-    "example": "0 0.5 0.5 0.25 0.5 0.9\n",
-    "example_options": {
-        "save_conf": true
-    },
-    "models": [
-        "YOLO11",
-        "YOLO26"
-    ],
-    "producer": "Results.save_txt(path, save_conf=False)",
-    "sources": [
-        {
-            "url": "https://github.com/ultralytics/ultralytics/blob/8a55f07e379d0d0f66cc23d09e35f54588fd1435/ultralytics/engine/results.py",
-            "revision": "8a55f07e379d0d0f66cc23d09e35f54588fd1435"
+        "order": "Preserves Results.boxes order, except that segmentation rows with fewer than three contour points are skipped.",
+        "id": "ultralytics-detect-txt",
+        "serialization": "text/plain",
+        "columns": [
+            "class",
+            "x_center",
+            "y_center",
+            "width",
+            "height",
+            "confidence (only with save_conf)",
+            "track_id (only for tracking results)"
+        ],
+        "coordinates": "Box center and size, divided by original image width/height respectively.",
+        "example": "0 0.5 0.5 0.25 0.5 0.9\n",
+        "example_options": {
+            "save_conf": true
         },
-        {
-            "url": "https://github.com/ultralytics/ultralytics/blob/8a55f07e379d0d0f66cc23d09e35f54588fd1435/ultralytics/utils/__init__.py",
-            "revision": "8a55f07e379d0d0f66cc23d09e35f54588fd1435"
-        },
-        {
-            "url": "https://github.com/ultralytics/ultralytics/blob/8a55f07e379d0d0f66cc23d09e35f54588fd1435/ultralytics/models/yolo/detect/predict.py",
-            "revision": "8a55f07e379d0d0f66cc23d09e35f54588fd1435"
-        }
-    ],
-    "emitted": [
-        "bbox",
-        "class",
-        "confidence (optional)",
-        "track_id (tracking only)"
-    ]
+        "models": [
+            "YOLO11",
+            "YOLO26"
+        ],
+        "producer": "Results.save_txt(path, save_conf=False)",
+        "sources": [
+            {
+                "url": "https://github.com/ultralytics/ultralytics/blob/8a55f07e379d0d0f66cc23d09e35f54588fd1435/ultralytics/engine/results.py",
+                "revision": "8a55f07e379d0d0f66cc23d09e35f54588fd1435"
+            },
+            {
+                "url": "https://github.com/ultralytics/ultralytics/blob/8a55f07e379d0d0f66cc23d09e35f54588fd1435/ultralytics/utils/__init__.py",
+                "revision": "8a55f07e379d0d0f66cc23d09e35f54588fd1435"
+            },
+            {
+                "url": "https://github.com/ultralytics/ultralytics/blob/8a55f07e379d0d0f66cc23d09e35f54588fd1435/ultralytics/models/yolo/detect/predict.py",
+                "revision": "8a55f07e379d0d0f66cc23d09e35f54588fd1435"
+            }
+        ],
+        "emitted": [
+            "bbox",
+            "class",
+            "confidence (optional)",
+            "track_id (tracking only)"
+        ],
+        "numeric_encoding": "Float tokens use %g formatting, which can omit the decimal point for whole-valued coordinates or confidence. Types describe the decoded column meaning, not the presence of a decimal point."
+    }
 }

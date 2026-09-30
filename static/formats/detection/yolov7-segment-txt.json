@@ -1,9 +1,7 @@
 {
-    "id": "yolov7-segment-txt",
-    "serialization": "text/plain",
     "types": {
         "row": [
-            "T[int]",
+            "T[integer]",
             "T[float]",
             "T[float]",
             "T[float]",
@@ -11,18 +9,10 @@
             "? : T[float]"
         ]
     },
+    "enums": {},
     "structure": [
         "T[row]"
     ],
-    "columns": [
-        "class",
-        "x_center",
-        "y_center",
-        "width",
-        "height",
-        "confidence (only with save_conf)"
-    ],
-    "coordinates": "Box center and size, divided by original image width/height respectively.",
     "notes": {
         "encoding": "Space-separated numeric values formatted with %g; one instance per line, trailing newline. This JSON file describes the text layout; the producer does not emit JSON.",
         "classes": "Zero-based model class index. Class meanings require the producing model class-name mapping, which is not embedded.",
@@ -31,26 +21,38 @@
         "metadata": "No image dimensions, image path or class names in each row. Keep source-image association externally.",
         "rounding": "Original-image corner coordinates are rounded before conversion to the normalized text representation.",
         "order": "Detection rows are traversed in reverse order.",
-        "segmentation": "This segmentation script writes only boxes to text. It computes masks internally for plotting but does not serialize masks or polygons here."
-    },
-    "example": "0 0.5 0.5 0.25 0.5 0.9\n",
-    "example_options": {
-        "save_conf": true
-    },
-    "models": [
-        "yolov7-seg"
-    ],
-    "producer": "seg/segment/predict.py --save-txt",
-    "sources": [
-        {
-            "url": "https://github.com/WongKinYiu/yolov7/blob/44f30af0daccb1a3baecc5d80eae22948516c579/seg/segment/predict.py",
-            "revision": "44f30af0daccb1a3baecc5d80eae22948516c579"
-        }
-    ],
-    "emitted": [
-        "bbox",
-        "class",
-        "confidence (optional)"
-    ],
-    "interoperability": "Same text layout as yolov7-detect-txt; cannot reconstruct segmentation masks from these rows."
+        "segmentation": "This segmentation script writes only boxes to text. It computes masks internally for plotting but does not serialize masks or polygons here.",
+        "id": "yolov7-segment-txt",
+        "serialization": "text/plain",
+        "columns": [
+            "class",
+            "x_center",
+            "y_center",
+            "width",
+            "height",
+            "confidence (only with save_conf)"
+        ],
+        "coordinates": "Box center and size, divided by original image width/height respectively.",
+        "example": "0 0.5 0.5 0.25 0.5 0.9\n",
+        "example_options": {
+            "save_conf": true
+        },
+        "models": [
+            "yolov7-seg"
+        ],
+        "producer": "seg/segment/predict.py --save-txt",
+        "sources": [
+            {
+                "url": "https://github.com/WongKinYiu/yolov7/blob/44f30af0daccb1a3baecc5d80eae22948516c579/seg/segment/predict.py",
+                "revision": "44f30af0daccb1a3baecc5d80eae22948516c579"
+            }
+        ],
+        "emitted": [
+            "bbox",
+            "class",
+            "confidence (optional)"
+        ],
+        "interoperability": "Same text layout as yolov7-detect-txt; cannot reconstruct segmentation masks from these rows.",
+        "numeric_encoding": "Float tokens use %g formatting, which can omit the decimal point for whole-valued coordinates or confidence. Types describe the decoded column meaning, not the presence of a decimal point."
+    }
 }
