@@ -64,6 +64,7 @@
         "category_id": "Producer category ID; interpretation requires the source vocabulary. IDs are not automatically remapped between vocabularies.",
         "area": "Optional source-reported area, in pixel-square units. It is not automatically recomputed from a box or contour.",
         "extra_information": "Per-record and per-instance namespaced adapter fields preserve native details without making them universal IR concepts.",
-        "compatibility": "ir_name=\"ISIR\" and ir_id=1 identify this data IR contract, not an individual prediction. Unknown versions must be handled explicitly."
+        "compatibility": "ir_name=\"ISIR\" and ir_id=1 identify this data IR contract, not an individual prediction. Unknown versions must be handled explicitly.",
+        "scope": "One ISIR record describes detections on exactly one image. Multi-image adapters return a collection of these records; dataset-level metadata may be retained separately from the per-image records."
     }
 }

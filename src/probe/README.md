@@ -59,9 +59,10 @@ code with the invoking user's permissions. Only run reviewed model sources.
 was inspected. It is evidence for that checkpoint, input and invocation—not
 proof about every version, option, or checkpoint in the model family.
 `inconclusive` means inference completed but produced no populated instance
-output. `failed` retains the runtime error and log. `blocked` records a known
-missing prerequisite, such as an OAK device, without substituting generic YOLO
-inference for the intended workflow.
+output. `failed` retains the runtime error and log. `blocked` records a missing prerequisite (such as an OAK device) or an interface
+that has only been source-inspected and has no runtime adapter yet. Its reason
+distinguishes these cases; neither substitutes generic YOLO inference for the
+intended workflow.
 
 Fixture adapters may prepare input directories, generate a blank control or a
 short video from a real image, select CPU, and redirect downloads to pinned
@@ -90,3 +91,8 @@ owns downloads, time limits, process isolation, and evidence recording.
 Each report has a schema version and a `capability` field, currently only
 `output_format`. This leaves room for later metadata probes without mixing
 parameter counting or architecture inference into the current output tests.
+
+The [current detection coverage audit](reports/2026-09-30-format-expansion/README.md)
+includes source-inspected profiles and distinguishes them from runtime evidence.
+BioMoth and Mothbot execute selected original author function bodies from pinned
+sources; their report scope lists omitted notebook/UI and downstream stages.
