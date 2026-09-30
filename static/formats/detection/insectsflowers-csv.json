@@ -1,0 +1,50 @@
+{
+    "id": "insectsflowers-csv",
+    "serialization": "text/csv (no header)",
+    "producer": "yolov5/detectCSVNI2v2.py --save-txt --save-conf",
+    "sources": [
+        {
+            "url": "https://github.com/kimbjerge/insectsFlowers/blob/eacd588d8069e6882c287f9039abf7064b210a20/yolov5/detectCSVNI2v2.py",
+            "revision": "eacd588d8069e6882c287f9039abf7064b210a20"
+        }
+    ],
+    "types": {
+        "row": [
+            "T[str]",
+            "T[str]",
+            "T[str]",
+            "T[str]",
+            "T[int]",
+            "T[int]",
+            "T[int]",
+            "T[int]",
+            "T[int]",
+            "T[int]",
+            "T[str]"
+        ]
+    },
+    "structure": [
+        "T[row]"
+    ],
+    "columns": [
+        "system/year",
+        "camera",
+        "date",
+        "time",
+        "confidence",
+        "detectId",
+        "x1",
+        "y1",
+        "x2",
+        "y2",
+        "fileName"
+    ],
+    "notes": {
+        "confidence": "Integer percentage: round(confidence * 100).",
+        "classes": "One-based detector class IDs: cls + 1.",
+        "coordinates": "Rounded pixel corners relative to the original image. Source contains a clipping quirk: y2 above image height assigns image height to y1.",
+        "time": "Date YYYYMMDD and time HHMMSS are derived from input file modification time in the process local timezone.",
+        "files": "CSV is appended to <name>.csv; no header. The same invocation also emits normalized YOLO text files.",
+        "provenance": "Tested with the registry 2023 Zenodo checkpoint using the user-supplied author repository. Repository documentation describes a later study; historical pairing with the 2023 paper remains unconfirmed."
+    }
+}

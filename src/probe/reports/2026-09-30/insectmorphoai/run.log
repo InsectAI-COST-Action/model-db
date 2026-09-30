@@ -1,0 +1,116 @@
+Installed 1 package in 66ms
+Creating new Ultralytics Settings v0.0.6 file ✅ 
+View Ultralytics Settings with 'yolo settings' or at '/home/asger/model-db/src/probe/runs/20260930T095026-39324928/insectmorphoai/config/Ultralytics/settings.json'
+Update Settings with 'yolo settings key=value', i.e. 'yolo settings runs_dir=path/to/dir'. For help see https://docs.ultralytics.com/quickstart/#ultralytics-settings.
+2026-09-30 09:51:40,597 - INFO - ================================================================================
+2026-09-30 09:51:40,598 - INFO - InsectMorphoAI Headless Analysis Tool v3.0 (Production)
+2026-09-30 09:51:40,598 - INFO - ================================================================================
+2026-09-30 09:51:40,598 - INFO - Start time: 2026-09-30 09:51:40
+2026-09-30 09:51:40,598 - INFO - ================================================================================
+2026-09-30 09:51:40,598 - INFO - ================================================================================
+2026-09-30 09:51:40,598 - INFO - ENVIRONMENT VALIDATION
+2026-09-30 09:51:40,598 - INFO - ================================================================================
+2026-09-30 09:51:40,598 - INFO - ✓ OBB model found: data/models/YOLOv8_obb/yolov8m_obb3_best.pt
+2026-09-30 09:51:40,598 - INFO - ✓ Segmentation model found: data/models/YOLOv8_seg/1_yolov8m_seg_s2_v1.pt
+2026-09-30 09:51:40,598 - INFO - ✓ Lenses config found: data/config/lenses.yaml
+2026-09-30 09:51:40,598 - INFO - ✓ Biomass config found: data/config/biomass.yaml
+2026-09-30 09:51:40,603 - INFO - ✓ Lens configuration validated: MV65051B
+2026-09-30 09:51:40,603 - INFO - ✓ PyTorch version: 2.5.1+cpu
+2026-09-30 09:51:40,603 - WARNING - ⚠ CUDA not available - processing will use CPU (slower)
+2026-09-30 09:51:40,603 - WARNING -   For GPU acceleration, ensure PyTorch with CUDA support is installed
+2026-09-30 09:51:40,603 - INFO - ✓ All validation checks passed
+2026-09-30 09:51:40,603 - INFO - ================================================================================
+2026-09-30 09:51:40,604 - INFO - Output directory: /home/asger/model-db/src/probe/runs/20260930T095026-39324928/insectmorphoai/artifacts/predictions
+2026-09-30 09:51:40,604 - INFO - Loading image paths from: /home/asger/model-db/src/probe/runs/20260930T095026-39324928/insectmorphoai/source/insectmorphoAI-b95bd0543f37e43548bb358522e1354953f4ab28-b95bd0543f37e43548bb358522e1354953f4ab28/img/test
+2026-09-30 09:51:40,606 - INFO - Found 3 images in directory (recursive search)
+2026-09-30 09:51:40,606 - INFO - ================================================================================
+2026-09-30 09:51:40,606 - INFO - CONFIGURATION
+2026-09-30 09:51:40,606 - INFO - ================================================================================
+2026-09-30 09:51:40,606 - INFO - Total images to process: 3
+2026-09-30 09:51:40,606 - INFO - Analysis type: both
+2026-09-30 09:51:40,606 - INFO - Worker processes: 1
+2026-09-30 09:51:40,606 - INFO - Chunk size: 1
+2026-09-30 09:51:40,606 - INFO - Batch save interval: 100 (saves and clears memory)
+2026-09-30 09:51:40,606 - INFO - Timeout per image: 120s
+2026-09-30 09:51:40,606 - INFO - Continue on error: False
+2026-09-30 09:51:40,607 - INFO - Save images: False
+2026-09-30 09:51:40,607 - INFO - Biomass estimation: Enabled
+2026-09-30 09:51:40,607 - INFO - ================================================================================
+2026-09-30 09:51:40,607 - INFO - NOTE: First few images may be slower due to model loading in workers
+2026-09-30 09:51:40,607 - INFO - ================================================================================
+2026-09-30 09:51:40,607 - INFO - Starting processing...
+
+Processing images:   0%|          | 0/3 [00:00<?, ?img/s]
+image 1/1 /home/asger/model-db/src/probe/runs/20260930T095026-39324928/insectmorphoai/source/insectmorphoAI-b95bd0543f37e43548bb358522e1354953f4ab28-b95bd0543f37e43548bb358522e1354953f4ab28/temp_padded_bccc5d43672e4bcf99dbcf760d479da6.jpg: 800x1024 1 insect, 825.1ms
+Speed: 6.4ms preprocess, 825.1ms inference, 6.6ms postprocess per image at shape (1, 3, 800, 1024)
+
+  0%|          | 0/110 [00:00<?, ?it/s]
+ 15%|█▍        | 16/110 [00:00<00:00, 155.85it/s]
+ 29%|██▉       | 32/110 [00:00<00:00, 143.29it/s]
+ 43%|████▎     | 47/110 [00:00<00:00, 140.82it/s]
+ 56%|█████▋    | 62/110 [00:00<00:00, 139.12it/s]
+ 69%|██████▉   | 76/110 [00:00<00:00, 127.12it/s]
+ 82%|████████▏ | 90/110 [00:00<00:00, 129.14it/s]
+ 95%|█████████▌| 105/110 [00:00<00:00, 134.70it/s]
+100%|██████████| 110/110 [00:00<00:00, 137.95it/s]
+
+Processing images:  33%|███▎      | 1/3 [00:12<00:24, 12.06s/img]
+image 1/1 /home/asger/model-db/src/probe/runs/20260930T095026-39324928/insectmorphoai/source/insectmorphoAI-b95bd0543f37e43548bb358522e1354953f4ab28-b95bd0543f37e43548bb358522e1354953f4ab28/temp_padded_1bcfacf714e5465a88bc3de72434bd64.jpg: 800x1024 1 insect, 852.6ms
+Speed: 6.1ms preprocess, 852.6ms inference, 1.7ms postprocess per image at shape (1, 3, 800, 1024)
+
+  0%|          | 0/110 [00:00<?, ?it/s]
+ 15%|█▌        | 17/110 [00:00<00:00, 158.81it/s]
+ 30%|███       | 33/110 [00:00<00:00, 153.83it/s]
+ 45%|████▍     | 49/110 [00:00<00:00, 139.03it/s]
+ 58%|█████▊    | 64/110 [00:00<00:00, 129.82it/s]
+ 71%|███████   | 78/110 [00:00<00:00, 124.10it/s]
+ 85%|████████▍ | 93/110 [00:00<00:00, 131.21it/s]
+100%|██████████| 110/110 [00:00<00:00, 140.75it/s]
+100%|██████████| 110/110 [00:00<00:00, 137.58it/s]
+
+Processing images:  67%|██████▋   | 2/3 [00:17<00:08,  8.10s/img]
+image 1/1 /home/asger/model-db/src/probe/runs/20260930T095026-39324928/insectmorphoai/source/insectmorphoAI-b95bd0543f37e43548bb358522e1354953f4ab28-b95bd0543f37e43548bb358522e1354953f4ab28/temp_padded_a5039882528147a68fa94d375bb56c9a.jpg: 800x1024 1 insect, 832.3ms
+Speed: 7.3ms preprocess, 832.3ms inference, 1.6ms postprocess per image at shape (1, 3, 800, 1024)
+
+  0%|          | 0/110 [00:00<?, ?it/s]
+ 15%|█▍        | 16/110 [00:00<00:00, 151.27it/s]
+ 29%|██▉       | 32/110 [00:00<00:00, 149.10it/s]
+ 43%|████▎     | 47/110 [00:00<00:00, 132.92it/s]
+ 55%|█████▌    | 61/110 [00:00<00:00, 127.66it/s]
+ 69%|██████▉   | 76/110 [00:00<00:00, 132.00it/s]
+ 84%|████████▎ | 92/110 [00:00<00:00, 138.71it/s]
+100%|██████████| 110/110 [00:00<00:00, 145.91it/s]
+
+Processing images: 100%|██████████| 3/3 [00:22<00:00,  6.88s/img]
+Processing images: 100%|██████████| 3/3 [00:22<00:00,  7.61s/img]
+2026-09-30 09:52:04,179 - INFO - Saving final partial batch...
+2026-09-30 09:52:04,186 - INFO - ✓ Saved batch 1: 3 OBB results → rapid_scan_batch_0001_20260930_095204.csv
+2026-09-30 09:52:04,187 - INFO - ✓ Saved batch 1: 3 seg results → detailed_analysis_batch_0001_20260930_095204.csv
+2026-09-30 09:52:04,272 - INFO - ================================================================================
+2026-09-30 09:52:04,272 - INFO - Merging batch results into final files...
+2026-09-30 09:52:04,272 - INFO - ================================================================================
+2026-09-30 09:52:04,273 - INFO - Found 1 OBB batch files to merge
+2026-09-30 09:52:04,275 - INFO - ✓ Merged 3 OBB results → /home/asger/model-db/src/probe/runs/20260930T095026-39324928/insectmorphoai/artifacts/predictions/Rapid_Scan/rapid_scan_results_final.csv
+2026-09-30 09:52:04,276 - INFO - Found 1 segmentation batch files to merge
+2026-09-30 09:52:04,279 - INFO - ✓ Merged 3 segmentation results → /home/asger/model-db/src/probe/runs/20260930T095026-39324928/insectmorphoai/artifacts/predictions/Detailed_Analysis/detailed_analysis_results_final.csv
+2026-09-30 09:52:04,279 - INFO - ✓ Batch merging completed successfully
+2026-09-30 09:52:04,279 - INFO - 
+================================================================================
+2026-09-30 09:52:04,279 - INFO - PROCESSING SUMMARY
+2026-09-30 09:52:04,279 - INFO - ================================================================================
+2026-09-30 09:52:04,279 - INFO - End time: 2026-09-30 09:52:04
+2026-09-30 09:52:04,279 - INFO - --------------------------------------------------------------------------------
+2026-09-30 09:52:04,282 - INFO - Total images: 3
+2026-09-30 09:52:04,282 - INFO - Successfully processed (OBB): 3
+2026-09-30 09:52:04,282 - INFO - OBB failures: 0
+2026-09-30 09:52:04,282 - INFO - Successfully processed (Segmentation): 3
+2026-09-30 09:52:04,282 - INFO - Segmentation failures: 0
+2026-09-30 09:52:04,282 - INFO - Images with critical errors: 0
+2026-09-30 09:52:04,282 - INFO - --------------------------------------------------------------------------------
+2026-09-30 09:52:04,282 - INFO - OBB success rate: 100.0%
+2026-09-30 09:52:04,283 - INFO - Segmentation success rate: 100.0%
+2026-09-30 09:52:04,283 - INFO - --------------------------------------------------------------------------------
+2026-09-30 09:52:04,283 - INFO - Results saved to: /home/asger/model-db/src/probe/runs/20260930T095026-39324928/insectmorphoai/artifacts/predictions
+2026-09-30 09:52:04,283 - INFO - ================================================================================
+2026-09-30 09:52:04,283 - INFO - ✓ All images processed successfully!
+2026-09-30 09:52:04,283 - INFO - ================================================================================

@@ -6,7 +6,7 @@ description        = "YOLOv5 model trained on flower pollinators."
 # ── Catalogue ───────────────────────────────────────────────────────
 category           = "detection"
 task               = ["Object Detection"]
-architecture       = "YOLOv5"
+architecture       = ["YOLOv5"]
 year               = 2023
 license            = "CC-BY-4.0"
 status             = "published"
@@ -119,3 +119,12 @@ See the source publication.
 
 From Zenodo record [`7395752`](https://zenodo.org/records/7395752). No authentication is
 required. The record contains several files, the weights are in the `YOLOv5models.zip` file.
+
+## Output format probe
+
+The published 1280s6 checkpoint was tested with the author’s
+[insectsFlowers CSV exporter](https://github.com/kimbjerge/insectsFlowers/blob/eacd588d8069e6882c287f9039abf7064b210a20/yolov5/detectCSVNI2v2.py).
+It produced headerless CSV rows with pixel corners, one-based class IDs and
+integer percentage confidence, alongside YOLO text. That repository describes
+a later study; its historical pairing with this 2023 model is unconfirmed, so
+the advertised format remains unassigned. Probe date: 2026-09-30.

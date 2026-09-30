@@ -15,12 +15,13 @@
         <th scope="col">Input size</th>
         <th scope="col">Year</th>
         <th scope="col">License</th>
+        <th scope="col">Output Format</th>
       </tr>
     </thead>
     <tbody>
     {{- range $rows }}
       {{- $p := .Params -}}
-      {{- $haystack := printf "%s %s %s %s %s %s" .Title (.Description | default "") $p.architecture ($p.taxonomic_coverage | default "") (delimit ($p.task | default slice) " ") ($p.developer | default "") -}}
+      {{- $haystack := printf "%s %s %s %s %s %s" .Title (.Description | default "") (delimit ($p.architecture | default slice) " ") ($p.taxonomic_coverage | default "") (delimit ($p.task | default slice) " ") ($p.developer | default "") -}}
       <tr data-id="{{ path.Base .File.Dir }}"
           data-task="{{ delimit ($p.task | default slice) ";" }}"
           data-year="{{ $p.year }}"
@@ -39,7 +40,7 @@
             <span class="muted">—</span>
           {{- end -}}
         </td>
-        <td>{{ $p.architecture }}</td>
+        <td>{{ delimit $p.architecture ", " }}</td>
         <td>{{ if $p.input_modality }}{{ delimit $p.input_modality ", " }}{{ else }}image{{ end }}</td>
         <td>
           {{- $scope := $p.vocabulary_scope | default "closed" -}}
@@ -48,6 +49,20 @@
         <td>{{ $p.image_input_size | default "any" }}</td>
         <td>{{ $p.year }}</td>
         <td><span class="lic">{{ $p.license }}</span></td>
+        <td>
+          {{- if $p.output_format }}
+          {{- $formats := $p.output_format }}
+          {{- $uniqueFormats := uniq $formats }}
+          {{- if eq (len $uniqueFormats) 1 }}
+            {{- $formats = $uniqueFormats }}
+          {{- end }}
+          {{- range $formats }}
+          <span class="lic"><a href="{{ printf "formats/%s/%s.json" $p.category . | relURL }}">{{ . }}</a></span>
+          {{- end }}
+          {{- else -}}
+            <div class="center muted">—</div>
+          {{- end -}}
+        </td>
       </tr>
     {{- end }}
     </tbody>

@@ -1,0 +1,8 @@
+warning: `VIRTUAL_ENV=/home/asger/model-db/src/probe/.venv` does not match the project environment path `/home/asger/model-db/src/probe/environments/flatbug/.venv` and will be ignored; use `--active` to target the active environment instead
+
+Processing images:   0%|          | 0/2 [00:00<?, ?image/s]
+Processing images:   0%|          | 0/2 [00:00<?, ?image/s, Processing blank.png]
+Processing images:  50%|█████     | 1/2 [00:03<00:03,  3.58s/image, Processing blank.png]
+Processing images:  50%|█████     | 1/2 [00:03<00:03,  3.58s/image, Processing specimen.jpg]
+Processing images: 100%|██████████| 2/2 [00:55<00:00, 31.80s/image, Processing specimen.jpg]
+Processing images: 100%|██████████| 2/2 [00:55<00:00, 27.57s/image, Processing specimen.jpg]

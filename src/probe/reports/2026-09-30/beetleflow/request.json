@@ -1,0 +1,25 @@
+{
+  "id": "beetleflow",
+  "model": "beetleflow",
+  "variant": "5-class",
+  "environment": "beetleflow",
+  "adapter": "beetleflow",
+  "scope": "Author batch segmentation CLI, 5-class checkpoint and author test image; original resolution outputs.",
+  "entrypoint": "pipeline/3_segmentation/batch_inference.py",
+  "author_sources": [
+    "https://github.com/Imageomics/BeetleFlow/blob/ab0bf99555832647ff57d0e5a51e671f6b8e40cf/pipeline/3_segmentation/batch_inference.py"
+  ],
+  "resources": {
+    "weights": "beetleflow-model.safetensors",
+    "config": "beetleflow-config.json",
+    "author_script": "beetleflow-script",
+    "image": "beetleflow-image"
+  },
+  "paths": {
+    "weights": "/home/asger/model-db/src/probe/.cache/2867e36bd9882ab82d36b707e0228dc003df5a1f64928b43f6a66ca42407aef1/model.safetensors",
+    "config": "/home/asger/model-db/src/probe/.cache/f905adfc2adc51a1b77e1bf9d3e662f70677ba97d42efc51df0133aa24f8920d/config.json",
+    "author_script": "/home/asger/model-db/src/probe/.cache/530fa0b855292fabbaa8b670cf576a53765e57d09406e0459b08733dee01570b/batch_inference.py",
+    "image": "/home/asger/model-db/src/probe/.cache/ff56bc8cd5806e55ed2dbe70dadc935faa80e610846bfb24fc6c3969324f32f3/0008.png"
+  },
+  "output": "/home/asger/model-db/src/probe/runs/20260930T094756-b7acece8/beetleflow/artifacts"
+}

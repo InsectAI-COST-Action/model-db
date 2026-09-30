@@ -1,0 +1,4 @@
+
+image 1/2 /home/asger/model-db/src/probe/runs/20260930T093731-6b1843c4/arthronat/artifacts/inputs/blank.png: 640x640 (no detections), 74.4ms
+image 2/2 /home/asger/model-db/src/probe/runs/20260930T093731-6b1843c4/arthronat/artifacts/inputs/specimen.jpg: 384x640 1 Arthropod, 46.9ms
+Speed: 2.4ms preprocess, 60.7ms inference, 2.6ms postprocess per image at shape (1, 3, 384, 640)

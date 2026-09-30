@@ -33,7 +33,8 @@ category           = "detection"                  # must already exist in data/c
 task               = ["Object Detection"]         # Object Detection | Instance Segmentation |
                                                  # Semantic Segmentation | Classification |
                                                  # Tracking | Embedding | Counting
-architecture       = "REPLACE"                   # YOLOv8, ViT, Swin Transformer…
+architecture       = ["REPLACE"]                 # YOLOv8, ViT, Swin Transformer… One
+                                                 # entry per architecture.
 base_model          = ""                          # If this is a fine-tuned model, name the
                                                  # base model it was fine-tuned from.
 year               = 2025                        # year of publication or release
@@ -45,12 +46,10 @@ status             = "draft"                     # draft | published | deprecate
 # Optional. Delete any line you do not have an answer for - the default is in
 # the comment.
 date               = 2026-09-22                  # when this entry was added to the zoo
-vocabulary_scope   = "closed"                    # closed | open | taxonomic.
-                                                 # Anything but `closed` is shown as
-                                                 # "zero-shot" - it means the model
-                                                 # handles concepts it was not
-                                                 # trained on.
+vocabulary_scope   = "closed"                    # closed | open.
 geographic_scope   = ""                          # e.g. "France", "Global"
+# Optional: one verified output profile per architecture; see static/formats/README.md.
+# output_format    = ["ultralytics-detect-json"]
 produces           = ["bbox"]                    # bbox | mask | label | count | track | embedding
 image_input_size         = "640x640"                   # or "any" for native resolution
 input_modality     = []                          # text | image | box | point | mask.

@@ -1,0 +1,32 @@
+{
+    "types": {
+        "box": [
+            "T[float]",
+            "T[float]",
+            "T[float]",
+            "T[float]"
+        ],
+        "contour": [
+            ["T[float]"],
+            ["T[float]"]
+        ]
+    },
+    "structure": {
+        "boxes": ["T[box]"],
+        "contours": ["T[contour]"],
+        "confs": ["T[float]"],
+        "classes": ["T[int]"],
+        "scales": ["T[float]"],
+        "areas": ["T[float]"],
+        "image_path": "T[str]",
+        "image_width": "T[int]",
+        "image_height": "T[int]",
+        "mask_width": "T[int]",
+        "mask_height": "T[int]",
+        "identifier": "? : null | T[str]"
+    },
+    "notes": {
+        "mask_dimensions": "In practice there is never any difference between image and mask dimension with the flatbug models.",
+        "classes": "Since the flatbug models do not try to do classification, the values in classification is actually just all ones (1)."
+    }
+}

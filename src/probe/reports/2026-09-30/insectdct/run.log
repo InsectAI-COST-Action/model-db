@@ -1,0 +1,254 @@
+Creating new Ultralytics Settings v0.0.6 file ✅ 
+View Ultralytics Settings with 'yolo settings' or at '/home/asger/model-db/src/probe/runs/20260930T095933-c16b7a90/insectdct/config/Ultralytics/settings.json'
+Update Settings with 'yolo settings key=value', i.e. 'yolo settings runs_dir=path/to/dir'. For help see https://docs.ultralytics.com/quickstart/#ultralytics-settings.
+/home/asger/model-db/src/probe/runs/20260930T095933-c16b7a90/insectdct/artifacts/author-source/common/hierarchical_classifier.py:184: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  self.model.load_state_dict(torch.load(model_weights, map_location=self.device))
+Store results files (csv, avi) in /home/asger/model-db/src/probe/runs/20260930T095933-c16b7a90/insectdct/artifacts/predictions/
+Loading hierarchical insect classifier model /home/asger/model-db/src/probe/runs/20260930T095933-c16b7a90/insectdct/artifacts/models_save/HierarchicalClassifier_CNB_V6.pth ConvNextBase V6
+Labels and hierarchy dependency loaded from  /home/asger/model-db/src/probe/runs/20260930T095933-c16b7a90/insectdct/artifacts/models_save/HierarchicalLabels3L_CNB_V6.pkl
+=============================================================================================
+L1 classes ['Aranaea', 'Birds', 'Coleoptera', 'Dermaptera', 'Diptera', 'Hemiptera', 'Herpetofauna', 'Hymenoptera_bees', 'Hymenoptera_nobees', 'Isopoda', 'Larvae', 'Lepidoptera', 'Lepidoptera_fw', 'Milipedes', 'Odonata', 'Orthoptera', 'Slugs', 'Snails', 'Vegetation'] 19
+=============================================================================================
+L2 classes ['Acrididae', 'Apidae', 'Apoidea', 'Aranaea', 'Birds', 'Bombyliidae', 'Cantharidae', 'Chrysididae', 'Coccinellidae', 'Coleoptera', 'Crabronidae', 'Dermaptera', 'Diptera', 'Formidicidae', 'Hemiptera', 'Herpetofauna', 'Hesperidae', 'Ichneumonidae', 'Isopoda', 'Larvae', 'Lepidoptera', 'Lepidoptera_fw', 'Lycaenidae', 'Megachilidae', 'Milipedes', 'Moths', 'Nymphalidae', 'Nymphalidae_fw', 'Odonata', 'Orthoptera', 'Pieridae', 'Pompilidae', 'Sarcophagidae', 'Slugs', 'Snails', 'Syrphidae', 'Tettigoniidae', 'Vegetation', 'Vespidae'] 39
+=============================================================================================
+L3 classes ['Acrididae', 'Aglais io', 'Aglais urticae', 'Aglais urticae_fw', 'Anthidium oblongatum', 'Aphantopus hyperantus', 'Apis mellifera', 'Apoidea', 'Apoidea red_abdomen', 'Apoidea reddish', 'Apoidea small', 'Apoidea striped', 'Aranaea', 'Birds', 'Bombus', 'Bombus hypnorum', 'Bombus lapidarius', 'Bombus pascuorum', 'Bombus sylvarum', 'Bombus terrestris', 'Bombyliidae', 'Chorthippus', 'Chrysididae', 'Chrysotoxum', 'Coccinella septempunctata', 'Coenonympha pamphilus', 'Coleoptera', 'Crabronidae', 'Decticus verrucivorus', 'Dermaptera', 'Diptera', 'Episyrphus balteatus', 'Eristalis', 'Eupeodes', 'Eurimyia', 'Formidicidae', 'Helophilus', 'Hemiptera', 'Herpetofauna', 'Hesperidae', 'Ichneumonidae', 'Isopoda', 'Larvae', 'Lepidoptera', 'Lepidoptera_fw', 'Lycaena phlaeas', 'Lycaenidae', 'Maniola jurtina', 'Maniola jurtina_fw', 'Megachilidae', 'Melanargia galathea', 'Meliscaeva cinctella', 'Milipedes', 'Moths', 'Myathropa florea', 'Nomada', 'Nymphalidae', 'Odonata', 'Odynerus spinipes', 'Omocestus viridulus', 'Orthoptera', 'Pholidoptera griseoaptera', 'Pieridae', 'Platycheirus', 'Pompilidae', 'Rhagonycha fulva', 'Sarcophagidae', 'Satyrinae_fw', 'Scaeva', 'Scaeva pyrastri', 'Slugs', 'Snails', 'Sphaerophoria scripta-complex', 'Syritta pipiens', 'Syrphidae', 'Syrphus', 'Vegetation', 'Vespidae', 'Vespula vulgaris', 'Xanthogramma'] 80
+=============================================================================================
+L2 -> L1 dependency {'Aranaea': ['Aranaea'], 'Birds': ['Birds'], 'Coleoptera': ['Coleoptera', 'Cantharidae', 'Coccinellidae'], 'Diptera': ['Diptera', 'Sarcophagidae', 'Syrphidae', 'Bombyliidae'], 'Hemiptera': ['Hemiptera'], 'Herpetofauna': ['Herpetofauna'], 'Hymenoptera_bees': ['Apidae', 'Apoidea', 'Megachilidae'], 'Hymenoptera_nobees': ['Crabronidae', 'Formidicidae', 'Ichneumonidae', 'Pompilidae', 'Vespidae', 'Chrysididae'], 'Isopoda': ['Isopoda'], 'Larvae': ['Larvae'], 'Lepidoptera': ['Lepidoptera', 'Hesperidae', 'Lycaenidae', 'Moths', 'Nymphalidae', 'Pieridae'], 'Lepidoptera_fw': ['Lepidoptera_fw', 'Nymphalidae_fw'], 'Milipedes': ['Milipedes'], 'Odonata': ['Odonata'], 'Orthoptera': ['Orthoptera', 'Acrididae', 'Tettigoniidae'], 'Slugs': ['Slugs'], 'Snails': ['Snails'], 'Vegetation': ['Vegetation'], 'Dermaptera': ['Dermaptera']}
+=============================================================================================
+L3 -> L2 dependency {'Aranaea': ['Aranaea'], 'Birds': ['Birds'], 'Coleoptera': ['Coleoptera'], 'Cantharidae': ['Rhagonycha fulva'], 'Coccinellidae': ['Coccinella septempunctata'], 'Diptera': ['Diptera'], 'Sarcophagidae': ['Sarcophagidae'], 'Syrphidae': ['Syrphidae', 'Chrysotoxum', 'Episyrphus balteatus', 'Eristalis', 'Eupeodes', 'Eurimyia', 'Helophilus', 'Meliscaeva cinctella', 'Myathropa florea', 'Platycheirus', 'Scaeva', 'Scaeva pyrastri', 'Sphaerophoria scripta-complex', 'Syritta pipiens', 'Syrphus', 'Xanthogramma'], 'Hemiptera': ['Hemiptera'], 'Herpetofauna': ['Herpetofauna'], 'Apidae': ['Apis mellifera', 'Bombus', 'Bombus hypnorum', 'Bombus lapidarius', 'Bombus pascuorum', 'Bombus terrestris', 'Bombus sylvarum', 'Nomada'], 'Apoidea': ['Apoidea red_abdomen', 'Apoidea small', 'Apoidea striped', 'Apoidea', 'Apoidea reddish'], 'Megachilidae': ['Megachilidae', 'Anthidium oblongatum'], 'Crabronidae': ['Crabronidae'], 'Formidicidae': ['Formidicidae'], 'Ichneumonidae': ['Ichneumonidae'], 'Pompilidae': ['Pompilidae'], 'Vespidae': ['Vespidae', 'Vespula vulgaris', 'Odynerus spinipes'], 'Isopoda': ['Isopoda'], 'Larvae': ['Larvae'], 'Lepidoptera': ['Lepidoptera'], 'Hesperidae': ['Hesperidae'], 'Lycaenidae': ['Lycaenidae', 'Lycaena phlaeas'], 'Moths': ['Moths'], 'Nymphalidae': ['Nymphalidae', 'Aglais io', 'Aglais urticae', 'Aphantopus hyperantus', 'Coenonympha pamphilus', 'Maniola jurtina', 'Melanargia galathea'], 'Pieridae': ['Pieridae'], 'Lepidoptera_fw': ['Lepidoptera_fw'], 'Nymphalidae_fw': ['Aglais urticae_fw', 'Maniola jurtina_fw', 'Satyrinae_fw'], 'Milipedes': ['Milipedes'], 'Odonata': ['Odonata'], 'Orthoptera': ['Orthoptera'], 'Acrididae': ['Acrididae', 'Chorthippus', 'Omocestus viridulus'], 'Tettigoniidae': ['Decticus verrucivorus', 'Pholidoptera griseoaptera'], 'Slugs': ['Slugs'], 'Snails': ['Snails'], 'Vegetation': ['Vegetation'], 'Dermaptera': ['Dermaptera'], 'Bombyliidae': ['Bombyliidae'], 'Chrysididae': ['Chrysididae']}
+=============================================================================================
+Load model ConvNextBase
+ConvNext_Base
+In features 1024
+Simple: Dropout -> Linear (256) -> ReLU -> Linear (num_classe layer Lx)
+Layer 1 19
+Layer 2 39
+layer 3 80
+Loaded model:  /home/asger/model-db/src/probe/runs/20260930T095933-c16b7a90/insectdct/artifacts/models_save/HierarchicalClassifier_CNB_V6.pth
+/home/asger/model-db/src/probe/runs/20260930T095933-c16b7a90/insectdct/artifacts/predictions/sequence-CL.csv
+pipeDetectAndClassifyInsectsTaxon.py version: 1.7.0
+ Namespace(yoloWeights='/home/asger/model-db/src/probe/.cache/aa52f247edf60a96ae757d46cf14b64d9c15dbbcaa122dfbaed90ee27eb0d278/insects8Motion11s.pt', optimized='', modelType='ConvNextBase', dataset='V6', hierachical='/home/asger/model-db/src/probe/runs/20260930T095933-c16b7a90/insectdct/artifacts/models_save/HierarchicalClassifier_CNB_V6.pth', labels='/home/asger/model-db/src/probe/runs/20260930T095933-c16b7a90/insectdct/artifacts/models_save/HierarchicalLabels3L_CNB_V6.pkl', thresholds='/home/asger/model-db/src/probe/runs/20260930T095933-c16b7a90/insectdct/artifacts/models_save/HierarchicalThresholds3S_CNB_V6.csv', thresholdStd=0.0, project='', useExifTime=False, video='', images='/home/asger/model-db/src/probe/runs/20260930T095933-c16b7a90/insectdct/artifacts/sequence/', confidence=0.369, device='cpu', camera='sequence', frame_stride=1, scale=1.0, videoMIE=False, moviePredict='', CSVformat='tracking', resultsDir='/home/asger/model-db/src/probe/runs/20260930T095933-c16b7a90/insectdct/artifacts/predictions', iou=0.3, unsureCheck='Weak')
+pi2_2025_02_21_11_57_31.jpg 20250221115731
+
+0: 1088x1920 (no detections), 604.4ms
+Speed: 5.2ms preprocess, 604.4ms inference, 1.2ms postprocess per image at shape (1, 3, 1088, 1920)
+pi2_2025_02_21_11_57_32.jpg 20250221115731
+
+0: 1088x1920 1 Insect, 779.7ms
+Speed: 5.4ms preprocess, 779.7ms inference, 1.6ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,11.560938835144043,0.5280153609116043,True,Apoidea,2,12.471245765686035,0.20797051520137505,True,Apoidea striped,11,12.3587007522583,0.0003140208778682231,True,True
+['sequence', 0, '20250221', '115731', 0.03140208778682231, 'Apoidea striped', 12, 3, 0, 1307, 601, 1355, 663, 'sequence/pi2_2025_02_21_11_57_31.jpg']
+pi2_2025_02_21_11_57_34.jpg 20250221115732
+
+0: 1088x1920 1 Insect, 745.6ms
+Speed: 6.5ms preprocess, 745.6ms inference, 1.3ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,10.896728515625,0.3142956857626906,True,Megachilidae,23,10.675244331359863,7.749831829904455e-06,True,Megachilidae,49,9.18006420135498,5.200137284288305e-09,False,True
+['sequence', 0, '20250221', '115732', 0.0007749831829904455, 'Megachilidae', 24, 2, 1, 1284, 642, 1334, 709, 'sequence/pi2_2025_02_21_11_57_32.jpg']
+pi2_2025_02_21_11_57_36.jpg 20250221115734
+
+0: 1088x1920 1 Insect, 739.6ms
+Speed: 6.7ms preprocess, 739.6ms inference, 1.3ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,9.880805015563965,0.09158573544658061,True,Apoidea,2,13.002862930297852,0.3686158446340779,True,Apoidea striped,11,13.231462478637695,0.004826654516713689,True,True
+['sequence', 0, '20250221', '115734', 0.4826654516713689, 'Apoidea striped', 12, 3, 2, 1251, 680, 1305, 720, 'sequence/pi2_2025_02_21_11_57_34.jpg']
+pi2_2025_02_21_11_57_38.jpg 20250221115736
+
+0: 1088x1920 1 Insect, 695.6ms
+Speed: 6.6ms preprocess, 695.6ms inference, 1.2ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,9.6840181350708,0.06743299189117737,True,Apoidea,2,13.08053207397461,0.3952384218958522,True,Apoidea striped,11,14.68829345703125,0.11496236560401368,True,True
+['sequence', 0, '20250221', '115736', 11.496236560401368, 'Apoidea striped', 12, 3, 3, 1235, 677, 1298, 718, 'sequence/pi2_2025_02_21_11_57_36.jpg']
+pi2_2025_02_21_11_57_40.jpg 20250221115738
+
+0: 1088x1920 1 Insect, 700.7ms
+Speed: 7.1ms preprocess, 700.7ms inference, 1.1ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,7.927905559539795,0.0015387350683510389,True,Apoidea,2,10.869165420532227,0.012102246028529634,True,Apoidea striped,11,12.58668327331543,0.0006821946411842006,True,True
+['sequence', 0, '20250221', '115738', 0.06821946411842006, 'Apoidea striped', 12, 3, 4, 1217, 658, 1272, 715, 'sequence/pi2_2025_02_21_11_57_38.jpg']
+pi2_2025_02_21_11_57_42.jpg 20250221115740
+
+0: 1088x1920 1 Insect, 708.2ms
+Speed: 7.1ms preprocess, 708.2ms inference, 1.5ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,9.437897682189941,0.04452171535752575,True,Apoidea,2,9.949110984802246,0.0010313177067146873,True,Apoidea striped,11,11.451183319091797,9.198569278577187e-06,True,True
+['sequence', 0, '20250221', '115740', 0.0009198569278577186, 'Apoidea striped', 12, 3, 5, 1222, 671, 1281, 719, 'sequence/pi2_2025_02_21_11_57_40.jpg']
+pi2_2025_02_21_11_57_44.jpg 20250221115742
+
+0: 1088x1920 1 Insect, 755.2ms
+Speed: 7.1ms preprocess, 755.2ms inference, 1.2ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,11.406107902526855,0.476533149859447,True,Apidae,1,6.840246677398682,1.0201227094136265e-07,True,Apis mellifera,6,7.701586723327637,2.996005920006613e-15,False,True
+['sequence', 0, '20250221', '115742', 1.0201227094136266e-05, 'Apidae', 2, 2, 6, 1204, 673, 1273, 716, 'sequence/pi2_2025_02_21_11_57_42.jpg']
+pi2_2025_02_21_11_57_46.jpg 20250221115744
+
+0: 1088x1920 1 Insect, 690.9ms
+Speed: 7.4ms preprocess, 690.9ms inference, 1.1ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,12.419901847839355,0.784274186998718,True,Apoidea,2,12.841044425964355,0.3152554340300834,True,Apoidea small,10,10.281769752502441,3.4777656961311343e-06,True,True
+['sequence', 0, '20250221', '115744', 0.00034777656961311346, 'Apoidea small', 11, 3, 7, 1084, 822, 1137, 885, 'sequence/pi2_2025_02_21_11_57_44.jpg']
+pi2_2025_02_21_11_57_47.jpg 20250221115746
+
+0: 1088x1920 1 Insect, 701.0ms
+Speed: 7.3ms preprocess, 701.0ms inference, 2.0ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,10.169451713562012,0.13778959143266695,True,Apoidea,2,8.750211715698242,1.5985125127948215e-05,True,Apoidea small,10,8.964059829711914,3.936771648509571e-09,False,True
+['sequence', 0, '20250221', '115746', 0.0015985125127948214, 'Apoidea', 3, 2, 8, 1258, 780, 1308, 841, 'sequence/pi2_2025_02_21_11_57_46.jpg']
+pi2_2025_02_21_11_57_49.jpg 20250221115747
+
+0: 1088x1920 1 Insect, 804.0ms
+Speed: 7.1ms preprocess, 804.0ms inference, 1.5ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,13.208043098449707,0.9256401387647254,True,Apidae,1,9.416516304016113,0.000934377859310081,True,Apis mellifera,6,9.558845520019531,1.6619787298208535e-08,False,True
+['sequence', 0, '20250221', '115747', 0.0934377859310081, 'Apidae', 2, 2, 9, 1162, 759, 1212, 828, 'sequence/pi2_2025_02_21_11_57_47.jpg']
+pi2_2025_02_21_11_57_51.jpg 20250221115749
+
+0: 1088x1920 1 Insect, 688.7ms
+Speed: 6.6ms preprocess, 688.7ms inference, 1.6ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,9.782732009887695,0.07884958670369169,True,Apidae,1,9.78384017944336,0.002453981769820939,True,Apis mellifera,6,10.614896774291992,1.1859515221876906e-05,True,True
+['sequence', 0, '20250221', '115749', 0.0011859515221876906, 'Apis mellifera', 7, 3, 10, 1088, 628, 1158, 669, 'sequence/pi2_2025_02_21_11_57_49.jpg']
+pi2_2025_02_21_11_57_53.jpg 20250221115751
+
+0: 1088x1920 1 Insect, 722.0ms
+Speed: 6.4ms preprocess, 722.0ms inference, 1.4ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,11.741921424865723,0.5875443187466606,True,Apidae,1,12.808430671691895,0.35761821990431364,True,Apis mellifera,6,11.959308624267578,0.0050010487075870785,True,True
+['sequence', 0, '20250221', '115751', 0.5001048707587078, 'Apis mellifera', 7, 3, 11, 1190, 826, 1260, 892, 'sequence/pi2_2025_02_21_11_57_51.jpg']
+pi2_2025_02_21_11_57_55.jpg 20250221115753
+
+0: 1088x1920 1 Insect, 705.6ms
+Speed: 6.2ms preprocess, 705.6ms inference, 1.3ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,11.99535846710205,0.6673526376200503,True,Apoidea,2,11.212583541870117,0.025880850275216558,True,Apoidea reddish,9,11.198808670043945,1.7242648482370978e-06,True,True
+['sequence', 0, '20250221', '115753', 0.0001724264848237098, 'Apoidea reddish', 10, 3, 12, 1335, 819, 1386, 888, 'sequence/pi2_2025_02_21_11_57_53.jpg']
+pi2_2025_02_21_11_57_57.jpg 20250221115755
+
+0: 1088x1920 1 Insect, 625.7ms
+Speed: 6.4ms preprocess, 625.7ms inference, 0.9ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,10.551989555358887,0.2202811564295462,True,Apoidea,2,10.591673851013184,0.006151149064779474,True,Apoidea striped,11,9.441995620727539,2.877253258301428e-10,False,True
+['sequence', 0, '20250221', '115755', 0.6151149064779474, 'Apoidea', 3, 2, 13, 1542, 662, 1601, 708, 'sequence/pi2_2025_02_21_11_57_55.jpg']
+pi2_2025_02_21_11_57_58.jpg 20250221115757
+
+0: 1088x1920 (no detections), 635.9ms
+Speed: 6.4ms preprocess, 635.9ms inference, 0.8ms postprocess per image at shape (1, 3, 1088, 1920)
+pi2_2025_02_21_11_58_00.jpg 20250221115758
+
+0: 1088x1920 (no detections), 643.4ms
+Speed: 7.1ms preprocess, 643.4ms inference, 0.7ms postprocess per image at shape (1, 3, 1088, 1920)
+pi2_2025_02_21_11_58_03.jpg 20250221115800
+
+0: 1088x1920 (no detections), 617.5ms
+Speed: 6.4ms preprocess, 617.5ms inference, 0.7ms postprocess per image at shape (1, 3, 1088, 1920)
+pi2_2025_02_21_11_58_05.jpg 20250221115803
+
+0: 1088x1920 (no detections), 651.8ms
+Speed: 7.0ms preprocess, 651.8ms inference, 0.8ms postprocess per image at shape (1, 3, 1088, 1920)
+pi2_2025_02_21_11_58_07.jpg 20250221115805
+
+0: 1088x1920 2 Insects, 668.5ms
+Speed: 5.9ms preprocess, 668.5ms inference, 1.2ms postprocess per image at shape (1, 3, 1088, 1920)
+Hemiptera,5,4.670624256134033,2.3957880678793994e-16,False,Hemiptera,14,5.213160514831543,1.9006845975417894e-16,False,Hemiptera,37,4.378843307495117,2.6946628595529524e-17,False,True
+['sequence', 0, '20250221', '115805', 0.0, 'Unsure', 0, 0, 18, 1530, 545, 1581, 597, 'sequence/pi2_2025_02_21_11_58_05.jpg']
+Hymenoptera_bees,7,10.75947093963623,0.2748560013710095,True,Apoidea,2,10.68313980102539,0.007736427005623161,True,Apoidea reddish,9,9.21096420288086,5.962613997782843e-11,False,True
+['sequence', 0, '20250221', '115805', 0.7736427005623161, 'Apoidea', 3, 2, 18, 1565, 652, 1622, 698, 'sequence/pi2_2025_02_21_11_58_05.jpg']
+pi2_2025_02_21_11_58_09.jpg 20250221115807
+
+0: 1088x1920 2 Insects, 640.5ms
+Speed: 6.4ms preprocess, 640.5ms inference, 1.0ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,11.169390678405762,0.3988621477688007,True,Apoidea,2,9.859137535095215,0.0007835695295553151,True,Apoidea reddish,9,9.027816772460938,1.9748470638530783e-11,False,True
+['sequence', 0, '20250221', '115807', 0.07835695295553151, 'Apoidea', 3, 2, 19, 1591, 630, 1641, 687, 'sequence/pi2_2025_02_21_11_58_07.jpg']
+Hymenoptera_bees,7,10.139495849609375,0.13236325620702238,True,Megachilidae,23,8.296198844909668,1.9394965026499765e-11,False,Megachilidae,49,7.8748579025268555,7.096353322519636e-13,False,True
+['sequence', 0, '20250221', '115807', 13.236325620702239, 'Hymenoptera_bees', 8, 1, 19, 420, 730, 491, 777, 'sequence/pi2_2025_02_21_11_58_07.jpg']
+pi2_2025_02_21_11_58_10.jpg 20250221115809
+
+0: 1088x1920 2 Insects, 646.3ms
+Speed: 6.5ms preprocess, 646.3ms inference, 0.9ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,8.705775260925293,0.010413649727022996,True,Apoidea,2,11.174580574035645,0.023892373905731266,True,Apoidea small,10,11.690011024475098,0.0008702495860369168,True,True
+['sequence', 0, '20250221', '115809', 0.08702495860369168, 'Apoidea small', 11, 3, 20, 446, 720, 504, 767, 'sequence/pi2_2025_02_21_11_58_09.jpg']
+Hymenoptera_bees,7,10.662629127502441,0.24858040496650946,True,Apoidea,2,11.614709854125977,0.05664578961508357,True,Apoidea small,10,10.175918579101562,2.137406289852268e-06,True,True
+['sequence', 0, '20250221', '115809', 0.0002137406289852268, 'Apoidea small', 11, 3, 20, 1394, 774, 1458, 832, 'sequence/pi2_2025_02_21_11_58_09.jpg']
+pi2_2025_02_21_11_58_12.jpg 20250221115810
+
+0: 1088x1920 2 Insects, 713.0ms
+Speed: 6.9ms preprocess, 713.0ms inference, 1.0ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,10.529438018798828,0.21474829683950564,True,Apoidea,2,11.349969863891602,0.034258591737519974,True,Apoidea striped,11,12.418668746948242,0.0003867693136313587,True,True
+['sequence', 0, '20250221', '115810', 0.03867693136313587, 'Apoidea striped', 12, 3, 21, 615, 741, 664, 801, 'sequence/pi2_2025_02_21_11_58_10.jpg']
+Hymenoptera_bees,7,11.650290489196777,0.5575682551027592,True,Apoidea,2,7.3688459396362305,3.3152875222485203e-08,True,Apoidea small,10,6.484647274017334,1.513328608820777e-16,False,True
+['sequence', 0, '20250221', '115810', 3.3152875222485204e-06, 'Apoidea', 3, 2, 21, 1369, 755, 1419, 817, 'sequence/pi2_2025_02_21_11_58_10.jpg']
+pi2_2025_02_21_11_58_14.jpg 20250221115812
+
+0: 1088x1920 2 Insects, 689.3ms
+Speed: 7.9ms preprocess, 689.3ms inference, 1.0ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,8.160771369934082,0.002840321630991024,True,Apoidea,2,11.26579761505127,0.028896348216024985,True,Apoidea striped,11,13.17723560333252,0.00414956924328481,True,True
+['sequence', 0, '20250221', '115812', 0.414956924328481, 'Apoidea striped', 12, 3, 22, 602, 730, 652, 783, 'sequence/pi2_2025_02_21_11_58_12.jpg']
+Hymenoptera_bees,7,12.340836524963379,0.7644728462277999,True,Apidae,1,10.514745712280273,0.013161953282656558,True,Apis mellifera,6,9.586186408996582,2.011010814169775e-08,True,True
+['sequence', 0, '20250221', '115812', 2.011010814169775e-06, 'Apis mellifera', 7, 3, 22, 1368, 755, 1419, 814, 'sequence/pi2_2025_02_21_11_58_12.jpg']
+pi2_2025_02_21_11_58_16.jpg 20250221115814
+
+0: 1088x1920 2 Insects, 722.7ms
+Speed: 5.9ms preprocess, 722.7ms inference, 0.9ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,10.4246187210083,0.19011322202123226,True,Apoidea,2,13.020331382751465,0.3745538449437096,True,Apoidea small,10,13.45629596710205,0.0776925041662657,True,True
+['sequence', 0, '20250221', '115814', 7.76925041662657, 'Apoidea small', 11, 3, 23, 597, 707, 642, 760, 'sequence/pi2_2025_02_21_11_58_14.jpg']
+Hymenoptera_bees,7,12.210789680480957,0.7298295597730673,True,Apidae,1,11.302968978881836,0.05666611782137032,True,Apis mellifera,6,11.181221008300781,0.00020681921900841415,True,True
+['sequence', 0, '20250221', '115814', 0.020681921900841414, 'Apis mellifera', 7, 3, 23, 1403, 740, 1466, 799, 'sequence/pi2_2025_02_21_11_58_14.jpg']
+pi2_2025_02_21_11_58_18.jpg 20250221115816
+
+0: 1088x1920 2 Insects, 671.7ms
+Speed: 6.1ms preprocess, 671.7ms inference, 1.4ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,10.621495246887207,0.23783873752633755,True,Megachilidae,23,8.891487121582031,7.882917029803297e-10,False,Apoidea striped,11,8.226655960083008,9.583944359563631e-14,False,False
+['sequence', 0, '20250221', '115816', 23.783873752633756, 'Hymenoptera_bees', 8, 1, 24, 1500, 620, 1570, 672, 'sequence/pi2_2025_02_21_11_58_16.jpg']
+Hymenoptera_bees,7,10.72461986541748,0.265244512819439,True,Apoidea,2,12.551546096801758,0.2292595527331311,True,Apoidea small,10,12.529207229614258,0.010208965752284046,True,True
+['sequence', 0, '20250221', '115816', 1.0208965752284047, 'Apoidea small', 11, 3, 24, 599, 724, 648, 780, 'sequence/pi2_2025_02_21_11_58_16.jpg']
+pi2_2025_02_21_11_58_20.jpg 20250221115818
+
+0: 1088x1920 2 Insects, 681.1ms
+Speed: 6.7ms preprocess, 681.1ms inference, 0.9ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,11.820878028869629,0.6129772356448211,True,Apidae,1,10.16382884979248,0.006114945500998978,True,Apis mellifera,6,10.333097457885742,2.4074312738986205e-06,True,True
+['sequence', 0, '20250221', '115818', 0.00024074312738986206, 'Apis mellifera', 7, 3, 25, 1101, 627, 1160, 684, 'sequence/pi2_2025_02_21_11_58_18.jpg']
+Hymenoptera_bees,7,10.45639705657959,0.19739188440910466,True,Apoidea,2,12.10633659362793,0.12681793178633954,True,Apoidea small,10,12.242452621459961,0.004711998888809345,True,True
+['sequence', 0, '20250221', '115818', 0.4711998888809345, 'Apoidea small', 11, 3, 25, 605, 721, 651, 780, 'sequence/pi2_2025_02_21_11_58_18.jpg']
+pi2_2025_02_21_11_58_21.jpg 20250221115820
+
+0: 1088x1920 2 Insects, 608.0ms
+Speed: 6.6ms preprocess, 608.0ms inference, 1.0ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,10.785802841186523,0.2822300983917158,True,Apoidea,2,10.281970024108887,0.002702931954989669,True,Apoidea small,10,10.385473251342773,5.548435190658338e-06,True,True
+['sequence', 0, '20250221', '115820', 0.0005548435190658338, 'Apoidea small', 11, 3, 26, 1407, 732, 1468, 775, 'sequence/pi2_2025_02_21_11_58_20.jpg']
+Hymenoptera_bees,7,10.544245719909668,0.2183721070825238,True,Apoidea,2,12.55628776550293,0.2305537381588713,True,Apoidea small,10,11.945600509643555,0.0019648201216449493,True,True
+['sequence', 0, '20250221', '115820', 0.19648201216449493, 'Apoidea small', 11, 3, 26, 620, 724, 669, 768, 'sequence/pi2_2025_02_21_11_58_20.jpg']
+pi2_2025_02_21_11_58_23.jpg 20250221115821
+
+0: 1088x1920 2 Insects, 604.5ms
+Speed: 6.7ms preprocess, 604.5ms inference, 1.0ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,12.288334846496582,0.7507891063793933,True,Apidae,1,13.472416877746582,0.5685229181435602,True,Apis mellifera,6,13.434175491333008,0.22223611657715975,True,True
+['sequence', 0, '20250221', '115821', 22.223611657715974, 'Apis mellifera', 7, 3, 27, 1288, 404, 1354, 447, 'sequence/pi2_2025_02_21_11_58_21.jpg']
+Hymenoptera_bees,7,10.892077445983887,0.31292023394686974,True,Apoidea,2,12.44025993347168,0.2000782542824152,True,Apoidea striped,11,10.080123901367188,1.1401130306021497e-08,False,True
+['sequence', 0, '20250221', '115821', 20.00782542824152, 'Apoidea', 3, 2, 27, 611, 730, 670, 771, 'sequence/pi2_2025_02_21_11_58_21.jpg']
+pi2_2025_02_21_11_58_25.jpg 20250221115823
+
+0: 1088x1920 2 Insects, 630.2ms
+Speed: 5.7ms preprocess, 630.2ms inference, 1.0ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,10.822275161743164,0.29259856825643804,True,Apoidea,2,6.692987442016602,9.359530228219679e-10,False,Apoidea striped,11,7.506776332855225,4.489260080817297e-16,False,True
+['sequence', 0, '20250221', '115823', 29.259856825643805, 'Hymenoptera_bees', 8, 1, 28, 1001, 1017, 1073, 1065, 'sequence/pi2_2025_02_21_11_58_23.jpg']
+Hymenoptera_bees,7,8.657967567443848,0.009362142046334726,True,Apoidea,2,10.266875267028809,0.0025920214836122036,True,Apoidea striped,11,13.029766082763672,0.0027171249442677087,True,True
+['sequence', 0, '20250221', '115823', 0.27171249442677087, 'Apoidea striped', 12, 3, 28, 761, 838, 831, 881, 'sequence/pi2_2025_02_21_11_58_23.jpg']
+pi2_2025_02_21_11_58_27.jpg 20250221115825
+
+0: 1088x1920 1 Insect, 606.0ms
+Speed: 7.0ms preprocess, 606.0ms inference, 0.9ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,9.200215339660645,0.028801500678260192,True,Apoidea,2,6.3715314865112305,1.511825010027183e-10,False,Apoidea striped,11,7.316609859466553,1.0075269595666174e-16,False,True
+['sequence', 0, '20250221', '115825', 2.880150067826019, 'Hymenoptera_bees', 8, 1, 29, 500, 569, 550, 642, 'sequence/pi2_2025_02_21_11_58_25.jpg']
+pi2_2025_02_21_11_58_29.jpg 20250221115827
+
+0: 1088x1920 1 Insect, 604.8ms
+Speed: 5.4ms preprocess, 604.8ms inference, 1.0ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,10.567055702209473,0.22402262598866474,True,Apoidea,2,11.644332885742188,0.05974273399036685,True,Apoidea striped,11,13.499067306518555,0.009820248298982075,True,True
+['sequence', 0, '20250221', '115827', 0.9820248298982075, 'Apoidea striped', 12, 3, 30, 473, 765, 524, 819, 'sequence/pi2_2025_02_21_11_58_27.jpg']
+pi2_2025_02_21_11_58_31.jpg 20250221115829
+
+0: 1088x1920 1 Insect, 609.5ms
+Speed: 5.8ms preprocess, 609.5ms inference, 1.1ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,11.070466041564941,0.3673792043569857,True,Apidae,1,9.081411361694336,0.000360355140209031,True,Apis mellifera,6,8.80632209777832,5.684276645356884e-11,False,True
+['sequence', 0, '20250221', '115829', 0.036035514020903096, 'Apidae', 2, 2, 31, 706, 915, 766, 970, 'sequence/pi2_2025_02_21_11_58_29.jpg']
+pi2_2025_02_21_11_58_33.jpg 20250221115831
+
+0: 1088x1920 1 Insect, 602.5ms
+Speed: 5.7ms preprocess, 602.5ms inference, 0.9ms postprocess per image at shape (1, 3, 1088, 1920)
+Hymenoptera_bees,7,11.712626457214355,0.5780074832339657,True,Apoidea,2,13.13604736328125,0.4145799100676686,True,Apoidea small,10,11.776073455810547,0.0011521221732604826,True,True
+['sequence', 0, '20250221', '115831', 0.11521221732604825, 'Apoidea small', 11, 3, 32, 669, 967, 729, 1006, 'sequence/pi2_2025_02_21_11_58_31.jpg']
+pi2_2025_02_21_11_58_34.jpg 20250221115833
+
+0: 1088x1920 (no detections), 616.7ms
+Speed: 6.0ms preprocess, 616.7ms inference, 1.5ms postprocess per image at shape (1, 3, 1088, 1920)
+Total processing time 30.28 sec. average per image 0.8653 sec.
+YOLO11 processing time average per image 0.7280 sec.
+ConvNextBase classification time average per detection 0.0934 sec.
+Finished detection and classification of insects in time-lapse image or video recordings

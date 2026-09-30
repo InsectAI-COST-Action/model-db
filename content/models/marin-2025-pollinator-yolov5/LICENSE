@@ -1,28 +1,30 @@
-SPDX-License-Identifier: CC-BY-4.0
+Upstream license provenance
+===========================
 
-The weights in this entry are distributed under the Creative Commons
-Attribution 4.0 International license.
+Software archive: CC-BY-4.0
+Creator: Arancha Lana
+Release: aranchalana/POLLINATOR: First stable release of POLLINATOR code (v1.0)
+Source: https://zenodo.org/records/17130918
+Metadata: https://zenodo.org/api/records/17130918
+Canonical license: https://creativecommons.org/licenses/by/4.0/legalcode
 
-Canonical license text:
-  https://creativecommons.org/licenses/by/4.0/legalcode
+The Zenodo record declares CC-BY-4.0 for its software archive. The archive
+contains code and links to external resources; it does not contain best.pt.
+The repository's dataset configuration separately declares CC BY 4.0:
+https://github.com/aranchalana/POLLINATOR/blob/ecbafff8fd03efaa299f8d07eb121b9ccd05c6dd/POLLINATOR-MERGE-ALL/data.yaml
 
-Upstream source:
-  https://zenodo.org/records/17130918
+Checkpoint: license not explicitly stated in the reviewed sources
+Authors' download pointer:
+https://github.com/aranchalana/POLLINATOR/blob/ecbafff8fd03efaa299f8d07eb121b9ccd05c6dd/runs/train/merged_ALL/weights/read.txt
 
+This provenance note does not assign a license to the externally hosted
+weights or establish their commercial-use terms. The card distinguishes the
+software license from the unspecified checkpoint license; commercial_use is
+unknown for the weights.
+This note is not a substitute for the upstream license text.
 
-WHAT ATTRIBUTION REQUIRES HERE
-──────────────────────────────
-
-CC BY 4.0 permits commercial use, redistribution, and modification, provided
-you give appropriate credit. For a model in a research catalogue, that means
-citing the source publication:
-
-  Marin, et al. (2025). Methods in Ecology and Evolution.
-  doi:10.1111/2041-210X.70165
-
-The full legal code at the URL above is the operative text. This file records
-the SPDX identifier and the citation the license obliges you to give; it is
-not a substitute for the license itself.
-
-If you redistribute these weights or a model derived from them, carry this
-attribution with them.
+Associated publication:
+Serra-Marin, Pau Enric, et al. (2025). Comparative assessment of automated
+and manual monitoring in comprehensive plant–pollinator communities.
+Methods in Ecology and Evolution, 16(12), 2960–2978.
+https://doi.org/10.1111/2041-210X.70165

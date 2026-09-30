@@ -7,7 +7,7 @@ foundation         = true
 # ── Catalogue ───────────────────────────────────────────────────────
 category           = "classification"
 task               = ["Classification", "Embedding"]
-architecture       = "ViT-B/16 (CLIP)"
+architecture       = ["ViT-B/16 (CLIP)"]
 base_model         = "openai/clip-vit-base-patch16"
 year               = 2023
 license            = "MIT"

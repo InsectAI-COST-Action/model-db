@@ -6,7 +6,7 @@ description        = "Detects and segments terrestrial arthropods of any size on
 # ── Catalogue ───────────────────────────────────────────────────────
 category           = "detection"
 task               = ["Object Detection", "Instance Segmentation"]
-architecture       = "YOLOv8-seg, YOLO26-seg"
+architecture       = ["YOLOv8-seg","YOLO26-seg"]
 base_model         = "Ultralytics yolov8{n,s,m,l}-seg; yolo26m-seg for M v2"
 year               = 2026
 license            = "MIT"
@@ -17,6 +17,7 @@ date               = 2026-09-21
 vocabulary_scope   = "closed"
 geographic_scope   = "Global"
 produces           = ["bbox", "mask"]
+output_format      = ["flatbug", "flatbug"]
 image_input_size   = "any"
 taxonomic_coverage = "Terrestrial arthropods, as a single class"
 developer          = "Asger Svenning, Quentin Geissmann et al."

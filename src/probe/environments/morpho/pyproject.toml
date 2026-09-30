@@ -1,0 +1,35 @@
+[project]
+name = "model-db-probe-morpho"
+version = "0.1.0"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+  "tqdm==4.67.1",
+  "ultralytics==8.4.90",
+  "torch==2.5.1",
+  "torchvision==0.20.1",
+  "numpy==1.26.4",
+  "opencv-python==4.10.0.84",
+  "opencv-contrib-python==4.10.0.84",
+  "pandas==2.2.3",
+  "scipy==1.15.2",
+  "scikit-learn==1.6.1",
+  "scikit-image==0.25.2",
+  "plotly==5.24.1",
+  "streamlit==1.43.2",
+  "mpld3==0.5.10",
+  "openpyxl==3.1.5",
+  "seaborn==0.13.2",
+  "nbformat==5.10.4",
+]
+
+[tool.uv]
+package = false
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+torchvision = { index = "pytorch-cpu" }

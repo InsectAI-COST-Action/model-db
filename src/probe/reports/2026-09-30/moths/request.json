@@ -1,0 +1,23 @@
+{
+  "id": "moths",
+  "model": "bjerge-2025-moths-yolov5-resnet50",
+  "variant": "YOLOv5m6 plus author classifiers",
+  "environment": "moths",
+  "adapter": "moths",
+  "scope": "Author detector and order/species classifier CLI. Author source downloads species classifier on first use.",
+  "entrypoint": "detectClassifySpecies.py",
+  "author_sources": [
+    "https://github.com/kimbjerge/MCC24-trap/blob/a817f57915b250d3b4b3f06117d0bade4050d61f/README.md"
+  ],
+  "resources": {
+    "source": "moths-source",
+    "weights": "moths-weights",
+    "image": "flatbug-image"
+  },
+  "paths": {
+    "source": "/home/asger/model-db/src/probe/runs/20260930T095109-baee6dd5/moths/source/MCC24-trap-a817f57915b250d3b4b3f06117d0bade4050d61f",
+    "weights": "/home/asger/model-db/src/probe/.cache/05662169edd668128f432ca995d8acb4593b1773d25453177904e0d4fd2c3a15/weights.zip",
+    "image": "/home/asger/model-db/src/probe/.cache/0646bc669e2f9c0d2f86d502bf0caec50732b63c9ad8819c389f86a0c1750627/image.jpg"
+  },
+  "output": "/home/asger/model-db/src/probe/runs/20260930T095109-baee6dd5/moths/artifacts"
+}

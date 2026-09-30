@@ -6,7 +6,7 @@ description        = "EfficientNetV2 modified to produced 'biomass factor' as ou
 # ── Catalogue ───────────────────────────────────────────────────────
 category           = "regression"
 task               = ["Regression"]
-architecture       = "EfficientNetV2"
+architecture       = ["EfficientNetV2"]
 year               = 2026
 license            = "CC-BY-4.0"
 status             = "published"
