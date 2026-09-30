@@ -17,3 +17,7 @@ its behaviour in the catalogue.
   have not been reproduced on a single source and under the same conditions.
 - **Everything is `link_only`.** No weights are mirrored. Some links may break
   and the registry does not guarantee that the weights will remain available.
+
+## Contributors
+
+{{< contributors >}}
