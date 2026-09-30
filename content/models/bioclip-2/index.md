@@ -5,7 +5,7 @@ description        = "Larger successor to BioCLIP, trained on 214M organism imag
 foundation         = true
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "classification"
+purpose            = ["Insect classification", "Model embeddings"]
 task               = ["Classification", "Embedding"]
 architecture       = ["ViT-L/14 (CLIP)"]
 base_model         = "laion/CLIP-ViT-L-14-laion2B-s32B-b82K"
