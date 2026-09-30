@@ -5,7 +5,7 @@ description        = "Single-class YOLO26 oriented-box detector that finds every
 foundation         = false
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "detection"
+purpose            = ["Insect detection"]
 task               = ["Object Detection"]
 architecture       = ["YOLO26-OBB"]
 base_model         = ""
