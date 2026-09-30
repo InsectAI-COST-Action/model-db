@@ -110,6 +110,10 @@ default, so a contributor who does not know the answer can delete the line.
 See [the output format catalog](static/formats/README.md) for source-pinned YOLO
 detection and segmentation representations and their interoperability limits.
 
+> [!WARNING] 
+> Format descriptors moved from `static/formats/detection/` to `static/formats/`
+> in PR #62 (2026-09-30). Update any code or links still pointing at the old path.
+
 ## Testing author prediction outputs
 
 The isolated [probe project](src/probe/README.md) runs author prediction workflows

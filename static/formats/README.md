@@ -1,5 +1,12 @@
 # Actual prediction formats
 
+> [!WARNING]  
+> **⚠️ Path change (2026-09-30, PR #62):** these descriptors used to live under
+> `static/formats/detection/`. That subfolder is gone; every file now sits
+> directly under `static/formats/`. If your code or a bookmarked link still
+> points at the old `detection/` path, update it or you'll hit a 404 /
+> `FileNotFoundError`.
+
 These files describe outputs of specific APIs/exporters at the source revisions
 linked in each definition. They use the notation below, not JSON Schema.
 `notes.serialization` identifies the actual representation; a descriptor is not

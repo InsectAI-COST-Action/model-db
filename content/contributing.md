@@ -68,6 +68,13 @@ underneath that claim while the entry stays put.
 The site then shows both links: the revision as curated, and the authors'
 current version, so a reader who wants the latest can still get it.
 
+## If you have a branch open from before 2026-09-30
+
+Format descriptors under `static/formats/detection/` moved up to
+`static/formats/` in PR #62. Rebasing or merging an older branch may conflict
+on that move, or on the retired `category` field (now `purpose`, see above) - resolve
+in favour of the new paths/fields, not the old ones.
+
 You still write a local card. Keep it short if the upstream one is good, but
 say what a *reader of this zoo* needs, particularly limitations and license.
 
