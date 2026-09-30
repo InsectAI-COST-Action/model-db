@@ -1,0 +1,13 @@
+SPDX-License-Identifier: MIT
+
+BeetleFlow is distributed under the MIT license. The training images
+(sentinel-beetles dataset) are licensed separately under CC-BY-4.0.
+
+Upstream repositories:
+  https://huggingface.co/imageomics/BeetleFlow
+  https://github.com/Imageomics/BeetleFlow
+
+Canonical license text:
+  https://opensource.org/license/mit
+
+Copyright (c) 2025 Imageomics Institute.
