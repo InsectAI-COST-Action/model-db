@@ -31,9 +31,11 @@ description        = "Model weights and Python code to detect, classify, and tra
 purpose            = ["Insect detection", "Insect classification"]
 task               = ["Object Detection", "Classification", "Tracking"]
 architecture       = ["YOLOv11"]                   # YOLOv8, ViT, Swin Transformer…
+output_format      = ["insectdct-csv"]
 year               = 2026                        # year of publication or release
 license            = "GPL-3.0-or-later"                       # SPDX identifier where one exists
 status             = "published"                     # draft | published | deprecated.
+training_data      = ["10.5281/zenodo.21154490", "unpublished"]
                                                  # Draft is the safe default: only
                                                  # `published` appears on the site.
 
@@ -46,6 +48,7 @@ vocabulary_scope   = "closed"                    # closed | open | taxonomic.
                                                  # handles concepts it was not
                                                  # trained on.
 produces           = ["bbox"]                    # bbox | mask | label | count | track | embedding
+target_taxonomic_rank = ["NA"]
 image_input_size   = "1920x1080"                 # or "any" for native resolution
 input_modality     = []                          # text | image | box | point | mask.
                                                  # List every input the model
@@ -123,8 +126,10 @@ hf_revision = ""
 
  - **Input size:** author reports that images are resized to 1920x1080 for detection with YOLOv11, while insect crops are resized to either 128x128 or 224x224, depending on the classification model. 
  - **Channels:** standard RGB, pipeline also extracts motion-enhanced image representation to improve detection (done with YOLOv11). 
- - **Outputs:** for the detector: bounding boxes. For the hierarchical classifier: ??? 
+ - **Outputs:** classification/box (`-CL.csv`) and hierarchical-detail (`-HI.csv`) tables; see the verified profile below.
  - **Input mode:** standalone or time-lapse images, or video. 
+
+The documented [InsectDCT CSV profile](/formats/detection/insectdct-csv.json) describes the full detector/classifier pipeline at revision `e459ae8`, using the default `CSVformat=tracking` and ConvNextBase V6 classifier. The retained CPU probe processed 35 consecutive author frames and produced 40 rows each in the `-CL.csv` classification/box table and `-HI.csv` hierarchical-detail table. These tables contain classifier confidence values, not the native YOLO detector output. Tracking is a subsequent stage.
 
 ## Performance
 

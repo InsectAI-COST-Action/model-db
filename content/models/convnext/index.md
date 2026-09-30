@@ -31,19 +31,22 @@ foundation         = false
 
 purpose            = ["Model embeddings"]
 task               = ["Classification", "Embedding"]
-architecture       = ["ConvNeXt-Base"] 
-base_model          = "ConvNeXt-Base, pretrained on ImageNet-22k" 
-year               = 2022 
-license            = "Apache-2.0" 
-status             = "published" 
-date               = 2026-09-29 
-vocabulary_scope   = "closed" 
-# geographic_scope   = "" 
-produces           = ["label", "embedding"] 
-image_input_size         = "224x224" 
-input_modality     = ["image"] 
-developer          = "Facebook (META), UC Berkeley" 
-paper_url          = "https://arxiv.org/abs/2201.03545" 
+architecture       = ["ConvNeXt-Base"]
+base_model          = "ConvNeXt-Base, pretrained on ImageNet-22k"
+year               = 2022
+license            = "Apache-2.0"
+status             = "published"
+training_data      = ["ImageNet-1k"]
+date               = 2026-09-29
+vocabulary_scope   = "closed"
+# geographic_scope   = ""
+produces           = ["label", "embedding"]
+target_taxonomic_rank = ["NA"]
+image_input_size         = "224x224"
+input_modality     = ["image"]
+developer          = "Facebook (META), UC Berkeley"
+paper_url          = "https://arxiv.org/abs/2201.03545"
+pretraining_data   = ["ImageNet-22k"]
 
 # ── Weights ───────────────────────────────────────────────────────────────────
 #
@@ -55,8 +58,8 @@ paper_url          = "https://arxiv.org/abs/2201.03545"
 # authors host them anyway.
 
 [[assets]]
-key      = "weights" 
-provider = "huggingface" 
+key      = "weights"
+provider = "huggingface"
 url      = "https://huggingface.co/timm/convnext_base.fb_in22k_ft_in1k/tree/67758fcbcf9f007ec7630bf8636b74a8f24e52a0"
 note     = "ConvNeXt-Base pretrained on ImageNet-22K and fine-tuned on ImageNet-1K."
 # Optional, and worth adding when you know them:
@@ -91,7 +94,7 @@ This is a modern general purpose CNN model, it uses a hierarchical architecture 
 
 ## Inputs and outputs
 
-Accepts RGB images, resized and centre-cropped to 224 × 224 pixels using the checkpoint’s preprocessing settings. These are included already. 
+Accepts RGB images, resized and centre-cropped to 224 × 224 pixels using the checkpoint’s preprocessing settings. These are included already.
 
 The default classification head outputs scores for 1,000 imagenet classes. With the classification head removed, the model produces a 1,024-dimensional image embedding that can be used to train an insect classifier.
 
@@ -101,7 +104,7 @@ The authors report 85.8% top-1 accuracy on the ImageNet-1K validation set for Co
 
 ## Limitations
 
-The supplied classifier is restricted to 1,000 ImageNet categories and cannot identify arbitrary insect taxa from their names. Classification using a different insect label set requires a trained classifier or fine-tuning with labeled examples. 
+The supplied classifier is restricted to 1,000 ImageNet categories and cannot identify arbitrary insect taxa from their names. Classification using a different insect label set requires a trained classifier or fine-tuning with labeled examples.
 
 ## How to obtain the weights
 

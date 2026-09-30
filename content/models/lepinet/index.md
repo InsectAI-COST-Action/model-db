@@ -12,13 +12,15 @@ base_model         = "imageomics/bioclip-2; timm/convnext_large.dinov3_lvd1689m;
 year               = 2026
 license            = "CC-BY-NC-4.0"
 status             = "published"
+training_data      = ["10.15468/dl.hg37y9", "unpublished"]
 date               = 2026-09-29
 
 # Optional - delete a line to take the default shown.
 vocabulary_scope   = "closed"
 geographic_scope   = "Global (mostly North America and Europe)"
 produces           = ["label", "embedding"]
-image_input_size   = "224x224 (ViT), 320x320 (ConvNeXt), 256x256 (EfficientNet)"
+target_taxonomic_rank = ["family", "genus", "species"]
+image_input_size   = "256x256 (ViT, resampled to 224 inside the model), 320x320 (ConvNeXt), 256x256 (EfficientNet)"
 taxonomic_coverage = "Lepidoptera: 12,041 species, 4,333 genera, 102 families"
 developer          = "Guillaume Mougeot (Aarhus University)"
 code_url           = "https://github.com/GuillaumeMougeot/lepinet"
@@ -30,7 +32,7 @@ weight_format      = ["ONNX", "Safetensors"]
 
 # ── The model's own card elsewhere, if it has one ───────────────────
 hf_repo            = "gmougeot/lepinet-bioclip2-vitl14"
-hf_revision        = "c239c14910fac8b07be1ace73334db778629b602"
+hf_revision        = "c84edd897829c38db599682eb735a5c730ff8d46"
 
 # ── The files this model ships. The FIRST one is the link the table shows. ──
 
@@ -38,29 +40,29 @@ hf_revision        = "c239c14910fac8b07be1ace73334db778629b602"
 key          = "bioclip2-vitl14"
 provider     = "huggingface"
 repo_id      = "gmougeot/lepinet-bioclip2-vitl14"
-revision     = "c239c14910fac8b07be1ace73334db778629b602"
+revision     = "c84edd897829c38db599682eb735a5c730ff8d46"
 revision_kind = "commit"
 gated        = false
 variant      = "BioCLIP-2 ViT-L/14 (recommended)"
 filename     = "model.onnx"
-size_bytes   = 1285434218
-sha256       = "977d1efbf0015c8ac44e6dd8c31640a7a42ec55f187d401c320b93a0b796bd7c"
-url          = "https://huggingface.co/gmougeot/lepinet-bioclip2-vitl14/resolve/c239c14910fac8b07be1ace73334db778629b602/model.onnx"
+size_bytes   = 1285435210
+sha256       = "8f9c0d7067bc3bb580197f0ecb59bbb4c5d8f3ec96c44a8c07895f704275f1a3"
+url          = "https://huggingface.co/gmougeot/lepinet-bioclip2-vitl14/resolve/c84edd897829c38db599682eb735a5c730ff8d46/model.onnx"
 released     = 2026-09-29
-note         = "Recommended: as accurate as the ConvNeXt, best calibrated, fewest wrong species calls on species it does not know. 321 M parameters, 224x224 input, fp32. Taxonomy, names, thresholds, predict.py and a GPU fp16 file (model_fp16.onnx) are in the same repo."
+note         = "Recommended: the most accurate on photos, best calibrated. 321 M parameters, 256x256 input, fp32. Also loads with transformers. Taxonomy, names, thresholds, predict.py and a GPU fp16 file (model_fp16.onnx) are in the same repo."
 
 [[assets]]
 key          = "bioclip2-vitl14-int8"
 provider     = "huggingface"
 repo_id      = "gmougeot/lepinet-bioclip2-vitl14"
-revision     = "c239c14910fac8b07be1ace73334db778629b602"
+revision     = "c84edd897829c38db599682eb735a5c730ff8d46"
 revision_kind = "commit"
 gated        = false
 variant      = "BioCLIP-2 ViT-L/14, int8 for CPUs"
 filename     = "model_int8.onnx"
-size_bytes   = 330820714
-sha256       = "3216aff0fddc2cc1aa0d75271896b0dd02217729c94b9f2df149b9cab2331250"
-url          = "https://huggingface.co/gmougeot/lepinet-bioclip2-vitl14/resolve/c239c14910fac8b07be1ace73334db778629b602/model_int8.onnx"
+size_bytes   = 330822212
+sha256       = "e3ec3dc2eed868be0ae320051f4ed5d70ae072dae075bd255cf5b25835673cac"
+url          = "https://huggingface.co/gmougeot/lepinet-bioclip2-vitl14/resolve/c84edd897829c38db599682eb735a5c730ff8d46/model_int8.onnx"
 released     = 2026-09-29
 note         = "Same model for CPUs: 1.6-1.8x faster and 4x smaller than fp32, within 0.1 pt species macro-F1 on two evaluation sets and 0.7 pt on the third. Needs onnxruntime >= 1.22."
 
@@ -68,31 +70,31 @@ note         = "Same model for CPUs: 1.6-1.8x faster and 4x smaller than fp32, w
 key          = "dinov3-convnextl"
 provider     = "huggingface"
 repo_id      = "gmougeot/lepinet-dinov3-convnextl"
-revision     = "78bb30fcbd1f6eed828556ef0e416e5ed8fc2d0d"
+revision     = "366a9892990cfa74d092ecddaf6a2dd04d6dc0f1"
 revision_kind = "commit"
 gated        = false
 variant      = "DINOv3 ConvNeXt-L (mid-size)"
 filename     = "model.onnx"
 size_bytes   = 868685389
 sha256       = "db66ec81210d7fa2ca7372ad6f75b96844c444025f2c0aaf811d37823a62246c"
-url          = "https://huggingface.co/gmougeot/lepinet-dinov3-convnextl/resolve/78bb30fcbd1f6eed828556ef0e416e5ed8fc2d0d/model.onnx"
+url          = "https://huggingface.co/gmougeot/lepinet-dinov3-convnextl/resolve/366a9892990cfa74d092ecddaf6a2dd04d6dc0f1/model.onnx"
 released     = 2026-09-29
-note         = "217 M parameters, 320x320 input. As accurate as the ViT, less reliable confidence. LICENCE DIFFERS: DINOv3 License (a derivative of Meta's DINOv3), plus a non-commercial request for the training data. int8 (CPU) and fp16 (GPU) files in the same repo."
+note         = "217 M parameters, 320x320 input. Close behind the ViT (within noise on trap images, 1.5 points behind on photos), less reliable confidence. LICENCE DIFFERS: DINOv3 License (a derivative of Meta's DINOv3), plus a non-commercial request for the training data. int8 (CPU) and fp16 (GPU) files in the same repo."
 
 [[assets]]
 key          = "effnetv2s"
 provider     = "huggingface"
 repo_id      = "gmougeot/lepinet-effnetv2s"
-revision     = "142ef467d89acb8a206f00641f73bf6b300a070c"
+revision     = "2c8f28357adaa3baf05a4fc068c8c5c95b9d1fcc"
 revision_kind = "commit"
 gated        = false
 variant      = "EfficientNetV2-S (small)"
 filename     = "model.onnx"
 size_bytes   = 148950976
 sha256       = "4e48e3a93df1ee877a327267d26b96b9194520b8e1c0481c3c514b231b3a7a42"
-url          = "https://huggingface.co/gmougeot/lepinet-effnetv2s/resolve/142ef467d89acb8a206f00641f73bf6b300a070c/model.onnx"
+url          = "https://huggingface.co/gmougeot/lepinet-effnetv2s/resolve/2c8f28357adaa3baf05a4fc068c8c5c95b9d1fcc/model.onnx"
 released     = 2026-09-29
-note         = "37 M parameters, 256x256 input, CPU-friendly; about half a point behind on light-trap images. model_fp16.onnx (109 MB) in the same repo."
+note         = "37 M parameters, 256x256 input, CPU-friendly; about 2 points behind the ViT. model_fp16.onnx (109 MB) in the same repo."
 +++
 
 > Identifies moths and butterflies to species, genus and family from a photo of a single specimen.
@@ -122,8 +124,8 @@ the three ranks never contradict each other. Framework: PyTorch/fastai, exported
 
 ## Inputs and outputs
 
-One RGB image, resized on its shorter side to 224 (ViT), 320 (ConvNeXt) or 256 (EfficientNet) and
-centre-cropped.
+One RGB image, resized on its shorter side to 256 (ViT, which resamples it to 224 internally as in
+training), 320 (ConvNeXt) or 256 (EfficientNet) and centre-cropped.
 Pixel values go in as [0, 1]; normalisation is inside the ONNX graph. Outputs are species, genus and
 family probabilities, species logits, and an L2-normalised embedding (1024-d, 1536-d or 1280-d respectively). Labels are
 GBIF taxon keys, with scientific names in `names.json`. The repo's `predict.py` needs only
@@ -133,21 +135,21 @@ GBIF taxon keys, with scientific names in `names.json`. The repo's `predict.py` 
 
 Species macro-F1 (every species weighted equally), measured on the published ONNX files with the
 cards' own preprocessing. The ViT's in-distribution number is inflated slightly: BioCLIP-2's
-pre-training saw part of the GBIF test fold. On the uncontaminated subset, the training pipeline
-reports 0.911.
+pre-training saw part of the GBIF test fold. On the 217,856-image subset it never saw, the ViT
+scores 0.910.
 
 | evaluation set | BioCLIP-2 ViT-L/14 | DINOv3 ConvNeXt-L | EfficientNetV2-S |
 |---|---|---|---|
-| GBIF photos, random 10,000 test-fold images (in-distribution) | 0.925 | 0.926 | 0.910 |
-| Probe: light-trap images, unseen nights (domain shift) | 0.772 | 0.777 | 0.765 |
-| Probe, held-out species (never seen in trap images) | 0.790 | 0.771 | 0.772 |
+| GBIF photos, full test fold: 629,742 images, 12,041 species (in-distribution) | **0.921** | 0.906 | 0.899 |
+| Probe: light-trap images, unseen nights (domain shift) | **0.783** | 0.777 | 0.765 |
+| Probe, held-out species (never seen in trap images) | **0.785** | 0.771 | 0.772 |
 
 "Probe" is 15,200 light-trap images (368 Danish species) from capture nights never used in training.
 "Held-out species" is the 58 of those species for which no trap image was used at all. At a 95 %
 precision target (thresholds fitted on half the capture nights, verified on the other half), the
-ViT answers 87 % of trap images with 96 % precision, the ConvNeXt 81 % and the EfficientNet 90 %
+ViT answers 90 % of trap images with 96 % precision, the ConvNeXt 81 % and the EfficientNet 90 %
 with 95 %, either at species or at a coarser rank. On 3,171 photos of 591 species *outside* the label
-set, the ViT wrongly commits to a species on only 14 % (ConvNeXt 21 %, EfficientNet 25 %), and
+set, the ViT wrongly commits to a species on only 17 % (ConvNeXt 21 %, EfficientNet 25 %), and
 otherwise backs off to a mostly correct genus or family, or says "unknown".
 
 ## Limitations

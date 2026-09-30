@@ -1,0 +1,34 @@
+{
+    "types": {
+        "box": [
+            "T[integer]",
+            "T[integer]",
+            "T[integer]",
+            "T[integer]"
+        ]
+    },
+    "enums": {},
+    "structure": [
+        "T[box]"
+    ],
+    "notes": {
+        "id": "ami-detector-boxes",
+        "evidence": "Source inspection at the pinned revisions; no full inference observation claimed.",
+        "producer": "ami-data-companion ObjectDetector post_process_single (2023 ResNet50 and MobileNetV3)",
+        "serialization": "Python list of integer lists",
+        "scope": "One image after author thresholding; post_process_batch adds an outer image list. Excludes raw torchvision tensors, database records and downstream API detections/classifications.",
+        "coordinates": "[x1, y1, x2, y2], original-image pixels, origin top-left. NumPy astype(int) truncates the retained coordinates toward zero.",
+        "confidence": "The author filters scores strictly greater than 0.80 (2023 ResNet50) or 0.50 (MobileNetV3), then discards scores and labels. Neither confidence nor class is present in this output.",
+        "empty": "No retained detections produces [].",
+        "sources": [
+            {
+                "url": "https://github.com/RolnickLab/ami-data-companion/blob/55d0787570f8c9d92c450f4fb65a58dd25cf6634/trapdata/ml/models/localization.py",
+                "revision": "55d0787570f8c9d92c450f4fb65a58dd25cf6634"
+            },
+            {
+                "url": "https://github.com/RolnickLab/ami-data-companion/blob/55d0787570f8c9d92c450f4fb65a58dd25cf6634/trapdata/ml/models/base.py",
+                "revision": "55d0787570f8c9d92c450f4fb65a58dd25cf6634"
+            }
+        ]
+    }
+}

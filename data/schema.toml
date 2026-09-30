@@ -17,7 +17,7 @@
 #  To add a field: add it here, use it in a template, and document it in
 #  template/index.md.
 
-# Identity 
+# Identity
 
 [[field]]
 name        = "title"
@@ -52,7 +52,7 @@ values      = [
 ]
 help        = "The ecological purpose(s) the model is used for. A list of one or more purposes."
 
-# Weights format 
+# Weights format
 [[field]]
 name        = "weight_format"
 type        = "list"
@@ -99,7 +99,7 @@ help        = "Year of publication or release. 4-digit number, no quotes."
 name        = "license"
 type        = "string"
 required    = true
-help        = "SPDX identifier where one exists, e.g. MIT, CC-BY-4.0. See them at https://spdx.org/licenses/."
+help        = "SPDX identifier where one exists, e.g. MIT, CC-BY-4.0. See them at https://spdx.org/licenses/. If the license is not listed there, use 'custom' and explain in the model card."
 
 [[field]]
 name        = "status"
@@ -138,7 +138,7 @@ help        = "What comes out. Shown as the Outputs line in the sidebar."
 name        = "output_format"
 type        = "list"
 required    = false
-values      = ["coco", "flatbug", "pollinator-frame-folders", "insectsflowers-csv", "beetleflow-color-mask", "insectdct-csv", "insectmorphoai-csv", "ultralytics-detect-json", "ultralytics-detect-results", "ultralytics-detect-txt", "ultralytics-segment-json", "ultralytics-segment-results", "ultralytics-segment-txt", "yolov5-detect-results", "yolov5-detect-txt", "yolov5-segment-txt", "yolov7-detect-txt", "yolov7-segment-txt", "other"]
+values      = ["ami-detector-boxes", "biomoth-csv", "mothbot-detection-json", "insect-detect-csv", "mcc24-csv", "grounding-dino-hf-results", "ecto-trigger-tflite-score", "coco", "flatbug", "pollinator-frame-folders", "insectsflowers-csv", "beetleflow-color-mask", "insectdct-csv", "insectmorphoai-csv", "ultralytics-detect-json", "ultralytics-detect-results", "ultralytics-detect-txt", "ultralytics-segment-json", "ultralytics-segment-results", "ultralytics-segment-txt", "yolov5-detect-results", "yolov5-detect-txt", "yolov5-segment-txt", "yolov7-detect-txt", "yolov7-segment-txt", "other"]
 help        = "Actual output representation, one entry per architecture. Choose the producing API/exporter, not just the architecture; see static/formats/README.md."
 
 [[field]]
@@ -146,7 +146,7 @@ name        = "image_input_size"
 type        = "string"
 required    = false
 values      = []
-help        = "e.g. 640x640, or 'any' for a model that takes native resolution. Default: any."
+help        = "Image width x height, e.g. 640x640, or 'any' for a model that takes native resolution. Default: any."
 
 [[field]]
 name        = "input_modality"
@@ -162,6 +162,13 @@ required    = false
 help        = "e.g. 'TreeOfLife (450k taxa)'. Leave out when not stated."
 
 [[field]]
+name        = "target_taxonomic_rank"
+type        = "list"
+required    = false
+values      = ["kingdom", "phylum", "class", "order", "family", "genus", "species", "NA"]
+help        = "Taxonomic rank(s) the model's output labels are at, e.g. [\"family\", \"genus\", \"species\"]. Only for models that classify to a taxon. Use [\"NA\"], on its own, for detectors, embedding models, trait models and any model whose labels are not taxa."
+
+[[field]]
 name        = "developer"
 type        = "string"
 required    = false
@@ -175,9 +182,34 @@ help        = "Link to the paper, DOI, or project page."
 
 [[field]]
 name        = "pretraining_data"
-type        = "string"
+type        = "list"
 required    = false
-help        = "What a foundation model was pre-trained on, e.g. 'TreeOfLife-10M'. Shown in the sidebar; covered in the prose for other models."
+sentinels   = ["unpublished", "unknown"]
+help        = """
+What the base weights were pre-trained on before this model's own training, one
+entry per dataset, as a DOI where one exists, e.g. ["COCO"]. A DOI or URL
+renders as a link. Leave out when there is no separate pre-training stage.
+"""
+
+[[field]]
+name        = "training_data"
+type        = "list"
+required    = true
+sentinels   = ["unpublished", "unknown"]
+help        = """
+The dataset(s) the released weights were trained or fine-tuned on, one entry per
+dataset, as a DOI where one exists, e.g. ["10.5281/zenodo.14761446"].
+A DOI or URL renders as a link. For a dataset published only as an image list
+and scripts to rebuild it (e.g. scraped from GBIF or iNaturalist), link the
+folder that holds the list, pinned to a commit rather than a branch. A GBIF
+download DOI, where one exists, goes first.
+When the data cannot be cited, say why with one of the field's `sentinels`,
+spelt exactly, so the catalogue can be filtered on it:
+  "unpublished"  the authors used data they have not released
+  "unknown"      the sources do not say what the data was
+One of them may sit next to citable entries when only part of the data is
+published, e.g. ["10.5281/zenodo.14761446", "unpublished"].
+"""
 
 [[field]]
 name        = "code_url"
@@ -232,4 +264,4 @@ Weights are never committed to this repository.
   key      = "weights"
   provider = "huggingface"
   url      = "https://huggingface.co/owner/model"
-"""    
+"""

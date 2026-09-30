@@ -5,7 +5,6 @@
 {{- $tasks := slice -}}
 {{- $purposes := slice -}}
 {{- $years := slice -}}
-{{- $licenses := slice -}}
 {{- $zeroShot := 0 -}}
 {{- range $rows -}}
   {{- /* One checkbox per member, not one per whole task list. */ -}}
@@ -16,8 +15,21 @@
     {{- if not (in $purposes .) }}{{ $purposes = $purposes | append . }}{{ end -}}
   {{- end -}}
   {{- with .Params.year }}{{ if not (in $years .) }}{{ $years = $years | append . }}{{ end }}{{ end -}}
-  {{- with .Params.license }}{{ if not (in $licenses .) }}{{ $licenses = $licenses | append . }}{{ end }}{{ end -}}
   {{- if partial "zeroshot.html" . }}{{ $zeroShot = add $zeroShot 1 }}{{ end -}}
+{{- end -}}
+
+{{- /* Training-data availability, in a fixed order: published first, then the
+       field's sentinels as data/schema.toml lists them. Only values some card
+       uses get a checkbox. */ -}}
+{{- $trainingOrder := slice "published" -}}
+{{- range hugo.Data.schema.field -}}
+  {{- if eq .name "training_data" }}{{ $trainingOrder = $trainingOrder | append (.sentinels | default slice) }}{{ end -}}
+{{- end -}}
+{{- $trainingCounts := dict -}}
+{{- range $rows -}}
+  {{- range partial "training-status.html" . -}}
+    {{- $trainingCounts = merge $trainingCounts (dict . (add (index $trainingCounts . | default 0) 1)) -}}
+  {{- end -}}
 {{- end -}}
 
 {{- /* Facets whose row attribute is a `;`-separated list. Declared here rather
@@ -51,12 +63,18 @@
     {{- end }}
   </fieldset>
 
+  {{- if $trainingCounts }}
   <fieldset class="filter-group">
-    <legend>License</legend>
-    {{- range sort $licenses }}
-    <label class="chip"><input type="checkbox" data-facet="license" value="{{ . }}"> {{ . }}</label>
+    <legend>Training data</legend>
+    {{- range $value := $trainingOrder }}
+      {{- with index $trainingCounts $value }}
+    <label class="chip">
+      <input type="checkbox" data-facet="training" value="{{ $value }}"> {{ $value }} <span class="chip-count">{{ . }}</span>
+    </label>
+      {{- end }}
     {{- end }}
   </fieldset>
+  {{- end }}
 
   {{- if $zeroShot }}
   <fieldset class="filter-group">

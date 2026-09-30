@@ -8,16 +8,19 @@ foundation         = false
 purpose            = ["Insect detection"]
 task               = ["Object Detection"]
 architecture       = ["Faster R-CNN ResNet50-FPN", "Faster R-CNN MobileNetV3-Large-FPN"]
+output_format      = ["ami-detector-boxes", "ami-detector-boxes"]
 base_model         = "torchvision fasterrcnn_resnet50_fpn; torchvision fasterrcnn_mobilenet_v3_large_fpn"
 year               = 2023
 license            = "AGPL-3.0-only"
 status             = "published"
+training_data      = ["unpublished"]
 date               = 2026-09-30
 
 # Optional - delete a line to take the default shown.
 vocabulary_scope   = "closed"
 geographic_scope   = "Global (trap images from North America, Europe and Central America)"
 produces           = ["bbox"]
+target_taxonomic_rank = ["NA"]
 image_input_size   = "any"
 taxonomic_coverage = "Class-agnostic: one class, 'object' (any arthropod on the trap screen)"
 developer          = "Rolnick Lab (Mila / McGill) and the AMI consortium"
@@ -85,10 +88,12 @@ but expect a domain gap.
 - **Input:** a full-resolution RGB trap image, converted with `ToTensor` only. Resizing is left to
   torchvision's internal transform, which defaults to a shortest side of 800 and a longest side of
   1333. That default comes from torchvision; the repository does not document it.
-- **Output:** integer pixel boxes `[x1, y1, x2, y2]` with a score, filtered at the
-  model-specific threshold shown in the asset notes. There is no class label.
+- **Output:** integer pixel boxes `[x1, y1, x2, y2]`, filtered at the
+  model-specific threshold shown in the asset notes. The returned boxes contain neither a score nor a class label.
 - **In the AMI API** (`trapdata/api/schemas.py`), each detection is returned as `bbox{x1,y1,x2,y2}`
   with its downstream classifications attached.
+
+The documented [AMI box-list profile](/formats/detection/ami-detector-boxes.json) describes `post_process_single` at ami-data-companion revision `55d0787`: a list of integer pixel corners. Scores and class labels are discarded after filtering. This profile is source-inspected; full checkpoint inference has not been probed. The downstream API wraps boxes in richer detection records.
 
 ## Performance
 

@@ -45,6 +45,10 @@ license            = "MIT"                       # SPDX identifier where one exi
 status             = "draft"                     # draft | published | deprecated.
                                                  # Draft is the safe default: only
                                                  # `published` appears on the site.
+training_data      = ["REPLACE"]                 # DOI(s) of the dataset(s) the weights were
+                                                 # trained on, one entry per dataset or
+                                                 # "unpublished" (not released) or
+                                                 # "unknown" (source does not say).
 
 # Optional. Delete any line you do not have an answer for - the default is in
 # the comment.
@@ -54,6 +58,10 @@ geographic_scope   = ""                          # e.g. "France", "Global"
 # Optional: one verified output profile per architecture; see static/formats/README.md.
 # output_format    = ["ultralytics-detect-json"]
 produces           = ["bbox"]                    # bbox | mask | label | count | track | embedding
+target_taxonomic_rank = ["NA"]                   # rank(s) of the output labels: kingdom |
+                                                 # phylum | class | order | family | genus |
+                                                 # species. ["NA"] on its own for detectors
+                                                 # and any model whose labels are not taxa.
 image_input_size         = "640x640"                   # or "any" for native resolution
 input_modality     = []                          # text | image | box | point | mask.
                                                  # List every input the model
@@ -62,6 +70,9 @@ input_modality     = []                          # text | image | box | point | 
                                                  # takes an image.
 developer          = "REPLACE"                   # who made it, not who curated it
 paper_url          = ""                          # paper, DOI or project page
+pretraining_data   = []                          # what the base weights were pre-trained
+                                                 # on, if there was a separate stage.
+                                                 # Same rules as training_data.
 
 # ── Weights ───────────────────────────────────────────────────────────────────
 #
@@ -73,7 +84,8 @@ paper_url          = ""                          # paper, DOI or project page
 # authors host them anyway.
 
 [[assets]]
-key      = "weights"              # the label shown in the sidebar
+key      = "weights"              # the label shown in the sidebar if variant is empty
+variant  = "REPLACE"              # e.g. "YOLOv8n", "YOLOv8s", "YOLOv8m", "YOLOv8l", "Share index", "Dataset page", "GitHub code"
 provider = "huggingface"          # zenodo | huggingface | github | erda | package | url
 url      = "https://..."
 # Optional, and worth adding when you know them:

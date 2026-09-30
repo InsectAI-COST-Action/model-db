@@ -12,16 +12,18 @@ base_model         = "openai/clip-vit-base-patch16"
 year               = 2023
 license            = "MIT"
 status             = "published"
+training_data      = ["10.57967/hf/1972", "unpublished"]
 date               = 2026-09-29
 
 # Optional - delete a line to take the default shown.
 vocabulary_scope   = "open"
 geographic_scope   = "Global"
 produces           = ["label", "embedding"]
+target_taxonomic_rank = ["kingdom", "phylum", "class", "order", "family", "genus", "species"]
 image_input_size   = "224x224"
 input_modality     = ["image", "text"]
 taxonomic_coverage = "TreeOfLife-10M (454k taxa)"
-pretraining_data   = "TreeOfLife-10M"
+pretraining_data   = ["unpublished"]
 developer          = "Samuel Stevens, Jiaman Wu et al. (Imageomics Institute)"
 paper_url          = "https://doi.org/10.48550/arXiv.2311.18803"
 code_url           = "https://github.com/Imageomics/BioCLIP"

@@ -36,6 +36,7 @@ architecture       = ["Vision Transformer (ViT)", "ConvNeXt"]
 year               = 2025                        # year of publication or release
 license            = "custom"                    # SPDX identifier where one exists
 status             = "published" 
+training_data      = ["ImageNet-1k", "ImageNet-22k", "Mapillary Street-level Sequences", "unpublished"]
 
 # Optional. Delete any line you do not have an answer for - the default is in
 # the comment.
@@ -45,6 +46,7 @@ geographic_scope   = "Global"
 # Optional: one verified output profile per architecture; see static/formats/README.md.
 # output_format    = ["ultralytics-detect-json"]
 produces           = ["embedding"]                    # bbox | mask | label | count | track | embedding
+target_taxonomic_rank = ["NA"]
 image_input_size         = "any"                  # Supports variable resolution via RoPE (256×256 to 4096×4096)
 input_modality     = ["image"] 
 developer          = "Facebook (Meta AI), UC Berkeley" 

@@ -29,6 +29,7 @@
           data-year="{{ $p.year }}"
           data-license="{{ $p.license }}"
           data-zeroshot="{{ if partial "zeroshot.html" . }}true{{ else }}false{{ end }}"
+          data-training="{{ delimit (partial "training-status.html" .) ";" }}"
           data-search="{{ lower $haystack }}">
         <th scope="row">
           <a href="{{ .RelPermalink }}">{{ .Title }}</a>

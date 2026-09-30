@@ -1,0 +1,22 @@
+{{- /*
+  Renders a list of datasets (pretraining_data, training_data), one per line.
+  A bare DOI links through doi.org, a URL links as is, one of the field's
+  `sentinels` from data/schema.toml is set in italics, a name stays text.
+
+  Called as:  {{ partial "dataset-list.html" (dict "field" "training_data" "entries" $p.training_data) }}
+*/ -}}
+{{- $sentinels := slice -}}
+{{- range hugo.Data.schema.field -}}
+  {{- if eq .name $.field }}{{ $sentinels = .sentinels | default slice }}{{ end -}}
+{{- end -}}
+<ul class="dataset-list">
+{{- range $entry := $.entries }}
+  <li>
+  {{- if findRE `^10\.\d{4,9}/` $entry }}<a href="https://doi.org/{{ $entry }}" rel="noopener">{{ $entry }}</a>
+  {{- else if hasPrefix $entry "http" }}<a href="{{ $entry }}" rel="noopener">{{ $entry }}</a>
+  {{- else if in $sentinels $entry }}<em>{{ $entry }}</em>
+  {{- else }}{{ $entry }}
+  {{- end -}}
+  </li>
+{{- end }}
+</ul>

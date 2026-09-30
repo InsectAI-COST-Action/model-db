@@ -12,12 +12,14 @@ base_model         = "timm resnet50 (ImageNet); convnext_tiny_in22k"
 year               = 2024
 license            = "AGPL-3.0-only"
 status             = "published"
+training_data      = ["10.5281/zenodo.11358689", "10.15468/dl.6j5bzj", "10.15468/dl.n3zcat", "10.15468/dl.6576q9", "10.15468/dl.hsxw84"]
 date               = 2026-09-30
 
 # Optional - delete a line to take the default shown.
 vocabulary_scope   = "closed"
 geographic_scope   = "Global model plus regional models: NE North America, W Europe, Panama, Costa Rica, Anguilla, Kenya-Uganda"
 produces           = ["label"]
+target_taxonomic_rank = ["order", "species"]
 image_input_size   = "128x128 (Mila models), 300x300 (Turing models)"
 taxonomic_coverage = "Lepidoptera: 29,176 species (global); 79 to 5,952 per regional model. Order model: 16 arthropod orders"
 developer          = "Rolnick Lab (Mila / McGill), the AMI consortium, and the Alan Turing Institute (Turing models)"

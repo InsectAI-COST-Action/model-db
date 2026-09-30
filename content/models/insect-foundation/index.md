@@ -38,6 +38,7 @@ base_model          = ""                          # If this is a fine-tuned mode
 year               = 2024                        # year of publication or release
 license            = "Not found"                       # SPDX identifier where one exists
 status             = "published"                     # draft | published | deprecated.
+training_data      = ["https://github.com/uark-cviu/InsectFoundationModel/releases/tag/v1"]
                                                  # Draft is the safe default: only
                                                  # `published` appears on the site.
 
@@ -49,6 +50,7 @@ geographic_scope   = ""                          # e.g. "France", "Global"
 # Optional: one verified output profile per architecture; see static/formats/README.md.
 # output_format    = ["ultralytics-detect-json"]
 produces           = ["embedding", "label"]                    # bbox | mask | label | count | track | embedding
+target_taxonomic_rank = ["NA"]
 image_input_size         = "224x224"                   # or "any" for native resolution
 input_modality     = ["image"]                          # text | image | box | point | mask.
                                                  # List every input the model

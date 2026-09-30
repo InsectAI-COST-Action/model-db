@@ -11,15 +11,17 @@ base_model         = "timm/vit_base_patch16_224; BarcodeBERT (5-mer); prajjwal1/
 year               = 2025
 license            = "MIT"
 status             = "published"
+training_data      = ["10.5281/zenodo.8030065", "10.5281/zenodo.11973457"]
 date               = 2026-09-29
 
 # Optional - delete a line to take the default shown.
 vocabulary_scope   = "open"
 produces           = ["label", "embedding"]
+target_taxonomic_rank = ["order", "family", "genus", "species"]
 image_input_size   = "224x224"
 input_modality     = ["image", "text"]
 taxonomic_coverage = "Insects (BIOSCAN-1M and BIOSCAN-5M)"
-pretraining_data   = "BIOSCAN-1M; BIOSCAN-5M"
+pretraining_data   = ["ImageNet-21k", "ImageNet-1k", "https://huggingface.co/datasets/bioscan-ml/CanadianInvertebrates-ML", "BookCorpus", "English Wikipedia"]
 developer          = "ZeMing Gong, Austin T. Wang et al."
 paper_url          = "https://doi.org/10.48550/arXiv.2405.17537"
 code_url           = "https://github.com/bioscan-ml/clibd"

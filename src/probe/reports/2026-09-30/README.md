@@ -1,10 +1,14 @@
 # Author output probe results
 
 Fourteen probe invocations produced inspected outputs with real checkpoints on
-CPU. These cover eight of the ten currently listed detection model cards, plus
-the unfinished InsectDCT card. Two listed workflows remain unresolved: the moth
-pipeline cannot download its classifier label map, and Insect Detect requires
-an OAK device that is not attached here.
+CPU. These are the retained receipts from the initial probe pass; they are not
+a complete inventory of the current detection catalogue. See the
+[coverage expansion](../2026-09-30-format-expansion/README.md) for the current audit.
+
+Inventory correction: the original card reader split on every `+++`, including
+that text inside TOML comments. It therefore missed some cards and incorrectly
+reported InsectDCT as unpublished. The parser now recognizes delimiter lines.
+The inference observations below are unchanged.
 
 These are format checks, not accuracy measurements. Each linked report records
 its exact checkpoint, source, environment and input scope. Some workflows were
@@ -50,14 +54,12 @@ no claim is made that the default camera/lens is calibrated for other imagery.
 
 InsectDCT's CL table contains a classifier score in percent and a one-based
 selected taxon index. Its HI table contains per-level classifier details and
-probabilities. Neither is the native Ultralytics detection result. The
-InsectDCT card currently has no active category metadata, so its result is kept
-here without publishing a new card or changing its classification.
+probabilities. Neither is the native Ultralytics detection result. The published InsectDCT card now references this verified CSV profile.
 
 ## Reproduction
 
-See [the probe README](../../README.md) for commands. The manifest covers every
-current detection card and keeps the InsectDCT workflow as an additional probe.
+See [the probe README](../../README.md) for commands. The manifest includes runnable and explicitly blocked entries; the linked
+coverage audit distinguishes their evidence.
 Raw run directories stay under the ignored `src/probe/runs/` directory. These
 committed receipts retain small original CSV/TXT/JSON samples, execution logs,
 package versions and artifact hashes; binary fixtures and checkpoints are not

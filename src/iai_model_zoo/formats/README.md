@@ -65,9 +65,11 @@ rows -> a pixel-corner data IR -> Ultralytics JSON using those explicit inputs.
 
 ## Concrete adapters
 
-[Flatbug and COCO adapters](adapters/README.md) use the ISIR data schema and
-explicit metadata injection. They demonstrate source-specific coordinate
-conversion and round-trip preservation while leaving this handler generic.
+[ISIR adapters](adapters/README.md) use explicit image context and metadata.
+Flatbug and COCO support import/export; YOLO detection TXT, Ultralytics detection
+Results/JSON, BioMoth CSV and AMI box lists have import-only adapters. Multi-image
+sources produce collections of single-image records. The schema handler remains
+generic; coordinate semantics and source-specific metadata belong to adapters.
 
 ## Shared higher-order types
 

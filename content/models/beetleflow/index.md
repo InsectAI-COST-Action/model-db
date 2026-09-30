@@ -12,12 +12,14 @@ base_model         = "facebook/mask2former-swin-large-ade-semantic"
 year               = 2025
 license            = "MIT"
 status             = "published"
+training_data      = ["10.57967/hf/8716"]
 date               = 2026-09-29
 
 # Optional - delete a line to take the default shown.
 vocabulary_scope   = "closed"
 geographic_scope   = "USA (NEON sites)"
 produces           = ["mask"]
+target_taxonomic_rank = ["NA"]
 output_format      = ["beetleflow-color-mask", "beetleflow-color-mask"]
 image_input_size   = "512x512"
 input_modality     = ["image"]

@@ -37,6 +37,7 @@ base_model          = ""                          # If this is a fine-tuned mode
 year               = 2023                        # year of publication or release
 license            = "MIT"                       # SPDX identifier where one exists
 status             = "published"                     # draft | published | deprecated.
+training_data      = ["LAION-2B-en"]
                                                  # Draft is the safe default: only
                                                  # `published` appears on the site.
 
@@ -50,6 +51,7 @@ vocabulary_scope   = "open"                    # closed | open | taxonomic.
                                                  # trained on.
 geographic_scope   = ""                          # e.g. "France", "Global"
 produces           = ["label", "embedding"]                    # bbox | mask | label | count | track | embedding
+target_taxonomic_rank = ["NA"]
 image_input_size         = "224x224"                   # or "any" for native resolution
 input_modality     = ["image", "text"]                          # text | image | box | point | mask.
                                                  # List every input the model

@@ -1,7 +1,9 @@
-# Flatbug and COCO adapters
+# ISIR adapters
 
-These adapters consume and return decoded dictionaries. They use the schema
-handler and standard library; no model runtime, NumPy or mask decoder is needed.
+These adapters use the schema handler and standard library. Flatbug and COCO
+support import and export; the detection adapters below are import-only. No model
+runtime, NumPy or mask decoder is imported. Native Ultralytics Results can be
+consumed when the caller already uses that runtime.
 Use `PYTHONPATH=src` when running from this checkout.
 
 Both adapters use [ISIR](../../../../static/formats/isir.json): one
@@ -10,6 +12,154 @@ compatibility contract, not an individual result. A different name/version
 fails validation. The optional `category_id`, `polygons`, `area`, image
 `file_name`, and per-instance `extra_information` fields preserve data needed
 by these first adapters.
+
+## Import-only detection adapters
+
+One ISIR record always describes **one image**. Single-image adapter calls return
+one dictionary; multi-image calls return a list of those dictionaries. Existing
+COCO `Batch.images` follows the same rule, retaining dataset metadata separately.
+No adapter combines detections from different images into one ISIR record.
+
+| Module / entry point | Input | Return |
+| --- | --- | --- |
+| `ami.to_ir` | Postprocessed integer pixel boxes for one image | One ISIR record |
+| `ami.to_ir_many` | Mapping from image keys to box lists | List of ISIR records |
+| `yolo_txt.to_ir` | One image's TXT string or decoded numeric rows | One ISIR record |
+| `yolo_txt.to_ir_many` | Mapping from image keys to TXT strings/rows | List of ISIR records |
+| `ultralytics.to_ir` | One native horizontal-detection Results object or decoded projection | One ISIR record |
+| `ultralytics.to_ir_many` | Results list/generator, optionally matched image contexts | List of ISIR records |
+| `ultralytics.json_to_ir` | One image's Results JSON string or decoded instance list | One ISIR record |
+| `ultralytics.json_to_ir_many` | Mapping from image keys to per-image JSON | List of ISIR records |
+| `biomoth.to_ir` | Multi-image author CSV string or decoded row dictionaries | List of ISIR records |
+
+These modules have no `from_ir`: constructing author runtime objects or reverse
+measurement pipelines is outside their purpose. They do not read paths or scan
+directories. Read files explicitly before calling them.
+
+### Image context and collections
+
+```python
+from iai_model_zoo.formats.adapters import ImageContext, Metadata, ami
+
+image = ImageContext(
+    id="capture-123", width=200, height=100, file_name="site/frame.jpg",
+    metadata=Metadata(model={"name": "known detector"}),
+)
+ir = ami.to_ir([[10, 20, 50, 60]], image=image)
+assert ir["instances"][0]["bbox"] == [30, 60, 40, 40]
+```
+
+`ImageContext` supplies known image identity and dimensions, an optional filename,
+and optional per-image `Metadata`. Positive integer dimensions are required.
+Image dimensions never come from the maximum detection coordinates. Metadata is
+copied and validated using the same rules as Flatbug/COCO. Missing scores/classes
+remain absent; AMI supplies neither. Instance IDs are row positions within each
+image, not track IDs.
+
+Collection manifests map exact source keys to contexts. Source keys and ISIR IDs
+can differ. Duplicate ISIR image IDs and input keys absent from the manifest
+raise `FormatError`. Manifest-based collections use manifest order; Ultralytics
+Results collections use source order. Context-specific metadata is applied to
+each corresponding image.
+
+```python
+images = {
+    "site/frame.jpg": image,
+    "site/blank.jpg": ImageContext("capture-124", 200, 100),
+}
+batch = ami.to_ir_many({"site/frame.jpg": [], "site/blank.jpg": []}, images=images)
+assert len(batch) == 2  # Two known empty images, each its own ISIR record.
+```
+
+By default, manifest entries absent from the supplied outputs are omitted.
+`include_empty=True` explicitly asserts that those images were processed and
+had no detections. Use it only with a known completed-image manifest. A missing
+TXT file or CSV row cannot establish successful empty inference by itself.
+Explicit empty lists/text are retained without this option.
+
+### YOLO detection TXT
+
+```python
+from iai_model_zoo.formats.adapters import yolo_txt
+
+ir = yolo_txt.to_ir(
+    "0 0.25 0.30 0.20 0.40 0.8\n",
+    image=image, profile="yolov5-detect-txt", save_conf=True,
+)
+```
+
+Supported profiles are `yolov5-detect-txt`, `yolov7-detect-txt`,
+`ultralytics-detect-txt`, and `yolov7-segment-txt` (the last contains boxes only).
+`save_conf` is required. `tracking=True` is supported only for Ultralytics and
+selects a final tracking-ID column, preserved under per-instance
+`extra_information[profile].track_id`. Neither column count nor an integer-valued
+sixth token determines whether that token is confidence or a track ID.
+
+The default layout contains normalized center/width/height. YOLOv5's
+`save_format=1` selects normalized corner coordinates. Both convert to pixel
+center/width/height with bottom-left origin, without clipping or rounding.
+The selected profile/options are retained as record-level native metadata.
+Input row lengths must exactly match the selected layout; no suffix is guessed.
+This importer does not support polygon TXT or raw network tensors.
+
+### Ultralytics Results and JSON
+
+```python
+from iai_model_zoo.formats.adapters import ultralytics
+
+# results = model.predict(...) from an existing Ultralytics installation
+# batch = ultralytics.to_ir_many(results)
+
+ir = ultralytics.json_to_ir(
+    [{"name": "insect", "class": 0, "confidence": 0.8,
+      "box": {"x1": 10, "y1": 20, "x2": 50, "y2": 60}}],
+    image=image, normalized=False,
+)
+```
+
+Results supply `orig_shape`, `path`, `names`, and `boxes.data`. Native tensors
+are detached and moved to CPU before conversion to lists; the adapter itself
+imports no tensor library. Decoded projections use the same documented fields.
+Without context, `path` identifies the image. Supplied contexts can override
+identity, attach metadata and choose filenames, but dimensions must agree with
+`orig_shape`. Native source paths and class vocabularies are retained in
+`extra_information.ultralytics`; context overrides do not erase them.
+
+For batches, `images=[context, ...]` must match Results one-for-one. Repeated
+video paths need explicit distinct frame IDs. Both tracked seven-column and
+untracked six-column box tensors are supported, including empty tensors.
+Track IDs remain native metadata rather than replacing per-image instance IDs.
+The projection covers documented detection fields, not every Results attribute.
+
+JSON requires `ImageContext` and an explicit `normalized` boolean matching the
+producer's `normalize` option. Names, tracking IDs and extra instance fields are
+retained. Empty JSON `[]` means one empty image. JSON rounding has already lost
+precision; conversion cannot recover it. Segmentation, OBB, pose and
+classification Results are rejected by this detection-only adapter.
+
+### BioMoth CSV
+
+```python
+from pathlib import Path
+from iai_model_zoo.formats.adapters import biomoth
+
+# Keys must match the CSV filePath exactly, not just fileName.
+images = {"WS1/frame.jpg": ImageContext("capture-123", 6040, 3420)}
+# batch = biomoth.to_ir(Path("predictions_2023.csv").read_text(), images=images)
+```
+
+Rows are grouped by exact `filePath`, so identical basenames at different sites
+remain separate. Each image needs manifest dimensions. The CSV header and row
+lengths are validated; decoded mappings pass through the author schema. The
+source path populates `image.file_name` unless the caller supplies a filename.
+
+Boxes, class IDs and detector confidence map to their ISIR counterparts. Each
+source row is retained under instance `extra_information.biomoth`, including
+native extensions, calibration-dependent measurements, site and hard-coded year.
+`size` is in square centimetres and is **not** mapped to ISIR's pixel-square
+`area`. No calibration, capture timestamp or model identity is inferred from it.
+As with TXT, a CSV without a row for an image does not establish empty inference;
+use `include_empty=True` only with an explicitly completed-image manifest.
 
 ## Flatbug
 
@@ -180,3 +330,11 @@ not byte-for-byte serialization equality.
 ```sh
 python3 -m unittest discover -s scripts/tests -v
 ```
+
+
+Import-only tests additionally cover real BioMoth CSV, retained YOLO TXT and
+ArthroNat tensor observations, image grouping, empty manifests, ambiguous TXT
+columns and native metadata retention. A controlled compatibility check with
+pinned Ultralytics 8.4.90 exercises actual Results objects and JSON export for
+tracked, untracked and empty inputs in both coordinate modes; this is not a new
+checkpoint inference run.

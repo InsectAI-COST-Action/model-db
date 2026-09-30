@@ -10,12 +10,14 @@ architecture       = ["YOLOv5", "YOLOv7"]
 year               = 2023
 license            = "AGPL-3.0-only"
 status             = "published"
+training_data      = ["https://github.com/stark-t/PAI/tree/d277ee402d605aa96795ad2751f3a7b3b4cdd6c7/data"]
 date               = 2026-09-21
 
 # Optional - delete a line to take the default shown.
 vocabulary_scope   = "closed"
 geographic_scope   = "Europe"
 produces           = ["bbox", "label"]
+target_taxonomic_rank = ["order", "family"]
 output_format      = ["yolov5-detect-txt", "yolov7-detect-txt"]
 image_input_size   = "640x640"
 taxonomic_coverage = "8 groups: Araneae, Coleoptera, Diptera, Hemiptera, Hymenoptera, Formicidae, Lepidoptera, Orthoptera"

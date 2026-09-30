@@ -11,12 +11,14 @@ base_model         = "https://huggingface.co/Ultralytics/YOLO11"
 year               = 2026
 license            = "AGPLv3"
 status             = "published"
+training_data      = ["https://github.com/edgaremy/arthropod-detection-dataset/tree/95a3bea80bcc0dc6e5bf20a28b436a9c30cffbf7/src", "10.5281/zenodo.14761447"]
 date               = 2026-05-08
 
 # Optional - delete a line to take the default shown.
 vocabulary_scope   = "open"
 geographic_scope   = "France"
 produces           = ["bbox"]
+target_taxonomic_rank = ["NA"]
 output_format      = ["ultralytics-detect-results"]
 image_input_size   = "640x640"
 input_modality     = ["image"]

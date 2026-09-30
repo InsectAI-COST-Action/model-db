@@ -7,15 +7,18 @@ description        = "YOLOv5 model and several ResNet50 classifiers trained to i
 purpose            = ["Insect detection", "Insect classification"]
 task               = ["Object Detection", "Classification"]
 architecture       = ["YOLOv5","ResNet50"]
+output_format      = ["mcc24-csv", "mcc24-csv"]
 base_model         = ""
 year               = 2025
 license            = "CC-BY-4.0"
 status             = "published"
+training_data      = ["10.5281/zenodo.15105293", "unpublished"]
 date               = 2026-09-29
 
 # Optional - delete a line to take the default shown.
 vocabulary_scope   = "closed"
 produces           = ["bbox","label"]
+target_taxonomic_rank = ["order", "species"]
 image_input_size   = "1280x1280"
 developer          = "Bjerge et al."
 paper_url          = "https://zslpublications.onlinelibrary.wiley.com/doi/full/10.1002/rse2.70007"
@@ -75,6 +78,8 @@ note         = "The weights file is in the named folder and derived from https:/
 - **Channel order:** RGB
 - **Outputs:** bounding boxes
 - **Input modality:** image only (discriminative model)
+
+The documented [MCC24 CSV profile](/formats/detection/mcc24-csv.json) follows `detectClassifySpecies.py` at revision `a817f57`. It combines pixel boxes and detector scores with order/species classifications in a 19-column CSV. This is source-inspected only: the retained full-pipeline probe failed when the author classifier label-map URL returned HTTP 403. Both architecture entries refer to this combined pipeline export.
 
 ## Performance
 
