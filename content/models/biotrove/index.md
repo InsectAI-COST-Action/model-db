@@ -29,7 +29,7 @@ foundation         = true
 
 # ── Catalogue ─────────────────────────────────────────────────────────────────
 
-category           = "classification"                  # must already exist in data/categories.toml
+purpose           = "classification"                  # must already exist in data/categories.toml
 task               = ["Classification", "Embedding"]         # Object Detection | Instance Segmentation |
                                                  # Semantic Segmentation | Classification |
                                                  # Tracking | Embedding | Counting
@@ -42,6 +42,7 @@ license            = "MIT"                       # SPDX identifier where one exi
 status             = "published"                     # draft | published | deprecated.
                                                  # Draft is the safe default: only
                                                  # `published` appears on the site.
+training_data = "https://huggingface.co/datasets/BGLab/BioTrove"
 
 # Optional. Delete any line you do not have an answer for - the default is in
 # the comment.
