@@ -29,7 +29,7 @@ foundation         = true
 
 # ── Catalogue ─────────────────────────────────────────────────────────────────
 
-purpose           = ["classification","embedding"]                  # must already exist in data/categories.toml
+purpose           = ["Insect classification","Model embeddings"]                  # must already exist in data/categories.toml
 task               = ["Classification", "Embedding"]         # Object Detection | Instance Segmentation |
                                                  # Semantic Segmentation | Classification |
                                                  # Tracking | Embedding | Counting
