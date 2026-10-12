@@ -29,7 +29,7 @@ foundation         = true
 
 # ── Catalogue ─────────────────────────────────────────────────────────────────
 
-purpose           = "classification"                  # must already exist in data/categories.toml
+purpose           = ["classification","embedding"]                  # must already exist in data/categories.toml
 task               = ["Classification", "Embedding"]         # Object Detection | Instance Segmentation |
                                                  # Semantic Segmentation | Classification |
                                                  # Tracking | Embedding | Counting
@@ -42,7 +42,7 @@ license            = "MIT"                       # SPDX identifier where one exi
 status             = "published"                     # draft | published | deprecated.
                                                  # Draft is the safe default: only
                                                  # `published` appears on the site.
-training_data = "https://huggingface.co/datasets/BGLab/BioTrove"
+training_data = ["https://huggingface.co/datasets/BGLab/BioTrove"]
 
 # Optional. Delete any line you do not have an answer for - the default is in
 # the comment.
@@ -127,7 +127,7 @@ labels and select the highest-scoring label.
 
 ## Performance
 
-The mosel achives 16.9\% zero-shot top-1 accuracy on the "insects-2" benchmark which contains 4000 images across 102 categories of insect pests. 
+The model achives 16.9\% zero-shot top-1 accuracy on the "insects-2" benchmark which contains 4000 images across 102 categories of insect pests. 
 
 ## Limitations
 
