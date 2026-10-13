@@ -16,7 +16,7 @@ from iai_model_zoo.formats import Schema  # noqa: E402
 class FormatExampleTests(unittest.TestCase):
     def test_all_descriptors_have_a_valid_example_and_page(self):
         examples = json.loads((ROOT / "data/format_examples.json").read_text())
-        paths = list((ROOT / "static/formats/detection").glob("*.json"))
+        paths = list((ROOT / "static/formats").glob("*.json"))
         self.assertEqual(set(examples), {p.stem for p in paths})
         for path in paths:
             with self.subTest(format=path.stem):
@@ -40,7 +40,7 @@ class FormatExampleTests(unittest.TestCase):
 
     def test_runnable_examples_agree_on_geometry_and_image_boundaries(self):
         module = runpy.run_path(str(ROOT / "examples/formats/to_isir.py"))
-        isir = Schema.load(ROOT / "static/formats/detection/isir.json")
+        isir = Schema.load(ROOT / "static/formats/isir.json")
         for slug in module["SUPPORTED"]:
             with self.subTest(format=slug):
                 value = module["convert_example"](slug)

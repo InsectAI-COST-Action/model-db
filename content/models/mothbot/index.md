@@ -96,7 +96,7 @@ The rest of the Mothbot pipeline uses off-the-shelf models, which are not part o
 - **Models:** `.pt` files run through `ultralytics.YOLO`. ONNX export is referenced in the YAMLs,
   but the ONNX files are not in the repository and ONNX selection is disabled in the UI.
 
-The documented [Mothbot detection JSON profile](/formats/detection/mothbot-detection-json.json) follows the PyTorch OBB writer at revision `7514bee`. A CPU probe of MBD-1-1 and the original `_save_result` produced 15 shapes on a specimen fixture and an empty shape list on a blank control. The source invocation uses `imgsz=1600` and `max_det=10000`, leaving confidence/IoU to the model library; YAML training settings are not explicitly forwarded here. The probe covers inference and JSON serialization, excluding thumbnail generation, optional blur enrichment and later identification/tracking stages.
+The documented [Mothbot detection JSON profile](/formats/mothbot-detection-json.json) follows the PyTorch OBB writer at revision `7514bee`. A CPU probe of MBD-1-1 and the original `_save_result` produced 15 shapes on a specimen fixture and an empty shape list on a blank control. The source invocation uses `imgsz=1600` and `max_det=10000`, leaving confidence/IoU to the model library; YAML training settings are not explicitly forwarded here. The probe covers inference and JSON serialization, excluding thumbnail generation, optional blur enrichment and later identification/tracking stages.
 
 ## Performance
 

@@ -48,7 +48,7 @@ of the [Insect Detect detection](https://doi.org/10.5281/zenodo.7725941) dataset
 Expects RGB images with 800x448 px size and NCHW layout as input.
 Outputs bounding boxes with a single class "insect" and associated confidence scores.
 
-The documented [Insect Detect CSV profile](/formats/detection/insect-detect-csv.json) follows the v2.0.0 camera-trap metadata writer at revision `24476f4`. It saves active tracklets with frame-normalized box corners, display labels, rounded confidence, tracking identifiers and camera metadata. This is source-inspected only: the full deployment probe requires an attached Luxonis OAK device.
+The documented [Insect Detect CSV profile](/formats/insect-detect-csv.json) follows the v2.0.0 camera-trap metadata writer at revision `24476f4`. It saves active tracklets with frame-normalized box corners, display labels, rounded confidence, tracking identifiers and camera metadata. This is source-inspected only: the full deployment probe requires an attached Luxonis OAK device.
 
 ## Performance
 

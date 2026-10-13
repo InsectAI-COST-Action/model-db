@@ -59,7 +59,7 @@ class Registry:
             return data.decode('utf-8')
 
         try:
-            for path in sorted((root / 'static/formats/detection').glob('*.json')):
+            for path in sorted((root / 'static/formats').glob('*.json')):
                 document = json.loads(read(path))
                 if not isinstance(document, dict) or not isinstance(document.get('notes'), dict):
                     raise RegistryError(f'{path}: invalid format descriptor')
@@ -69,7 +69,7 @@ class Registry:
                     raise RegistryError(f'{path}: {error}') from error
                 self._formats[path.stem] = document
             if 'isir' not in self._formats:
-                raise RegistryError('Snapshot needs static/formats/detection/isir.json')
+                raise RegistryError('Snapshot needs static/formats/isir.json')
             for path in sorted((root / 'content/models').glob('*/index.md')):
                 parts = re.split(r'^\+\+\+\s*$', read(path), flags=re.MULTILINE)
                 if len(parts) < 3:

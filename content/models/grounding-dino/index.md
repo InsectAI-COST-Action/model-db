@@ -126,7 +126,7 @@ Grounding DINO combines a DINO-style DETR detector with grounded pre-training th
 
 **Preprocessing requirement:** No class list needed.
 
-The documented [Hugging Face results profile](/formats/detection/grounding-dino-hf-results.json) describes `post_process_grounded_object_detection` in Transformers **4.40.2**, matching the author model-card example. It returns one dictionary per image with `scores` and `boxes` tensors plus decoded phrase `labels`. Passing `target_sizes` produces pixel corners; omitting it produces normalized corners. This profile is source-inspected only and deliberately version-specific: newer Transformers APIs can change keys and signatures.
+The documented [Hugging Face results profile](/formats/grounding-dino-hf-results.json) describes `post_process_grounded_object_detection` in Transformers **4.40.2**, matching the author model-card example. It returns one dictionary per image with `scores` and `boxes` tensors plus decoded phrase `labels`. Passing `target_sizes` produces pixel corners; omitting it produces normalized corners. This profile is source-inspected only and deliberately version-specific: newer Transformers APIs can change keys and signatures.
 
 ## Performance
 

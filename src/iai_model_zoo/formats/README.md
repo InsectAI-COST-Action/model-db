@@ -13,7 +13,7 @@ From a checkout, set `PYTHONPATH=src`.
 ```python
 from iai_model_zoo.formats import Schema
 
-schema = Schema.load("static/formats/detection/flatbug.json")
+schema = Schema.load("static/formats/flatbug.json")
 validated = schema.cast(decoded_prediction)
 ```
 

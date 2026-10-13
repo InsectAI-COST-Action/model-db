@@ -93,7 +93,7 @@ but expect a domain gap.
 - **In the AMI API** (`trapdata/api/schemas.py`), each detection is returned as `bbox{x1,y1,x2,y2}`
   with its downstream classifications attached.
 
-The documented [AMI box-list profile](/formats/detection/ami-detector-boxes.json) describes `post_process_single` at ami-data-companion revision `55d0787`: a list of integer pixel corners. Scores and class labels are discarded after filtering. This profile is source-inspected; full checkpoint inference has not been probed. The downstream API wraps boxes in richer detection records.
+The documented [AMI box-list profile](/formats/ami-detector-boxes.json) describes `post_process_single` at ami-data-companion revision `55d0787`: a list of integer pixel corners. Scores and class labels are discarded after filtering. This profile is source-inspected; full checkpoint inference has not been probed. The downstream API wraps boxes in richer detection records.
 
 ## Performance
 
