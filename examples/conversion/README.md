@@ -10,14 +10,6 @@ model dependencies:
 uv run --locked --project src/probe python examples/conversion/pipeline.py
 ```
 
-The same integration function works with any model whose actual output has a
-registered importer. For unsupported formats, add an adapter and its descriptor
-mapping. When a card lists different formats, pass `source` matching the output
-of your chosen inference implementation. The converter does not inspect tensors
-to guess which producer settings or format were used.
-
-Ordinary callers need only:
-
 ```python
 from iai_model_zoo.formats import Converter, ConversionContext
 from iai_model_zoo.formats.adapters import ImageContext, Metadata
@@ -57,29 +49,12 @@ precedence. Absent metadata preserves native information. `dataset_metadata`
 merges into retained dataset metadata and explicit `categories` overrides its
 category list. Model selection alone does not inject model metadata.
 
-Class-agnostic detectors such as AMI export to COCO directly:
-
-```python
-output = converter.convert(
-    boxes,
-    model="ami-insect-detector",
-    target="coco",
-    context=ConversionContext(
-        image=ImageContext(1, width, height, file_name),
-    ),
-)
-```
-
-Detections without `category_id` receive a generic `object` category automatically.
-This is a COCO serialization convention, not a classification prediction. The
-exporter reuses an existing `object` category or chooses an unused category ID,
-and only adds the category when needed. Existing category IDs remain unchanged
-and must still have vocabulary entries. Scores are not invented.
-
-Customize this with `export_options={"fallback_category": {"id": 9, "name": "object"}}`,
+Detections without `category_id` receive a generic `object` category on COCO
+export. Existing classes require vocabulary entries; scores are not invented.
+The exporter reuses an existing `object` category or chooses an unused ID.
+Customize it with `export_options={"fallback_category": {"id": 9, "name": "object"}}`,
 or disable it with `export_options={"fallback_category": None}`. Conflicting
-explicit category definitions are rejected. ISIR itself permits detections without
-classification; the fallback is applied only on COCO export.
+category definitions are rejected.
 
 COCO IDs must be unique integers across the dataset. Preserve valid native IDs,
 or supply `image_ids={original_id: integer}` and
@@ -100,10 +75,8 @@ API and does not import implementations. Neither API executes models.
 For alternate inference routes, select their actual output with `source` instead
 of relying on the model card. Supply model provenance through `Metadata`; using
 both `model` and `source` requires the source to be declared on that card.
-See the [coverage review](../../content/formats/coverage.md) for native support,
-alternative routes, and their separate evidence levels.
+See [conversion support](../../content/formats/coverage.md) for available importers
+and their evidence.
 
-Mothbot supports both routes: `model="mothbot"` for native detection JSON, or
-`source="ultralytics-obb-results"` for direct OBB Results. Use `context.image`
-to assign an integer image ID for COCO. The converter preserves oriented ISIR
-boxes and polygons and writes COCO envelopes plus polygon segmentation.
+For format-specific settings and geometry limits, see the
+[adapter reference](../../src/iai_model_zoo/formats/adapters/README.md).

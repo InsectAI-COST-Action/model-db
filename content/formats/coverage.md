@@ -1,15 +1,10 @@
 +++
-title = "Conversion coverage: native and alternative routes"
+title = "Conversion support"
 +++
 
-Coverage review: **30 September 2026**. Support means a conversion adapter exists;
-it does not mean every checkpoint or inference implementation has been tested.
-[Use the conversion API](../single-image/) to export to COCO.
-
-## Native outputs
-
-**9 of 15 detection model entries (60%)** have importers for their advertised
-output formats; excluding the deprecated entry, **8 of 14 (57%)**.
+An importer converts the named output to ISIR; COCO export additionally requires
+valid image IDs, context and any existing class vocabulary. The evidence column
+distinguishes contract tests from conversion of retained inference outputs.
 
 | Model | Native output → ISIR | Conversion evidence |
 | --- | --- | --- |
@@ -29,64 +24,15 @@ output formats; excluding the deprecated entry, **8 of 14 (57%)**.
 | Bjerge et al. (2023) | Unresolved native format | Historical exporter pairing unresolved |
 | SAM 3 | Unassigned native format | No registered native contract |
 
-All supported imports can supply detections for COCO; class-agnostic inputs use
-the default `object` category. Valid image context, IDs and any retained class
-vocabulary are still required. Grounding DINO phrases and MCC24 classification
-scores remain metadata, separate from detection confidence.
 
-## Alternative routes — counted separately
+Mothbot also supports direct Ultralytics OBB Results through
+`source="ultralytics-obb-results"`, verified with MBD-1-1 on a specimen and blank
+control. This bypasses the author JSON writer and downstream pipeline; it is
+separate from native-output support above.
 
-An application can expose a supported native representation earlier in its
-pipeline, or translate its own detection objects to ISIR. This may make COCO
-export possible even when the advertised output has no importer. It does **not**
-change the native coverage figure above.
+Select `source` for the format your inference route actually returns. Using both
+`model` and `source` requires that format to be declared on the model card.
 
-| Route | Current compatibility | Evidence and limits |
-| --- | --- | --- |
-| ArthroNat direct Ultralytics prediction | Existing Results importer | Already the advertised interface; no additional coverage to count |
-| InsectDCT plain detector in `insect-model-zoo` | Earlier Results can use the existing importer; final application objects need its ISIR bridge | Source-inspected route, not end-to-end tested here. Different preprocessing, classifier stages and checkpoint versions may apply |
-| Grounding DINO in `insect-model-zoo` | Application `Detection` → ISIR bridge | Custom per-word scoring and NMS differ from the pinned HF output; do not use the new native importer on those objects |
-| Mothbot direct Ultralytics OBB | Supported: `ultralytics-obb-results` → oriented ISIR → COCO | Real MBD-1-1 CPU run: 15 detections plus blank control; author writer and later stages bypassed |
-| SAM 3 application detection objects | Potential application ISIR bridge preserving polygons | Needs validation of geometry and metadata; native import remains unsupported |
-| POLLINATOR detector output before frame rendering | Existing TXT importer if the actual output matches its contract | Proposed extraction route; not verified here |
-| BioMoth/AMI single-image wrappers | Existing importers if the wrappers preserve the documented outputs | No extra model coverage; source-specific preprocessing must be preserved |
-
-**Mothbot now has one verified direct alternative route, counted separately
-from its native JSON importer.** Other alternatives remain source-inspected or proposed. Application bridge availability, source inspection and
-real conversion tests are different evidence levels. The external interface was
-reviewed at `insect-model-zoo` commit `bbe79be`; no changes or inference runs were
-performed there.
-
-## Use the actual route's output format
-
-When the output differs from the model card, select its format explicitly and
-supply model provenance as metadata:
-
-```python
-from iai_model_zoo.formats import ConversionContext
-from iai_model_zoo.formats.adapters import Metadata
-
-output = converter.convert(
-    predictions,
-    source="ultralytics-detect-results",  # what this route actually returns
-    target="coco",
-    context=ConversionContext(
-        image=image_context,
-        categories=categories,
-        metadata=Metadata(model={"name": "my detector and checkpoint"}),
-    ),
-)
-```
-
-If the application already emits valid ISIR, use `source="isir"`. Text labels in
-`category_id` need an explicit integer vocabulary for COCO, or can be retained
-as metadata with `category_id` omitted for class-agnostic export. Supplying both
-`model` and `source` filters the card's declared formats; it does not override
-them. Inference implementation remains the application's responsibility.
-
-[Interoperability tests and results](https://github.com/InsectAI-COST-Action/model-db/blob/main/src/probe/reports/2026-09-30-interoperability/README.md) ·
-[Alternative inference investigations](https://github.com/InsectAI-COST-Action/model-db/blob/main/src/probe/inference-routes.md) ·
-[External application families](https://github.com/InsectAI-COST-Action/insect-model-zoo/tree/bbe79be/zoo/families)
-
-[Mothbot native and alternative conversion evidence](https://github.com/InsectAI-COST-Action/model-db/blob/main/src/probe/reports/2026-09-30-mothbot-conversion/README.md)
-records the separate scopes and reproduction command.
+[Conversion guide](../single-image/) ·
+[Executable interoperability checks](https://github.com/InsectAI-COST-Action/model-db/blob/main/scripts/tests/test_interoperability.py) ·
+[Mothbot evidence](https://github.com/InsectAI-COST-Action/model-db/blob/main/src/probe/reports/2026-09-30-mothbot-conversion/README.md)

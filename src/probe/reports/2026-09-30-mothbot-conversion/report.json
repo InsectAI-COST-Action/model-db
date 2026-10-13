@@ -13,13 +13,11 @@
   "results": [
     {
       "image": "specimen",
-      "detections": 15,
-      "seconds": 1.7834387000038987
+      "detections": 15
     },
     {
       "image": "blank",
-      "detections": 0,
-      "seconds": 0.7790054860088276
+      "detections": 0
     }
   ],
   "scope": "Direct OBB inference and conversion; excludes author writer, thumbnails, classification and UI; not an accuracy benchmark."

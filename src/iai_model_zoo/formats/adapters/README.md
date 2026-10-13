@@ -369,7 +369,7 @@ metadata. Malformed CSV, invalid boxes and duplicate detection keys are rejected
 completed image with no detections.
 
 Both additions are tested with source-contract fixtures, not new inference runs.
-See the [native/alternative coverage review](../../../../content/formats/coverage.md).
+See the [conversion support](../../../../content/formats/coverage.md).
 
 ## Mothbot native JSON and direct OBB Results
 

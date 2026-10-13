@@ -9,8 +9,7 @@ up its output adapter and handles the conversion.
 [How to convert predictions to COCO](single-image/) ·
 [Runnable pipeline example](https://github.com/InsectAI-COST-Action/model-db/blob/main/examples/conversion/pipeline.py)
 
-[Native and alternative route coverage](coverage/) distinguishes available adapters
-from real-output verification and application-specific inference routes.
+[Conversion support](coverage/) lists importers and their evidence.
 
 ## Understand the source format
 
@@ -29,16 +28,6 @@ For the same box in a **200 × 100** image:
 | YOLO normalized box | `[0.15,0.4,0.2,0.4]` | Center and size, divided by image dimensions |
 | ISIR box | `[30,60,40,40]` | Pixel center and size, **bottom-left** origin |
 
-Each image retains its own detections during conversion, including known empty
-images. ISIR is the internal representation used between adapters. A CSV without detections cannot tell us whether an
-image was processed; preserve the input manifest and run completion information.
-Class IDs also require the correct model vocabulary.
-
-Each format page links back to its machine-readable schema. Schemas document
-an interface; source inspection and successful inference are different evidence
-levels, identified in their notes and model cards.
-
-Examples cover both files and Python/tensor interfaces. A readable JSON
-projection of a tensor is explicitly labelled; it is not an invented author
-export format. JSON arrays in a schema describe types, whereas arrays in these
-examples contain actual example values.
+Each page links to its machine-readable descriptor and explains its coordinates,
+required context and limitations. Examples are illustrative unless labelled as
+retained outputs; tensor projections are not author JSON exports.

@@ -3,7 +3,6 @@ import hashlib
 import json
 from pathlib import Path
 import sys
-import time
 
 ROOT=Path(__file__).resolve().parents[4]
 sys.path.insert(0,str(ROOT/'src'))
@@ -23,7 +22,6 @@ assert hashlib.sha256(image.read_bytes()).hexdigest()==image.parent.name
 model=YOLO(str(weights)); converter=Converter.open(ROOT)
 records=[]
 for i,(name,pixels) in enumerate([('specimen',cv2.imread(str(image))),('blank',np.full((640,640,3),255,np.uint8))],1):
-    start=time.monotonic()
     result=model.predict(pixels,device='cpu',verbose=False,imgsz=1600,max_det=10000,conf=.25,iou=.7)[0]
     context=ConversionContext(image=ImageContext(i,pixels.shape[1],pixels.shape[0],name+'.jpg'))
     ir=converter.convert(result,source='ultralytics-obb-results',context=context)
@@ -35,7 +33,7 @@ for i,(name,pixels) in enumerate([('specimen',cv2.imread(str(image))),('blank',n
     projection=dict(orig_shape=list(result.orig_shape),path=result.path,names=result.names,
                     obb=dict(xyxyxyxy=result.obb.xyxyxyxy.tolist(),conf=result.obb.conf.tolist(),cls=result.obb.cls.tolist(),data=result.obb.data.tolist()))
     Path(__file__).with_name(name+'-results.json').write_text(json.dumps(projection,indent=2)+'\n')
-    records.append(dict(image=name,detections=len(ir['instances']),seconds=time.monotonic()-start))
+    records.append(dict(image=name,detections=len(ir['instances'])))
 report=dict(weights_sha256=weights.parent.name,image_sha256=image.parent.name,ultralytics=ultralytics.__version__,torch=torch.__version__,settings=dict(device='cpu',imgsz=1600,max_det=10000,conf=.25,iou=.7),results=records,scope='Direct OBB inference and conversion; excludes author writer, thumbnails, classification and UI; not an accuracy benchmark.')
 Path(__file__).with_name('report.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report))
