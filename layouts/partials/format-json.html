@@ -1,0 +1,28 @@
+{{- /* Pretty-print containers, keeping arrays of scalar values on one line. */ -}}
+{{- $value := .value -}}
+{{- $indent := .indent | default "" -}}
+{{- $next := printf "%s  " $indent -}}
+{{- $result := "" -}}
+{{- if reflect.IsMap $value -}}
+  {{- $items := slice -}}
+  {{- range $key, $item := $value -}}
+    {{- $formatted := partial "format-json.html" (dict "value" $item "indent" $next) -}}
+    {{- $items = $items | append (printf "%s%s: %s" $next (jsonify $key) $formatted) -}}
+  {{- end -}}
+  {{- $result = "{}" -}}
+  {{- if $items -}}{{- $result = printf "{\n%s\n%s}" (delimit $items ",\n") $indent -}}{{- end -}}
+{{- else if reflect.IsSlice $value -}}
+  {{- $items := slice -}}
+  {{- $scalars := true -}}
+  {{- range $value -}}
+    {{- if or (reflect.IsMap .) (reflect.IsSlice .) -}}{{- $scalars = false -}}{{- end -}}
+    {{- $items = $items | append (partial "format-json.html" (dict "value" . "indent" $next)) -}}
+  {{- end -}}
+  {{- $result = printf "[%s]" (delimit $items ", ") -}}
+  {{- if not $scalars -}}
+    {{- $result = printf "[\n%s%s\n%s]" $next (delimit $items (printf ",\n%s" $next)) $indent -}}
+  {{- end -}}
+{{- else -}}
+  {{- $result = jsonify $value -}}
+{{- end -}}
+{{- return $result -}}

@@ -25,7 +25,92 @@
     },
     "language": "json",
     "representation": "json",
-    "summary": "One image, one detection. The box is pixel center-x, center-y, width, height with a bottom-left origin."
+    "summary": "One image, one detection. The box is pixel center-x, center-y, width, height with a bottom-left origin.",
+    "extended_example": {
+      "title": "Richer example: oriented geometry and metadata",
+      "notes": [
+        "Illustrative optional fields; ordinary conversions do not require all of them. This record still describes one 200 \u00d7 100 image.",
+        "The box is centered at [100, 50], with width 40, height 20 and a counterclockwise rotation of \u03c0/2 radians. Polygon coordinates use the same bottom-left origin. The example source reports an area of 800 square pixels; converters do not infer area from the box.",
+        "Model and inference fields record provenance; context describes the capture location and grouping. All names, settings, timestamps and coordinates here are illustrative.",
+        "Category 0 refers to a caller-supplied vocabulary. Namespaced extra_information retains source-specific details; target formats may not preserve this metadata."
+      ],
+      "value": {
+        "ir_name": "ISIR",
+        "ir_id": 1,
+        "image": {
+          "id": "frame-1",
+          "width": 200,
+          "height": 100,
+          "file_name": "frame.jpg",
+          "format": "JPEG"
+        },
+        "instances": [
+          {
+            "id": 0,
+            "bbox": [
+              100,
+              50,
+              40,
+              20
+            ],
+            "angle": 1.5707963267948966,
+            "polygons": [
+              [
+                [
+                  110,
+                  30
+                ],
+                [
+                  110,
+                  70
+                ],
+                [
+                  90,
+                  70
+                ],
+                [
+                  90,
+                  30
+                ]
+              ]
+            ],
+            "area": 800,
+            "confidence": 0.8,
+            "category_id": 0,
+            "extra_information": {
+              "example_detector": {
+                "track_id": 7
+              }
+            }
+          }
+        ],
+        "model": {
+          "name": "Example detector"
+        },
+        "inference": {
+          "timestamp": "2026-09-30T12:00:01.000Z",
+          "config": {
+            "confidence_threshold": 0.25
+          }
+        },
+        "context": {
+          "timestamp": "2026-09-30T12:00:00.000Z",
+          "longitude": 12.57,
+          "latitude": 55.68,
+          "crs": 4326,
+          "tag_list": [
+            "daylight"
+          ],
+          "group_name": "Example survey",
+          "group_id": 1
+        },
+        "extra_information": {
+          "example_pipeline": {
+            "source_frame": 42
+          }
+        }
+      }
+    }
   },
   "ami-detector-boxes": {
     "value": [

@@ -84,6 +84,12 @@ class FormatExampleTests(unittest.TestCase):
                         schema.cast(decode_example(example, ExampleBlock(html).text)),
                         schema.cast(expected),
                     )
+                    if extended := example.get("extended_example"):
+                        marker = f'<summary>{extended["title"]}</summary>'
+                        self.assertIn(marker, html)
+                        rendered = ExampleBlock(html.split(marker, 1)[1]).text
+                        self.assertEqual(schema.cast(json.loads(rendered)),
+                                         schema.cast(extended["value"]))
                     self.assertEqual(
                         (destination / "formats" / descriptor.name).read_bytes(),
                         descriptor.read_bytes(),
@@ -108,6 +114,8 @@ class FormatExampleTests(unittest.TestCase):
                         reader = csv.DictReader(StringIO(example["display"]))
                         self.assertEqual(reader.fieldnames, example["header"])
                 schema.cast(decoded)
+                if extended := example.get("extended_example"):
+                    schema.cast(extended["value"])
 
     def test_runnable_examples_agree_on_geometry_and_image_boundaries(self):
         module = runpy.run_path(str(ROOT / "examples/formats/to_isir.py"))

@@ -13,9 +13,16 @@
     {{ if eq $example.representation "projection" }}<p><strong>Readable projection:</strong> arrays and objects below illustrate the contents. The author returns Python objects/tensors or files, rather than this JSON document.</p>{{ end }}
     {{ $display := $example.display }}
     {{ if eq $example.language "json" }}
-      {{ $display = jsonify (dict "indent" "  ") $example.value }}
+      {{ $display = partial "format-json.html" (dict "value" $example.value) }}
     {{ end }}
     {{ highlight $display $example.language "" }}
+    {{ with $example.extended_example }}
+    <details>
+      <summary>{{ .title }}</summary>
+      {{ range .notes }}<p>{{ . }}</p>{{ end }}
+      {{ highlight (partial "format-json.html" (dict "value" .value)) "json" "" }}
+    </details>
+    {{ end }}
     <h2>Convert to a standard format</h2>
     {{ $bindings := $schema.notes.adapters | default dict }}
     {{ if or (isset $bindings "import_one") (isset $bindings "import_collection") (eq $slug "isir") }}
