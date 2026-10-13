@@ -5,7 +5,10 @@ from io import StringIO
 import json
 from pathlib import Path
 import runpy
+import shutil
+import subprocess
 import sys
+import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -14,7 +17,37 @@ from iai_model_zoo.formats import Schema  # noqa: E402
 
 
 class FormatExampleTests(unittest.TestCase):
-    def test_all_descriptors_have_a_valid_example_and_page(self):
+    def test_hugo_generates_format_pages_from_descriptors(self):
+        hugo = ROOT / "bin/hugo"
+        if not hugo.is_file():
+            hugo = shutil.which("hugo")
+        if not hugo:
+            self.skipTest("Hugo is required to check generated format pages")
+        with tempfile.TemporaryDirectory() as directory:
+            destination = Path(directory) / "public"
+            result = subprocess.run(
+                [str(hugo), "--destination", str(destination),
+                 "--cacheDir", str(Path(directory) / "cache"),
+                 "--baseURL", "https://example.org/model-db/"],
+                cwd=ROOT, capture_output=True, text=True, timeout=60,
+            )
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            index = (destination / "formats/index.html").read_text()
+            for descriptor in (ROOT / "static/formats").glob("*.json"):
+                with self.subTest(format=descriptor.stem):
+                    page = destination / "formats" / descriptor.stem / "index.html"
+                    html = page.read_text()
+                    self.assertIn(f"<h1>{descriptor.stem}</h1>", html)
+                    self.assertIn(f'href="/model-db/formats/{descriptor.stem}/"', index)
+                    self.assertIn(f'href="/model-db/formats/{descriptor.name}"', html)
+                    self.assertIn("<h2>Example</h2>", html)
+                    self.assertEqual(
+                        (destination / "formats" / descriptor.name).read_bytes(),
+                        descriptor.read_bytes(),
+                    )
+            self.assertFalse(list((destination / "formats/detection").rglob("*.html")))
+
+    def test_all_descriptors_have_a_valid_example(self):
         examples = json.loads((ROOT / "data/format_examples.json").read_text())
         paths = list((ROOT / "static/formats").glob("*.json"))
         self.assertEqual(set(examples), {p.stem for p in paths})
@@ -23,7 +56,6 @@ class FormatExampleTests(unittest.TestCase):
                 example = examples[path.stem]
                 schema = Schema.load(path)
                 expected = schema.cast(example["value"])
-                self.assertTrue((ROOT / f"content/formats/detection/{path.stem}.md").is_file())
                 kind = example["representation"]
                 if kind == "csv":
                     if "header" in example:

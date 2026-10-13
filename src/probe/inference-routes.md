@@ -50,9 +50,9 @@ than silently replacing the database entry.
 | POLLINATOR | Call the pinned YOLOv5 detector on one image and retain its box results instead of drawing video frames | An alternate interface could expose machine-readable boxes that the author export discards. Preserve both model filtering and the script's additional confidence filter. No dedicated single-image alternate probe yet; modern Ultralytics is not a drop-in replacement for this legacy checkpoint. |
 
 These proposals are grounded in the pinned source interfaces documented on the
-[BioMoth](../../content/formats/detection/biomoth-csv.md), [AMI](../../content/formats/detection/ami-detector-boxes.md),
-[InsectDCT](../../content/formats/detection/insectdct-csv.md), [Mothbot](../../content/formats/detection/mothbot-detection-json.md)
-and [POLLINATOR](../../content/formats/detection/pollinator-frame-folders.md) format pages. Each links
+[BioMoth](https://insectai-cost-action.github.io/model-db/formats/biomoth-csv/), [AMI](https://insectai-cost-action.github.io/model-db/formats/ami-detector-boxes/),
+[InsectDCT](https://insectai-cost-action.github.io/model-db/formats/insectdct-csv/), [Mothbot](https://insectai-cost-action.github.io/model-db/formats/mothbot-detection-json/)
+and [POLLINATOR](https://insectai-cost-action.github.io/model-db/formats/pollinator-frame-folders/) format pages. Each links
 to its author source and states the limits of runtime evidence.
 
 ## What an alternative must preserve

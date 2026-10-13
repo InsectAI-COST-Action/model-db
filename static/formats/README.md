@@ -12,6 +12,11 @@ linked in each definition. They use the notation below, not JSON Schema.
 `notes.serialization` identifies the actual representation; a descriptor is not
 necessarily an example of JSON emitted by a model.
 
+Hugo generates a documentation page at `/formats/<slug>/` for each JSON
+descriptor through `content/formats/_content.gotmpl`. Add the matching example
+to `data/format_examples.json`; no per-format Markdown file is needed.
+The machine-readable descriptor is published at `/formats/<slug>.json`.
+
 ## Schema notation
 
 Every descriptor has exactly four sections (use `{}` for an unused section):

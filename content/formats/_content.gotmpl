@@ -1,0 +1,7 @@
+{{- /* Each descriptor supplies a documentation page; examples live in data/format_examples.json. */ -}}
+{{- range os.ReadDir "static/formats" -}}
+  {{- if and (not .IsDir) (eq (path.Ext .Name) ".json") -}}
+    {{- $slug := strings.TrimSuffix ".json" .Name -}}
+    {{- $.AddPage (dict "path" $slug "title" $slug "params" (dict "format_slug" $slug)) -}}
+  {{- end -}}
+{{- end -}}
