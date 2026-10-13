@@ -141,7 +141,7 @@ class AdapterTests(unittest.TestCase):
         batch.metadata["native_dataset"]["key"].append("new")
         self.assertEqual(data, before)
 
-    def test_ir_edits_drive_export_and_nonzero_angle_rejected(self):
+    def test_ir_edits_drive_export_and_rotated_box_envelope(self):
         batch = coco.to_ir(coco_sample())
         item = batch.images[0]["instances"][0]
         item["bbox"] = [40.0, 60.0, 10.0, 20.0]
@@ -150,8 +150,9 @@ class AdapterTests(unittest.TestCase):
         self.assertEqual(output["bbox"], [35.0, 10.0, 10.0, 20.0])
         self.assertEqual(output["score"], 0.5)
         item["angle"] = 0.2
-        with self.assertRaisesRegex(FormatError, "axis-aligned"):
-            coco.from_ir(batch)
+        rotated = coco.from_ir(batch)["annotations"][0]
+        self.assertGreater(rotated["bbox"][2], 10)
+        self.assertGreater(rotated["bbox"][3], 20)
         item["angle"] = 0
         batch.images[0]["ir_id"] = 2
         with self.assertRaises(FormatError):

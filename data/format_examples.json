@@ -1,0 +1,771 @@
+{
+  "isir": {
+    "value": {
+      "ir_name": "ISIR",
+      "ir_id": 1,
+      "image": {
+        "id": "frame-1",
+        "width": 200,
+        "height": 100,
+        "file_name": "frame.jpg"
+      },
+      "instances": [
+        {
+          "id": 0,
+          "bbox": [
+            30,
+            60,
+            40,
+            40
+          ],
+          "confidence": 0.8,
+          "category_id": 0
+        }
+      ]
+    },
+    "language": "json",
+    "representation": "json",
+    "summary": "One image, one detection. The box is pixel center-x, center-y, width, height with a bottom-left origin.",
+    "extended_example": {
+      "title": "Richer example: oriented geometry and metadata",
+      "notes": [
+        "Illustrative optional fields; ordinary conversions do not require all of them. This record still describes one 200 \u00d7 100 image.",
+        "The box is centered at [100, 50], with width 40, height 20 and a counterclockwise rotation of \u03c0/2 radians. Polygon coordinates use the same bottom-left origin. The example source reports an area of 800 square pixels; converters do not infer area from the box.",
+        "Model and inference fields record provenance; context describes the capture location and grouping. All names, settings, timestamps and coordinates here are illustrative.",
+        "Category 0 refers to a caller-supplied vocabulary. Namespaced extra_information retains source-specific details; target formats may not preserve this metadata."
+      ],
+      "value": {
+        "ir_name": "ISIR",
+        "ir_id": 1,
+        "image": {
+          "id": "frame-1",
+          "width": 200,
+          "height": 100,
+          "file_name": "frame.jpg",
+          "format": "JPEG"
+        },
+        "instances": [
+          {
+            "id": 0,
+            "bbox": [
+              100,
+              50,
+              40,
+              20
+            ],
+            "angle": 1.5707963267948966,
+            "polygons": [
+              [
+                [
+                  110,
+                  30
+                ],
+                [
+                  110,
+                  70
+                ],
+                [
+                  90,
+                  70
+                ],
+                [
+                  90,
+                  30
+                ]
+              ]
+            ],
+            "area": 800,
+            "confidence": 0.8,
+            "category_id": 0,
+            "extra_information": {
+              "example_detector": {
+                "track_id": 7
+              }
+            }
+          }
+        ],
+        "model": {
+          "name": "Example detector"
+        },
+        "inference": {
+          "timestamp": "2026-09-30T12:00:01.000Z",
+          "config": {
+            "confidence_threshold": 0.25
+          }
+        },
+        "context": {
+          "timestamp": "2026-09-30T12:00:00.000Z",
+          "longitude": 12.57,
+          "latitude": 55.68,
+          "crs": 4326,
+          "tag_list": [
+            "daylight"
+          ],
+          "group_name": "Example survey",
+          "group_id": 1
+        },
+        "extra_information": {
+          "example_pipeline": {
+            "source_frame": 42
+          }
+        }
+      }
+    }
+  },
+  "ami-detector-boxes": {
+    "value": [
+      [
+        10,
+        20,
+        50,
+        60
+      ]
+    ],
+    "language": "json",
+    "representation": "projection",
+    "summary": "One image: integer pixel corners. The wrapper discards scores and classes. Supply image identity and dimensions separately.",
+    "conversion_command": "python3 examples/formats/to_isir.py ami-detector-boxes"
+  },
+  "yolov5-detect-txt": {
+    "display": "0 0.15 0.4 0.2 0.4 0.8\n",
+    "language": "text",
+    "representation": "text",
+    "summary": "Class 0, normalized center (0.15,0.4), size (0.2,0.4), confidence 0.8. Explicit settings: save_conf=True, no tracking, YOLOv5 save_format=0. On a 200 \u00d7 100 image this is pixel box [10,20,50,60]. YOLOv7 segmentation TXT contains boxes only.",
+    "conversion_command": "python3 examples/formats/to_isir.py yolov5-detect-txt"
+  },
+  "yolov7-detect-txt": {
+    "display": "0 0.15 0.4 0.2 0.4 0.8\n",
+    "language": "text",
+    "representation": "text",
+    "summary": "Class 0, normalized center (0.15,0.4), size (0.2,0.4), confidence 0.8. Explicit settings: save_conf=True, no tracking, YOLOv5 save_format=0. On a 200 \u00d7 100 image this is pixel box [10,20,50,60]. YOLOv7 segmentation TXT contains boxes only.",
+    "conversion_command": "python3 examples/formats/to_isir.py yolov7-detect-txt"
+  },
+  "yolov7-segment-txt": {
+    "display": "0 0.15 0.4 0.2 0.4 0.8\n",
+    "language": "text",
+    "representation": "text",
+    "summary": "Class 0, normalized center (0.15,0.4), size (0.2,0.4), confidence 0.8. Explicit settings: save_conf=True, no tracking, YOLOv5 save_format=0. On a 200 \u00d7 100 image this is pixel box [10,20,50,60]. YOLOv7 segmentation TXT contains boxes only.",
+    "conversion_command": "python3 examples/formats/to_isir.py yolov7-segment-txt"
+  },
+  "ultralytics-detect-txt": {
+    "display": "0 0.15 0.4 0.2 0.4 0.8\n",
+    "language": "text",
+    "representation": "text",
+    "summary": "Class 0, normalized center (0.15,0.4), size (0.2,0.4), confidence 0.8. Explicit settings: save_conf=True, no tracking, YOLOv5 save_format=0. On a 200 \u00d7 100 image this is pixel box [10,20,50,60]. YOLOv7 segmentation TXT contains boxes only.",
+    "conversion_command": "python3 examples/formats/to_isir.py ultralytics-detect-txt"
+  },
+  "yolov5-segment-txt": {
+    "display": "0 0.05 0.2 0.25 0.2 0.25 0.6 0.05 0.6 0.8\n",
+    "language": "text",
+    "representation": "text",
+    "summary": "Class 0 followed by four normalized x/y vertices and confidence 0.8. Explicit settings: save_conf=True, no tracking. No box is serialized; the optional suffix settings must be known."
+  },
+  "ultralytics-segment-txt": {
+    "display": "0 0.05 0.2 0.25 0.2 0.25 0.6 0.05 0.6 0.8\n",
+    "language": "text",
+    "representation": "text",
+    "summary": "Class 0 followed by four normalized x/y vertices and confidence 0.8. Explicit settings: save_conf=True, no tracking. No box is serialized; the optional suffix settings must be known."
+  },
+  "ultralytics-detect-json": {
+    "value": [
+      {
+        "name": "insect",
+        "class": 0,
+        "confidence": 0.8,
+        "box": {
+          "x1": 10,
+          "y1": 20,
+          "x2": 50,
+          "y2": 60
+        }
+      }
+    ],
+    "language": "json",
+    "representation": "json",
+    "summary": "One image, one instance; normalize=False. Corners and contours use original-image pixels. Image identity and dimensions come from separate context.",
+    "conversion_command": "python3 examples/formats/to_isir.py ultralytics-detect-json"
+  },
+  "ultralytics-segment-json": {
+    "value": [
+      {
+        "name": "insect",
+        "class": 0,
+        "confidence": 0.8,
+        "box": {
+          "x1": 10,
+          "y1": 20,
+          "x2": 50,
+          "y2": 60
+        },
+        "segments": {
+          "x": [
+            10,
+            50,
+            50,
+            10
+          ],
+          "y": [
+            20,
+            20,
+            60,
+            60
+          ]
+        }
+      }
+    ],
+    "language": "json",
+    "representation": "json",
+    "summary": "One image, one instance; normalize=False. Corners and contours use original-image pixels. Image identity and dimensions come from separate context."
+  },
+  "ultralytics-detect-results": {
+    "value": {
+      "orig_shape": [
+        100,
+        200
+      ],
+      "path": "frame.jpg",
+      "names": {
+        "0": "insect"
+      },
+      "boxes": {
+        "data": [
+          [
+            10,
+            20,
+            50,
+            60,
+            0.8,
+            0
+          ]
+        ]
+      }
+    },
+    "language": "json",
+    "representation": "projection",
+    "summary": "Readable projection of one Python Results object, not an author JSON export. boxes.data rows are pixel x1,y1,x2,y2,confidence,class. Real names mappings use integer keys. The segmentation example uses a tiny 2 \u00d7 2 image and mask to show nesting.",
+    "conversion_command": "python3 examples/formats/to_isir.py ultralytics-detect-results"
+  },
+  "ultralytics-segment-results": {
+    "value": {
+      "orig_shape": [
+        2,
+        2
+      ],
+      "path": "frame.jpg",
+      "names": {
+        "0": "insect"
+      },
+      "boxes": {
+        "data": [
+          [
+            0,
+            0,
+            2,
+            2,
+            0.8,
+            0
+          ]
+        ]
+      },
+      "masks": {
+        "data": [
+          [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        ],
+        "xy": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              0,
+              2
+            ]
+          ]
+        ],
+        "xyn": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ]
+        ]
+      }
+    },
+    "language": "json",
+    "representation": "projection",
+    "summary": "Readable projection of one Python Results object, not an author JSON export. boxes.data rows are pixel x1,y1,x2,y2,confidence,class. Real names mappings use integer keys. The segmentation example uses a tiny 2 \u00d7 2 image and mask to show nesting."
+  },
+  "yolov5-detect-results": {
+    "value": {
+      "pred": [
+        [
+          [
+            10,
+            20,
+            50,
+            60,
+            0.8,
+            0
+          ]
+        ]
+      ],
+      "xyxy": [
+        [
+          [
+            10,
+            20,
+            50,
+            60,
+            0.8,
+            0
+          ]
+        ]
+      ],
+      "xywh": [
+        [
+          [
+            30,
+            40,
+            40,
+            40,
+            0.8,
+            0
+          ]
+        ]
+      ],
+      "xyxyn": [
+        [
+          [
+            0.05,
+            0.2,
+            0.25,
+            0.6,
+            0.8,
+            0
+          ]
+        ]
+      ],
+      "xywhn": [
+        [
+          [
+            0.15,
+            0.4,
+            0.2,
+            0.4,
+            0.8,
+            0
+          ]
+        ]
+      ],
+      "files": [
+        "frame.jpg"
+      ],
+      "names": {
+        "0": "insect"
+      }
+    },
+    "language": "json",
+    "representation": "projection",
+    "summary": "One-image batch inside Python Detections. Outer lists index images, inner lists index detections. These properties describe the same box in different conventions, not additional detections. Real names mappings can use integer keys."
+  },
+  "flatbug": {
+    "value": {
+      "boxes": [
+        [
+          10,
+          20,
+          50,
+          60
+        ]
+      ],
+      "contours": [
+        [
+          [
+            10,
+            50,
+            50,
+            10
+          ],
+          [
+            20,
+            20,
+            60,
+            60
+          ]
+        ]
+      ],
+      "confs": [
+        0.8
+      ],
+      "classes": [
+        1
+      ],
+      "scales": [
+        1.0
+      ],
+      "areas": [
+        1600.0
+      ],
+      "image_path": "frame.jpg",
+      "image_width": 200,
+      "image_height": 100,
+      "mask_width": 200,
+      "mask_height": 100,
+      "identifier": null
+    },
+    "language": "json",
+    "representation": "json",
+    "summary": "Parallel arrays describe one image. A contour contains all x coordinates followed by all y coordinates, not point pairs. Class 1 is Flatbug\u2019s detection label. This example uses matching image/mask grids.",
+    "conversion_command": "python3 examples/formats/to_isir.py flatbug"
+  },
+  "coco": {
+    "value": {
+      "images": [
+        {
+          "id": 1,
+          "width": 200,
+          "height": 100,
+          "file_name": "frame.jpg"
+        },
+        {
+          "id": 2,
+          "width": 200,
+          "height": 100,
+          "file_name": "empty.jpg"
+        }
+      ],
+      "annotations": [
+        {
+          "id": 10,
+          "image_id": 1,
+          "category_id": 0,
+          "bbox": [
+            10,
+            20,
+            40,
+            40
+          ],
+          "area": 1600,
+          "iscrowd": 0,
+          "score": 0.8
+        }
+      ],
+      "categories": [
+        {
+          "id": 0,
+          "name": "insect"
+        }
+      ]
+    },
+    "language": "json",
+    "representation": "json",
+    "summary": "Two images: one detection and one explicitly empty image. bbox is top-left x,y,width,height. Import returns two ISIR records, using image_id to associate annotations.",
+    "conversion_command": "python3 examples/formats/to_isir.py coco"
+  },
+  "grounding-dino-hf-results": {
+    "value": [
+      {
+        "scores": [
+          0.8
+        ],
+        "labels": [
+          "insect"
+        ],
+        "boxes": [
+          [
+            10,
+            20,
+            50,
+            60
+          ]
+        ]
+      }
+    ],
+    "language": "json",
+    "representation": "projection",
+    "summary": "One-image batch, with tensors displayed as lists. With target_sizes=[(100,200)], corners are pixels; without target_sizes they are normalized. Labels are decoded prompt phrases."
+  },
+  "ecto-trigger-tflite-score": {
+    "value": [
+      [
+        204
+      ]
+    ],
+    "language": "json",
+    "representation": "projection",
+    "summary": "Illustrative uint8 output of shape (1,1): whole-image insect presence, not localization. Do not treat 204 as a probability or invent a detection box."
+  },
+  "mothbot-detection-json": {
+    "value": {
+      "version": "MBD-1-1",
+      "flags": {},
+      "imagePath": "frame.jpg",
+      "imageHeight": 100,
+      "imageWidth": 200,
+      "description": "",
+      "imageData": null,
+      "shapes": [
+        {
+          "kie_linking": [],
+          "direction": 90.0,
+          "label": "creature",
+          "score": 0.8,
+          "group_id": null,
+          "description": "",
+          "difficult": "false",
+          "shape_type": "rotation",
+          "flags": {},
+          "attributes": {},
+          "points": [
+            [
+              10,
+              20
+            ],
+            [
+              50,
+              20
+            ],
+            [
+              50,
+              60
+            ],
+            [
+              10,
+              60
+            ]
+          ],
+          "patch_path": "frame_0_MBD-1-1.jpg",
+          "confidence_detection": 0.8,
+          "identifier_bot": "",
+          "identifier_human": "",
+          "timestamp_detection": "2026-09-30__12_00_00_(+0000)",
+          "detector_bot": "MBD-1-1"
+        }
+      ]
+    },
+    "language": "json",
+    "representation": "json",
+    "summary": "Illustrative detection-stage annotation constructed independently of probe evidence. Four pixel vertices describe an oriented box; direction uses OpenCV degrees. difficult is a string. version is the detector name. Descriptions and identifiers may contain nonempty strings."
+  },
+  "biomoth-csv": {
+    "display": "filePath,fileName,year,site,X_Min,Y_Min,X_Max,Y_Max,d_X,d_Y,d_X_cm,d_Y_cm,size,confidence,class\nsite/frame.jpg,frame.jpg,2023,site,10,20,50,60,40,40,0.5496688741721855,0.5146198830409356,0.28287053173773286,0.8,0\n",
+    "language": "text",
+    "representation": "csv",
+    "summary": "filePath associates detections with images; dimensions require a manifest. size is cm\u00b2 using the notebook\u2019s hard-coded calibration, not pixel area. Empty images leave no rows.",
+    "header": [
+      "filePath",
+      "fileName",
+      "year",
+      "site",
+      "X_Min",
+      "Y_Min",
+      "X_Max",
+      "Y_Max",
+      "d_X",
+      "d_Y",
+      "d_X_cm",
+      "d_Y_cm",
+      "size",
+      "confidence",
+      "class"
+    ],
+    "conversion_command": "python3 examples/formats/to_isir.py biomoth-csv"
+  },
+  "insect-detect-csv": {
+    "display": "device_id,session_id,timestamp,label,confidence,track_id,track_status,x_min,y_min,x_max,y_max,lens_position,iso_sensitivity,exposure_time,filename\ntrap-1,1,2026-09-30T12:00:00,insect,0.8,7,TRACKED,0.05,0.2,0.25,0.6,130,100,10,frame.jpg\n",
+    "language": "text",
+    "representation": "csv",
+    "summary": "Frame-normalized corners, detector confidence, track identity and camera metadata. Exposure is milliseconds. Timestamp has no timezone. Use session and filename together for image identity.",
+    "header": [
+      "device_id",
+      "session_id",
+      "timestamp",
+      "label",
+      "confidence",
+      "track_id",
+      "track_status",
+      "x_min",
+      "y_min",
+      "x_max",
+      "y_max",
+      "lens_position",
+      "iso_sensitivity",
+      "exposure_time",
+      "filename"
+    ]
+  },
+  "mcc24-csv": {
+    "display": "year,trap,date,time,detectConf,detectId,x1,y1,x2,y2,fileName,orderLabel,orderId,orderConf,aboveTH,key,speciesLabel,speciesId,speciesConf\n2023,trap-1,20230930,120000,80,1,10,20,50,60,2023/trap-1/night/frame.jpg,Lepidoptera,0,95.0,True,0,example species,0,75.0\n",
+    "language": "text",
+    "representation": "csv",
+    "summary": "Illustrative labels/IDs, not a real vocabulary. Detector confidence is integer percent; order and species scores have different meanings. Pixel boxes require external image dimensions.",
+    "header": [
+      "year",
+      "trap",
+      "date",
+      "time",
+      "detectConf",
+      "detectId",
+      "x1",
+      "y1",
+      "x2",
+      "y2",
+      "fileName",
+      "orderLabel",
+      "orderId",
+      "orderConf",
+      "aboveTH",
+      "key",
+      "speciesLabel",
+      "speciesId",
+      "speciesConf"
+    ]
+  },
+  "insectsflowers-csv": {
+    "display": "2023,trap-1,20230930,120000,80,1,10,20,50,60,frame.jpg\n",
+    "language": "text",
+    "representation": "csv",
+    "summary": "Headerless columns: system/year,camera,date,time,confidence,detectId,x1,y1,x2,y2,fileName. Confidence is percent; classes are one-based. Historical pairing with the 2023 model remains unresolved."
+  },
+  "insectdct-csv": {
+    "display": "trap,trapId,date,time,taxaConf,taxaLabel,taxaId,taxaLevel,frameId,x1,y1,x2,y2,fileName\nsequence,0,20250221,115731,0.03140208778682231,Apoidea striped,12,3,0,1307,601,1355,663,sequence/pi2_2025_02_21_11_57_31.jpg\n",
+    "language": "text",
+    "representation": "csv",
+    "summary": "One source-example row from sequence-CL.csv. This multi-table profile has other layouts described in its schema notes. CL has pixel boxes and classifier scores in percent; HI contains hierarchical details.",
+    "header": [
+      "trap",
+      "trapId",
+      "date",
+      "time",
+      "taxaConf",
+      "taxaLabel",
+      "taxaId",
+      "taxaLevel",
+      "frameId",
+      "x1",
+      "y1",
+      "x2",
+      "y2",
+      "fileName"
+    ],
+    "provenance": "Source-example row retained in the schema notes; not a newly generated prediction."
+  },
+  "insectmorphoai-csv": {
+    "display": "file_name,width_px,height_px,width_mm,height_mm,camera_name,lens_name,conversion_factor_mm_per_px,wet_mass_from_length_obb,dry_mass_from_length_obb,image_path\nCAS001_CAS0000020_stacked_01_H.png,1011.9797593624828,2257.582671337076,3.1923407498969203,7.121657415866373,ArducamCamera,MV65051B,0.00315455,0.015056,0.003095,CAS001_CAS0000020_stacked_01_H.png\n",
+    "language": "text",
+    "representation": "csv",
+    "summary": "One source-example row from rapid_scan_results_final.csv. This multi-table profile has other layouts described in its schema notes. Width/height and measurements alone do not locate a detection in the image, so this table cannot directly become ISIR instances.",
+    "header": [
+      "file_name",
+      "width_px",
+      "height_px",
+      "width_mm",
+      "height_mm",
+      "camera_name",
+      "lens_name",
+      "conversion_factor_mm_per_px",
+      "wet_mass_from_length_obb",
+      "dry_mass_from_length_obb",
+      "image_path"
+    ],
+    "provenance": "Source-example row retained in the schema notes; not a newly generated prediction."
+  },
+  "pollinator-frame-folders": {
+    "value": {
+      "with_object": {},
+      "without_object": {
+        "frame_000001_time_00-00-00.jpg": "<JPEG file>"
+      }
+    },
+    "language": "json",
+    "representation": "projection",
+    "summary": "Directory illustration, not JSON emitted by the author. Saved JPEGs do not provide a machine-readable detection table."
+  },
+  "beetleflow-color-mask": {
+    "value": {
+      "predicted_masks": {
+        "0.png": "<RGB palette mask file>"
+      },
+      "predicted_mask_images": {
+        "0.png": "<overlay image file>"
+      }
+    },
+    "language": "json",
+    "representation": "projection",
+    "summary": "Directory illustration, not author JSON. Palette colors identify body parts, not individual insects. Instance extraction requires an additional algorithm."
+  },
+  "ultralytics-obb-results": {
+    "value": {
+      "orig_shape": [
+        100,
+        200
+      ],
+      "path": "frame.jpg",
+      "names": {
+        "0": "object"
+      },
+      "obb": {
+        "xyxyxyxy": [
+          [
+            [
+              30,
+              10
+            ],
+            [
+              60,
+              40
+            ],
+            [
+              40,
+              60
+            ],
+            [
+              10,
+              30
+            ]
+          ]
+        ],
+        "conf": [
+          0.8
+        ],
+        "cls": [
+          0
+        ]
+      }
+    },
+    "language": "json",
+    "representation": "projection",
+    "summary": "Readable property projection of one oriented-detection Results object. Corners preserve rotation; the conversion exports their axis-aligned envelope and polygon."
+  }
+}

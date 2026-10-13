@@ -56,6 +56,9 @@
                 "url": "https://github.com/Suhavi/Lepidoptera_Hubbard_Brook/blob/1d631ce7af4c0fa8eae5d60d8f2ec352fa2644f3/notebooks/runInference.ipynb",
                 "revision": "1d631ce7af4c0fa8eae5d60d8f2ec352fa2644f3"
             }
-        ]
+        ],
+        "adapters": {
+            "import_collection": "iai_model_zoo.formats.adapters.biomoth:import_collection"
+        }
     }
 }

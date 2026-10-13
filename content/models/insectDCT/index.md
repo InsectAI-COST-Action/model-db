@@ -129,7 +129,7 @@ hf_revision = ""
  - **Outputs:** classification/box (`-CL.csv`) and hierarchical-detail (`-HI.csv`) tables; see the verified profile below.
  - **Input mode:** standalone or time-lapse images, or video. 
 
-The documented [InsectDCT CSV profile](/formats/detection/insectdct-csv.json) describes the full detector/classifier pipeline at revision `e459ae8`, using the default `CSVformat=tracking` and ConvNextBase V6 classifier. The retained CPU probe processed 35 consecutive author frames and produced 40 rows each in the `-CL.csv` classification/box table and `-HI.csv` hierarchical-detail table. These tables contain classifier confidence values, not the native YOLO detector output. Tracking is a subsequent stage.
+The documented [InsectDCT CSV profile](/formats/insectdct-csv.json) describes the full detector/classifier pipeline at revision `e459ae8`, using the default `CSVformat=tracking` and ConvNextBase V6 classifier. The retained CPU probe processed 35 consecutive author frames and produced 40 rows each in the `-CL.csv` classification/box table and `-HI.csv` hierarchical-detail table. These tables contain classifier confidence values, not the native YOLO detector output. Tracking is a subsequent stage.
 
 ## Performance
 

@@ -1,0 +1,12 @@
+{{ define "main" }}
+<article class="page">
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+  <ul>
+  {{ range .RegularPagesRecursive.ByTitle }}
+    {{ with .Params.format_slug }}{{ else }}{{ continue }}{{ end }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+  {{ end }}
+  </ul>
+</article>
+{{ end }}

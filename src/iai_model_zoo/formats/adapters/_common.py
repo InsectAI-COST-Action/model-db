@@ -1,5 +1,6 @@
 """Shared ISIR validation, metadata injection, and coordinate transforms."""
 
+import math
 from copy import deepcopy
 from dataclasses import dataclass
 from functools import lru_cache
@@ -47,10 +48,6 @@ def checked_ir(record):
         seen.add(instance["id"])
         if instance["bbox"][2] < 0 or instance["bbox"][3] < 0:
             raise FormatError(f"instances[{i}].bbox: negative width/height")
-        if instance.get("angle", 0) != 0:
-            raise FormatError(
-                f"instances[{i}].angle: these adapters require axis-aligned boxes"
-            )
         if instance.get("area", 0) < 0:
             raise FormatError(f"instances[{i}].area: negative area")
     return result
@@ -72,9 +69,19 @@ def xywh_to_ir(box, height):
     return [x + w / 2, height - y - h / 2, w, h]
 
 
-def ir_to_xywh(box, height):
+def ir_to_xywh(box, height, angle=0):
     x, y, w, h = box
+    cosine, sine = abs(math.cos(angle)), abs(math.sin(angle))
+    w, h = w * cosine + h * sine, w * sine + h * cosine
     return [x - w / 2, height - y - h / 2, w, h]
+
+
+def box_polygon(box, angle):
+    """Four corners, counterclockwise in ISIR's bottom-left coordinate system."""
+    x,y,w,h = box
+    cosine,sine = math.cos(angle),math.sin(angle)
+    return [[x+dx*cosine-dy*sine, y+dx*sine+dy*cosine]
+            for dx,dy in [(-w/2,-h/2),(w/2,-h/2),(w/2,h/2),(-w/2,h/2)]]
 
 
 def flip_polygon(points, height):

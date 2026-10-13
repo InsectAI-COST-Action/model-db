@@ -43,3 +43,11 @@ def to_ir(data, *, images, include_empty=False):
         return record(info, instances, context.metadata)
 
     return collection(grouped, images, convert, include_empty=include_empty)
+
+
+# Uniform conversion interface; direct APIs above remain supported.
+
+def import_collection(data, *, context, options, source):
+    from ..conversion import ConversionBatch, invoke
+    result = invoke(to_ir, data, options, images=context.images)
+    return ConversionBatch(result)
