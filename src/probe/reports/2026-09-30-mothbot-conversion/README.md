@@ -12,6 +12,8 @@ These checks establish conversion behavior, not accuracy or pipeline equivalence
 `*-results.json` contains Results property projections used by
 [test_mothbot_conversion.py](../../../../scripts/tests/test_mothbot_conversion.py),
 not an author JSON export.
+Projections retain all detections' corners, scores and classes, omitting the
+optional raw tensor rows. Synthetic tests check raw-row metadata preservation.
 
 Reproduce from the repository root after preparing the cached weights and image
 identified by the report. The script verifies their hashes and performs no downloads:

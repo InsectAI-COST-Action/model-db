@@ -31,7 +31,7 @@ for i,(name,pixels) in enumerate([('specimen',cv2.imread(str(image))),('blank',n
         expected=[v for p in corners for v in p]
         assert max(abs(a-b) for a,b in zip(annotation['segmentation'][0],expected))<1e-6
     projection=dict(orig_shape=list(result.orig_shape),path=result.path,names=result.names,
-                    obb=dict(xyxyxyxy=result.obb.xyxyxyxy.tolist(),conf=result.obb.conf.tolist(),cls=result.obb.cls.tolist(),data=result.obb.data.tolist()))
+                    obb=dict(xyxyxyxy=result.obb.xyxyxyxy.tolist(),conf=result.obb.conf.tolist(),cls=result.obb.cls.tolist()))
     Path(__file__).with_name(name+'-results.json').write_text(json.dumps(projection,indent=2)+'\n')
     records.append(dict(image=name,detections=len(ir['instances'])))
 report=dict(weights_sha256=weights.parent.name,image_sha256=image.parent.name,ultralytics=ultralytics.__version__,torch=torch.__version__,settings=dict(device='cpu',imgsz=1600,max_det=10000,conf=.25,iou=.7),results=records,scope='Direct OBB inference and conversion; excludes author writer, thumbnails, classification and UI; not an accuracy benchmark.')

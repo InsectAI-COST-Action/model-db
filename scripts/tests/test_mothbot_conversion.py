@@ -44,10 +44,12 @@ class MothbotTests(unittest.TestCase):
         for angle in [0,.2,-.7,math.pi/2,math.pi]:
             box=[60,40,30,10];corners=flip_polygon(box_polygon(box,angle),100)
             data=dict(orig_shape=[100,200],path='a.jpg',names={'0':'object'},
-                      obb=dict(xyxyxyxy=[corners],conf=[.8],cls=[0]))
+                      obb=dict(xyxyxyxy=[corners],conf=[.8],cls=[0],
+                               data=[[60,60,30,10,-angle,.8,0]]))
             ctx=ConversionContext(image=ImageContext(1,200,100,'a.jpg'))
             ir=self.c.convert(data,source='ultralytics-obb-results',context=ctx)
             self.check_corners(ir['instances'][0],corners,100)
+            self.assertEqual(ir['extra_information']['ultralytics_obb']['obb']['data'], data['obb']['data'])
             ir['instances'][0].pop('polygons')
             out=self.c.convert(ir,source='isir',target='coco')
             self.assertEqual(len(out['annotations'][0]['segmentation'][0]),8)

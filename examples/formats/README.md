@@ -12,6 +12,8 @@ These lower-level examples help inspect formats and adapter behavior:
 The site's [format pages](../../content/formats/_index.md) retain readable examples,
 interpretation notes and schema links. Their values live in
 `data/format_examples.json`; tests validate them and execute the conversion examples.
+JSON examples store only `value`, which Hugo formats for display. CSV/TXT examples
+store their source text in `display`; tests parse and validate that text.
 Illustrative values and tensor projections are labelled as such, not presented
 as observed author JSON exports.
 
