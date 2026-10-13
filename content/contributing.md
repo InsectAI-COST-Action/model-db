@@ -30,10 +30,10 @@ guidelines:
 
 - **`status` starts as `draft`.** Only `published` appears on the site, so a
   half-finished entry is invisible until it is set to `published`.
-- **`category` must already exist** in `data/categories.toml`. If your model
-  needs a category the zoo does not have, add it there first, then build.
-- **`task` lists operations only.** A model may do several (e.g., both
-  detection and segmentation)so write `task = ["Object Detection", "Instance Segmentation"]`.
+- **`purpose` lists ecological use case(s) only.** Pick from the values in
+  `data/schema.toml`, e.g. `purpose = ["Insect classification"]`.
+- **`task` lists ML/CV operations only.** A model may do several (e.g., both
+  detection and segmentation) so write `task = ["Localisation", "Instance Segmentation"]`.
 - **`produces` must agree with `task`.** Declaring a `mask` output without a
   segmentation task is wrong.
 
@@ -67,6 +67,13 @@ underneath that claim while the entry stays put.
 
 The site then shows both links: the revision as curated, and the authors'
 current version, so a reader who wants the latest can still get it.
+
+## If you have a branch open from before 2026-09-30
+
+Format descriptors under `static/formats/detection/` moved up to
+`static/formats/` in PR #62. Rebasing or merging an older branch may conflict
+on that move, or on the retired `category` field (now `purpose`, see above) - resolve
+in favour of the new paths/fields, not the old ones.
 
 You still write a local card. Keep it short if the upstream one is good, but
 say what a *reader of this zoo* needs, particularly limitations and license.

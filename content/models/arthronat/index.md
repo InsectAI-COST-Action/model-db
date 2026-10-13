@@ -4,7 +4,7 @@ title              = "ArthroNat"
 description        = "YOLO11 model trained on arthropods over natural backgrounds."
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "detection"
+purpose            = ["Insect detection"]
 task               = ["Object Detection"]
 architecture       = ["YOLO11"]
 base_model         = "https://huggingface.co/Ultralytics/YOLO11"
@@ -131,7 +131,7 @@ Check the source publication for metrics.
 ```bibtex
 @article{arthronat2026,
   title   = {ArthroNat: arthropod detection over natural backgrounds},
-  author  = {Emy, Edgar et al.},
+  author  = {Remy, Edgar et al.},
   journal = {bioRxiv},
   year    = {2026},
   note    = {https://www.biorxiv.org/content/10.64898/2026.05.06.723207v1.full}

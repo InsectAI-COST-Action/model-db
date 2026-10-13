@@ -139,7 +139,7 @@ class SchemaTests(unittest.TestCase):
 
         def load(name):
             return json.loads(
-                (schema.DEFAULT_ROOT / "detection" / f"{name}.json").read_text()
+                (schema.DEFAULT_ROOT / f"{name}.json").read_text()
             )
 
         exported = load("ultralytics-detect-json")["types"]["instance"]

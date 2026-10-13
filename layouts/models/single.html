@@ -2,13 +2,11 @@
 {{- /* Everything this page shows is front matter on this page. */ -}}
 {{- partial "validate.html" . -}}
 {{- $p := .Params -}}
-{{- $category := index hugo.Data.categories.categories $p.category -}}
 
 <article class="model">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="{{ site.Home.RelPermalink }}">Model Zoo</a>
     <span aria-hidden="true">/</span>
-    {{ with $category }}<span>{{ .short }}</span><span aria-hidden="true">/</span>{{ end }}
     <span aria-current="page">{{ .Title }}</span>
   </nav>
 
@@ -21,7 +19,7 @@
 
   <div class="model-cols">
     <aside class="sidebar">
-      {{ partial "metadata-sidebar.html" (dict "page" . "category" $category) }}
+      {{ partial "metadata-sidebar.html" (dict "page" .) }}
     </aside>
     <div class="card-body">
       {{ .Content }}

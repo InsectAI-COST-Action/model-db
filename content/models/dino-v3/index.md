@@ -29,10 +29,8 @@ foundation         = true
 
 # ── Catalogue ─────────────────────────────────────────────────────────────────
 
-category           = "embeddings" 
-task               = ["Embedding"]               # Object Detection | Instance Segmentation |
-                                                 # Semantic Segmentation | Classification |
-                                                 # Tracking | Embedding | Counting
+purpose            = ["Model embeddings"]
+task               = ["Embedding"]
 architecture       = ["Vision Transformer (ViT)", "ConvNeXt"] 
 # base_model          = "" 
 year               = 2025                        # year of publication or release

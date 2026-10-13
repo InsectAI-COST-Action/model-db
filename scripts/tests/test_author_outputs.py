@@ -12,7 +12,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from iai_model_zoo.formats import Schema  # noqa: E402
 
 REPORTS = ROOT / "src/probe/reports/2026-09-30-format-expansion"
-FORMATS = ROOT / "static/formats/detection"
+FORMATS = ROOT / "static/formats"
 
 
 class AuthorOutputTests(unittest.TestCase):

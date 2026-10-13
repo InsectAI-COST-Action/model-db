@@ -4,8 +4,8 @@ title              = "Ștefan et al. (2025)"
 description        = "Lightweight YOLO pollinator detectors, NMS-optimized for and evaluated on smartphone time-lapse images of flower-visiting arthropods."
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "detection"
-task               = ["Object Detection"]
+purpose            = ["Insect detection"]
+task               = ["Object Detection", "Classification"]
 architecture       = ["YOLOv5", "YOLOv5", "YOLOv7"]
 base_model         = "Stark et al. (2023) YOLO detectors, trained on citizen science images"
 year               = 2025

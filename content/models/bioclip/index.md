@@ -5,7 +5,7 @@ description        = "CLIP model trained across the tree of life, for zero-shot 
 foundation         = true
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "classification"
+purpose            = ["Insect classification", "Model embeddings"]
 task               = ["Classification", "Embedding"]
 architecture       = ["ViT-B/16 (CLIP)"]
 base_model         = "openai/clip-vit-base-patch16"

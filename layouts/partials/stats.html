@@ -1,17 +1,20 @@
 {{- $rows := . -}}
-{{- $cats := hugo.Data.categories.categories -}}
 
 {{- /* Distinct values via a dict keyed by value: Hugo has no uniq helper. A
        model counts under every task it does. */ -}}
 {{- $tasks := dict -}}
+{{- $purposes := dict -}}
 {{- range $rows -}}
   {{- range .Params.task -}}
     {{- $tasks = merge $tasks (dict . true) -}}
+  {{- end -}}
+  {{- range .Params.purpose -}}
+    {{- $purposes = merge $purposes (dict . true) -}}
   {{- end -}}
 {{- end -}}
 
 <ul class="stats">
   <li><strong>{{ len $rows }}</strong> models</li>
-  <li><strong>{{ len $cats }}</strong> categories</li>
+  <li><strong>{{ len $purposes }}</strong> purposes</li>
   <li><strong>{{ len $tasks }}</strong> tasks</li>
 </ul>

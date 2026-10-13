@@ -5,7 +5,7 @@ description        = "Identifies moths and butterflies to species, genus and fam
 foundation         = false
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "classification"
+purpose            = ["Insect classification"]
 task               = ["Classification", "Embedding"]
 architecture       = ["ViT-L/14 (BioCLIP-2)", "ConvNeXt-L (DINOv3)", "EfficientNetV2-S"]
 base_model         = "imageomics/bioclip-2; timm/convnext_large.dinov3_lvd1689m; torchvision efficientnet_v2_s (ImageNet)"

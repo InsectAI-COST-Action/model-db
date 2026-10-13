@@ -5,7 +5,7 @@ description        = "Class-agnostic Faster R-CNN that boxes every insect on a n
 foundation         = false
 
 # ── Catalogue ───────────────────────────────────────────────────────
-category           = "detection"
+purpose            = ["Insect detection"]
 task               = ["Object Detection"]
 architecture       = ["Faster R-CNN ResNet50-FPN", "Faster R-CNN MobileNetV3-Large-FPN"]
 output_format      = ["ami-detector-boxes", "ami-detector-boxes"]

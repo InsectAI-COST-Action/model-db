@@ -29,10 +29,8 @@ foundation  = true
 
 # ── Catalogue ─────────────────────────────────────────────────────────────────
 
-category           = "classification"                  # must already exist in data/categories.toml
-task               = ["Classification", "Embedding"]         # Object Detection | Instance Segmentation |
-                                                 # Semantic Segmentation | Classification |
-                                                 # Tracking | Embedding | Counting
+purpose            = ["Model embeddings"]
+task               = ["Classification", "Embedding"]
 architecture       = ["CLIP with ViT-B/16 image encoder"]                   # YOLOv8, ViT, Swin Transformer…
 base_model          = ""                          # If this is a fine-tuned model, name the
                                                  # base model it was fine-tuned from.
