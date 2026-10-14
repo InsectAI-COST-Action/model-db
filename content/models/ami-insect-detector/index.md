@@ -41,6 +41,7 @@ filename     = "fasterrcnn_resnet50_fpn_tz53qv9v.pt"
 size_bytes   = 330066092
 url          = "https://object-arbutus.alliancecan.ca/swift/v1/AUTH_3c987b8fc90743469d42899b1fdb48eb/ami-models/moths/localization/fasterrcnn_resnet50_fpn_tz53qv9v.pt"
 note         = "Default: the detector the AMI API and Antenna run (MothObjectDetector_FasterRCNN_2023). Keeps boxes with score > 0.80. Defined in trapdata/ml/models/localization.py at ami-data-companion commit 55d0787."
+weight_count = {value = 41405401, kind = "tensor_elements", sha256 = "bde08784d6f47060f87b0bfb63ef90bcd2b0d360072e3624feee3bc816ec5026", asset_signature = "69af3753f416bcd3e85e302b33d06dc82fe754e3f951f884aad8beced25cb63f", container = "model_state_dict", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:30:55.872910+00:00"}
 
 [[assets]]
 key          = "fasterrcnn-mobilenetv3-2023"
@@ -49,6 +50,7 @@ filename     = "fasterrcnn_mobilenet_v3_large_fpn_uqfh7u9w.pt"
 size_bytes   = 151724126
 url          = "https://object-arbutus.alliancecan.ca/swift/v1/AUTH_3c987b8fc90743469d42899b1fdb48eb/ami-models/moths/localization/fasterrcnn_mobilenet_v3_large_fpn_uqfh7u9w.pt"
 note         = "Fast variant for CPUs (about 6x faster per the authors, near-similar accuracy). Score threshold 0.50."
+weight_count = {value = 18975174, kind = "tensor_elements", sha256 = "9cabd584284f403ad96db11f37d0ad5ace14ceb6c3be1128f08fe408fbc9c1c9", asset_signature = "41696a0d33abd7b75b811d60af7221dc8a08ca097787e1456497e67c12cb7e2e", container = "model_state_dict", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:30:55.872910+00:00"}
 
 [[assets]]
 key          = "fasterrcnn-resnet50-2021"
@@ -57,6 +59,7 @@ filename     = "v1_localizmodel_2021-08-17-12-06.pt"
 size_bytes   = 330063958
 url          = "https://object-arbutus.alliancecan.ca/swift/v1/AUTH_3c987b8fc90743469d42899b1fdb48eb/ami-models/moths/localization/v1_localizmodel_2021-08-17-12-06.pt"
 note         = "Legacy 2021 detector trained on real trap images. Score threshold 0.99. Kept for reproducibility."
+weight_count = {value = 41405401, kind = "tensor_elements", sha256 = "7f576242e981436b358a5e22d3185ada8a02b7f3cfeafa8b30192ca673644e37", asset_signature = "7c1e10e4384f2b0f5066b5f9e29d13efd36c9c22c338246dce7f4fc07ad227e4", container = "model_state_dict", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:30:55.872910+00:00"}
 +++
 
 > Boxes every insect on a light-trap screen image, without naming it.

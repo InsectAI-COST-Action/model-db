@@ -42,6 +42,7 @@ size_bytes   = 21692897
 url          = "https://raw.githubusercontent.com/Digital-Naturalism-Laboratories/Mothbot_Process/7514bee8ace5c9cb859f3566ed3088a7824b692c/trained_models/MBD-1-1.pt"
 released     = 2026-09-22
 note         = "Newest checkpoint, and the one the Mothbot UI selects by default. Its YAML names it yolo26s_Sept212026 (display name MDB-1-1-OBB); the commit that added it calls it an M model. Pinned to commit 7514bee."
+weight_count = {value = 10520996, kind = "stored_parameters", sha256 = "aa7e881e532d49be305d275766cd73fda0d75a8853d7bf822fc2c8a1e873e44a", asset_signature = "2febbe30e0cb6229dbb6e87841c333196cb66e564c6503e539b796389a4d122a", container = "model", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:41:31.379979+00:00"}
 
 [[assets]]
 key          = "MBD-1-0"
@@ -51,6 +52,7 @@ size_bytes   = 22027036
 url          = "https://raw.githubusercontent.com/Digital-Naturalism-Laboratories/Mothbot_Process/7514bee8ace5c9cb859f3566ed3088a7824b692c/trained_models/MBD-1-0.pt"
 released     = 2026-07-12
 note         = "Previous checkpoint, YAML name yolo26m_obb_custom15 (display name Yolo26m15kbugs-OBB). Pinned to commit 7514bee."
+weight_count = {value = 10520996, kind = "stored_parameters", sha256 = "1b2b5d8cc71bcde34878e8cc15db5fab594aa3a292e3663d6218eaef79bd9854", asset_signature = "554bda1c6c82291bee4f9a83dc0d354c10a04bf0ac11639160adcf06d1d0af38", container = "model", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:41:31.379979+00:00"}
 
 [[assets]]
 key          = "desktop-app"

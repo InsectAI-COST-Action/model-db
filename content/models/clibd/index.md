@@ -46,6 +46,7 @@ filename      = "ckpt/bioscan_clip/ver_1_0/bioscan_1m/image_dna_text_4gpu/best.p
 revision      = "3a27250e89e884f26f25ba2e939eaf5f774a0fb3"
 revision_kind = "commit"
 url           = "https://huggingface.co/bioscan-ml/clibd/resolve/3a27250e89e884f26f25ba2e939eaf5f774a0fb3/ckpt/bioscan_clip/ver_1_0/bioscan_1m/image_dna_text_4gpu/best.pth"
+weight_count = {value = 203118596, kind = "tensor_elements", sha256 = "cfd48dc98d8f0acc43228c55611b2f75c3e4aa52cc520a31642474290fa98759", asset_signature = "b5f6685ae8982b2774e3573cb45953cfc278a7ab34dc0e63b79067446888970a", container = "root", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:44:04.403279+00:00"}
 
 [[assets]]
 key           = "hf-repo"
@@ -66,6 +67,7 @@ filename      = "ckpt/bioscan_clip/ver_1_0/bioscan_1m/image_dna_4gpu/best.pth"
 revision      = "3a27250e89e884f26f25ba2e939eaf5f774a0fb3"
 revision_kind = "commit"
 url           = "https://huggingface.co/bioscan-ml/clibd/resolve/3a27250e89e884f26f25ba2e939eaf5f774a0fb3/ckpt/bioscan_clip/ver_1_0/bioscan_1m/image_dna_4gpu/best.pth"
+weight_count = {value = 173960452, kind = "tensor_elements", sha256 = "7dba4cc80dd2a4f825cbaaa6f0f11f3216401c1f0e2cdd399b946e444e343d46", asset_signature = "85802af2b41af30489ddde6c170f1534ee8c4e6c740d32bc1f90df0c4bb93155", container = "root", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:44:04.403279+00:00"}
 
 [[assets]]
 key           = "5m-idt"
@@ -76,6 +78,7 @@ filename      = "ckpt/bioscan_clip/ver_1_0/bioscan_5m/image_dna_text_4gpu/best.p
 revision      = "3a27250e89e884f26f25ba2e939eaf5f774a0fb3"
 revision_kind = "commit"
 url           = "https://huggingface.co/bioscan-ml/clibd/resolve/3a27250e89e884f26f25ba2e939eaf5f774a0fb3/ckpt/bioscan_clip/ver_1_0/bioscan_5m/image_dna_text_4gpu/best.pth"
+weight_count = {value = 203118596, kind = "tensor_elements", sha256 = "098fb1ac663450f3d6350c18d9d26a5fb177ecf7411ccc7420833fba66a555bd", asset_signature = "926a503633734e22d5cc4e5d23313182467a85a3faa6e5ceffde423487ed1eab", container = "root", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:44:04.403279+00:00"}
 
 [[assets]]
 key           = "5m-id"
@@ -86,6 +89,7 @@ filename      = "ckpt/bioscan_clip/ver_1_0/bioscan_5m/image_dna_4gpu/best.pth"
 revision      = "3a27250e89e884f26f25ba2e939eaf5f774a0fb3"
 revision_kind = "commit"
 url           = "https://huggingface.co/bioscan-ml/clibd/resolve/3a27250e89e884f26f25ba2e939eaf5f774a0fb3/ckpt/bioscan_clip/ver_1_0/bioscan_5m/image_dna_4gpu/best.pth"
+weight_count = {value = 173960452, kind = "tensor_elements", sha256 = "5d2a193655642419e75b21dfa3b2feca11ce14993f1353c129e54322772a7c31", asset_signature = "7ce3e65554b4fb2d9ea1c3dc6828d0c8b312aa963c269eb95d159e546171782b", container = "root", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:44:04.403279+00:00"}
 +++
 
 > CLIP-style model that aligns insect images, DNA barcodes and taxonomic labels in one embedding space, for classifying seen and unseen species by retrieval.

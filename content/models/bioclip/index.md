@@ -59,6 +59,7 @@ revision_kind = "commit"
 size_bytes   = 598599013
 sha256       = "e380384f0c30d425d8c6c40f24471f9dd497fbdfa734a89c461a94aee95f0ef4"
 url          = "https://huggingface.co/imageomics/bioclip/resolve/ce901ab3c6a913f9e9ef94ce6d27761069f4f01c/open_clip_pytorch_model.bin"
+weight_count = {value = 149620737, kind = "tensor_elements", sha256 = "e380384f0c30d425d8c6c40f24471f9dd497fbdfa734a89c461a94aee95f0ef4", asset_signature = "7a44ae2942afa71e527534acb40a1ad176a6f636dab03986aa7c6d4d69cc8db5", container = "root", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:44:40.626166+00:00"}
 +++
 
 > CLIP model trained across the tree of life, for zero-shot species classification from a list of taxon names.

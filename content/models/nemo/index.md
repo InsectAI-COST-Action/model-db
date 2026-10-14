@@ -35,6 +35,7 @@ size_bytes = 153951029
 sha256 = "174b9214bfea2df69e4f5c5d16afd841fec961db4274f3e6bf474cef9cab5e8a"
 url = "https://huggingface.co/asgersvenning/MAMBO-v3/resolve/a70e530787b731276ba5e6dc8429e3627e370ce5/bundle/models/pytorch/best.pt"
 note = "Native checkpoint; use the published runtime and class vocabulary."
+weight_count = {value = 38187603, kind = "tensor_elements", sha256 = "174b9214bfea2df69e4f5c5d16afd841fec961db4274f3e6bf474cef9cab5e8a", asset_signature = "abcc904bda58b8602ccb1b7c2b268f9f01dd97f2241f1de8ca620708329a4c22", container = "root", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:24:08.535103+00:00"}
 
 [[assets]]
 key = "onnx"

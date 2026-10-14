@@ -55,6 +55,7 @@ filename     = "yolo11n_ArthroNat_mosaic33.pt"
 revision     = "54edf7364582e9efda68c04edfd672cfe109fb4a"
 revision_kind = "commit"
 url          = "https://huggingface.co/edgaremy/arthropod-detector/resolve/54edf7364582e9efda68c04edfd672cfe109fb4a/yolo11n_ArthroNat_mosaic33.pt"
+weight_count = {value = 2590035, kind = "stored_parameters", sha256 = "00c1dcb611dd70b7493f953c92323baf16d3059f7314fa126a40c89f2fae761c", asset_signature = "8824965839e7de1193104669f6da0471c34de618bd24e8fbff55e1c07e5eae02", container = "model", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:40:11.817186+00:00"}
 
 [[assets]]
 key          = "n-flatbug"
@@ -65,6 +66,7 @@ filename     = "yolo11n_ArthroNat%2Bflatbug.pt"
 revision     = "54edf7364582e9efda68c04edfd672cfe109fb4a"
 revision_kind = "commit"
 url          = "https://huggingface.co/edgaremy/arthropod-detector/resolve/54edf7364582e9efda68c04edfd672cfe109fb4a/yolo11n_ArthroNat%2Bflatbug.pt"
+weight_count = {value = 2590035, kind = "stored_parameters", sha256 = "222e6b89863d42a7014cf408c74c6da9cd5b7a65bf62c690dd786ae708634580", asset_signature = "6c74ba91d702eec80a5ae3b0ff2734576131c801e04e273b9cd6a11251f3e4e1", container = "model", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:40:11.817186+00:00"}
 
 [[assets]]
 key          = "l-mosaic33"
@@ -75,6 +77,7 @@ filename     = "yolo11l_ArthroNat_mosaic33.pt"
 revision     = "54edf7364582e9efda68c04edfd672cfe109fb4a"
 revision_kind = "commit"
 url          = "https://huggingface.co/edgaremy/arthropod-detector/resolve/54edf7364582e9efda68c04edfd672cfe109fb4a/yolo11l_ArthroNat_mosaic33.pt"
+weight_count = {value = 25311251, kind = "stored_parameters", sha256 = "27c0fe071d5fb4655b04198441100f504b4e0f706382e86d2f0a3314ebaffdd7", asset_signature = "2ed46d48ef5e97608f5a5b56c48097df384a3ad42c3486b2a505ba932ff75595", container = "model", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:40:11.817186+00:00"}
 
 [[assets]]
 key          = "l-flatbug"
@@ -85,6 +88,7 @@ filename     = "yolo11l_ArthroNat%2Bflatbug.pt"
 revision     = "54edf7364582e9efda68c04edfd672cfe109fb4a"
 revision_kind = "commit"
 url          = "https://huggingface.co/edgaremy/arthropod-detector/resolve/54edf7364582e9efda68c04edfd672cfe109fb4a/yolo11l_ArthroNat%2Bflatbug.pt"
+weight_count = {value = 25311251, kind = "stored_parameters", sha256 = "cdc9228a082ad58cc9c3900138a2ba7490fe3a756816fc7c9385a3c18e982e02", asset_signature = "dea454decbe766355bcf959da4153e96da8f8d15df4878a455e5d4e5efaf0fde", container = "model", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:40:11.817186+00:00"}
 +++
 
 > YOLO11 model trained on arthropods over natural backgrounds.

@@ -45,6 +45,7 @@ url          = "https://github.com/stark-t/PAI/raw/main/detectors/trained_weight
 size_bytes   = 14397237
 sha256       = "9da90c43e48e4a33d9a439f5ea7d1e38ed8375414353d9ffee7fd2a61bf2997a"
 note         = "The best model of the study (YOLOv5s), the one behind the NMS-optimized results. Same weights as the Stark et al. (2023) entry; the optimization here is in the inference settings."
+weight_count = {value = 7041205, kind = "stored_parameters", sha256 = "9da90c43e48e4a33d9a439f5ea7d1e38ed8375414353d9ffee7fd2a61bf2997a", asset_signature = "00b2f8e628b995b617d61bfc1f77cb2461132d26627eec589a51e75587de8b9e", container = "model", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:41:41.235745+00:00"}
 
 [[assets]]
 key          = "yolov5n-weights"
@@ -54,6 +55,7 @@ filename     = "yolov5_n_best.pt"
 url          = "https://github.com/stark-t/PAI/raw/main/detectors/trained_weights/yolov5_n_best.pt"
 size_bytes   = 3844469
 sha256       = "4752ab81e3cdac5d50e9cee6a7df27751872c4790c07d9ff09c74856ff5d0d8f"
+weight_count = {value = 1774741, kind = "stored_parameters", sha256 = "4752ab81e3cdac5d50e9cee6a7df27751872c4790c07d9ff09c74856ff5d0d8f", asset_signature = "59bb96d3115bd9e1f7b543d07ac677dc4d8e213599d72450024954a0b5508cb4", container = "model", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:41:41.235745+00:00"}
 
 [[assets]]
 key          = "yolov7-tiny-weights"
@@ -63,6 +65,7 @@ filename     = "yolov7_tiny_best.pt"
 url          = "https://github.com/stark-t/PAI/raw/main/detectors/trained_weights/yolov7_tiny_best.pt"
 size_bytes   = 12290003
 sha256       = "9478b5de6fce2ae12b2bcf231093798e814325ae1119755a70d9c2baf7cc843a"
+weight_count = {value = 6032917, kind = "stored_parameters", sha256 = "9478b5de6fce2ae12b2bcf231093798e814325ae1119755a70d9c2baf7cc843a", asset_signature = "f3ada4c0403832d7a47e9b5cfd50948105f5f6d0a179e525ee502ebf8c41d484", container = "model", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:41:41.235745+00:00"}
 
 [[assets]]
 key          = "code"

@@ -71,6 +71,7 @@ size_bytes   = 1710639510
 sha256       = "035208dd616321f6c220384efaa1f10e9fcd8e1f2998ddefc88687718d186a85"
 url          = "https://huggingface.co/imageomics/bioclip-2/resolve/2957b322090f9cb17ae72c71981c7218a28d81e0/open_clip_pytorch_model.bin"
 note         = "The same weights as a PyTorch file. Only needed if your tools cannot read Safetensors."
+weight_count = {value = 427616513, kind = "tensor_elements", sha256 = "035208dd616321f6c220384efaa1f10e9fcd8e1f2998ddefc88687718d186a85", asset_signature = "edd59c4936065a63c0c287cf0f430a1cfaae1a79283da88ce3b232a8248777e7", container = "root", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:45:48.074851+00:00"}
 +++
 
 > Larger successor to BioCLIP, trained on 214M organism images, for zero-shot species classification from a list of taxon names.
