@@ -115,14 +115,16 @@ def mapping(value):
 
 def summarize(value):
     seen, tensors, excluded = set(), [], set()
-    stack = [("", value)]
+    parameters_only = True
+    stack = [("", value, False)]
     while stack:
-        path, obj = stack.pop()
+        path, obj, parameter = stack.pop()
         if id(obj) in seen:
             continue
         seen.add(id(obj))
         if isinstance(obj, Tensor):
             tensors.append(obj)
+            parameters_only = parameters_only and parameter
             continue
         entries = mapping(obj)
         if entries is not None:
@@ -132,7 +134,7 @@ def summarize(value):
                 if label.lower() in EXCLUDE:
                     excluded.add(child_path)
                 else:
-                    stack.append((child_path, child))
+                    stack.append((child_path, child, parameter))
         elif isinstance(obj, Object):
             if obj.global_name.startswith("torch.") and (
                     "rebuild" in obj.global_name or obj.global_name.endswith("._load_from_bytes")):
@@ -141,21 +143,22 @@ def summarize(value):
             if state is not None and "_parameters" in state and "_modules" in state:
                 # nn.Module records explicitly separate registered parameters
                 # and child modules from buffers, caches and other attributes.
-                stack.extend([(path + "._parameters", state["_parameters"]),
-                              (path + "._modules", state["_modules"])])
+                stack.extend([(path + "._parameters", state["_parameters"], True),
+                              (path + "._modules", state["_modules"], False)])
                 if "_buffers" in state:
                     excluded.add(path + "._buffers")
             else:
-                stack.extend([(path, obj.state), (path, obj.items),
-                              (path, obj.sequence), (path, obj.args)])
+                stack.extend([(path, obj.state, parameter), (path, obj.items, parameter),
+                              (path, obj.sequence, parameter), (path, obj.args, parameter)])
         elif isinstance(obj, (tuple, list, set, frozenset)):
-            stack.extend((f"{path}[{i}]", child) for i, child in enumerate(obj))
+            stack.extend((f"{path}[{i}]", child, parameter) for i, child in enumerate(obj))
     dtypes = {}
     for tensor in tensors:
         count = dtypes.setdefault(tensor.dtype, {"tensors": 0, "elements": 0})
         count["tensors"] += 1
         count["elements"] += math.prod(tensor.shape)
-    return {"tensor_count": len(tensors),
+    return {"kind": "stored_parameters" if tensors and parameters_only else "tensor_elements",
+            "tensor_count": len(tensors),
             "tensor_elements": sum(d["elements"] for d in dtypes.values()),
             "by_dtype": dtypes, "excluded_paths": sorted(excluded)}
 

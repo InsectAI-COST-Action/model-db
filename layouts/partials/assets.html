@@ -19,6 +19,15 @@
           <span class="asset-meta">{{ printf "%.1f MB" (div (float .size_bytes) 1000000) }}</span>
         {{- end }}
         {{- with .released }}<span class="asset-meta">{{ . }}</span>{{ end }}
+        {{- with .weight_count }}
+          <span class="asset-meta">{{ lang.FormatNumber 0 .value }} {{ if eq .kind "stored_parameters" }}stored parameters{{ else }}tensor elements (may include buffers){{ end }}</span>
+          <details class="asset-meta"><summary>Count evidence</summary>
+            Container: {{ .container }}; inspected {{ .observed_at }}.
+            Method: {{ .method }} (v{{ .inspection_version }}).
+            Checkpoint SHA-256: <code>{{ .sha256 }}</code>.
+            Runtime and trainable parameter counts are unverified.
+          </details>
+        {{- end }}
         {{- if .sha256 }}<span class="asset-meta">sha256 {{ substr .sha256 0 12 }}…</span>{{ end }}
         {{- if eq .provider "huggingface" }}
           {{- with .revision }}<span class="asset-meta">pinned {{ substr . 0 8 }}</span>{{ end }}

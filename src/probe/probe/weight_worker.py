@@ -6,7 +6,7 @@ import re
 import sys
 import zipfile
 
-VERSION = "2"
+VERSION = "3"
 CONTAINERS = ("state_dict", "model_state_dict", "model")
 
 
@@ -72,6 +72,7 @@ def inspect(path):
             entry["tensors"] += 1
             entry["elements"] += tensor.numel()
         result["candidates"].append({
+            "kind": "tensor_elements",
             "container": name, "tensor_count": len(seen),
             "tensor_elements": sum(v["elements"] for v in by_dtype.values()),
             "by_dtype": by_dtype,

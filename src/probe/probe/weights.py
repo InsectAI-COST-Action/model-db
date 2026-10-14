@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 import re
+import shlex
 import sys
 import tempfile
 import tomllib
@@ -15,6 +16,7 @@ import uuid
 import zipfile
 
 from .runner import digest, execute
+from .weight_guide import Cancelled, choose, confirm, require_terminal
 
 ROOT = Path(__file__).resolve().parents[1]
 REPO = ROOT.parents[1]
@@ -24,6 +26,11 @@ SCOPE = ("Logical tensor elements in model data; optimizer and EMA branches are 
          "may include buffers. Repeated references to a tensor count once per candidate; distinct views count separately. "
          "Runtime-created parameters may be absent; "
          "these are not verified runtime or trainable parameter counts.")
+
+
+def asset_signature(asset):
+    identity = {k: asset.get(k) for k in ("url", "filename", "revision", "sha256", "size_bytes")}
+    return hashlib.sha256(json.dumps(identity, sort_keys=True).encode()).hexdigest()
 
 
 def select_assets(repo, models=None, asset_key=None):
@@ -120,6 +127,7 @@ def download(asset, cache, max_bytes, network_timeout):
 def inspect_asset(selected, args, run):
     asset = selected["asset"]
     result = {"model": selected["model"], "asset": asset.get("key"),
+              "asset_signature": asset_signature(asset),
               "source_url": asset.get("url"), "revision": asset.get("revision"),
               "runtime_parameter_count": None, "candidates": []}
     reason = unsupported_reason(asset)
@@ -152,12 +160,50 @@ def positive(value):
     return number
 
 
+def guide_selection(args):
+    require_terminal()
+    from .weight_review import audit, catalogue, coverage_state, read_reports
+
+    assets = select_assets(args.repo)
+    eligible = [s for s in assets if not unsupported_reason(s["asset"])]
+    rows = audit(catalogue(args.repo, None), read_reports(list(args.run_root.glob("*/report.json"))))
+    states = {(r['model'], r['asset']): coverage_state(r) for r in rows}
+    if not args.show_all:
+        eligible = [s for s in eligible if states[(s['model'], s['asset']['key'])] in {'Inspect', 'Refresh', 'Blocked'}]
+    models = sorted({s["model"] for s in eligible})
+    if not models:
+        print("No PyTorch assets need inspection in this view. Use --show-all to include saved counts and pending reviews.")
+        return []
+    print("Inspection saves local results only; it does not update model cards.")
+    print("Only models with direct PyTorch file links are listed.")
+    print("Showing all eligible assets." if args.show_all else
+          "Showing Inspect, Refresh and Blocked assets only; use --show-all to include Review and Saved.")
+    model = models[choose("1. Choose a model", [
+        f"{m} ({sum(s['model'] == m for s in eligible)} PyTorch assets)" for m in models])]
+    candidates = [s for s in eligible if s["model"] == model]
+    labels = [f"{s['asset']['key']} [{states[(s['model'], s['asset']['key'])]}] — {s['asset']['url']}" for s in candidates]
+    if len(candidates) > 1:
+        labels.append(f"All {len(candidates)} listed PyTorch assets for {model}")
+    selected = choose("2. Choose weights to inspect", labels)
+    chosen = candidates if selected == len(candidates) else [candidates[selected]]
+    print("\n3. Confirm inspection")
+    for item in chosen:
+        print(f"  {item['model']}/{item['asset']['key']}: {item['asset']['url']}")
+    print(f"Downloads may be required. Limit: {args.max_bytes:,} bytes per artifact; "
+          f"network timeout: {args.network_timeout}s; inspection timeout: {args.timeout}s.")
+    if not confirm("Inspect these assets?"):
+        raise Cancelled()
+    return chosen
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     selection = parser.add_mutually_exclusive_group(required=True)
     selection.add_argument("--model", action="append", help="Model id; repeat to select several")
     selection.add_argument("--all", action="store_true", help="Select all catalogue assets")
+    selection.add_argument("--guide", action="store_true", help="Choose a model and weights interactively")
     parser.add_argument("--asset", help="Asset key within one selected model")
+    parser.add_argument("--show-all", action="store_true", help="With --guide, include assets already reviewed or awaiting review")
     parser.add_argument("--list", action="store_true", help="List eligibility without downloading")
     parser.add_argument("--output", type=Path, help="Write JSON report to this path")
     parser.add_argument("--repo", type=Path, default=REPO)
@@ -167,10 +213,19 @@ def main(argv=None):
     parser.add_argument("--network-timeout", type=positive, default=60)
     parser.add_argument("--timeout", type=positive, default=300, help="Worker timeout, including environment setup")
     args = parser.parse_args(argv)
+    if args.show_all and not args.guide:
+        parser.error("--show-all requires --guide")
+    if args.guide and args.list:
+        parser.error("--guide performs selected inspections; use --all --list for a read-only list")
     if args.asset and (not args.model or len(args.model) != 1):
         parser.error("--asset requires exactly one --model")
     try:
-        assets = select_assets(args.repo, args.model, args.asset)
+        assets = guide_selection(args) if args.guide else select_assets(args.repo, args.model, args.asset)
+        if args.guide and not assets:
+            return 0
+    except (Cancelled, EOFError, KeyboardInterrupt):
+        print("\nCancelled; no inspection started.")
+        return 0
     except (ValueError, OSError, IndexError) as error:
         parser.error(str(error))
     if args.list:
@@ -195,6 +250,10 @@ def main(argv=None):
         print(SCOPE)
         (run / "report.json").write_text(json.dumps(report, indent=2) + "\n")
         print(f"Report: {run / 'report.json'}")
+        if args.guide:
+            print("Review these local results next:\n  " + shlex.join([
+                "uv", "run", "--locked", "--project", "src/probe", "review-pending-weights",
+                "--guide", "--repo", str(args.repo), "--report", str(run / "report.json")]))
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(report, indent=2) + "\n")
