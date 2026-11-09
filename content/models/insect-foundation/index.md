@@ -23,7 +23,7 @@
 
 # ── Identity ──────────────────────────────────────────────────────────────────
 
-title              = "Insect-Foundation (vision backbone)"
+title              = "Insect-Foundation\n(vision backbone)"
 description = "An arthropod-specific foundation model that learns visual features for downstream tasks."
 foundation         = true
 

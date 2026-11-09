@@ -24,6 +24,8 @@
 # ── Identity ──────────────────────────────────────────────────────────────────
 
 title              = "REPLACE WITH THE MODEL NAME"
+# Optional table line break: title = "Model name\n(variant or description)"
+# Headings, search and sorting treat the line break as a space.
 description        = "One sentence, in plain language, saying what the model does."
 foundation         = false
 

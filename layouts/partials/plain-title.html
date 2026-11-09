@@ -1,0 +1,2 @@
+{{- /* Layout whitespace in a title must not change its name elsewhere. */ -}}
+{{- return (replaceRE `\s+` " " . | strings.TrimSpace) -}}

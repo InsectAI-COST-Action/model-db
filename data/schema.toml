@@ -23,7 +23,7 @@
 name        = "title"
 type        = "string"
 required    = true
-help        = "The name readers will see. Also the page heading and the sort key."
+help        = "The model name, page heading and sort key. Use \\n in a double-quoted title for an aesthetic line break in the table; elsewhere it is treated as a space."
 
 [[field]]
 name        = "description"

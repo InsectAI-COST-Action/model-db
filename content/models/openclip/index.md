@@ -23,7 +23,7 @@
 
 # ── Identity ──────────────────────────────────────────────────────────────────
 
-title       = "OpenCLIP (ViT-B/16, LAION-2B)"
+title       = "OpenCLIP\n(ViT-B/16, LAION-2B)"
 description = "A general-purpose image–text model for zero-shot classification and image feature extraction, included as a representative OpenCLIP checkpoint."
 foundation  = true
 

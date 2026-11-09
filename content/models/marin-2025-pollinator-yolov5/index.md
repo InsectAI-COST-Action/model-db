@@ -1,6 +1,6 @@
 +++
 # ── Identity ────────────────────────────────────────────────────────
-title              = "POLLINATOR — Serra-Marin et al. (2025)"
+title              = "POLLINATOR\nSerra-Marin et al. (2025)"
 description        = "YOLOv5m detector of flower-visiting insects in daytime and nighttime field imagery."
 
 # ── Catalogue ───────────────────────────────────────────────────────

@@ -1,6 +1,6 @@
 +++
 # ── Identity ────────────────────────────────────────────────────────
-title              = "AMI moth classifiers"
+title              = "AMI moth\nclassifiers"
 description        = "Global and regional ResNet50 moth species classifiers, a moth/non-moth filter and a 16-order arthropod classifier for crops from nocturnal light traps, as run by the AMI data companion and Antenna."
 foundation         = false
 

@@ -1,6 +1,6 @@
 +++
 # ── Identity ────────────────────────────────────────────────────────
-title              = "AMI insect detector"
+title              = "AMI insect\ndetector"
 description        = "Class-agnostic Faster R-CNN that boxes every insect on a nocturnal light-trap screen image; the detection stage of the AMI data companion and the Antenna platform."
 foundation         = false
 

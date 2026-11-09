@@ -7,11 +7,11 @@
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="{{ site.Home.RelPermalink }}">Model Zoo</a>
     <span aria-hidden="true">/</span>
-    <span aria-current="page">{{ .Title }}</span>
+    <span aria-current="page">{{ partial "plain-title.html" .Title }}</span>
   </nav>
 
   <header class="model-head">
-    <h1>{{ .Title }}</h1>
+    <h1>{{ partial "plain-title.html" .Title }}</h1>
     <p class="lede">{{ .Description }}</p>
     {{ partial "badges.html" . }}
     {{ partial "assets.html" . }}
