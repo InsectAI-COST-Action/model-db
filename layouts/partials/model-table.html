@@ -11,6 +11,7 @@
         <th scope="col">Purpose</th>
         <th scope="col">Task</th>
         <th scope="col">Architecture</th>
+        <th scope="col">Parameters (MP)</th>
         <th scope="col">Input</th>
         <th scope="col">Vocabulary</th>
         <th scope="col">Input size</th>
@@ -51,6 +52,7 @@
           {{- end -}}
         </td>
         <td>{{ delimit $p.architecture ", " }}</td>
+        <td>{{ partial "parameter-count.html" $p.assets }}</td>
         <td>{{ if $p.input_modality }}{{ delimit $p.input_modality ", " }}{{ else }}image{{ end }}</td>
         <td>
           {{- $scope := $p.vocabulary_scope | default "closed" -}}

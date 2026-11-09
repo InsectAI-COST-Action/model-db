@@ -197,6 +197,14 @@ a:hover { text-decoration-thickness: 2px; }
 
 /* Tables */
 
+.parameter-count {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  text-decoration: underline dotted;
+  text-underline-offset: .2em;
+  cursor: help;
+}
+
 .table-scroll {
   overflow: auto;
   max-height: 88vh;

@@ -1,0 +1,33 @@
+{{- $counts := slice -}}
+{{- $files := 0 -}}
+{{- $includesBuffers := false -}}
+{{- range . -}}
+  {{- $name := .filename | default ((urls.Parse .url).Path) -}}
+  {{- $weightFile := in (slice ".pt" ".pth" ".bin" ".ckpt") (lower (path.Ext $name)) -}}
+  {{- if or $weightFile .weight_count -}}{{- $files = add $files 1 -}}{{- end -}}
+  {{- with .weight_count -}}
+    {{- $counts = $counts | append .value -}}
+    {{- if eq .kind "tensor_elements" -}}{{- $includesBuffers = true -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if $counts -}}
+  {{- $sorted := sort $counts -}}
+  {{- $low := printf "%.1f" (div (float (index $sorted 0)) 1000000) -}}
+  {{- $high := printf "%.1f" (div (float (index $sorted (sub (len $sorted) 1))) 1000000) -}}
+  {{- $label := printf "%s MP" $low -}}
+  {{- if ne $low $high -}}{{- $label = printf "%s–%s MP" $low $high -}}{{- end -}}
+  {{- $tip := printf "Reviewed counts for %d of %d identified weight files. Values are in millions; ranges show the smallest and largest counts, not their sum." (len $counts) $files -}}
+  {{- if $includesBuffers -}}
+    {{- $tip = printf "%s Includes tensor-element counts that may contain buffers." $tip -}}
+  {{- else -}}
+    {{- $tip = printf "%s Counts stored parameters, excluding module buffers." $tip -}}
+  {{- end -}}
+  {{- $tip = printf "%s Runtime and trainable parameter counts are unverified. Other formats and download pages may not be covered. See the model page for per-file evidence." $tip -}}
+  {{- if lt (len $counts) $files -}}
+    {{- $label = printf "%s *" $label -}}
+    {{- $tip = printf "Partial coverage: some linked weight files have no reviewed count. %s" $tip -}}
+  {{- end -}}
+  <span class="parameter-count" tabindex="0" title="{{ $tip }}" aria-label="{{ $label }}. {{ $tip }}">{{ $label }}</span>
+{{- else -}}
+  <span class="muted" title="No reviewed weight count available">—</span>
+{{- end -}}
