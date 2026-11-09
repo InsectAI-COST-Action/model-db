@@ -197,10 +197,17 @@ a:hover { text-decoration-thickness: 2px; }
 
 /* Tables */
 
+.parameter-count {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  text-decoration: underline dotted;
+  text-underline-offset: .2em;
+  cursor: help;
+}
+
 .table-scroll {
   overflow: auto;
   max-height: 88vh;
-  margin: 0 1.1rem 1.1rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
 }
@@ -214,7 +221,7 @@ table.models {
 }
 
 table.models th, table.models td {
-  padding: .5rem .7rem;
+  padding: .7rem .7rem;
   text-align: left;
   vertical-align: top;
   border-bottom: 1px solid var(--border);
@@ -229,6 +236,7 @@ table.models thead th {
   white-space: nowrap;
 }
 table.models tbody th { font-weight: 600; white-space: nowrap; }
+table.models .model-title-line { display: block; }
 table.models tbody tr:nth-child(even) { background: color-mix(in srgb, var(--surface-2) 45%, transparent); }
 table.models tbody tr:hover { background: var(--accent-dim); }
 table.models tr[hidden] { display: none; }

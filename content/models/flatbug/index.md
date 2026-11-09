@@ -51,6 +51,7 @@ url          = "https://anon.erda.au.dk/share_redirect/Bb0CR1FHG6/models/flat_bu
 size_bytes   = 54585258
 released     = 2026-07-07
 note         = "Default weights since flat-bug 1.2.0. Not evaluated in the paper."
+weight_count = {value = 26969951, kind = "stored_parameters", sha256 = "d3239bf0c367938f90dd21e92c4fb8bb47e28288678c5130c33f708714c8e50d", asset_signature = "6ccae2551ae26014bfcaf5050014cf2a35a277af3821e8dbcb50e1b5f0940cdc", container = "model", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:24:58.527289+00:00"}
 
 [[assets]]
 key          = "n"
@@ -61,6 +62,7 @@ filename     = "models/flat_bug_N.pt"
 url          = "https://anon.erda.au.dk/share_redirect/Bb0CR1FHG6/models/flat_bug_N.pt"
 size_bytes   = 6275129
 released     = 2024-10-23
+weight_count = {value = 2943171, kind = "stored_parameters", sha256 = "e54eb199fb8397f70dc36aca4727b92836fb7f56b11f8544be60f54c13d273c0", asset_signature = "f0d188324fa33a71b0f20a0c625b92d52031b76d296add88b6f7be022b3b6aa3", container = "model", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:24:58.527289+00:00"}
 
 [[assets]]
 key          = "s"
@@ -71,6 +73,7 @@ filename     = "models/flat_bug_S.pt"
 url          = "https://anon.erda.au.dk/share_redirect/Bb0CR1FHG6/models/flat_bug_S.pt"
 size_bytes   = 21398649
 released     = 2024-10-23
+weight_count = {value = 10493843, kind = "stored_parameters", sha256 = "b410d2c902c8975f6c8263ee74871e618e55d670f86cf49ad49869de9a9ccc03", asset_signature = "d24485b4509d0373c2bda2f96e7be64649ea27342a1a07bc92d99559b292d0ca", container = "model", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:24:58.527289+00:00"}
 
 [[assets]]
 key          = "m"
@@ -81,6 +84,7 @@ filename     = "models/flat_bug_M.pt"
 url          = "https://anon.erda.au.dk/share_redirect/Bb0CR1FHG6/models/flat_bug_M.pt"
 size_bytes   = 49694305
 released     = 2024-10-23
+weight_count = {value = 24605027, kind = "stored_parameters", sha256 = "2ec28c5000b8d2bad38a702c96bfbda262a5f65dd643b0ba3a36b541bc3283aa", asset_signature = "dde9f66cb15b8685699c728a4943bb23c9c59adfafb8e02d0702b3ae1ae6319a", container = "model", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:24:58.527289+00:00"}
 
 [[assets]]
 key          = "l"
@@ -92,6 +96,7 @@ url          = "https://anon.erda.au.dk/share_redirect/Bb0CR1FHG6/models/flat_bu
 size_bytes   = 84085321
 released     = 2024-10-23
 note         = "The best model in the paper (F1 94.2%)."
+weight_count = {value = 41765043, kind = "stored_parameters", sha256 = "27ba525b4946221417a2f263e190cb44ada34923f3fdb678c79ac572ac743f79", asset_signature = "9b7c947f2a18ad0c41a1629799a551e18e915f43dd25e198b150731584e74e76", container = "model", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:24:58.527289+00:00"}
 
 [[assets]]
 key          = "pypi"

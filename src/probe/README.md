@@ -1,98 +1,146 @@
-# Model output probes
+# Model probes and weight counts
 
-This project tests the output of an author's prediction workflow with real
-published weights. It distinguishes exported files from internal model objects.
-The coordinator uses only the standard library; each incompatible model stack
-runs in its own locked `uv` environment and fresh subprocess.
+Run commands from the repository root with [uv](https://docs.astral.sh/uv/)
+installed. `uv` manages Python and the locked environments.
 
-## Running probes
-
-Run these commands from the repository root:
+## Get and review weight counts
 
 ```bash
-uv run --locked --project src/probe python -m probe list
-uv run --locked --project src/probe python -m probe run arthronat
-uv run --locked --project src/probe python -m probe run stark-yolov5_n pollinator
-uv run --locked --project src/probe python -m probe run --all
-uv run --locked --project src/probe python -m unittest discover -s src/probe/tests -v
+# 1. See what is saved, awaiting review, or still missing.
+uv run --locked --project src/probe review-weights coverage
+
+# 2. Choose models/weights to inspect and confirm any downloads.
+uv run --locked --project src/probe inspect-weights --guide
+
+# 3. Choose local results, review the diff, and confirm card edits.
+uv run --locked --project src/probe review-pending-weights --guide
+
+# 4. Check your changes before committing them yourself.
+git diff -- content/models
 ```
 
-Listing and unit tests do not install model packages or download weights.
-A selected inference probe synchronizes its own environment from `uv.lock`.
-The supplied runtime projects were tested on Linux x86_64 and target Python 3.11 and use the explicit PyTorch
-CPU wheel index. The coordinator supports Python 3.11–3.12. `uv` can obtain
-these interpreters when they are missing.
+Guides show only assets needing that step; add `--show-all` to revisit others.
+Enter or `q` cancels a selection; confirmation defaults to **no**. Inspections
+save local reports, not model-card edits. Only confirmed reviews edit cards;
+nothing stages, commits, or pushes changes. Earlier confirmed edits remain if
+you cancel later.
 
-Runs are CPU-only and use two compute threads. `--timeout 600` bounds each
-worker, including its child processes; downloads have separate socket and byte
-limits. Some author pipelines require several hundred MB of weights; a complete
-first run downloads multiple GB. `--run-root /path` changes the run destination.
-A run exits nonzero if any selected probe is failed, blocked, or inconclusive.
+Counts describe saved tensors, not verified runtime/trainable parameters.
+State-dictionary totals may include buffers; serialized-module counts exclude
+them. Reports and downloads stay in ignored `src/probe/runs/` and
+`src/probe/.cache/` directories.
 
-## Isolation and evidence
+## Check a model's output format
 
-- `models.json` specifies model cards, entry points, source citations, settings,
-  and adapters. A card can have multiple probes for distinct checkpoints.
-- `resources.json` pins every prepared resource by SHA-256, including source
-  archives, released checkpoints, and author-provided test images. Downloads
-  are verified before use; partial files are never accepted as cache hits.
-- `environments/<name>/pyproject.toml` and `uv.lock` isolate dependency stacks.
-  Model libraries are never imported into the coordinator.
-- `.cache/` holds verified downloads. `runs/<run>/<probe>/` holds a unique
-  request, log, report and artifacts. These directories and environments are
-  gitignored; weights are never committed or published by Hugo.
-- Reports identify source/weight hashes, the environment lock, commands,
-  installed packages and output artifacts. New runs also fingerprint the
-  coordinator and worker source. Author-generated auxiliary downloads are
-  confined to the run's Torch cache or extracted source tree; they must be
-  inspected and pinned before treating a workflow as fully reproducible.
-- `reports/` holds curated small evidence and the review results. It does not
-  contain checkpoints or copied author code.
+```bash
+uv run --locked --project src/probe probe-models list
+uv run --locked --project src/probe probe-models run arthronat
+```
 
-Environment isolation prevents dependency conflicts. It is not a security
-sandbox: running an author script or loading a pickle checkpoint executes that
-code with the invoking user's permissions. Only run reviewed model sources.
+Read the report at the printed path before updating an output-format claim.
+These probes run reviewed author code with real weights; their environments
+isolate dependencies, not filesystem/network access. They check output formats,
+not accuracy or speed. See the [detection coverage audit](reports/2026-09-30-format-expansion/README.md).
 
-## Interpreting results
+## Documentation
 
-`observed` means the configured author path completed and its expected artifact
-was inspected. It is evidence for that checkpoint, input and invocation—not
-proof about every version, option, or checkpoint in the model family.
-`inconclusive` means inference completed but produced no populated instance
-output. `failed` retains the runtime error and log. `blocked` records a missing prerequisite (such as an OAK device) or an interface
-that has only been source-inspected and has no runtime adapter yet. Its reason
-distinguishes these cases; neither substitutes generic YOLO inference for the
-intended workflow.
+Prefix every command below with `uv run --locked --project src/probe`.
+All commands accept `-h` / `--help`. Paths supplied as flags are relative to your
+working directory; defaults refer to this checkout. Guides require a terminal.
 
-Fixture adapters may prepare input directories, generate a blank control or a
-short video from a real image, select CPU, and redirect downloads to pinned
-local sources. Those changes are recorded in the scope and command. They do
-not replace predictions with synthetic boxes. InsectDCT uses consecutive author
-frames because motion enhancement depends on frame history. These are format
-probes, not accuracy or speed benchmarks.
+### `inspect-weights`
 
-The files `observed.json` and `python-results.json` are probe evidence. They are
-not advertised as JSON outputs from authors who return Python objects or save
-images. A missing detection TXT on a blank image is distinct from an empty file.
+| Command | What it does |
+| --- | --- |
+| `inspect-weights` | Inspects selected direct HTTP(S) `.pt`, `.pth`, `.bin`, or `.ckpt` assets without importing author code. ZIP checkpoints use inert tensor metadata; legacy files use restricted PyTorch loading in a locked CPU environment. Records counts, containers, hashes and failures locally. Continues after failures; exits nonzero when an eligible inspection fails or is unresolved. `--list` only lists eligibility. |
 
-No probe automatically rewrites model cards. Review actual artifacts, the
-selected workflow, and the source before assigning an `output_format`. In
-particular, later code from the same author does not establish which exporter
-was used in an earlier publication.
+| Flag | Function and options | Default |
+| --- | --- | --- |
+| `--guide` | Choose model → asset(s) → confirm inspection. Shows Inspect, Refresh and Blocked assets. | Off; exactly one of `--guide`, `--model`, `--all` is required. |
+| `--show-all` | Include Review/Saved assets in the guide; requires `--guide`. | Off. |
+| `--model ID` | Select a model-card directory name; repeat for several models. | No selection. |
+| `--all` | Select every catalogue asset; unsupported links remain visible in reports. | Off. |
+| `--asset KEY` | Restrict to one asset; requires exactly one `--model`. | All assets in selected models. |
+| `--list` | List eligibility without downloads; incompatible with `--guide`. | Off. |
+| `--repo PATH` | Catalogue checkout to read. | This repository. |
+| `--cache PATH` | Download cache; checksums are verified. Only checksum-pinned or immutable Hub URLs reuse cached files. | `src/probe/.cache/weights`. |
+| `--run-root PATH` | Store reports/logs here; the guide also reads its existing reports to filter choices. | `src/probe/runs/weights`. |
+| `--output PATH` | Write an additional JSON report (also works with `--list`). | No additional copy. |
+| `--max-bytes N` | Positive per-artifact download limit in bytes. | `2147483648` (2 GiB). |
+| `--network-timeout N` | Positive network socket timeout in seconds. | `60`. |
+| `--timeout N` | Positive inspection-worker timeout in seconds, including environment setup. | `300`. |
 
-## Adding a probe
+Optimizer, EMA, scheduler and scaler branches are excluded. Repeated references
+to one tensor count once per candidate; distinct views count separately.
+Multiple containers are reported separately, never summed. Runtime-created
+parameters may be absent. Archives, shards, TorchScript, landing pages and
+unknown tensor encodings are unsupported; loading never retries unrestricted.
 
-Add the author entry point and one representative variant to `models.json`,
-then pin its resources in `resources.json`. Create a separate locked runtime
-when dependencies conflict. Implement a small adapter in `probe/worker.py`
-that invokes the real author API/CLI and inspects its output. The coordinator
-owns downloads, time limits, process isolation, and evidence recording.
+### `review-weights`
 
-Each report has a schema version and a `capability` field, currently only
-`output_format`. This leaves room for later metadata probes without mixing
-parameter counting or architecture inference into the current output tests.
+| Command | What it does |
+| --- | --- |
+| `review-weights coverage` | Read-only summary of saved counts and local evidence. Saved = no pending update; Review = pending count; Refresh = stale evidence/identity; Inspect = no evidence; Blocked = unsuccessful inspection. Counts refer to directly inspectable PyTorch assets; other assets are summarized separately. |
+| `review-weights pending` | Show local count proposals, or preview selected additions/replacements/deletions without editing cards. `--guide` also offers confirmed application. |
+| `review-weights apply` | Validate explicit selections, show the exact diff and ask for interactive confirmation before editing cards. Requires `--accept` and/or `--remove`. Failed/missing evidence never deletes a count automatically. |
 
-The [current detection coverage audit](reports/2026-09-30-format-expansion/README.md)
-includes source-inspected profiles and distinguishes them from runtime evidence.
-BioMoth and Mothbot execute selected original author function bodies from pinned
-sources; their report scope lists omitted notebook/UI and downstream stages.
+| Flag | Function and options | Default |
+| --- | --- | --- |
+| `--model ID` | Limit to a model; repeat for several. | All models. |
+| `--repo PATH` | Catalogue checkout to read/edit. | This repository. |
+| `--run-root PATH` | Search immediate run subdirectories for `report.json`. | `src/probe/runs/weights`. |
+| `--report PATH` | Use explicit reports instead of discovery; repeat for several. | Discover local reports; use the newest timestamp per asset. |
+| `--output PATH` | Write the full audit/proposals as JSON; unavailable in guide mode. | Terminal output only. |
+| `--details` | Expand coverage to individual assets and reasons; unavailable in guide mode. | Compact coverage summary. |
+| `--guide` | With `pending`, choose model → asset → container, then review evidence/diff and confirm edits. | Off. |
+| `--show-all` | With `--guide`, include usable results already matching saved counts; viewing these does not rewrite them. | Pending changes only. |
+| `--accept MODEL/ASSET/CONTAINER` | Select a specific count; repeat for distinct assets. `pending` previews, `apply` asks to save. | None; unavailable with coverage or the guide. |
+| `--remove MODEL/ASSET` | Explicitly select a saved count for deletion; repeat for distinct assets. `pending` previews, `apply` asks to delete. | None; unavailable with coverage or the guide. |
+
+Only usable reports matching the asset identity and inspector version can be
+applied. Count evidence is stored per asset as `weight_count` and displayed on
+the model page. To preview one explicit selection:
+
+```bash
+uv run --locked --project src/probe review-weights pending --accept nemo/pytorch/root
+```
+
+### `review-pending-weights`
+
+| Command | What it does |
+| --- | --- |
+| `review-pending-weights` | Alias for `review-weights pending`. Without `--guide`, lists proposals; with it, walks through selection and confirmed application. |
+
+| Flags | Function and default |
+| --- | --- |
+| `--guide`, `--show-all` | Interactive review; both off by default. `--show-all` requires `--guide`. |
+| `--model`, `--repo`, `--run-root`, `--report` | Same filters, options and defaults as `review-weights` above. |
+| `--accept`, `--remove` | Preview explicit changes without editing; none by default. Cannot combine with `--guide`. |
+| `--output` | Optional JSON audit file; none by default. Cannot combine with `--guide`. |
+| `--details` | Accepted but has no effect on the pending listing; cannot combine with `--guide`. |
+
+### `probe-models`
+
+| Command | What it does |
+| --- | --- |
+| `probe-models list` | List configured probe IDs/scopes without installing model packages or downloading weights. |
+| `probe-models run ID [ID ...]` | Run selected author prediction workflows in their locked CPU environments. Writes reports, logs and artifacts under a unique run directory. Exit zero requires every result to be `observed`; `inconclusive`, `blocked` and `failed` exit nonzero. An observed result establishes only the tested checkpoint/workflow. |
+
+| Argument/flag | Function and options | Default |
+| --- | --- | --- |
+| `ID [ID ...]` | Probe IDs from `list` (not necessarily model-card names). | `run` requires IDs or `--all`. |
+| `--all` | Run every configured probe. | Off. |
+| `--timeout N` | Worker timeout in seconds, including setup and child processes. | `600`. |
+| `--run-root PATH` | Parent directory for generated run reports. | `src/probe/runs`. |
+
+`python -m probe` is an equivalent entry point. To add a probe, register its
+workflow in `models.json`, pin resources/checksums in `resources.json`, add a
+locked environment if needed, and implement its adapter in `probe/worker.py`.
+
+### Developer checks
+
+```bash
+uv run --locked --project src/probe python -m unittest discover -s src/probe/tests -v
+PYTHONPATH=src/probe uv run --locked --project src/probe/environments/weights \
+  python -m unittest discover -s src/probe/tests -p test_weights.py -v
+```

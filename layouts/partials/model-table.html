@@ -11,6 +11,7 @@
         <th scope="col">Purpose</th>
         <th scope="col">Task</th>
         <th scope="col">Architecture</th>
+        <th scope="col">Parameters</th>
         <th scope="col">Input</th>
         <th scope="col">Vocabulary</th>
         <th scope="col">Input size</th>
@@ -22,7 +23,8 @@
     <tbody>
     {{- range $rows }}
       {{- $p := .Params -}}
-      {{- $haystack := printf "%s %s %s %s %s %s" .Title (.Description | default "") (delimit ($p.architecture | default slice) " ") ($p.taxonomic_coverage | default "") (delimit ($p.task | default slice) " ") ($p.developer | default "") -}}
+      {{- $title := partial "plain-title.html" .Title -}}
+      {{- $haystack := printf "%s %s %s %s %s %s" $title (.Description | default "") (delimit ($p.architecture | default slice) " ") ($p.taxonomic_coverage | default "") (delimit ($p.task | default slice) " ") ($p.developer | default "") -}}
       <tr data-id="{{ path.Base .File.Dir }}"
           data-task="{{ delimit ($p.task | default slice) ";" }}"
           data-purpose="{{ delimit ($p.purpose | default slice) ";" }}"
@@ -32,7 +34,11 @@
           data-training="{{ delimit (partial "training-status.html" .) ";" }}"
           data-search="{{ lower $haystack }}">
         <th scope="row">
-          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <a href="{{ .RelPermalink }}" aria-label="{{ $title }}">
+            {{- range $i, $line := split (replaceRE `\r\n?` "\n" .Title) "\n" -}}
+              {{- if $i }}{{ " " }}{{ end -}}<span class="model-title-line">{{ $line }}</span>
+            {{- end -}}
+          </a>
         </th>
         <td>
           {{- range $i, $purpose := $p.purpose -}}
@@ -51,6 +57,7 @@
           {{- end -}}
         </td>
         <td>{{ delimit $p.architecture ", " }}</td>
+        <td>{{ partial "parameter-count.html" $p.assets }}</td>
         <td>{{ if $p.input_modality }}{{ delimit $p.input_modality ", " }}{{ else }}image{{ end }}</td>
         <td>
           {{- $scope := $p.vocabulary_scope | default "closed" -}}

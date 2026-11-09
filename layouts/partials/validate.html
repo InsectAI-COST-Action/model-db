@@ -160,6 +160,34 @@
   {{- if not (index $asset "url") -}}
     {{- errorf "%s: assets block %d has no 'url'" $where $n -}}
   {{- end -}}
+  {{- if isset $asset "weight_count" -}}
+    {{- $count := $asset.weight_count -}}
+    {{- if not (reflect.IsMap $count) -}}
+      {{- errorf "%s: assets block %d weight_count must be a table" $where $n -}}
+    {{- else -}}
+      {{- if not (in (slice "int" "int64") (printf "%T" $count.value)) -}}
+        {{- errorf "%s: assets block %d weight_count.value must be a nonnegative integer" $where $n -}}
+      {{- else if lt $count.value 0 -}}
+        {{- errorf "%s: assets block %d weight_count.value must be nonnegative" $where $n -}}
+      {{- end -}}
+      {{- if not (in (slice "stored_parameters" "tensor_elements") $count.kind) -}}
+        {{- errorf "%s: assets block %d weight_count.kind must be stored_parameters or tensor_elements" $where $n -}}
+      {{- end -}}
+      {{- range slice "sha256" "asset_signature" -}}
+        {{- if not (findRE `^[0-9a-f]{64}$` (printf "%v" (index $count .))) -}}
+          {{- errorf "%s: assets block %d weight_count.%s needs a SHA-256" $where $n . -}}
+        {{- end -}}
+      {{- end -}}
+      {{- range slice "container" "method" "inspection_version" "observed_at" -}}
+        {{- if not (index $count .) -}}
+          {{- errorf "%s: assets block %d weight_count.%s is required" $where $n . -}}
+        {{- end -}}
+      {{- end -}}
+      {{- if and $asset.sha256 (ne (lower $asset.sha256) $count.sha256) -}}
+        {{- errorf "%s: assets block %d weight_count checksum differs from asset" $where $n -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
 {{- end -}}
 
 {{- /* Hugo injects these front-matter keys with defaults of its own, so they

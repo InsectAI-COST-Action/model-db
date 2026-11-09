@@ -46,6 +46,7 @@ filename     = "yolov5_n_best.pt"
 url          = "https://github.com/stark-t/PAI/raw/main/detectors/trained_weights/yolov5_n_best.pt"
 size_bytes   = 3844469
 note         = "Nano. Recommended thresholds: confidence 0.2, IoU 0.5."
+weight_count = {value = 1774741, kind = "stored_parameters", sha256 = "4752ab81e3cdac5d50e9cee6a7df27751872c4790c07d9ff09c74856ff5d0d8f", asset_signature = "6e517189e555c10ed051425a4636413c67573faa0c5736f7d72fb354645e905c", container = "model", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:42:00.197586+00:00"}
 
 [[assets]]
 key          = "small"
@@ -55,6 +56,7 @@ filename     = "yolov5_s_best.pt"
 url          = "https://github.com/stark-t/PAI/raw/main/detectors/trained_weights/yolov5_s_best.pt"
 size_bytes   = 14397237
 note         = "Small. Highest overall accuracy of the three. Recommended thresholds: confidence 0.3, IoU 0.6."
+weight_count = {value = 7041205, kind = "stored_parameters", sha256 = "9da90c43e48e4a33d9a439f5ea7d1e38ed8375414353d9ffee7fd2a61bf2997a", asset_signature = "114de43f38734312c8f4127c94e2275c12db744fd109c1928b12ef29bc1d1855", container = "model", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:42:00.197586+00:00"}
 
 [[assets]]
 key          = "tiny"
@@ -64,6 +66,7 @@ filename     = "yolov7_tiny_best.pt"
 url          = "https://github.com/stark-t/PAI/raw/main/detectors/trained_weights/yolov7_tiny_best.pt"
 size_bytes   = 12290003
 note         = "Tiny. Highest recall, most false positives. Recommended thresholds: confidence 0.1, IoU 0.3."
+weight_count = {value = 6032917, kind = "stored_parameters", sha256 = "9478b5de6fce2ae12b2bcf231093798e814325ae1119755a70d9c2baf7cc843a", asset_signature = "099575d691bc5434f739ac4ee18cb05cf9bf30eaadcbb65559d315662f5ede78", container = "model", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:42:00.197586+00:00"}
 +++
 
 > Three light-weight YOLO detectors (YOLOv5n, YOLOv5s, YOLOv7-tiny) that find arthropods on

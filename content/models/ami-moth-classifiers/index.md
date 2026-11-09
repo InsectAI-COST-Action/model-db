@@ -1,6 +1,6 @@
 +++
 # ── Identity ────────────────────────────────────────────────────────
-title              = "AMI moth classifiers"
+title              = "AMI moth\nclassifiers"
 description        = "Global and regional ResNet50 moth species classifiers, a moth/non-moth filter and a 16-order arthropod classifier for crops from nocturnal light traps, as run by the AMI data companion and Antenna."
 foundation         = false
 
@@ -43,6 +43,7 @@ size_bytes   = 333489027
 url          = "https://object-arbutus.alliancecan.ca/swift/v1/AUTH_3c987b8fc90743469d42899b1fdb48eb/ami-models/moths/classification/global_resnet50_20240828_b06d3b3a.pth"
 released     = 2024-08-28
 note         = "Global moth species classifier, 29,176 species, ResNet50 at 128 px. Label map: moths/classification/global_category_map_with_names_20240828.json. API slug global_moths_2024."
+weight_count = {value = 83342829, kind = "tensor_elements", sha256 = "ee5e805bf5dba7e5463a128b03eaff41387e7432175576e4b79fabff555a1ae4", asset_signature = "1478ceffb77d68f1c0d67395f418ef787d66a2505e3fac64f3a323da89b288fd", container = "root", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:39:19.242183+00:00"}
 
 [[assets]]
 key          = "moth-nonmoth"
@@ -52,6 +53,7 @@ size_bytes   = 94373731
 url          = "https://object-arbutus.alliancecan.ca/swift/v1/AUTH_3c987b8fc90743469d42899b1fdb48eb/ami-models/moths/classification/moth-nonmoth_resnet50_20240417_b4fe3efe.pth"
 released     = 2024-04-17
 note         = "Binary moth / non-moth filter that runs between the detector and the species classifier. ResNet50 at 128 px. Label map: moths/classification/05-moth-nonmoth_category_map.json."
+weight_count = {value = 23565303, kind = "tensor_elements", sha256 = "cc46a7549485763d53e57989d078eedd34eac5c2489e663c21b8e3f40d6eb3d2", asset_signature = "e8dd06c724b0f68b16cd6b7593a1a3f32734bf97fe9d2dcc45dafde877d32316", container = "root", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:39:19.242183+00:00"}
 
 [[assets]]
 key          = "insect-orders-2025"
@@ -60,6 +62,7 @@ filename     = "convnext_tiny_in22k_worder0.5_wbinary0.5_run2_checkpoint.pt"
 size_bytes   = 334241031
 url          = "https://object-arbutus.alliancecan.ca/swift/v1/AUTH_3c987b8fc90743469d42899b1fdb48eb/ami-models/insect_orders/convnext_tiny_in22k_worder0.5_wbinary0.5_run2_checkpoint.pt"
 note         = "16-class order classifier (Lepidoptera, Diptera, Hemiptera, Odonata, Coleoptera, Araneae, Orthoptera, Hymenoptera, Trichoptera, Neuroptera, Opiliones, Ephemeroptera, Plecoptera, Blattodea, Dermaptera, Mantodea). ConvNeXt-T at 128 px, January 2025. Label map: insect_orders/insect_order_category_map.json."
+weight_count = {value = 27832432, kind = "tensor_elements", sha256 = "1f299d71c43411c9502d7e23e99b807133b511d87d71d46b7c7b2fc2c90e0895", asset_signature = "82393db5e4777c215006998373812b551677559e7d86af784e14e29c9bb14c81", container = "model_state_dict", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:39:19.242183+00:00"}
 
 [[assets]]
 key          = "quebec-vermont"
@@ -69,6 +72,7 @@ size_bytes   = 114822755
 url          = "https://object-arbutus.alliancecan.ca/swift/v1/AUTH_3c987b8fc90743469d42899b1fdb48eb/ami-models/moths/classification/quebec-vermont_resnet50_baseline_20240417_950de764.pth"
 released     = 2024-04-17
 note         = "NE North America, 2,497 species (the ECCV paper's ResNet50 baseline). Label map: 01_ami-gbif_fine-grained_ne-america_category_map-with_names.json. API slug quebec_vermont_moths_2023."
+weight_count = {value = 28677558, kind = "tensor_elements", sha256 = "19327605a943ba87de63e69ac08d9717955f57f0b1ff508c42ab2e3bba942dab", asset_signature = "162142bef1db761aae8d882f836d0fd8b688e55b3b4250f61397035b13bc4c4e", container = "root", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:39:19.242183+00:00"}
 
 [[assets]]
 key          = "uk-denmark"
@@ -78,6 +82,7 @@ size_bytes   = 115691491
 url          = "https://object-arbutus.alliancecan.ca/swift/v1/AUTH_3c987b8fc90743469d42899b1fdb48eb/ami-models/moths/classification/uk-denmark_resnet50_baseline_20240417_55250a8b.pth"
 released     = 2024-04-17
 note         = "W Europe, 2,603 species (the ECCV paper's ResNet50 baseline). Label map: 02_ami-gbif_fine-grained_w-europe_category_map-with_names.json. API slug uk_denmark_moths_2023."
+weight_count = {value = 28894752, kind = "tensor_elements", sha256 = "49fe9b7f8f369b2332439d46d5ffc08fab213df82576363ad3dec9bfedd0572a", asset_signature = "c3177cd21c841f6655cb9a22e190dbe31f317b5f3e2f93aca43e1fead1ad3069", container = "root", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:39:19.242183+00:00"}
 
 [[assets]]
 key          = "panama-2024"
@@ -87,6 +92,7 @@ size_bytes   = 99570019
 url          = "https://object-arbutus.alliancecan.ca/swift/v1/AUTH_3c987b8fc90743469d42899b1fdb48eb/ami-models/moths/classification/panama_resnet50_baseline_20240417_edbb46dd.pth"
 released     = 2024-04-17
 note         = "Central America (Panama), 636 species. Label map: 03_ami-gbif_fine-grained_c-america_category_map-with_names.json. API slug panama_moths_2024."
+weight_count = {value = 24864369, kind = "tensor_elements", sha256 = "542fae783418de3decb10b516862620812f792e46c46340b5f13ea5a27d16a79", asset_signature = "63134c642181d2f2ca04869692c30892953c59241f61a8a052100dcf8b8a0e03", container = "root", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:39:19.242183+00:00"}
 
 +++
 

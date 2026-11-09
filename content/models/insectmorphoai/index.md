@@ -38,6 +38,7 @@ variant      = "YOLOv8m-obb (Rapid Scan, length)"
 filename     = "data/models/YOLOv8_obb/yolov8m_obb3_best.pt"
 url          = "https://gitlab.kit.edu/kit/iai/ber/insectmorphoAI/-/raw/main/data/models/YOLOv8_obb/yolov8m_obb3_best.pt"
 note         = "In the InsectMorphoAI GitLab repository, main branch (not pinned to a commit)."
+weight_count = {value = 26417494, kind = "stored_parameters", sha256 = "5f82b4516af999642051cb87c88c95d9808eec7f7860a77636459c0546926c07", asset_signature = "cc31dfc9b2119a38ff304b45b27fd37668e1ac274e7d7a1bbdb528d807277993", container = "model", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:40:46.460043+00:00"}
 
 [[assets]]
 key          = "seg"
@@ -46,6 +47,7 @@ variant      = "YOLOv8m-seg (Detailed Analysis, Tachinidae)"
 filename     = "data/models/YOLOv8_seg/1_yolov8m_seg_s2_v1.pt"
 url          = "https://gitlab.kit.edu/kit/iai/ber/insectmorphoAI/-/raw/main/data/models/YOLOv8_seg/1_yolov8m_seg_s2_v1.pt"
 note         = "In the InsectMorphoAI GitLab repository, main branch (not pinned to a commit)."
+weight_count = {value = 27241385, kind = "stored_parameters", sha256 = "1b6c13b00242150a269fc4dbef75cb239fdb18db5b609f7ade949d3bc44b6ebb", asset_signature = "4fe03a8b30edf4d252892290936d600431898cae4c5c1101da50e8ec0e0801dc", container = "model", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:40:46.460043+00:00"}
 
 +++
 

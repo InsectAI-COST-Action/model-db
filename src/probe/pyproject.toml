@@ -2,10 +2,13 @@
 name = "model-db-probe"
 version = "0.1.0"
 requires-python = ">=3.11,<3.13"
-dependencies = []
+dependencies = ["tomlkit==0.13.3"]
 
 [project.scripts]
 probe-models = "probe.runner:main"
+inspect-weights = "probe.weights:main"
+review-weights = "probe.weight_review:main"
+review-pending-weights = "probe.weight_review:pending_main"
 
 [build-system]
 requires = ["hatchling==1.27.0"]

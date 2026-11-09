@@ -13,7 +13,12 @@
 
 <p class="result-count" id="result-count" aria-live="polite"></p>
 
-{{- $rows := sort $published "Title" -}}
+{{- $entries := slice -}}
+{{- range $published -}}
+  {{- $entries = $entries | append (dict "title" (partial "plain-title.html" .Title) "page" .) -}}
+{{- end -}}
+{{- $rows := slice -}}
+{{- range sort $entries "title" -}}{{- $rows = $rows | append .page -}}{{- end -}}
 {{- with $rows }}
 {{ partial "model-table.html" . }}
 {{- else -}}

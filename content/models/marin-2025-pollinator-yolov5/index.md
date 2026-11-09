@@ -1,6 +1,6 @@
 +++
 # ── Identity ────────────────────────────────────────────────────────
-title              = "POLLINATOR — Serra-Marin et al. (2025)"
+title              = "POLLINATOR\nSerra-Marin et al. (2025)"
 description        = "YOLOv5m detector of flower-visiting insects in daytime and nighttime field imagery."
 
 # ── Catalogue ───────────────────────────────────────────────────────
@@ -41,6 +41,7 @@ revision     = "900afc5bdecdd5d34b723934dcb84d6bdceb8709"
 revision_kind = "commit"
 gated        = false
 url          = "https://huggingface.co/pauenric/POLLINATOR_Serra_Marin_et_al_2025/resolve/900afc5bdecdd5d34b723934dcb84d6bdceb8709/pollinator_serra_marin_2025_best.pt"
+weight_count = {value = 20871318, kind = "stored_parameters", sha256 = "9b62c544b5dc31122d93db8ea9363aa4012a1b7636e57de740fa6ae6a2cc600e", asset_signature = "fe233a16cddb1202deb9f60ec5301751f1fa7607fb2f86586500c90a06c4033a", container = "model", method = "pickle_tensor_metadata", inspection_version = "3", observed_at = "2026-10-14T11:41:04.430126+00:00"}
 +++
 
 **Intended use.** Find flower-visiting insects in field images and video frames

@@ -1,6 +1,6 @@
 +++
 # ── Identity ────────────────────────────────────────────────────────
-title              = "Insect Detect platform"
+title              = "Insect Detect\nplatform"
 description        = "Detects arthropods on homogeneous backgrounds, trained on a colored platform background."
 
 # ── Catalogue ───────────────────────────────────────────────────────
